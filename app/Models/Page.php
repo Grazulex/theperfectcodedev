@@ -82,10 +82,10 @@ final class Page extends Model
     public function status(): PageStateContract
     {
         return match ($this->state) {
-            State::DRAFT() => new DraftPageState($this),
-            State::PUBLISHED() => new PublishedPageState($this),
-            State::ARCHIVED() => new ArchivedPageState($this),
-            State::REFUSED() => new RefusedPageState($this),
+            State::DRAFT => new DraftPageState($this),
+            State::PUBLISHED => new PublishedPageState($this),
+            State::ARCHIVED => new ArchivedPageState($this),
+            State::REFUSED => new RefusedPageState($this),
             default => throw new InvalidArgumentException('Invalid state'),
         };
     }
