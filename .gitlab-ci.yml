@@ -16,6 +16,8 @@ composer:
     - composer install --prefer-dist --no-ansi --no-interaction --no-progress --no-scripts
     - cp .env.gitlab .env
     - php artisan key:generate
+    - npm install --save-dev vite laravel-vite-plugin
+    - npm run build
   artifacts:
     expire_in: 1 month
     paths:
