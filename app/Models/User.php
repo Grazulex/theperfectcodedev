@@ -6,7 +6,9 @@ namespace App\Models;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use JoelButcher\Socialstream\HasConnectedAccounts;
@@ -16,6 +18,23 @@ use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Jetstream\HasTeams;
 use Laravel\Sanctum\HasApiTokens;
 
+/**
+ * @property string $name
+ * @property string $email
+ * @property string $password
+ * @property string $profile_photo_path
+ * @property string $two_factor_secret
+ * @property string $two_factor_recovery_codes
+ * @property string $remember_token
+ * @property string $current_team_id
+ * @property string $email_verified_at
+ * @property string $profile_photo_url
+ * @property Collection<Page> $pages
+ * @property Collection<Version> $versions
+ * @property Collection<PageLikes> $likes
+ * @property Collection<PageComments> $comments
+ * @property Collection<PageCommentLikes> $commentLikes
+ */
 final class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens;
@@ -79,5 +98,40 @@ final class User extends Authenticatable implements MustVerifyEmail
         return filter_var($this->profile_photo_path, FILTER_VALIDATE_URL)
             ? Attribute::get(fn() => $this->profile_photo_path)
             : $this->getPhotoUrl();
+    }
+
+    public function pages(): hasMany
+    {
+        return $this->hasMany(
+            related: Page::class
+        );
+    }
+
+    public function versions(): hasMany
+    {
+        return $this->hasMany(
+            related: Version::class
+        );
+    }
+
+    public function likes(): hasMany
+    {
+        return $this->hasMany(
+            related: PageLikes::class
+        );
+    }
+
+    public function comments(): hasMany
+    {
+        return $this->hasMany(
+            related: PageComments::class
+        );
+    }
+
+    public function commentLikes(): hasMany
+    {
+        return $this->hasMany(
+            related: PageCommentLikes::class
+        );
     }
 }
