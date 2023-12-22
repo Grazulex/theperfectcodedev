@@ -35,6 +35,8 @@ test:
     - composer
   script:
     #- php ./vendor/bin/pest --coverage-cobertura=coverage.xml --coverage-text --colors=never
+    - npm install --save-dev vite laravel-vite-plugin
+    - npm run build
     - php -d memory_limit=4G ./vendor/bin/pest
   #artifacts:
   #  expire_in: 1 month
