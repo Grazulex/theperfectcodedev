@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use App\Http\Controllers\Page\TopListController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,12 +16,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', fn() => view('welcome'));
-
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified',
-])->group(function (): void {
-    Route::get('dashboard', fn() => view('dashboard'))->name('dashboard');
-});
+Route::get('/', fn() => view('homepage'))->name('homepage');
+Route::get('top', TopListController::class)->name('pages.top');

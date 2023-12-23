@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\StateMachines\Pages;
 
+use App\Exceptions\PageNoStateException;
 use App\Models\Page;
 use App\StateMachines\Contracts\PageStateContract;
 use Exception;
@@ -17,7 +18,7 @@ abstract class BasePageState implements PageStateContract
      */
     public function publish(): void
     {
-        throw new Exception();
+        throw new PageNoStateException();
     }
 
     /**
@@ -25,7 +26,7 @@ abstract class BasePageState implements PageStateContract
      */
     public function archive(): void
     {
-        throw new Exception();
+        throw new PageNoStateException();
     }
 
     /**
@@ -33,7 +34,7 @@ abstract class BasePageState implements PageStateContract
      */
     public function refuse(): void
     {
-        throw new Exception();
+        throw new PageNoStateException();
     }
 
     /**
@@ -41,6 +42,6 @@ abstract class BasePageState implements PageStateContract
      */
     public function delete(): void
     {
-        throw new Exception();
+        throw new PageNoStateException();
     }
 }

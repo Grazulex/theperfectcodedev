@@ -15,9 +15,7 @@ final readonly class CreatePageAction
         $data['slug'] ??= Str::slug($data['title']);
         $page =  Page::create($data);
 
-        $page->followers()->create([
-            'user_id' => $page->user_id,
-        ]);
+        $page->followers()->attach($page->user_id);
 
         $page->user->notify(
             new DraftNotification(

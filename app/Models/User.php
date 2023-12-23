@@ -8,6 +8,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -31,10 +32,10 @@ use Laravel\Sanctum\HasApiTokens;
  * @property string $profile_photo_url
  * @property Collection<Page> $pages
  * @property Collection<Version> $versions
- * @property Collection<PageLikes> $likes
+ * @property Collection<Page> $likes
  * @property Collection<PageComments> $comments
  * @property Collection<PageCommentLikes> $commentLikes
- * @property Collection<PageFollowers> $followers
+ * @property Collection<Page> $followers
  */
 final class User extends Authenticatable implements MustVerifyEmail
 {
@@ -115,12 +116,14 @@ final class User extends Authenticatable implements MustVerifyEmail
         );
     }
 
-    public function likes(): hasMany
+    public function likes(): BelongsToMany
     {
-        return $this->hasMany(
-            related: PageLikes::class
+        return $this->BelongsToMany(
+            related: Page::class,
+            table: 'page_user_likes',
         );
     }
+
 
     public function comments(): hasMany
     {
@@ -136,10 +139,11 @@ final class User extends Authenticatable implements MustVerifyEmail
         );
     }
 
-    public function followers(): hasMany
+    public function followers(): BelongsToMany
     {
-        return $this->hasMany(
-            related: PageFollowers::class
+        return $this->BelongsToMany(
+            related: Page::class,
+            table: 'page_user_followers',
         );
     }
 }

@@ -24,6 +24,8 @@ return new class () extends Migration {
 
             $table->string('state')->default(State::DRAFT->value);
 
+            $table->timestamp('published_at')->nullable();
+
             $table->softDeletes();
             $table->timestamps();
         });

@@ -14,6 +14,12 @@ final class PageFactory extends Factory
     public function definition(): array
     {
         $title = $this->faker->sentence;
+        $state = $this->faker->randomElement(State::cases());
+        if (State::PUBLISHED === $state) {
+            $publishedAt = $this->faker->dateTimeBetween('-1 year', 'now');
+        } else {
+            $publishedAt = null;
+        }
         return [
             'title' => $title,
             'slug' => Str::slug($title),
@@ -21,7 +27,8 @@ final class PageFactory extends Factory
             'tags' => $this->faker->words,
             'user_id' => User::factory(),
             'version' => 1,
-            'state' => State::DRAFT,
+            'state' => $state,
+            'published_at' => $publishedAt
         ];
     }
 }

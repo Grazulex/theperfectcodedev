@@ -8,8 +8,7 @@ namespace Database\Seeders;
 use App\Models\Page;
 use App\Models\PageCommentLikes;
 use App\Models\PageComments;
-use App\Models\PageFollowers;
-use App\Models\PageLikes;
+use App\Models\Team;
 use App\Models\User;
 use App\Models\Version;
 use Illuminate\Database\Seeder;
@@ -23,44 +22,47 @@ final class DatabaseSeeder extends Seeder
     {
         User::factory(10)->create();
 
+        Team::factory(1)->create();
+
         User::factory()->create([
             'name' => 'Admin',
-            'email' => 'no-reply@theperfectcodedev.com',
-            'password' => bcrypt('Katleen2229!'),
+            'email' => 'jms@grazulex.be',
+            'password' => bcrypt('password'),
+            'current_team_id' => 1,
         ]);
 
-        $pages = Page::factory(10)->create();
+        $pages = Page::factory(25)->create();
 
         foreach ($pages as $page) {
             Version::factory(10)->create([
                 'page_id' => $page->id,
-                'user_id' => User::all()->random()->id
+                'user_id' => User::all()->random()->first()->id,
             ]);
 
-            PageLikes::factory(5)->create([
-                'page_id' => $page->id
-            ]);
+            $page->likes()->attach(
+                User::all()->random(rand(0, count(User::all())))->pluck('id')->toArray(),
+            );
 
-            PageFollowers::factory(5)->create([
-                'page_id' => $page->id
-            ]);
+            $page->followers()->attach(
+                User::all()->random(rand(0, count(User::all())))->pluck('id')->toArray(),
+            );
 
             $comments = PageComments::factory(5)->create([
                 'page_id' => $page->id,
-                'user_id' => User::all()->random()->id,
+                'user_id' => User::all()->random()->first()->id,
                 'response_id' => null
             ]);
 
             foreach ($comments as $comment) {
                 $comments = PageComments::factory(5)->create([
                     'page_id' => $page->id,
-                    'user_id' => User::all()->random()->id,
+                    'user_id' => User::all()->random()->first()->id,
                     'response_id' => $comment->id
                 ]);
 
-                PageCommentLikes::factory(5)->create([
+                PageCommentLikes::factory(rand(1, 10))->create([
                     'page_comment_id' => $comment->id,
-                    'user_id' => User::all()->random()->id,
+                    'user_id' => User::all()->random()->first()->id,
                 ]);
             }
         }

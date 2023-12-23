@@ -13,6 +13,7 @@ final class DraftPageState extends BasePageState
     public function publish(): void
     {
         $this->page->state = State::PUBLISHED->value;
+        $this->page->published_at = now();
         $this->page->save();
         $this->page->user->notify(
             new PublishNotification(
