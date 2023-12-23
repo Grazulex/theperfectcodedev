@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Notifications\Page;
+namespace App\Notifications\Pages;
 
 use App\Models\Page;
 use Illuminate\Bus\Queueable;

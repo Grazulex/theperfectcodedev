@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace App\StateMachines\Pages;
 
 use App\Enums\State;
-use App\Notifications\Page\PublishNotification;
-use App\Notifications\Page\RefuseNotification;
+use App\Notifications\Pages\PublishNotification;
+use App\Notifications\Pages\RefuseNotification;
 
 final class DraftPageState extends BasePageState
 {

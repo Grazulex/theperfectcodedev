@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace App\Notifications\Page;
+namespace App\Notifications\Pages;
 
 use App\Models\Page;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-final class RefuseNotification extends Notification
+final class ArchiveNotification extends Notification
 {
     use Queueable;
 
@@ -17,7 +17,7 @@ final class RefuseNotification extends Notification
      * Create a new notification instance.
      */
     public function __construct(
-        public Page $page,
+        public Page $page
     ) {}
 
     /**

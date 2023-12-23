@@ -20,7 +20,7 @@ return new class () extends Migration {
 
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
 
-            $table->string('state')->default(State::ARCHIVED);
+            $table->string('state')->default(State::ARCHIVED->value);
 
             $table->timestamps();
         });

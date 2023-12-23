@@ -8,6 +8,7 @@ namespace Database\Seeders;
 use App\Models\Page;
 use App\Models\PageCommentLikes;
 use App\Models\PageComments;
+use App\Models\PageFollowers;
 use App\Models\PageLikes;
 use App\Models\User;
 use App\Models\Version;
@@ -37,6 +38,10 @@ final class DatabaseSeeder extends Seeder
             ]);
 
             PageLikes::factory(5)->create([
+                'page_id' => $page->id
+            ]);
+
+            PageFollowers::factory(5)->create([
                 'page_id' => $page->id
             ]);
 

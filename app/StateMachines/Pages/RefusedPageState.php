@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\StateMachines\Pages;
 
-use App\Notifications\Page\DeleteNotification;
+use App\Notifications\Pages\DeleteNotification;
 
 final class RefusedPageState extends BasePageState
 {

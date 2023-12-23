@@ -34,6 +34,7 @@ use Laravel\Sanctum\HasApiTokens;
  * @property Collection<PageLikes> $likes
  * @property Collection<PageComments> $comments
  * @property Collection<PageCommentLikes> $commentLikes
+ * @property Collection<PageFollowers> $followers
  */
 final class User extends Authenticatable implements MustVerifyEmail
 {
@@ -132,6 +133,13 @@ final class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->hasMany(
             related: PageCommentLikes::class
+        );
+    }
+
+    public function followers(): hasMany
+    {
+        return $this->hasMany(
+            related: PageFollowers::class
         );
     }
 }

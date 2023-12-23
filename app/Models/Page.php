@@ -30,6 +30,8 @@ use InvalidArgumentException;
  * @property Collection<Version> $versions
  * @property Collection<PageLikes> $likes
  * @property Collection<PageComments> $comments
+ * @property Collection<PageCommentLikes> $commentLikes
+ * @property Collection<PageFollowers> $followers
  */
 final class Page extends Model
 {
@@ -76,6 +78,13 @@ final class Page extends Model
     {
         return $this->hasMany(
             related: PageComments::class
+        );
+    }
+
+    public function followers(): hasMany
+    {
+        return $this->hasMany(
+            related: PageFollowers::class
         );
     }
 

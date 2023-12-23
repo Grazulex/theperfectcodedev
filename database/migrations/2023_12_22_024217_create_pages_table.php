@@ -22,7 +22,7 @@ return new class () extends Migration {
 
             $table->integer('version')->default(1);
 
-            $table->string('state')->default(State::DRAFT);
+            $table->string('state')->default(State::DRAFT->value);
 
             $table->softDeletes();
             $table->timestamps();
