@@ -18,7 +18,8 @@ return new class () extends Migration {
             $table->string('slug')->unique();
 
             $table->string('resume');
-            $table->text('content');
+            $table->text('description');
+            $table->text('code');
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
 
             $table->integer('version')->default(1);
@@ -26,6 +27,9 @@ return new class () extends Migration {
             $table->string('state')->default(State::DRAFT->value);
 
             $table->timestamp('published_at')->nullable();
+
+            $table->boolean('is_public')->default(true);
+            $table->boolean('is_accept_version')->default(false);
 
             $table->softDeletes();
             $table->timestamps();

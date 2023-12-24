@@ -26,13 +26,16 @@ use InvalidArgumentException;
  * @property string $title
  * @property string $slug
  * @property string $resume
- * @property string $content
+ * @property string $description
+ * @property string $code
  * @property array $tags
  * @property int $user_id
  * @property int $version
  * @property State $state
  * @property null|CarbonInterface $published_at
  * @property User $user
+ * @property bool $is_public
+ * @property bool $is_accept_version
  * @property Collection<Version> $versions
  * @property Collection<User> $likes
  * @property Collection<PageComments> $comments
@@ -48,18 +51,23 @@ final class Page extends Model
         'title',
         'slug',
         'resume',
-        'content',
+        'description',
+        'code',
         'tags',
         'user_id',
         'version',
         'state',
-        'published_at'
+        'published_at',
+        'is_public',
+        'is_accept_version',
     ];
 
     protected $casts = [
         'tags' => 'array',
         'state' => State::class,
-        'published_at' => 'datetime'
+        'published_at' => 'datetime',
+        'is_public' => 'boolean',
+        'is_accept_version' => 'boolean',
     ];
 
     public function user(): belongsTo

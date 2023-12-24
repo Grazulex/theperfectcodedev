@@ -24,12 +24,15 @@ final class PageFactory extends Factory
             'title' => $title,
             'slug' => Str::slug($title),
             'resume' => $this->faker->text(250),
-            'content' => $this->faker->paragraphs(3, true),
+            'description' => $this->faker->paragraphs(3, true),
+            'code' => $this->faker->paragraphs(10, true),
             'tags' => $this->faker->words,
             'user_id' => User::factory(),
             'version' => 1,
             'state' => $state,
-            'published_at' => $publishedAt
+            'published_at' => $publishedAt,
+            'is_public' => $this->faker->boolean(90),
+            'is_accept_version' => $this->faker->boolean(50),
         ];
     }
 }
