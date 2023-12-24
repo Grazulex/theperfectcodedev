@@ -23,7 +23,8 @@ final class PageFactory extends Factory
         return [
             'title' => $title,
             'slug' => Str::slug($title),
-            'description' => $this->faker->paragraph,
+            'resume' => $this->faker->text(250),
+            'content' => $this->faker->paragraphs(3, true),
             'tags' => $this->faker->words,
             'user_id' => User::factory(),
             'version' => 1,

@@ -37,37 +37,42 @@ final class DatabaseSeeder extends Seeder
         $me->hasTeamPermission(Team::find(1), 'create:pages') &&
         $me->tokenCan('create:pages');
 
-        $pages = Page::factory(25)->create();
+        foreach (User::all() as $user) {
+            Page::factory(25)->create(
+                ['user_id' => $user->id]
+            );
+        }
+        $pages = Page::all();
 
         foreach ($pages as $page) {
             Version::factory(10)->create([
                 'page_id' => $page->id,
-                'user_id' => User::all()->random()->first()->id,
+                'user_id' => User::all()->random(rand(1, count(User::all())))->pluck('id')->first(),
             ]);
 
             $page->likes()->attach(
-                User::all()->random(rand(0, count(User::all())))->pluck('id')->toArray(),
+                User::all()->random(rand(1, count(User::all())))->pluck('id')->toArray(),
             );
 
             $page->followers()->attach(
-                User::all()->random(rand(0, count(User::all())))->pluck('id')->toArray(),
+                User::all()->random(rand(1, count(User::all())))->pluck('id')->toArray(),
             );
 
             $comments = PageComments::factory(5)->create([
                 'page_id' => $page->id,
-                'user_id' => User::all()->random()->first()->id,
+                'user_id' => User::all()->random(rand(1, count(User::all())))->pluck('id')->first(),
                 'response_id' => null
             ]);
 
             foreach ($comments as $comment) {
                 $comments = PageComments::factory(5)->create([
                     'page_id' => $page->id,
-                    'user_id' => User::all()->random()->first()->id,
+                    'user_id' => User::all()->random(rand(1, count(User::all())))->pluck('id')->first(),
                     'response_id' => $comment->id
                 ]);
 
                 $comment->likes()->attach(
-                    User::all()->random(rand(0, count(User::all())))->pluck('id')->toArray(),
+                    User::all()->random(rand(1, count(User::all())))->pluck('id')->toArray(),
                 );
             }
         }

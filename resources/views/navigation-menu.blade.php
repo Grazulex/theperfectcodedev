@@ -16,12 +16,27 @@
                         {{ __('Homepage') }}
                     </x-nav-link>
                 </div>
+                @if (Auth::check())
+                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                        <a class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" href="{{ route('pages.new') }}" :active="request()->routeIs('pages.new')">
+                            +
+                        </a>
+                    </div>
+                @endif
 
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link href="{{ route('pages.top') }}" :active="request()->routeIs('pages.top')">
                         {{ __('Top 10') }}
                     </x-nav-link>
                 </div>
+
+                @if (Auth::check())
+                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                        <x-nav-link href="{{ route('pages.my') }}" :active="request()->routeIs('pages.my')">
+                            {{ __('My codes') }}
+                        </x-nav-link>
+                    </div>
+                @endif
             </div>
 
             @if (Auth::check())

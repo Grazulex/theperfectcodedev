@@ -7,7 +7,7 @@
             </h5>
         </div>
         <p class="block font-sans text-base antialiased font-light leading-relaxed text-gray-700">
-            {{ Str::limit($page->description, 150) }}
+            {{ $page->resume }}
         </p>
         <div class="inline-flex flex-wrap items-center gap-3 mt-8 group">
                   <span
@@ -18,7 +18,9 @@
                                     </button>
 
       </span>
-            <livewire:pages.published :date="$page->published_at" />
+            @if ($page->state === App\Enums\State::PUBLISHED)
+                <livewire:pages.published :date="$page->published_at" />
+            @endif
             <livewire:pages.like :page="$page" :likes_count="$page->likes_count" />
             <livewire:pages.followed :page="$page" :followers_count="$page->followers_count" />
             <livewire:pages.commented :comments_count="$page->comments_count" />

@@ -25,7 +25,8 @@ use InvalidArgumentException;
 /**
  * @property string $title
  * @property string $slug
- * @property string $description
+ * @property string $resume
+ * @property string $content
  * @property array $tags
  * @property int $user_id
  * @property int $version
@@ -46,7 +47,8 @@ final class Page extends Model
     protected $fillable = [
         'title',
         'slug',
-        'description',
+        'resume',
+        'content',
         'tags',
         'user_id',
         'version',

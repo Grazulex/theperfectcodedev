@@ -17,8 +17,9 @@ final class CreatePageRequest extends FormRequest
     {
         return [
             'title' => ['required', 'string', 'max:255'],
-            'description' => ['required', 'string'],
-            'tags' => ['required', 'array'],
+            'resume' => ['required', 'string', 'max:255'],
+            'content' => ['required', 'string'],
+            'tags' => ['required','array'],
         ];
     }
 }

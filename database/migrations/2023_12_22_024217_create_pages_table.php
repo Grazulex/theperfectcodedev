@@ -17,7 +17,8 @@ return new class () extends Migration {
             $table->string('title');
             $table->string('slug')->unique();
 
-            $table->text('description');
+            $table->string('resume');
+            $table->text('content');
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
 
             $table->integer('version')->default(1);

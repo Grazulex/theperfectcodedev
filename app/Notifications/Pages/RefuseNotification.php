@@ -6,10 +6,11 @@ namespace App\Notifications\Pages;
 
 use App\Models\Page;
 use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-final class RefuseNotification extends Notification
+final class RefuseNotification extends Notification implements ShouldQueue
 {
     use Queueable;
 

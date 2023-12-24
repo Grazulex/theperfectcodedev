@@ -10,7 +10,15 @@
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
-
+        <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+        <script>
+            tinymce.init({
+                selector: 'textarea#content', // Replace this CSS selector to match the placeholder element for TinyMCE
+                plugins: 'powerpaste advcode table lists checklist codesample code',
+                toolbar: 'undo redo | blocks| bold italic | bullist numlist checklist | code | table | codesample code',
+                codesample_global_prismjs: true
+            });
+        </script>
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
 
@@ -19,7 +27,6 @@
     </head>
     <body class="font-sans antialiased">
         <x-banner />
-
         <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
             @livewire('navigation-menu')
 

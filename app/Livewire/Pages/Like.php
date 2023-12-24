@@ -33,7 +33,7 @@ final class Like extends Component
     {
         $this->likes_count++;
         $this->isLiked = true;
-        $this->colorLiked = 'green';
+        $this->colorLiked = 'red';
         $this->dispatchLikeJob();
     }
 
