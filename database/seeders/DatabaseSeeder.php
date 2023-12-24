@@ -6,7 +6,6 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\Page;
-use App\Models\PageCommentLikes;
 use App\Models\PageComments;
 use App\Models\Team;
 use App\Models\User;
@@ -20,16 +19,23 @@ final class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        User::factory(10)->create();
-
-        Team::factory(1)->create();
-
-        User::factory()->create([
+        $me = User::factory()->create([
             'name' => 'Admin',
             'email' => 'jms@grazulex.be',
             'password' => bcrypt('password'),
             'current_team_id' => 1,
         ]);
+
+        User::factory(10)->create();
+
+        Team::factory(1)->create([
+            'user_id' => $me->id,
+            'name' => 'Grazulex',
+            'personal_team' => true]);
+
+        $me->belongsToTeam(Team::find(1)) &&
+        $me->hasTeamPermission(Team::find(1), 'create:pages') &&
+        $me->tokenCan('create:pages');
 
         $pages = Page::factory(25)->create();
 
@@ -60,10 +66,9 @@ final class DatabaseSeeder extends Seeder
                     'response_id' => $comment->id
                 ]);
 
-                PageCommentLikes::factory(rand(1, 10))->create([
-                    'page_comment_id' => $comment->id,
-                    'user_id' => User::all()->random()->first()->id,
-                ]);
+                $comment->likes()->attach(
+                    User::all()->random(rand(0, count(User::all())))->pluck('id')->toArray(),
+                );
             }
         }
 

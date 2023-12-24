@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
@@ -21,7 +22,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property Page $page
  * @property PageComments $master
  * @property Collection<PageComments> $responses
- * @property Collection<PageCommentLikes> $likes
+ * @property Collection<User> $likes
  */
 final class PageComments extends Model
 {
@@ -67,10 +68,11 @@ final class PageComments extends Model
         );
     }
 
-    public function likes(): hasMany
+    public function likes(): BelongsToMany
     {
-        return $this->hasMany(
-            related: PageCommentLikes::class
+        return $this->BelongsToMany(
+            related: User::class,
+            table: 'comment_user_likes',
         );
     }
 }
