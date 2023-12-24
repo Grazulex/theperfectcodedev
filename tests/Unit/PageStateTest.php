@@ -19,6 +19,8 @@ it('create page', function (): void {
     $page = (new CreatePageAction())->handle([
         'title' => 'test',
         'description' => 'test',
+        'resume' => 'test',
+        'code' => 'test',
         'tags' => ['test'],
         'user_id' => $user->id,
         'state' => State::DRAFT,

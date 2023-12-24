@@ -59,7 +59,7 @@
     <div class="mt-4">
         <div class="flex">
             <div class="flex items-center h-5">
-                <input id="is_public" name="is_public" aria-describedby="is_public-text" type="checkbox" value="1" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" @if(old('is_public') === "1") checked @endif>
+                <input id="is_public" name="is_public" aria-describedby="is_public-text" type="checkbox" value="1" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" @if (old('is_public') === "1") checked @endif>
             </div>
             <div class="ms-2 text-sm">
                 <label for="is_public" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Code Visibility</label>
@@ -75,7 +75,7 @@
     <div class="mt-4">
         <div class="flex">
             <div class="flex items-center h-5">
-                <input id="is_accept_version" name="is_accept_version" aria-describedby="is_accept_version-text" value="1"  type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" @if(old('is_accept_version') === "1") checked @endif>
+                <input id="is_accept_version" name="is_accept_version" aria-describedby="is_accept_version-text" value="1"  type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" @if (old('is_accept_version') === "1") checked @endif>
             </div>
             <div class="ms-2 text-sm">
                 <label for="is_accept_version" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Automatic Version Acceptance</label>
