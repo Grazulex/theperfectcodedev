@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Actions\Pages;
 
 use App\Models\Page;
-use App\Notifications\Pages\DraftNotification;
 
 final readonly class CreatePageAction
 {
@@ -14,10 +13,9 @@ final readonly class CreatePageAction
         $page =  Page::create($data);
         $page->followers()->attach($page->user_id);
 
-        $page->user->notify(
-            new DraftNotification(
-                page: $page
-            )
+        (new NotifyPageUserAction())->Draft(
+            page: $page,
+            user: $page->user
         );
 
         return $page->refresh();

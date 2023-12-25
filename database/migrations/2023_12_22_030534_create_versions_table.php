@@ -14,7 +14,7 @@ return new class () extends Migration {
             $table->id();
 
             $table->foreignId('page_id')->constrained()->onDelete('cascade');
-            $table->integer('version')->default(1);
+            $table->integer('version')->nullable();
 
             $table->text('description');
             $table->text('code');

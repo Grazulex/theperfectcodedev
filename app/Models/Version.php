@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
- * @property string $version
+ * @property null|int $version
  * @property int $page_id
  * @property string $description
  * @property string $code
