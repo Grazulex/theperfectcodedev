@@ -7,11 +7,21 @@ namespace App\Actions\Versions;
 use App\Models\User;
 use App\Models\Version;
 use App\Notifications\Versions\DraftNotification;
+use App\Notifications\Versions\NewVersionNotification;
 use App\Notifications\Versions\PublishNotification;
 use App\Notifications\Versions\RefuseNotification;
 
 final readonly class NotifyVersionUserAction
 {
+    public function NewVersion(Version $version, User $user): void
+    {
+        $user->notify(
+            new NewVersionNotification(
+                version: $version
+            )
+        );
+    }
+
     public function Publish(Version $version, User $user): void
     {
         $user->notify(

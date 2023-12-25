@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Actions\Versions;
 
-use App\Actions\Pages\NotifyPageUserAction;
 use App\Actions\Pages\UpdatePageAction;
 use App\Enums\State;
 use App\Models\Page;
@@ -24,8 +23,7 @@ final readonly class CreateVersionAction
                 'version' => $page->version + 1,
             ]);
             foreach ($page->followers as $follower) {
-                (new NotifyPageUserAction())->NewVersion(
-                    page: $page,
+                (new NotifyVersionUserAction())->NewVersion(
                     version: $version,
                     user: $follower
                 );
@@ -43,8 +41,7 @@ final readonly class CreateVersionAction
                 version: $version,
                 user: $version->user
             );
-            (new NotifyPageUserAction())->NewVersion(
-                page: $page,
+            (new NotifyVersionUserAction())->NewVersion(
                 version :$version,
                 user: $page->user
             );

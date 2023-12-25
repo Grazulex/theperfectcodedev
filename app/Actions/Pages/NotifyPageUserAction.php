@@ -6,24 +6,14 @@ namespace App\Actions\Pages;
 
 use App\Models\Page;
 use App\Models\User;
-use App\Models\Version;
 use App\Notifications\Pages\ArchiveNotification;
 use App\Notifications\Pages\DeleteNotification;
 use App\Notifications\Pages\DraftNotification;
-use App\Notifications\Pages\NewVersionNotification;
 use App\Notifications\Pages\PublishNotification;
 use App\Notifications\Pages\RefuseNotification;
 
 final readonly class NotifyPageUserAction
 {
-    public function NewVersion(Page $page, Version $version, User $user): void
-    {
-        $user->notify(
-            new NewVersionNotification(
-                version: $version
-            )
-        );
-    }
     public function Draft(Page $page, User $user): void
     {
         $user->notify(
