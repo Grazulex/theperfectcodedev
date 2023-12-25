@@ -54,7 +54,6 @@ final readonly class NotifyPageUserAction
     {
         $user->notify(
             new DeleteNotification(
-                user: $user,
                 pageTitle: $page->title
             )
         );
