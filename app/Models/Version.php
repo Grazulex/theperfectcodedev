@@ -12,7 +12,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 /**
  * @property string $version
  * @property int $page_id
- * @property string $content
+ * @property string $description
+ * @property string $code
  * @property int $user_id
  * @property State $state
  * @property Page $page
@@ -25,7 +26,8 @@ final class Version extends Model
     protected $fillable = [
         'version',
         'page_id',
-        'content',
+        'description',
+        'code',
         'user_id',
         'state'
     ];

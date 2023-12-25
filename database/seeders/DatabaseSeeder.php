@@ -10,6 +10,7 @@ use App\Models\PageComments;
 use App\Models\Team;
 use App\Models\User;
 use App\Models\Version;
+use App\StateMachines\Pages\DraftPageState;
 use Illuminate\Database\Seeder;
 
 final class DatabaseSeeder extends Seeder
@@ -45,6 +46,8 @@ final class DatabaseSeeder extends Seeder
         $pages = Page::all();
 
         foreach ($pages as $page) {
+            (new DraftPageState($page))->publish();
+
             Version::factory(10)->create([
                 'page_id' => $page->id,
                 'user_id' => User::all()->random(rand(1, count(User::all())))->pluck('id')->first(),

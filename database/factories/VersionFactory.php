@@ -24,7 +24,8 @@ final class VersionFactory extends Factory
         return [
             'version' => $this->faker->randomNumber(1),
             'page_id' => Page::factory(),
-            'content' => $this->faker->paragraph,
+            'description' => $this->faker->paragraphs(3, true),
+            'code' => $this->faker->paragraphs(10, true),
             'user_id' => User::factory(),
             'state' => State::ARCHIVED
         ];
