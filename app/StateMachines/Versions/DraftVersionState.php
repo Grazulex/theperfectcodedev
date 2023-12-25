@@ -12,8 +12,9 @@ final class DraftVersionState extends BaseVersionState
 {
     public function publish(): void
     {
-        $this->version->state = State::PUBLISHED;
-        $this->version->save();
+        $this->version->update([
+            'state' => State::PUBLISHED,
+        ]);
 
         (new NotifyVersionUserAction())->publish(
             version: $this->version,
@@ -32,8 +33,9 @@ final class DraftVersionState extends BaseVersionState
 
     public function refuse(): void
     {
-        $this->version->state = State::REFUSED;
-        $this->version->save();
+        $this->version->update([
+            'state' => State::REFUSED,
+        ]);
 
         (new NotifyVersionUserAction())->refuse(
             version: $this->version,

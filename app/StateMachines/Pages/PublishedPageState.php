@@ -11,8 +11,9 @@ final class PublishedPageState extends BasePageState
 {
     public function archive(): void
     {
-        $this->page->state = State::ARCHIVED;
-        $this->page->save();
+        $this->page->update([
+            'state' => State::ARCHIVED,
+        ]);
 
         foreach ($this->page->followers as $follower) {
             (new NotifyPageUserAction())->Archive(

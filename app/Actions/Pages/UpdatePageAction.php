@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Actions\Pages;
 
+use App\Actions\Versions\NotifyVersionUserAction;
 use App\Models\Page;
 use App\Models\Version;
 
@@ -17,8 +18,7 @@ final readonly class UpdatePageAction
             'code' => $version->code,
         ]);
 
-        (new NotifyPageUserAction())->NewVersion(
-            page: $page,
+        (new NotifyVersionUserAction())->NewVersion(
             version: $version,
             user: $page->user
         );

@@ -11,9 +11,11 @@ final class DraftPageState extends BasePageState
 {
     public function publish(): void
     {
-        $this->page->state = State::PUBLISHED;
-        $this->page->published_at = now();
-        $this->page->save();
+        $this->page->update([
+            'state' => State::PUBLISHED,
+            'published_at' => now(),
+        ]);
+
         (new NotifyPageUserAction())->Publish(
             page: $this->page,
             user: $this->page->user
@@ -22,8 +24,10 @@ final class DraftPageState extends BasePageState
 
     public function refuse(): void
     {
-        $this->page->state = State::REFUSED;
-        $this->page->save();
+        $this->page->update([
+            'state' => State::REFUSED,
+        ]);
+
         (new NotifyPageUserAction())->Refuse(
             page: $this->page,
             user: $this->page->user
