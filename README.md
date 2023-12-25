@@ -5,8 +5,5 @@
 
 ## About The Perfect Code Dev
 
-## todo
-- create following table
-- link owner page to follower table
 
 

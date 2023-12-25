@@ -6,6 +6,7 @@ namespace App\Actions\Versions;
 
 use App\Models\User;
 use App\Models\Version;
+use App\Notifications\Versions\ArchiveNotification;
 use App\Notifications\Versions\DraftNotification;
 use App\Notifications\Versions\NewVersionNotification;
 use App\Notifications\Versions\PublishNotification;
@@ -43,6 +44,15 @@ final readonly class NotifyVersionUserAction
     {
         $user->notify(
             new RefuseNotification(
+                version: $version
+            )
+        );
+    }
+
+    public function Archive(Version $version, User $user): void
+    {
+        $user->notify(
+            new ArchiveNotification(
                 version: $version
             )
         );
