@@ -26,7 +26,7 @@ use InvalidArgumentException;
  * @property string $title
  * @property string $slug
  * @property string $resume
- * @property string $description
+ * @property string description
  * @property string $code
  * @property array $tags
  * @property int $user_id
