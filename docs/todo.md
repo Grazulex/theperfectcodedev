@@ -2,8 +2,8 @@ Back to [README](../README.md)
 
 ## Todo
 ### Backend
-- [ ] Check test Pages Model/Actions/StateMachine
-- [ ] Check test Version Model/Actions/StateMachine
+- [X] Check test Pages Model/Actions/StateMachine
+- [X] Check test Version Model/Actions/StateMachine
 - [ ] Check test User Model/Actions/StateMachine
 - [ ] Implement Version Controller
   - [ ] Implement Create Version

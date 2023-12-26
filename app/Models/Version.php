@@ -5,9 +5,15 @@ declare(strict_types=1);
 namespace App\Models;
 
 use App\Enums\State;
+use App\Notifications\Versions\ArchiveNotification;
+use App\StateMachines\Contracts\VersionStateContract;
+use App\StateMachines\Versions\DraftVersionState;
+use App\StateMachines\Versions\PublishVersionState;
+use App\StateMachines\Versions\RefusedVersionState;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * @property null|int $version
@@ -22,6 +28,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 final class Version extends Model
 {
     use HasFactory;
+    use SoftDeletes;
 
     protected $fillable = [
         'version',
@@ -48,6 +55,17 @@ final class Version extends Model
         return $this->belongsTo(
             related: User::class
         );
+    }
+
+    public function status(): VersionStateContract
+    {
+        return match ($this->state) {
+            State::DRAFT => new DraftVersionState($this),
+            State::PUBLISHED => new PublishVersionState($this),
+            State::ARCHIVED => new ArchiveNotification($this),
+            State::REFUSED => new RefusedVersionState($this),
+            default => throw new InvalidArgumentException('Invalid state'),
+        };
     }
 
 

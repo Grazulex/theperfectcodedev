@@ -11,12 +11,13 @@ final readonly class UpdatePageAction
     public function handle(Page $page, array $data): Page
     {
         $page->update($data);
+        $page->refresh();
 
         (new NotifyPageUserAction())->newVersion(
             page: $page,
             user: $page->user
         );
 
-        return $page->refresh();
+        return $page;
     }
 }

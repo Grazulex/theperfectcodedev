@@ -23,6 +23,7 @@ return new class () extends Migration {
 
             $table->string('state')->default(State::ARCHIVED->value);
 
+            $table->softDeletes();
             $table->timestamps();
         });
     }

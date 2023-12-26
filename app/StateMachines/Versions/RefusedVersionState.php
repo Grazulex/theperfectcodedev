@@ -14,6 +14,7 @@ final class RefusedVersionState extends BaseVersionState
             version: $this->version,
             user: $this->version->user
         );
+
         $this->version->delete();
     }
 }

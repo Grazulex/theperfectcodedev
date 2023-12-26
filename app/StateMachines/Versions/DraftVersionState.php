@@ -14,14 +14,24 @@ final class DraftVersionState extends BaseVersionState
     {
         $this->version->update([
             'state' => State::PUBLISHED,
+            'version' => $this->version->page->version + 1,
         ]);
+
+        $this->version->refresh();
 
         (new NotifyVersionUserAction())->publish(
             version: $this->version,
             user: $this->version->user
         );
 
-        (new UpdatePageAction())->handle($this->version->page, $this->version);
+        (new UpdatePageAction())->handle(
+            page: $this->version->page,
+            data: [
+                'version' => $this->version->version,
+                'description' => $this->version->description,
+                'code' => $this->version->code,
+            ]
+        );
 
         foreach ($this->version->page->followers as $follower) {
             (new NotifyVersionUserAction())->publish(
@@ -36,6 +46,8 @@ final class DraftVersionState extends BaseVersionState
         $this->version->update([
             'state' => State::REFUSED,
         ]);
+
+        $this->version->refresh();
 
         (new NotifyVersionUserAction())->refuse(
             version: $this->version,
