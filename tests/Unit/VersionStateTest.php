@@ -7,8 +7,8 @@ use App\Actions\Pages\CreatePageAction;
 use App\Actions\Versions\CreateVersionAction;
 use App\Enums\State;
 use App\Models\User;
+use App\Notifications\Pages\NewVersionNotification;
 use App\Notifications\Versions\DraftNotification;
-use App\Notifications\Versions\NewVersionNotification;
 
 it('create version without auto accept publishing', function (): void {
     Notification::fake();

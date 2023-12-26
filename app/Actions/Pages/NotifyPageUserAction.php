@@ -9,6 +9,7 @@ use App\Models\User;
 use App\Notifications\Pages\ArchiveNotification;
 use App\Notifications\Pages\DeleteNotification;
 use App\Notifications\Pages\DraftNotification;
+use App\Notifications\Pages\NewVersionNotification;
 use App\Notifications\Pages\PublishNotification;
 use App\Notifications\Pages\RefuseNotification;
 
@@ -55,6 +56,15 @@ final readonly class NotifyPageUserAction
         $user->notify(
             new DeleteNotification(
                 pageTitle: $page->title
+            )
+        );
+    }
+
+    public function newVersion(Page $page, User $user): void
+    {
+        $user->notify(
+            new NewVersionNotification(
+                page: $page
             )
         );
     }

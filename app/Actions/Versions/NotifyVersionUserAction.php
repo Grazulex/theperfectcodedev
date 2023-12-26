@@ -9,21 +9,11 @@ use App\Models\Version;
 use App\Notifications\Versions\ArchiveNotification;
 use App\Notifications\Versions\DeleteNotification;
 use App\Notifications\Versions\DraftNotification;
-use App\Notifications\Versions\NewVersionNotification;
 use App\Notifications\Versions\PublishNotification;
 use App\Notifications\Versions\RefuseNotification;
 
 final readonly class NotifyVersionUserAction
 {
-    public function newVersion(Version $version, User $user): void
-    {
-        $user->notify(
-            new NewVersionNotification(
-                version: $version
-            )
-        );
-    }
-
     public function publish(Version $version, User $user): void
     {
         $user->notify(

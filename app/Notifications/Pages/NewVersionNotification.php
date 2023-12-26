@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Notifications\Versions;
+namespace App\Notifications\Pages;
 
-use App\Models\Version;
+use App\Models\Page;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
@@ -18,7 +18,7 @@ final class NewVersionNotification extends Notification implements ShouldQueue
      * Create a new notification instance.
      */
     public function __construct(
-        public Version $version
+        public Page $page
     ) {}
 
     /**
