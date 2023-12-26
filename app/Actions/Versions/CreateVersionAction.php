@@ -23,12 +23,12 @@ final readonly class CreateVersionAction
                 'version' => $page->version + 1,
             ]);
             foreach ($page->followers as $follower) {
-                (new NotifyVersionUserAction())->NewVersion(
+                (new NotifyVersionUserAction())->newVersion(
                     version: $version,
                     user: $follower
                 );
             }
-            (new NotifyVersionUserAction())->Publish(
+            (new NotifyVersionUserAction())->publish(
                 version: $version,
                 user: $version->user
             );
@@ -37,11 +37,11 @@ final readonly class CreateVersionAction
                 version: $version
             );
         } else {
-            (new NotifyVersionUserAction())->Draft(
+            (new NotifyVersionUserAction())->draft(
                 version: $version,
                 user: $version->user
             );
-            (new NotifyVersionUserAction())->NewVersion(
+            (new NotifyVersionUserAction())->newVersion(
                 version :$version,
                 user: $page->user
             );

@@ -15,7 +15,7 @@ final class PublishVersionState extends BaseVersionState
             'state' => State::ARCHIVED,
         ]);
 
-        (new NotifyVersionUserAction())->Archive(
+        (new NotifyVersionUserAction())->archive(
             version: $this->version,
             user: $this->version->user
         );

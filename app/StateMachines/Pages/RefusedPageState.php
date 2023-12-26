@@ -10,7 +10,7 @@ final class RefusedPageState extends BasePageState
 {
     public function delete(): void
     {
-        (new NotifyPageUserAction())->Delete(
+        (new NotifyPageUserAction())->delete(
             page: $this->page,
             user: $this->page->user
         );

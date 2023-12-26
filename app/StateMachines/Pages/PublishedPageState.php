@@ -16,7 +16,7 @@ final class PublishedPageState extends BasePageState
         ]);
 
         foreach ($this->page->followers as $follower) {
-            (new NotifyPageUserAction())->Archive(
+            (new NotifyPageUserAction())->archive(
                 page: $this->page,
                 user: $follower
             );

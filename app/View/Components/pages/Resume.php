@@ -9,7 +9,7 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-final class resume extends Component
+final class Resume extends Component
 {
     /**
      * Create a new component instance.

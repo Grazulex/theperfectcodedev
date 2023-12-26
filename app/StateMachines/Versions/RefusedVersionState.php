@@ -10,7 +10,7 @@ final class RefusedVersionState extends BaseVersionState
 {
     public function delete(): void
     {
-        (new NotifyVersionUserAction())->Delete(
+        (new NotifyVersionUserAction())->delete(
             version: $this->version,
             user: $this->version->user
         );

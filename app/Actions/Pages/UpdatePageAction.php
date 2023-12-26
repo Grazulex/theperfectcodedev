@@ -18,7 +18,7 @@ final readonly class UpdatePageAction
             'code' => $version->code,
         ]);
 
-        (new NotifyVersionUserAction())->NewVersion(
+        (new NotifyVersionUserAction())->newVersion(
             version: $version,
             user: $page->user
         );

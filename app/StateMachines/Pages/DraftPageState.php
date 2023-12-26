@@ -16,7 +16,7 @@ final class DraftPageState extends BasePageState
             'published_at' => now(),
         ]);
 
-        (new NotifyPageUserAction())->Publish(
+        (new NotifyPageUserAction())->publish(
             page: $this->page,
             user: $this->page->user
         );
@@ -28,7 +28,7 @@ final class DraftPageState extends BasePageState
             'state' => State::REFUSED,
         ]);
 
-        (new NotifyPageUserAction())->Refuse(
+        (new NotifyPageUserAction())->refuse(
             page: $this->page,
             user: $this->page->user
         );

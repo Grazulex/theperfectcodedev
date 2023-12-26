@@ -19,7 +19,7 @@ final readonly class CreatePageAction
         $page =  Page::create($data);
         $page->followers()->attach($page->user_id);
 
-        (new NotifyPageUserAction())->Draft(
+        (new NotifyPageUserAction())->draft(
             page: $page,
             user: $page->user
         );

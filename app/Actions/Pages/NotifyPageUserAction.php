@@ -14,7 +14,7 @@ use App\Notifications\Pages\RefuseNotification;
 
 final readonly class NotifyPageUserAction
 {
-    public function Draft(Page $page, User $user): void
+    public function draft(Page $page, User $user): void
     {
         $user->notify(
             new DraftNotification(
@@ -23,7 +23,7 @@ final readonly class NotifyPageUserAction
         );
     }
 
-    public function Publish(Page $page, User $user): void
+    public function publish(Page $page, User $user): void
     {
         $user->notify(
             new PublishNotification(
@@ -32,7 +32,7 @@ final readonly class NotifyPageUserAction
         );
     }
 
-    public function Refuse(Page $page, User $user): void
+    public function refuse(Page $page, User $user): void
     {
         $user->notify(
             new RefuseNotification(
@@ -41,7 +41,7 @@ final readonly class NotifyPageUserAction
         );
     }
 
-    public function Archive(Page $page, User $user): void
+    public function archive(Page $page, User $user): void
     {
         $user->notify(
             new ArchiveNotification(
@@ -50,7 +50,7 @@ final readonly class NotifyPageUserAction
         );
     }
 
-    public function Delete(Page $page, User $user): void
+    public function delete(Page $page, User $user): void
     {
         $user->notify(
             new DeleteNotification(

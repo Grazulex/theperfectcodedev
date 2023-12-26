@@ -132,7 +132,7 @@ final class User extends Authenticatable implements MustVerifyEmail
         );
     }
 
-    public function comment_likes(): BelongsToMany
+    public function commentLikes(): BelongsToMany
     {
         return $this->BelongsToMany(
             related: Page::class,
