@@ -11,7 +11,7 @@ use App\Models\Version;
 
 final readonly class CreateVersionAction
 {
-    public function handle(Page $page, array $data): Page
+    public function handle(Page $page, array $data): Version
     {
         $data['page_id'] = $page->id;
         $data['state'] = $page->is_accept_version ? State::PUBLISHED : State::DRAFT;
@@ -47,6 +47,8 @@ final readonly class CreateVersionAction
             );
         }
 
-        return $page->refresh();
+        $page->refresh();
+
+        return $version->refresh();
     }
 }
