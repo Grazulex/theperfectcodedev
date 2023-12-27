@@ -11,12 +11,12 @@ use App\Models\Version;
 
 final readonly class CreateVersionAction
 {
-    public function handle(Page $page, array $data): Version
+    public function handle(Page $page, array $attributes): Version
     {
-        $data['page_id'] = $page->id;
-        $data['state'] = $page->is_accept_version ? State::PUBLISHED : State::DRAFT;
+        $attributes['page_id'] = $page->id;
+        $attributes['state'] = $page->is_accept_version ? State::PUBLISHED : State::DRAFT;
 
-        $version = Version::create($data);
+        $version = Version::create($attributes);
 
         if (State::PUBLISHED === $version->state) {
             $version->update([

@@ -25,7 +25,7 @@ final class PageFactory extends Factory
             'slug' => Str::slug($title),
             'resume' => $this->faker->text(250),
             'description' => $this->faker->paragraphs(3, true),
-            'code' => $this->faker->paragraphs(10, true),
+            'code' => $this->faker->randomHtml(),
             'tags' => $this->faker->words,
             'user_id' => User::factory(),
             'version' => 1,

@@ -15,14 +15,16 @@ it('create page', function (): void {
     Notification::fake();
     $user = User::factory()->create();
 
-    $page = (new CreatePageAction())->handle([
-        'title' => 'test',
-        'description' => 'test',
-        'resume' => 'test',
-        'code' => 'test',
-        'tags' => ['test'],
-        'user_id' => $user->id,
-    ]);
+    $page = (new CreatePageAction())->handle(
+        attributes: [
+            'title' => 'test',
+            'description' => 'test',
+            'resume' => 'test',
+            'code' => 'test',
+            'tags' => ['test'],
+            'user_id' => $user->id,
+        ]
+    );
 
     expect($page->followers()->where('user_id', $user->id)->exists())->toBe(true)
         ->and($page->state)->toBe(State::DRAFT)
@@ -35,14 +37,16 @@ it('publish page', function (): void {
     Notification::fake();
 
     $user = User::factory()->create();
-    $page = (new CreatePageAction())->handle([
-        'title' => 'test',
-        'description' => 'test',
-        'resume' => 'test',
-        'code' => 'test',
-        'tags' => ['test'],
-        'user_id' => $user->id,
-    ]);
+    $page = (new CreatePageAction())->handle(
+        attributes: [
+            'title' => 'test',
+            'description' => 'test',
+            'resume' => 'test',
+            'code' => 'test',
+            'tags' => ['test'],
+            'user_id' => $user->id,
+        ]
+    );
 
     $page->status()->publish();
     Notification::assertSentTo($page->user, PublishNotification::class);
@@ -53,14 +57,16 @@ it('publish page', function (): void {
 it('archive page', function (): void {
     Notification::fake();
     $user = User::factory()->create();
-    $page = (new CreatePageAction())->handle([
-        'title' => 'test',
-        'description' => 'test',
-        'resume' => 'test',
-        'code' => 'test',
-        'tags' => ['test'],
-        'user_id' => $user->id,
-    ]);
+    $page = (new CreatePageAction())->handle(
+        attributes : [
+            'title' => 'test',
+            'description' => 'test',
+            'resume' => 'test',
+            'code' => 'test',
+            'tags' => ['test'],
+            'user_id' => $user->id,
+        ]
+    );
     $page->status()->publish();
     $page->status()->archive();
     expect($page->state)->toBe(State::ARCHIVED);
@@ -72,14 +78,16 @@ it('archive page', function (): void {
 it('refuse page', function (): void {
     Notification::fake();
     $user = User::factory()->create();
-    $page = (new CreatePageAction())->handle([
-        'title' => 'test',
-        'description' => 'test',
-        'resume' => 'test',
-        'code' => 'test',
-        'tags' => ['test'],
-        'user_id' => $user->id,
-    ]);
+    $page = (new CreatePageAction())->handle(
+        attributes:[
+            'title' => 'test',
+            'description' => 'test',
+            'resume' => 'test',
+            'code' => 'test',
+            'tags' => ['test'],
+            'user_id' => $user->id,
+        ]
+    );
     $page->status()->refuse();
 
     Notification::assertSentTo($page->user, RefuseNotification::class);
@@ -90,14 +98,16 @@ it('refuse page', function (): void {
 it('delete page', function (): void {
     Notification::fake();
     $user = User::factory()->create();
-    $page = (new CreatePageAction())->handle([
-        'title' => 'test',
-        'description' => 'test',
-        'resume' => 'test',
-        'code' => 'test',
-        'tags' => ['test'],
-        'user_id' => $user->id,
-    ]);
+    $page = (new CreatePageAction())->handle(
+        attributes: [
+            'title' => 'test',
+            'description' => 'test',
+            'resume' => 'test',
+            'code' => 'test',
+            'tags' => ['test'],
+            'user_id' => $user->id,
+        ]
+    );
     $page->status()->refuse();
     Notification::assertSentTo($page->user, RefuseNotification::class);
     $page->status()->delete();

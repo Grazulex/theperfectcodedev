@@ -17,19 +17,21 @@ it('create version without auto accept publishing', function (): void {
     Notification::fake();
     $user = User::factory()->create();
 
-    $page = (new CreatePageAction())->handle([
-        'title' => 'test',
-        'description' => 'test',
-        'resume' => 'test',
-        'code' => 'test',
-        'tags' => ['test'],
-        'user_id' => $user->id,
-        'is_accept_version' => false,
-    ]);
+    $page = (new CreatePageAction())->handle(
+        attributes: [
+            'title' => 'test',
+            'description' => 'test',
+            'resume' => 'test',
+            'code' => 'test',
+            'tags' => ['test'],
+            'user_id' => $user->id,
+            'is_accept_version' => false,
+        ]
+    );
 
     $version = (new CreateVersionAction())->handle(
         page : $page,
-        data: [
+        attributes: [
             'page_id' => $page->id,
             'description' => 'test version',
             'code' => 'test version',
@@ -53,19 +55,21 @@ it('create version with auto accept publishing', function (): void {
     Notification::fake();
     $user = User::factory()->create();
 
-    $page = (new CreatePageAction())->handle([
-        'title' => 'test',
-        'description' => 'test',
-        'resume' => 'test',
-        'code' => 'test',
-        'tags' => ['test'],
-        'user_id' => $user->id,
-        'is_accept_version' => true,
-    ]);
+    $page = (new CreatePageAction())->handle(
+        attributes: [
+            'title' => 'test',
+            'description' => 'test',
+            'resume' => 'test',
+            'code' => 'test',
+            'tags' => ['test'],
+            'user_id' => $user->id,
+            'is_accept_version' => true,
+        ]
+    );
 
     $version = (new CreateVersionAction())->handle(
         page : $page,
-        data: [
+        attributes: [
             'page_id' => $page->id,
             'description' => 'test version',
             'code' => 'test version',
@@ -91,21 +95,23 @@ it('create version without auto accept publishing and publish it', function (): 
     Notification::fake();
     $user = User::factory()->create();
 
-    $page = (new CreatePageAction())->handle([
-        'title' => 'test',
-        'description' => 'test',
-        'resume' => 'test',
-        'code' => 'test',
-        'tags' => ['test'],
-        'user_id' => $user->id,
-        'is_accept_version' => false,
-    ]);
+    $page = (new CreatePageAction())->handle(
+        attributes: [
+            'title' => 'test',
+            'description' => 'test',
+            'resume' => 'test',
+            'code' => 'test',
+            'tags' => ['test'],
+            'user_id' => $user->id,
+            'is_accept_version' => false,
+        ]
+    );
 
     $page->status()->publish();
 
     $version = (new CreateVersionAction())->handle(
         page : $page,
-        data: [
+        attributes: [
             'page_id' => $page->id,
             'description' => 'test version',
             'code' => 'test version',
@@ -136,19 +142,21 @@ it('create version but refuse it', function (): void {
     Notification::fake();
     $user = User::factory()->create();
 
-    $page = (new CreatePageAction())->handle([
-        'title' => 'test',
-        'description' => 'test',
-        'resume' => 'test',
-        'code' => 'test',
-        'tags' => ['test'],
-        'user_id' => $user->id,
-        'is_accept_version' => false,
-    ]);
+    $page = (new CreatePageAction())->handle(
+        attributes: [
+            'title' => 'test',
+            'description' => 'test',
+            'resume' => 'test',
+            'code' => 'test',
+            'tags' => ['test'],
+            'user_id' => $user->id,
+            'is_accept_version' => false,
+        ]
+    );
 
     $version = (new CreateVersionAction())->handle(
         page : $page,
-        data: [
+        attributes: [
             'page_id' => $page->id,
             'description' => 'test version',
             'code' => 'test version',
@@ -176,21 +184,23 @@ it('create version and archive it after publishing', function (): void {
     Notification::fake();
     $user = User::factory()->create();
 
-    $page = (new CreatePageAction())->handle([
-        'title' => 'test',
-        'description' => 'test',
-        'resume' => 'test',
-        'code' => 'test',
-        'tags' => ['test'],
-        'user_id' => $user->id,
-        'is_accept_version' => false,
-    ]);
+    $page = (new CreatePageAction())->handle(
+        attributes: [
+            'title' => 'test',
+            'description' => 'test',
+            'resume' => 'test',
+            'code' => 'test',
+            'tags' => ['test'],
+            'user_id' => $user->id,
+            'is_accept_version' => false,
+        ]
+    );
 
     $page->status()->publish();
 
     $version = (new CreateVersionAction())->handle(
         page : $page,
-        data: [
+        attributes: [
             'page_id' => $page->id,
             'description' => 'test version',
             'code' => 'test version',
@@ -224,21 +234,23 @@ it('create version but delete it after refusing', function (): void {
     Notification::fake();
     $user = User::factory()->create();
 
-    $page = (new CreatePageAction())->handle([
-        'title' => 'test',
-        'description' => 'test',
-        'resume' => 'test',
-        'code' => 'test',
-        'tags' => ['test'],
-        'user_id' => $user->id,
-        'is_accept_version' => false,
-    ]);
+    $page = (new CreatePageAction())->handle(
+        attributes: [
+            'title' => 'test',
+            'description' => 'test',
+            'resume' => 'test',
+            'code' => 'test',
+            'tags' => ['test'],
+            'user_id' => $user->id,
+            'is_accept_version' => false,
+        ]
+    );
 
     $page->status()->publish();
 
     $version = (new CreateVersionAction())->handle(
         page : $page,
-        data: [
+        attributes: [
             'page_id' => $page->id,
             'description' => 'test version',
             'code' => 'test version',

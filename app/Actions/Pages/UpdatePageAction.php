@@ -8,9 +8,9 @@ use App\Models\Page;
 
 final readonly class UpdatePageAction
 {
-    public function handle(Page $page, array $data): Page
+    public function handle(Page $page, array $attributes): Page
     {
-        $page->update($data);
+        $page->update($attributes);
         $page->refresh();
 
         (new NotifyPageUserAction())->newVersion(

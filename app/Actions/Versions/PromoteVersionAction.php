@@ -14,7 +14,7 @@ final readonly class PromoteVersionAction
     {
         (new UpdatePageAction())->handle(
             page: $version->page,
-            data: [
+            attributes: [
                 'version' => $version->version,
                 'description' => $version->description,
                 'code' => $version->code,

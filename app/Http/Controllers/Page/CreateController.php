@@ -19,7 +19,9 @@ final class CreateController extends Controller
         $data = $request->validated();
         $data['user_id'] = $request->user()->id;
 
-        (new CreatePageAction())->handle($data);
+        (new CreatePageAction())->handle(
+            attributes: $data
+        );
 
         session()->flash('flash.banner', 'Code created successfully');
         session()->flash('flash.bannerStyle', 'success');

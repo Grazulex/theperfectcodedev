@@ -25,7 +25,7 @@ final class VersionFactory extends Factory
             'version' => $this->faker->randomNumber(1),
             'page_id' => Page::factory(),
             'description' => $this->faker->paragraphs(3, true),
-            'code' => $this->faker->paragraphs(10, true),
+            'code' => $this->faker->randomHtml(),
             'user_id' => User::factory(),
             'state' => State::ARCHIVED
         ];

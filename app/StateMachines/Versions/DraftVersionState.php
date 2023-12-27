@@ -26,7 +26,7 @@ final class DraftVersionState extends BaseVersionState
 
         (new UpdatePageAction())->handle(
             page: $this->version->page,
-            data: [
+            attributes: [
                 'version' => $this->version->version,
                 'description' => $this->version->description,
                 'code' => $this->version->code,
