@@ -2,7 +2,6 @@
 
 declare(strict_types=1);
 
-
 use App\Actions\Versions\CreateVersionAction;
 use App\Enums\State;
 use App\Exceptions\VersionNoStateException;
