@@ -19,7 +19,7 @@ final readonly class CreateVersionAction
         $version = Version::create($attributes);
 
         if (State::PUBLISHED === $version->state) {
-            (new UpdateVersionAction())->handle(
+            $version = (new UpdateVersionAction())->handle(
                 version: $version,
                 attributes: [
                     'version' => $page->version + 1,
@@ -36,7 +36,7 @@ final readonly class CreateVersionAction
                 version: $version,
                 user: $version->user
             );
-            (new PromoteVersionAction())->handle(
+            $version = (new PromoteVersionAction())->handle(
                 version: $version,
                 user: $version->user
             );
@@ -52,7 +52,8 @@ final readonly class CreateVersionAction
         }
 
         $page->refresh();
+        $version->refresh();
 
-        return $version->refresh();
+        return $version;
     }
 }

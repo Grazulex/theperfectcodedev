@@ -24,6 +24,8 @@ final readonly class CreatePageAction
             user: $page->user
         );
 
-        return $page->refresh();
+        $page->refresh();
+
+        return $page;
     }
 }

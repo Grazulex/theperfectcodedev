@@ -11,7 +11,7 @@ use App\Models\Version;
 
 final readonly class PromoteVersionAction
 {
-    public function handle(Version $version, User $user): void
+    public function handle(Version $version, User $user): Version
     {
         $version->page = (new UpdatePageAction())->handle(
             page: $version->page,
@@ -22,9 +22,13 @@ final readonly class PromoteVersionAction
             ]
         );
 
+        $version->page->refresh();
+
         (new NotifyPageUserAction())->newVersion(
             page: $version->page,
             user: $version->page->user
         );
+
+        return $version;
     }
 }
