@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 use App\Actions\Pages\CreatePageAction;
 use App\Enums\State;
+use App\Exceptions\PageNoStateException;
 use App\Models\User;
 use App\Notifications\Pages\ArchiveNotification;
 use App\Notifications\Pages\DeleteNotification;
@@ -115,3 +116,22 @@ it('delete page', function (): void {
 
     $this->assertSoftDeleted($page);
 });
+
+it(/**
+ * @throws PageNoStateException
+ */ 'none existing state', function (): void {
+    $user = User::factory()->create();
+    $page = (new CreatePageAction())->handle(
+        attributes: [
+            'title' => 'test',
+            'description' => 'test',
+            'resume' => 'test',
+            'code' => 'test',
+            'tags' => ['test'],
+            'user_id' => $user->id,
+        ]
+    );
+
+    $page->status()->delete();
+
+})->throws(PageNoStateException::class, 'Page has no state');

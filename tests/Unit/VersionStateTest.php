@@ -6,6 +6,7 @@ declare(strict_types=1);
 use App\Actions\Pages\CreatePageAction;
 use App\Actions\Versions\CreateVersionAction;
 use App\Enums\State;
+use App\Exceptions\VersionNoStateException;
 use App\Models\User;
 use App\Notifications\Pages\NewVersionNotification;
 use App\Notifications\Versions\ArchiveNotification;
@@ -273,3 +274,35 @@ it('create version but delete it after refusing', function (): void {
 
     $this->assertSoftDeleted($version);
 });
+
+it('none existing state', function (): void {
+    Notification::fake();
+    $user = User::factory()->create();
+
+    $page = (new CreatePageAction())->handle(
+        attributes: [
+            'title' => 'test',
+            'description' => 'test',
+            'resume' => 'test',
+            'code' => 'test',
+            'tags' => ['test'],
+            'user_id' => $user->id,
+            'is_accept_version' => false,
+        ]
+    );
+
+    $page->status()->publish();
+
+    $version = (new CreateVersionAction())->handle(
+        page : $page,
+        attributes: [
+            'page_id' => $page->id,
+            'description' => 'test version',
+            'code' => 'test version',
+            'user_id' => $user->id,
+        ]
+    );
+
+    $version->status()->delete();
+
+})->throws(VersionNoStateException::class, 'Version has no state');
