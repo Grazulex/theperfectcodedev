@@ -17,7 +17,7 @@ return new class () extends Migration {
             $table->string('title');
             $table->string('slug')->unique();
 
-            $table->string('resume');
+            $table->mediumText('resume');
             $table->text('description');
             $table->text('code');
             $table->foreignId('user_id')->constrained()->onDelete('cascade');

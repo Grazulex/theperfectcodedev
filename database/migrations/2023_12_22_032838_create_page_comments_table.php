@@ -16,7 +16,7 @@ return new class () extends Migration {
             $table->foreignId('page_id')->constrained()->onDelete('cascade');
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
 
-            $table->text('content');
+            $table->mediumText('content');
 
             $table->foreignId('response_id')->nullable()->constrained('page_comments')->onDelete('cascade');
 
