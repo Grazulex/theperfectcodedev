@@ -11,7 +11,7 @@ Back to [README](../README.md)
   - [ ] Implement Delete Version
   - [ ] Implement View Version history
 - [ ] Implement Page Controller
-  - [ ] Implement Create Page
+  - [X] Implement Create Page
   - [ ] Implement Update/Publishing Page
   - [ ] Implement Delete Page
   - [ ] Implement View Page history

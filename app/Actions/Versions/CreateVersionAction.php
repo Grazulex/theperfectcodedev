@@ -19,9 +19,13 @@ final readonly class CreateVersionAction
         $version = Version::create($attributes);
 
         if (State::PUBLISHED === $version->state) {
-            $version->update([
-                'version' => $page->version + 1,
-            ]);
+            (new UpdateVersionAction())->handle(
+                version: $version,
+                attributes: [
+                    'version' => $page->version + 1,
+                ]
+            );
+
             foreach ($page->followers as $follower) {
                 (new NotifyPageUserAction())->newVersion(
                     page: $page,

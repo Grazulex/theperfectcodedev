@@ -6,11 +6,11 @@ namespace App\Actions\Pages;
 
 use App\Models\Page;
 
-final readonly class UpdatePageAction
+final readonly class DeletePageAction
 {
-    public function handle(Page $page, array $attributes): Page
+    public function handle(Page $page): Page
     {
-        $page->update($attributes);
+        $page->delete();
         $page->refresh();
 
         return $page;
