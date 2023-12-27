@@ -5,6 +5,7 @@ declare(strict_types=1);
 use App\Actions\Pages\CreatePageAction;
 use App\Enums\State;
 use App\Exceptions\PageNoStateException;
+use App\Models\Page;
 use App\Models\User;
 use App\Notifications\Pages\ArchiveNotification;
 use App\Notifications\Pages\DeleteNotification;
