@@ -16,9 +16,10 @@ Back to [README](../README.md)
   - [ ] Implement Delete Page
   - [ ] Implement View Page history
 - [ ] Implement Comment Actions
-  - [ ] Check Migration file
-  - [ ] Check Model file
-  - [ ] Create Actions file
+  - [X] Check Migration file
+  - [X] Check Model file
+  - [X] Create Actions file
+  - [X] Implement tests
 - [ ] Implement Like comment
   -[ ] Check Migration file
   - [ ] Check Model file

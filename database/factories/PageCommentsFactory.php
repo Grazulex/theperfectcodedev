@@ -26,7 +26,6 @@ final class PageCommentsFactory extends Factory
             'user_id' => User::factory(),
             'page_id' => Page::factory(),
             'response_id' => PageComments::factory(),
-            'state' => $this->faker->randomElement(State::cases()),
             'content' => $this->faker->text
         ];
     }
