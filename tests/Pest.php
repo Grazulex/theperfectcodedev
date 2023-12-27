@@ -13,6 +13,7 @@ declare(strict_types=1);
 |
 */
 
+
 uses(
     Tests\TestCase::class,
     Illuminate\Foundation\Testing\RefreshDatabase::class,
@@ -41,8 +42,3 @@ uses(
 | global functions to help you to reduce the number of lines of code in your test files.
 |
 */
-
-function something(): void
-{
-    // ..
-}
