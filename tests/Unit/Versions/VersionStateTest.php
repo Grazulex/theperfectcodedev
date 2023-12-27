@@ -3,11 +3,9 @@
 declare(strict_types=1);
 
 
-use App\Actions\Pages\CreatePageAction;
 use App\Actions\Versions\CreateVersionAction;
 use App\Enums\State;
 use App\Exceptions\VersionNoStateException;
-use App\Models\User;
 use App\Notifications\Pages\NewVersionNotification;
 use App\Notifications\Versions\ArchiveNotification;
 use App\Notifications\Versions\DeleteNotification;
@@ -16,19 +14,7 @@ use App\Notifications\Versions\RefuseNotification;
 
 it('create version without auto accept publishing', function (): void {
     Notification::fake();
-    $user = User::factory()->create();
-
-    $page = (new CreatePageAction())->handle(
-        attributes: [
-            'title' => 'test',
-            'description' => 'test',
-            'resume' => 'test',
-            'code' => 'test',
-            'tags' => ['test'],
-            'user_id' => $user->id,
-            'is_accept_version' => false,
-        ]
-    );
+    $page = makePage();
 
     $version = (new CreateVersionAction())->handle(
         page : $page,
@@ -36,11 +22,11 @@ it('create version without auto accept publishing', function (): void {
             'page_id' => $page->id,
             'description' => 'test version',
             'code' => 'test version',
-            'user_id' => $user->id,
+            'user_id' => $page->user->id,
         ]
     );
 
-    expect($page->followers()->where('user_id', $user->id)->exists())->toBe(true)
+    expect($page->followers()->where('user_id', $page->user->id)->exists())->toBe(true)
         ->and($page->state)->toBe(State::DRAFT)
         ->and($version->state)->toBe(State::DRAFT)
         ->and($page->version)->toBe(1)
@@ -54,18 +40,8 @@ it('create version without auto accept publishing', function (): void {
 
 it('create version with auto accept publishing', function (): void {
     Notification::fake();
-    $user = User::factory()->create();
-
-    $page = (new CreatePageAction())->handle(
-        attributes: [
-            'title' => 'test',
-            'description' => 'test',
-            'resume' => 'test',
-            'code' => 'test',
-            'tags' => ['test'],
-            'user_id' => $user->id,
-            'is_accept_version' => true,
-        ]
+    $page = makePage(
+        is_accept_version: true
     );
 
     $version = (new CreateVersionAction())->handle(
@@ -74,11 +50,11 @@ it('create version with auto accept publishing', function (): void {
             'page_id' => $page->id,
             'description' => 'test version',
             'code' => 'test version',
-            'user_id' => $user->id,
+            'user_id' => $page->user->id,
         ]
     );
 
-    expect($page->followers()->where('user_id', $user->id)->exists())->toBe(true)
+    expect($page->followers()->where('user_id', $page->user->id)->exists())->toBe(true)
         ->and($page->state)->toBe(State::DRAFT)
         ->and($version->state)->toBe(State::PUBLISHED)
         ->and($page->version)->toBe(2)
@@ -94,19 +70,7 @@ it('create version with auto accept publishing', function (): void {
 
 it('create version without auto accept publishing and publish it', function (): void {
     Notification::fake();
-    $user = User::factory()->create();
-
-    $page = (new CreatePageAction())->handle(
-        attributes: [
-            'title' => 'test',
-            'description' => 'test',
-            'resume' => 'test',
-            'code' => 'test',
-            'tags' => ['test'],
-            'user_id' => $user->id,
-            'is_accept_version' => false,
-        ]
-    );
+    $page = makePage();
 
     $page->status()->publish();
 
@@ -116,14 +80,14 @@ it('create version without auto accept publishing and publish it', function (): 
             'page_id' => $page->id,
             'description' => 'test version',
             'code' => 'test version',
-            'user_id' => $user->id,
+            'user_id' => $page->user->id,
         ]
     );
 
     $version->status()->publish();
     $page->refresh();
 
-    expect($page->followers()->where('user_id', $user->id)->exists())->toBe(true)
+    expect($page->followers()->where('user_id', $page->user->id)->exists())->toBe(true)
         ->and($page->state)->toBe(State::PUBLISHED)
         ->and($version->state)->toBe(State::PUBLISHED)
         ->and($page->version)->toBe(2)
@@ -141,19 +105,7 @@ it('create version without auto accept publishing and publish it', function (): 
 
 it('create version but refuse it', function (): void {
     Notification::fake();
-    $user = User::factory()->create();
-
-    $page = (new CreatePageAction())->handle(
-        attributes: [
-            'title' => 'test',
-            'description' => 'test',
-            'resume' => 'test',
-            'code' => 'test',
-            'tags' => ['test'],
-            'user_id' => $user->id,
-            'is_accept_version' => false,
-        ]
-    );
+    $page = makePage();
 
     $version = (new CreateVersionAction())->handle(
         page : $page,
@@ -161,14 +113,14 @@ it('create version but refuse it', function (): void {
             'page_id' => $page->id,
             'description' => 'test version',
             'code' => 'test version',
-            'user_id' => $user->id,
+            'user_id' => $page->user->id,
         ]
     );
 
     $version->status()->refuse();
     $page->refresh();
 
-    expect($page->followers()->where('user_id', $user->id)->exists())->toBe(true)
+    expect($page->followers()->where('user_id', $page->user->id)->exists())->toBe(true)
         ->and($page->state)->toBe(State::DRAFT)
         ->and($version->state)->toBe(State::REFUSED)
         ->and($page->version)->toBe(1)
@@ -183,20 +135,7 @@ it('create version but refuse it', function (): void {
 
 it('create version and archive it after publishing', function (): void {
     Notification::fake();
-    $user = User::factory()->create();
-
-    $page = (new CreatePageAction())->handle(
-        attributes: [
-            'title' => 'test',
-            'description' => 'test',
-            'resume' => 'test',
-            'code' => 'test',
-            'tags' => ['test'],
-            'user_id' => $user->id,
-            'is_accept_version' => false,
-        ]
-    );
-
+    $page = makePage();
     $page->status()->publish();
 
     $version = (new CreateVersionAction())->handle(
@@ -205,7 +144,7 @@ it('create version and archive it after publishing', function (): void {
             'page_id' => $page->id,
             'description' => 'test version',
             'code' => 'test version',
-            'user_id' => $user->id,
+            'user_id' => $page->user->id,
         ]
     );
 
@@ -214,7 +153,7 @@ it('create version and archive it after publishing', function (): void {
     $version->refresh();
     $page->refresh();
 
-    expect($page->followers()->where('user_id', $user->id)->exists())->toBe(true)
+    expect($page->followers()->where('user_id', $page->user->id)->exists())->toBe(true)
         ->and($page->state)->toBe(State::PUBLISHED)
         ->and($version->state)->toBe(State::ARCHIVED)
         ->and($page->version)->toBe(2)
@@ -233,19 +172,7 @@ it('create version and archive it after publishing', function (): void {
 
 it('create version but delete it after refusing', function (): void {
     Notification::fake();
-    $user = User::factory()->create();
-
-    $page = (new CreatePageAction())->handle(
-        attributes: [
-            'title' => 'test',
-            'description' => 'test',
-            'resume' => 'test',
-            'code' => 'test',
-            'tags' => ['test'],
-            'user_id' => $user->id,
-            'is_accept_version' => false,
-        ]
-    );
+    $page = makePage();
 
     $page->status()->publish();
 
@@ -255,7 +182,7 @@ it('create version but delete it after refusing', function (): void {
             'page_id' => $page->id,
             'description' => 'test version',
             'code' => 'test version',
-            'user_id' => $user->id,
+            'user_id' => $page->user->id,
         ]
     );
 
@@ -264,7 +191,7 @@ it('create version but delete it after refusing', function (): void {
 
     Notification::assertSentTo($version->user, DeleteNotification::class);
 
-    expect($page->followers()->where('user_id', $user->id)->exists())->toBe(true)
+    expect($page->followers()->where('user_id', $page->user->id)->exists())->toBe(true)
         ->and($page->state)->toBe(State::PUBLISHED)
         ->and($page->version)->toBe(1)
         ->and($page->description)->toBe('test')
@@ -277,19 +204,7 @@ it('create version but delete it after refusing', function (): void {
 
 it('none existing state', function (): void {
     Notification::fake();
-    $user = User::factory()->create();
-
-    $page = (new CreatePageAction())->handle(
-        attributes: [
-            'title' => 'test',
-            'description' => 'test',
-            'resume' => 'test',
-            'code' => 'test',
-            'tags' => ['test'],
-            'user_id' => $user->id,
-            'is_accept_version' => false,
-        ]
-    );
+    $page = makePage();
 
     $page->status()->publish();
 
@@ -299,7 +214,7 @@ it('none existing state', function (): void {
             'page_id' => $page->id,
             'description' => 'test version',
             'code' => 'test version',
-            'user_id' => $user->id,
+            'user_id' => $page->user->id,
         ]
     );
 

@@ -14,6 +14,11 @@ declare(strict_types=1);
 */
 
 
+use App\Actions\Pages\CreatePageAction;
+use App\Models\Page;
+use App\Models\Team;
+use App\Models\User;
+
 uses(
     Tests\TestCase::class,
     Illuminate\Foundation\Testing\RefreshDatabase::class,
@@ -42,3 +47,33 @@ uses(
 | global functions to help you to reduce the number of lines of code in your test files.
 |
 */
+function makeUser(): User
+{
+    $user = User::factory()->create([
+        'current_team_id' => 1,
+    ]);
+    Team::factory(1)->create([
+        'user_id' => $user->id,
+        'name' => 'Grazulex',
+        'personal_team' => true]);
+
+    return $user;
+}
+
+function makePage(bool $is_accept_version = false): Page
+{
+    $user = makeUser();
+    $page = (new CreatePageAction())->handle(
+        attributes: [
+            'title' => 'test',
+            'description' => 'test',
+            'resume' => 'test',
+            'code' => 'test',
+            'tags' => ['test'],
+            'user_id' => $user->id,
+            'is_accept_version' => $is_accept_version,
+        ]
+    );
+
+    return $page;
+}
