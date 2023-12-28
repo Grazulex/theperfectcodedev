@@ -16,19 +16,47 @@ composer:
     - composer install --prefer-dist --no-ansi --no-interaction --no-progress --no-scripts
     - cp .env.gitlab .env
     - php artisan key:generate
-    - npm install --save-dev vite laravel-vite-plugin
-    - npm run build
   artifacts:
     expire_in: 1 month
+    when: always
     paths:
       - vendor/
       - ".env"
+npm:
+  # Same stage as `composer` so that they run in parallel.
+  stage: build
+
+  # Cache the `node_modules` folder
+  # using the `npm` suffix on the key.
+  cache:
+    key: ${CI_COMMIT_REF_SLUG}-npm
+    paths:
+      - node_modules/
+
+  # Install and compile.
+  script:
+    - npm install --save-dev vite laravel-vite-plugin
+    - npm run build
+
+  # Provide the other jobs of the pipeline with
+  # the node dependencies and the compiled assets.
+  artifacts:
+    expire_in: 1 month
+    paths:
+      - node_modules/
+      - public/css/
+      - public/js/
 pint:
   stage: test
   dependencies:
     - composer
   script:
     - php ./vendor/bin/pint
+codestyle:
+  stage: test
+  dependencies: []
+  script:
+    - phpcs --standard=PSR2 --extensions=php --ignore=app/Support/helpers.php app
 test:
   variables:
     XDEBUG_MODE: coverage
@@ -36,9 +64,7 @@ test:
   dependencies:
     - composer
   script:
-    #- php ./vendor/bin/pest --coverage-cobertura=coverage.xml --coverage-text --colors=never
-    - npm install --save-dev vite laravel-vite-plugin
-    - npm run build
+    - export XDEBUG_MODE=coverage
     - php -d memory_limit=4G ./vendor/bin/pest --coverage-text --coverage-cobertura=coverage.cobertura.xml --colors=never --stderr --log-junit report.xml
   artifacts:
     when: always
@@ -47,4 +73,4 @@ test:
           coverage_format: cobertura
           path: coverage.cobertura.xml
         junit: report.xml
-  coverage: '/^\s*Lines:\s*(\d+\.\d+)\%/'
+  coverage: '/^\s*Lines:\s*\d+.\d+\%/'
