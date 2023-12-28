@@ -58,9 +58,8 @@ test:
   stage: test
   dependencies:
     - composer
+    - npm
   script:
-    - npm install --save-dev vite laravel-vite-plugin
-    - npm run build
     - export XDEBUG_MODE=coverage
     - php -d memory_limit=4G ./vendor/bin/pest --coverage-text --coverage-cobertura=coverage.cobertura.xml --colors=never --stderr --log-junit report.xml
   artifacts:
