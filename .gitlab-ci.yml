@@ -71,4 +71,4 @@ test:
           coverage_format: cobertura
           path: coverage.cobertura.xml
         junit: report.xml
-  coverage: '/^\s*Lines:\s*\d+.\d+\%/'
+  coverage: '/^\s*Lines-rate=\s*\d+.\d+\%/'
