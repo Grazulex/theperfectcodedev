@@ -52,11 +52,6 @@ pint:
     - composer
   script:
     - php ./vendor/bin/pint
-codestyle:
-  stage: test
-  dependencies: []
-  script:
-    - phpcs --standard=PSR2 --extensions=php --ignore=app/Support/helpers.php app
 test:
   variables:
     XDEBUG_MODE: coverage
@@ -64,6 +59,8 @@ test:
   dependencies:
     - composer
   script:
+    - npm install --save-dev vite laravel-vite-plugin
+    - npm run build
     - export XDEBUG_MODE=coverage
     - php -d memory_limit=4G ./vendor/bin/pest --coverage-text --coverage-cobertura=coverage.cobertura.xml --colors=never --stderr --log-junit report.xml
   artifacts:
