@@ -71,4 +71,4 @@ test:
           coverage_format: cobertura
           path: coverage.cobertura.xml
         junit: report.xml
-  coverage: '/^\s*Cov:\s*\d+\.\d+?%$/'
+  coverage: '/^\s*Total:\s*\d+\.\d+?%$/'
