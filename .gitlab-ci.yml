@@ -30,6 +30,8 @@ pint:
   script:
     - php ./vendor/bin/pint
 test:
+  variables:
+    XDEBUG_MODE: coverage
   stage: test
   dependencies:
     - composer
@@ -37,12 +39,12 @@ test:
     #- php ./vendor/bin/pest --coverage-cobertura=coverage.xml --coverage-text --colors=never
     - npm install --save-dev vite laravel-vite-plugin
     - npm run build
-    - php -d memory_limit=4G ./vendor/bin/pest --coverage-text --coverage-cobertura=coverage.cobertura.xml
+    - php -d memory_limit=4G ./vendor/bin/pest --coverage-text --coverage-cobertura=coverage.cobertura.xml --colors=never --stderr --log-junit report.xml
   artifacts:
-    paths:
-      - cobertura-coverage.xml
+    when: always
     reports:
         coverage_report:
           coverage_format: cobertura
           path: coverage.cobertura.xml
-  coverage: '/^\s*Total\sCoverage\s\.+\s\d+\.\d+\s\%/'
+        junit: report.xml
+  coverage: '/^\s*Lines:\s*(\d+\.\d+)\%/'
