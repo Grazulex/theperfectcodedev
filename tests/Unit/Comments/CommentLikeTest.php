@@ -6,6 +6,7 @@ use App\Actions\Comments\CreateCommentAction;
 use App\Jobs\Comments\ProcessLike;
 
 it('like a comment', function (): void {
+    Notification::fake();
     Queue::fake();
     $page = makePage();
     $comment = (new CreateCommentAction())->handle(
