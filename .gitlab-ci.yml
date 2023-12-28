@@ -45,4 +45,4 @@ test:
         coverage_report:
           coverage_format: cobertura
           path: coverage/coverage.cobertura.xml
-  coverage: '/^\s*Lines:\s*\d+.\d+\%/'
+  coverage: '/^\s*Total\sCoverage\s\.+\s\d+\.\d+\s\%/'
