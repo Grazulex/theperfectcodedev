@@ -37,12 +37,12 @@ test:
     #- php ./vendor/bin/pest --coverage-cobertura=coverage.xml --coverage-text --colors=never
     - npm install --save-dev vite laravel-vite-plugin
     - npm run build
-    - php -d memory_limit=4G ./vendor/bin/pest --coverage-text --coverage-cobertura=coverage/coverage.cobertura.xml
+    - php -d memory_limit=4G ./vendor/bin/pest --coverage-text --coverage-cobertura=coverage.cobertura.xml
   artifacts:
     paths:
-      - coverage/cobertura-coverage.xml
+      - cobertura-coverage.xml
     reports:
         coverage_report:
           coverage_format: cobertura
-          path: coverage/coverage.cobertura.xml
+          path: coverage.cobertura.xml
   coverage: '/^\s*Total\sCoverage\s\.+\s\d+\.\d+\s\%/'
