@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Models;
 
-use App\Enums\State;
+use App\Enums\Pages\State;
 use App\Services\Pages\FollowersService;
 use App\Services\Pages\LikesService;
 use App\StateMachines\Contracts\PageStateContract;

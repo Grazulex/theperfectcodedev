@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Actions\Comments;
 
-use App\Actions\Pages\NotifyPageUserAction;
 use App\Models\PageComments;
 
 final readonly class CreateCommentAction
@@ -14,17 +13,15 @@ final readonly class CreateCommentAction
         $comment = PageComments::create($attributes);
         $comment->refresh();
 
-        (new NotifyPageUserAction())->comment(
-            page: $comment->page,
+        (new NotifyCommentUserAction())->publish(
+            comment: $comment,
             user: $comment->user,
-            comment: $comment
         );
 
         foreach ($comment->page->followers as $follower) {
-            (new NotifyPageUserAction())->comment(
-                page: $comment->page,
+            (new NotifyCommentUserAction())->publish(
+                comment: $comment,
                 user: $follower,
-                comment: $comment
             );
         }
 

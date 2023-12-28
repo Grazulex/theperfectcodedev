@@ -6,7 +6,7 @@ namespace App\StateMachines\Pages;
 
 use App\Actions\Pages\NotifyPageUserAction;
 use App\Actions\Pages\UpdatePageAction;
-use App\Enums\State;
+use App\Enums\Pages\State;
 
 final class DraftPageState extends BasePageState
 {

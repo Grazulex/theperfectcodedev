@@ -11,7 +11,9 @@ final class RefusedPageState extends BasePageState
 {
     public function delete(): void
     {
-        $this->page = (new DeletePageAction())->handle($this->page);
+        $this->page = (new DeletePageAction())->handle(
+            page: $this->page
+        );
 
         (new NotifyPageUserAction())->delete(
             page: $this->page,

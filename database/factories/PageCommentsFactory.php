@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Database\Factories;
 
-use App\Enums\State;
+use App\Enums\Comments\State;
 use App\Models\Page;
 use App\Models\PageComments;
 use App\Models\User;
@@ -26,7 +26,8 @@ final class PageCommentsFactory extends Factory
             'user_id' => User::factory(),
             'page_id' => Page::factory(),
             'response_id' => PageComments::factory(),
-            'content' => $this->faker->text
+            'content' => $this->faker->text,
+            'state' => State::PUBLISHED,
         ];
     }
 }

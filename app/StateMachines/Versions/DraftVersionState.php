@@ -8,7 +8,7 @@ use App\Actions\Pages\NotifyPageUserAction;
 use App\Actions\Pages\UpdatePageAction;
 use App\Actions\Versions\NotifyVersionUserAction;
 use App\Actions\Versions\UpdateVersionAction;
-use App\Enums\State;
+use App\Enums\Versions\State;
 
 final class DraftVersionState extends BaseVersionState
 {
@@ -27,7 +27,7 @@ final class DraftVersionState extends BaseVersionState
             user: $this->version->user
         );
 
-        $this->page = (new UpdatePageAction())->handle(
+        $page = (new UpdatePageAction())->handle(
             page: $this->version->page,
             attributes: [
                 'version' => $this->version->version,
@@ -37,11 +37,11 @@ final class DraftVersionState extends BaseVersionState
         );
 
         (new NotifyPageUserAction())->newVersion(
-            page: $this->version->page,
-            user: $this->version->page->user
+            page: $page,
+            user: $page->user
         );
 
-        foreach ($this->version->page->followers as $follower) {
+        foreach ($page->followers as $follower) {
             (new NotifyVersionUserAction())->publish(
                 version: $this->version,
                 user: $follower

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers\Page;
 
-use App\Enums\State;
+use App\Enums\Pages\State;
 use App\Http\Controllers\Controller;
 use App\Models\Page;
 use Illuminate\Contracts\Foundation\Application;

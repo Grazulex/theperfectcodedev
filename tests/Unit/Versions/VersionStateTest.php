@@ -3,7 +3,8 @@
 declare(strict_types=1);
 
 use App\Actions\Versions\CreateVersionAction;
-use App\Enums\State;
+use App\Enums\Pages\State as PageState;
+use App\Enums\Versions\State as VersionState;
 use App\Exceptions\VersionNoStateException;
 use App\Notifications\Pages\NewVersionNotification;
 use App\Notifications\Versions\ArchiveNotification;
@@ -26,8 +27,8 @@ it('create version without auto accept publishing', function (): void {
     );
 
     expect($page->followers()->where('user_id', $page->user->id)->exists())->toBe(true)
-        ->and($page->state)->toBe(State::DRAFT)
-        ->and($version->state)->toBe(State::DRAFT)
+        ->and($page->state)->toBe(PageState::DRAFT)
+        ->and($version->state)->toBe(VersionState::DRAFT)
         ->and($page->version)->toBe(1)
         ->and($page->description)->toBe('test')
         ->and($page->versions()->count())->toBe(1)
@@ -54,8 +55,8 @@ it('create version with auto accept publishing', function (): void {
     );
 
     expect($page->followers()->where('user_id', $page->user->id)->exists())->toBe(true)
-        ->and($page->state)->toBe(State::DRAFT)
-        ->and($version->state)->toBe(State::PUBLISHED)
+        ->and($page->state)->toBe(PageState::DRAFT)
+        ->and($version->state)->toBe(VersionState::PUBLISHED)
         ->and($page->version)->toBe(2)
         ->and($page->description)->toBe('test version')
         ->and($page->versions()->count())->toBe(1)
@@ -87,8 +88,8 @@ it('create version without auto accept publishing and publish it', function (): 
     $page->refresh();
 
     expect($page->followers()->where('user_id', $page->user->id)->exists())->toBe(true)
-        ->and($page->state)->toBe(State::PUBLISHED)
-        ->and($version->state)->toBe(State::PUBLISHED)
+        ->and($page->state)->toBe(PageState::PUBLISHED)
+        ->and($version->state)->toBe(VersionState::PUBLISHED)
         ->and($page->version)->toBe(2)
         ->and($page->description)->toBe('test version')
         ->and($page->versions()->count())->toBe(1)
@@ -120,8 +121,8 @@ it('create version but refuse it', function (): void {
     $page->refresh();
 
     expect($page->followers()->where('user_id', $page->user->id)->exists())->toBe(true)
-        ->and($page->state)->toBe(State::DRAFT)
-        ->and($version->state)->toBe(State::REFUSED)
+        ->and($page->state)->toBe(PageState::DRAFT)
+        ->and($version->state)->toBe(VersionState::REFUSED)
         ->and($page->version)->toBe(1)
         ->and($page->description)->toBe('test')
         ->and($page->versions()->count())->toBe(1)
@@ -153,8 +154,8 @@ it('create version and archive it after publishing', function (): void {
     $page->refresh();
 
     expect($page->followers()->where('user_id', $page->user->id)->exists())->toBe(true)
-        ->and($page->state)->toBe(State::PUBLISHED)
-        ->and($version->state)->toBe(State::ARCHIVED)
+        ->and($page->state)->toBe(PageState::PUBLISHED)
+        ->and($version->state)->toBe(VersionState::ARCHIVED)
         ->and($page->version)->toBe(2)
         ->and($page->description)->toBe('test version')
         ->and($page->versions()->count())->toBe(1)
@@ -191,7 +192,7 @@ it('create version but delete it after refusing', function (): void {
     Notification::assertSentTo($version->user, DeleteNotification::class);
 
     expect($page->followers()->where('user_id', $page->user->id)->exists())->toBe(true)
-        ->and($page->state)->toBe(State::PUBLISHED)
+        ->and($page->state)->toBe(PageState::PUBLISHED)
         ->and($page->version)->toBe(1)
         ->and($page->description)->toBe('test')
         ->and($page->followers()->count())->toBe(1);

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use App\Enums\State;
+use App\Enums\Pages\State;
 use App\Exceptions\PageNoStateException;
 use App\Notifications\Pages\ArchiveNotification;
 use App\Notifications\Pages\DeleteNotification;

@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Actions\Versions;
 
 use App\Actions\Pages\NotifyPageUserAction;
-use App\Enums\State;
+use App\Enums\Versions\State;
 use App\Models\Page;
 use App\Models\Version;
 

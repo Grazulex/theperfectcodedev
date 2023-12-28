@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Actions\Pages;
 
-use App\Enums\State;
+use App\Enums\Pages\State;
 use App\Models\Page;
 
 final readonly class ArchivePageAction

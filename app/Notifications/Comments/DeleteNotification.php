@@ -2,16 +2,14 @@
 
 declare(strict_types=1);
 
-namespace App\Notifications\Pages;
+namespace App\Notifications\Comments;
 
-use App\Models\Page;
-use App\Models\PageComments;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-final class CommentNotification extends Notification implements ShouldQueue
+final class DeleteNotification extends Notification implements ShouldQueue
 {
     use Queueable;
 
@@ -19,8 +17,7 @@ final class CommentNotification extends Notification implements ShouldQueue
      * Create a new notification instance.
      */
     public function __construct(
-        public Page $page,
-        public PageComments $comment
+        public string $pageTitle
     ) {}
 
     /**

@@ -3,7 +3,11 @@
 declare(strict_types=1);
 
 use App\Actions\Comments\CreateCommentAction;
-use App\Notifications\Pages\CommentNotification;
+use App\Actions\Comments\UpdateCommentAction;
+use App\Enums\Comments\State;
+use App\Notifications\Comments\DeleteNotification;
+use App\Notifications\Comments\PublishNotification;
+use App\Notifications\Comments\RefuseNotification;
 
 it('can create a comment', function (): void {
     Notification::fake();
@@ -19,12 +23,13 @@ it('can create a comment', function (): void {
         ->and($comment->response_id)->toBeNull()
         ->and($comment->page_id)->toBe($page->id)
         ->and($comment->content)->toBe('This is a comment')
+        ->and($comment->state)->toBe(State::PUBLISHED)
         ->and($page->comments()->count())->toBe(1)
         ->and($page->comments->first()->content)->toBe('This is a comment');
 
-    Notification::assertSentTo($page->user, CommentNotification::class);
+    Notification::assertSentTo($page->user, PublishNotification::class);
     foreach ($page->followers as $follower) {
-        Notification::assertSentTo($follower, CommentNotification::class);
+        Notification::assertSentTo($follower, PublishNotification::class);
     }
 
 });
@@ -52,6 +57,7 @@ it('can create a response', function (): void {
         ->and($response->response_id)->toBe($comment->id)
         ->and($response->page_id)->toBe($page->id)
         ->and($response->content)->toBe('This is a response')
+        ->and($response->state)->toBe(State::PUBLISHED)
         ->and($page->comments()->count())->toBe(2)
         ->and($page->comments->first()->content)->toBe('This is a comment')
         ->and($page->comments->last()->content)->toBe('This is a response')
@@ -59,4 +65,70 @@ it('can create a response', function (): void {
         ->and($comment->responses->first()->content)->toBe('This is a response')
         ->and($response->master->id)->toBe($comment->id)->and($response->master->content)->toBe('This is a comment');
 
+});
+
+it('update comment', function (): void {
+    Notification::fake();
+    $page = makePage();
+    $comment = (new CreateCommentAction())->handle(
+        attributes : [
+            'page_id' => $page->id,
+            'user_id' => $page->user->id,
+            'content' => 'This is a comment',
+        ]
+    );
+
+    $comment = (new UpdateCommentAction())->handle(
+        comment: $comment,
+        attributes: [
+            'content' => 'This is an updated comment',
+        ]
+    );
+
+    Notification::assertSentTo($page->user, PublishNotification::class);
+    foreach ($page->followers as $follower) {
+        Notification::assertSentTo($follower, PublishNotification::class);
+    }
+
+    expect($comment->content)->toBe('This is an updated comment')
+        ->and($page->comments->first()->content)->toBe('This is an updated comment');
+});
+
+it('can refuse a comment', function (): void {
+    Notification::fake();
+    $page = makePage();
+    $comment = (new CreateCommentAction())->handle(
+        attributes : [
+            'page_id' => $page->id,
+            'user_id' => $page->user->id,
+            'content' => 'This is a comment',
+        ]
+    );
+
+    $comment->status()->refuse();
+
+    Notification::assertSentTo($page->user, RefuseNotification::class);
+
+    expect($page->comments()->count())->toBe(1)
+        ->and($comment->state)->toBe(State::REFUSED);
+});
+
+it('can delete a comment', function (): void {
+    Notification::fake();
+    $page = makePage();
+    $comment = (new CreateCommentAction())->handle(
+        attributes : [
+            'page_id' => $page->id,
+            'user_id' => $page->user->id,
+            'content' => 'This is a comment',
+        ]
+    );
+
+    $comment->status()->refuse();
+    $comment->status()->delete();
+
+    Notification::assertSentTo($page->user, RefuseNotification::class);
+    Notification::assertSentTo($page->user, DeleteNotification::class);
+
+    $this->assertSoftDeleted($comment);
 });

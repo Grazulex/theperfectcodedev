@@ -5,10 +5,8 @@ declare(strict_types=1);
 namespace App\Actions\Pages;
 
 use App\Models\Page;
-use App\Models\PageComments;
 use App\Models\User;
 use App\Notifications\Pages\ArchiveNotification;
-use App\Notifications\Pages\CommentNotification;
 use App\Notifications\Pages\DeleteNotification;
 use App\Notifications\Pages\DraftNotification;
 use App\Notifications\Pages\NewVersionNotification;
@@ -67,16 +65,6 @@ final readonly class NotifyPageUserAction
         $user->notify(
             new NewVersionNotification(
                 page: $page
-            )
-        );
-    }
-
-    public function comment(Page $page, User $user, PageComments $comment): void
-    {
-        $user->notify(
-            new CommentNotification(
-                page: $page,
-                comment: $comment
             )
         );
     }

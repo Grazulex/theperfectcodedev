@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Models;
 
-use App\Enums\State;
+use App\Enums\Versions\State;
 use App\Notifications\Versions\ArchiveNotification;
 use App\StateMachines\Contracts\VersionStateContract;
 use App\StateMachines\Versions\DraftVersionState;
@@ -14,6 +14,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use InvalidArgumentException;
 
 /**
  * @property null|int $version
