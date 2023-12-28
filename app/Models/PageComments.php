@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Models;
 
 use App\Enums\Comments\State;
+use App\Services\Comments\LikesService;
 use App\StateMachines\Comments\PublishedCommentState;
 use App\StateMachines\Comments\RefusedCommentState;
 use App\StateMachines\Contracts\CommentStateContract;
@@ -85,6 +86,11 @@ final class PageComments extends Model
             related: User::class,
             table: 'comment_user_likes',
         );
+    }
+
+    public function likesService(): LikesService
+    {
+        return new LikesService($this);
     }
 
     public function status(): CommentStateContract

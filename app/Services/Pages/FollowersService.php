@@ -9,12 +9,7 @@ use App\Models\User;
 
 final class FollowersService
 {
-    private Page $page;
-
-    public function __construct(Page $page)
-    {
-        $this->page = $page;
-    }
+    public function __construct(private Page $page) {}
 
     public function isFollowedBy(User $user): bool
     {

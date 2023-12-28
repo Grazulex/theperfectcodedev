@@ -9,12 +9,7 @@ use App\Models\User;
 
 final class LikesService
 {
-    private Page $page;
-
-    public function __construct(Page $page)
-    {
-        $this->page = $page;
-    }
+    public function __construct(private Page $page) {}
 
     public function isLikedBy(User $user): bool
     {
