@@ -332,4 +332,6 @@ it('none existing state', function (): void {
 
     $version->status()->delete();
 
+
 })->throws(VersionNoStateException::class, 'Version has no state');
+;

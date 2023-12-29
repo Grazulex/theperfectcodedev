@@ -11,7 +11,7 @@ final class RefusedCommentState extends BaseCommentState
 {
     public function delete(): void
     {
-        $this->comment = (new DeleteCommentAction())->handle(
+        (new DeleteCommentAction())->handle(
             comment: $this->comment
         );
 
