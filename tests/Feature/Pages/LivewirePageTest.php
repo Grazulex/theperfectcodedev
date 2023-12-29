@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\Feature\Pages;
 
+use App\Jobs\Pages\ProcessFollow;
 use App\Jobs\Pages\ProcessLike;
 use Illuminate\Support\Facades\Queue;
 use Livewire\Livewire;
@@ -66,4 +67,48 @@ test('like componant can be unliked', function (): void {
     Queue::assertPushed(ProcessLike::class);
     (new ProcessLike($page, $user))->handle();
     expect($page->likes->count())->toBe(0);
+});
+
+test('like componant can be followed', function (): void {
+    Queue::fake();
+    $user = makeUser();
+    $page = makePage();
+    $page->status()->publish();
+    Livewire::actingAs($user)->test('pages.followed', ['user' => $user, 'page' => $page,'followers_count' => $page->followers->count()])
+        ->assertStatus(200)
+        ->assertSee($page->likes->count())
+        ->call('follow')
+        ->assertSee($page->followers->count() + 1)
+        ->assertSet('isFollow', true)
+        ->assertSet('colorFollow', 'green');
+
+    Queue::assertPushed(ProcessFollow::class);
+    (new ProcessFollow($page, $user))->handle();
+    expect($page->followers->count())->toBe(1);
+});
+
+test('like componant can be unfollowed', function (): void {
+    Queue::fake();
+    $user = makeUser();
+    $page = makePage();
+    $page->status()->publish();
+    Livewire::actingAs($user)->test('pages.followed', ['user' => $user, 'page' => $page,'followers_count' => $page->followers->count()])
+        ->assertStatus(200)
+        ->assertSee($page->likes->count())
+        ->call('unfollow')
+        ->assertSee($page->followers->count() - 1)
+        ->assertSet('isFollow', false)
+        ->assertSet('colorFollow', 'none');
+
+    Queue::assertPushed(ProcessFollow::class);
+    (new ProcessFollow($page, $user))->handle();
+    expect($page->followers->count())->toBe(1);
+});
+
+test ("tag componant can be rendered", function (): void {
+    $page = makePage();
+    $page->status()->publish();
+    Livewire::test('pages.tags', ['tags' => $page->tags])
+        ->assertStatus(200)
+        ->assertSee($page->tags[0]);
 });

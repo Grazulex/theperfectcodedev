@@ -24,10 +24,11 @@
             @endif
             @if (Auth::check())
                 <livewire:pages.like :user="Auth::user()" :page="$page" :likes_count="$page->likes_count"/>
+                <livewire:pages.followed :user="Auth::user()" :page="$page" :followers_count="$page->followers_count"/>
             @else
                 <livewire:pages.like :user="Null" :page="$page" :likes_count="$page->likes_count"/>
+                <livewire:pages.followed :user="Null" :page="$page" :followers_count="$page->followers_count"/>
             @endif
-            <livewire:pages.followed :page="$page" :followers_count="$page->followers_count"/>
             <livewire:pages.commented :comments_count="$page->comments_count"/>
 
         </div>

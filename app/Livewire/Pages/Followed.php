@@ -6,6 +6,7 @@ namespace App\Livewire\Pages;
 
 use App\Jobs\Pages\ProcessFollow;
 use App\Models\Page;
+use App\Models\User;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Foundation\Application;
@@ -15,14 +16,15 @@ final class Followed extends Component
 {
     public int $followers_count;
     public Page $page;
+    public ?User $user;
 
     public string $colorFollow = 'none';
     public bool $isFollow = false;
 
     public function mount(): void
     {
-        if (auth()->check()) {
-            $hasFollow = $this->page->followersService()->isFollowedBy(auth()->user());
+        if ($this->user) {
+            $hasFollow = $this->page->followersService()->isFollowedBy($this->user);
             if ($hasFollow) {
                 $this->isFollow = true;
                 $this->colorFollow = 'green';
@@ -52,6 +54,6 @@ final class Followed extends Component
 
     private function dispatchFollowJob(): void
     {
-        ProcessFollow::dispatch($this->page, auth()->user());
+        ProcessFollow::dispatch($this->page, $this->user);
     }
 }
