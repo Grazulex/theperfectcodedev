@@ -97,9 +97,7 @@ final class PageComments extends Model
     {
         return match ($this->state) {
             State::PUBLISHED => new PublishedCommentState($this),
-            State::REFUSED => new RefusedCommentState(
-                comment: $this
-            ),
+            State::REFUSED => new RefusedCommentState($this),
             default => throw new InvalidArgumentException('Invalid state'),
         };
     }

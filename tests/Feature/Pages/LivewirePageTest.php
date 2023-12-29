@@ -105,7 +105,7 @@ test('like componant can be unfollowed', function (): void {
     expect($page->followers->count())->toBe(1);
 });
 
-test ("tag componant can be rendered", function (): void {
+test("tag componant can be rendered", function (): void {
     $page = makePage();
     $page->status()->publish();
     Livewire::test('pages.tags', ['tags' => $page->tags])

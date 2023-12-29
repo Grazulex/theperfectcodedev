@@ -64,7 +64,7 @@ function makeUser(): User
 function makePage(bool $is_accept_version = false): Page
 {
     $user = makeUser();
-    $page = (new CreatePageAction())->handle(
+    return (new CreatePageAction())->handle(
         attributes: [
             'title' => 'test',
             'description' => 'test',
@@ -75,8 +75,6 @@ function makePage(bool $is_accept_version = false): Page
             'is_accept_version' => $is_accept_version,
         ]
     );
-
-    return $page;
 }
 
 function asUser(): TestCase
