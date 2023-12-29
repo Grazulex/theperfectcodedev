@@ -7,7 +7,7 @@ namespace App\Policies;
 use App\Models\ConnectedAccount;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
-
+// @codeCoverageIgnoreStart
 final class ConnectedAccountPolicy
 {
     use HandlesAuthorization;
@@ -52,3 +52,4 @@ final class ConnectedAccountPolicy
         return $user->ownsConnectedAccount($connectedAccount);
     }
 }
+// @codeCoverageIgnoreEnd

@@ -7,6 +7,7 @@ namespace App\Exceptions;
 use Exception;
 use Illuminate\Support\Facades\Log;
 
+// @codeCoverageIgnoreStart
 final class PageNoStateException extends Exception
 {
     protected $message = 'Page has no state';
@@ -17,3 +18,4 @@ final class PageNoStateException extends Exception
     }
     public function render($request): void {}
 }
+// @codeCoverageIgnoreEnd

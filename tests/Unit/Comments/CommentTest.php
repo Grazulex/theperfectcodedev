@@ -5,6 +5,7 @@ declare(strict_types=1);
 use App\Actions\Comments\CreateCommentAction;
 use App\Actions\Comments\UpdateCommentAction;
 use App\Enums\Comments\State;
+use App\Exceptions\CommentNoStateException;
 use App\Notifications\Comments\DeleteNotification;
 use App\Notifications\Comments\PublishNotification;
 use App\Notifications\Comments\RefuseNotification;
@@ -162,3 +163,20 @@ it('can delete a comment', function (): void {
 
     $this->assertSoftDeleted($comment);
 });
+
+it(/**
+ * @throws CommentNoStateException
+ */ 'none existing state to delete', function (): void {
+    $page = makePage();
+    $comment = (new CreateCommentAction())->handle(
+        attributes : [
+            'page_id' => $page->id,
+            'user_id' => $page->user->id,
+            'content' => 'This is a comment',
+        ]
+    );
+
+    $comment->status()->delete();
+
+})->throws(CommentNoStateException::class, 'Comment has no state');
+

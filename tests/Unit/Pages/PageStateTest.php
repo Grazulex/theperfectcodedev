@@ -115,8 +115,34 @@ it('delete page', function (): void {
 
 it(/**
  * @throws PageNoStateException
- */ 'none existing state', function (): void {
+ */ 'none existing state to delete', function (): void {
     $page = makePage();
     $page->status()->delete();
+
+})->throws(PageNoStateException::class, 'Page has no state');
+
+it(/**
+ * @throws PageNoStateException
+ */ 'none existing state to archive', function (): void {
+    $page = makePage();
+    $page->status()->archive();
+
+})->throws(PageNoStateException::class, 'Page has no state');
+
+it(/**
+ * @throws PageNoStateException
+ */ 'none existing state to publish', function (): void {
+    $page = makePage();
+    $page->status()->publish();
+    $page->status()->publish();
+
+})->throws(PageNoStateException::class, 'Page has no state');
+
+it(/**
+ * @throws PageNoStateException
+ */ 'none existing state to refuse', function (): void {
+    $page = makePage();
+    $page->status()->publish();
+    $page->status()->refuse();
 
 })->throws(PageNoStateException::class, 'Page has no state');

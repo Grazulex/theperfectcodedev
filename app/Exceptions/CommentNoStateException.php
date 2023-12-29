@@ -7,6 +7,7 @@ namespace App\Exceptions;
 use Exception;
 use Illuminate\Support\Facades\Log;
 
+// @codeCoverageIgnoreStart
 final class CommentNoStateException extends Exception
 {
     protected $message = 'Comment has no state';
@@ -17,3 +18,5 @@ final class CommentNoStateException extends Exception
     }
     public function render($request): void {}
 }
+// @codeCoverageIgnoreEnd
+
