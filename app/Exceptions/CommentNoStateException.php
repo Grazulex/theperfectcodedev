@@ -19,4 +19,3 @@ final class CommentNoStateException extends Exception
     public function render($request): void {}
 }
 // @codeCoverageIgnoreEnd
-

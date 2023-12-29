@@ -6,6 +6,7 @@ namespace App\Livewire\Pages;
 
 use App\Jobs\Pages\ProcessLike;
 use App\Models\Page;
+use App\Models\User;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Foundation\Application;
@@ -15,13 +16,14 @@ final class Like extends Component
 {
     public int $likes_count;
     public Page $page;
+    public ?User $user;
     public string $colorLiked = 'none';
     public bool $isLiked = false;
 
     public function mount(): void
     {
-        if (auth()->check()) {
-            $hasLiked = $this->page->likesService()->isLikedBy(auth()->user());
+        if ($this->user) {
+            $hasLiked = $this->page->likesService()->isLikedBy($this->user);
             if ($hasLiked) {
                 $this->isLiked = true;
                 $this->colorLiked = 'red';
@@ -52,7 +54,7 @@ final class Like extends Component
 
     private function dispatchLikeJob(): void
     {
-        ProcessLike::dispatch($this->page, auth()->user());
+        ProcessLike::dispatch($this->page, $this->user);
     }
 
 }

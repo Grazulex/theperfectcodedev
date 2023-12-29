@@ -7,6 +7,7 @@ namespace App\Policies;
 use App\Models\ConnectedAccount;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
+
 // @codeCoverageIgnoreStart
 final class ConnectedAccountPolicy
 {

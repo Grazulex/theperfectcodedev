@@ -179,4 +179,3 @@ it(/**
     $comment->status()->delete();
 
 })->throws(CommentNoStateException::class, 'Comment has no state');
-

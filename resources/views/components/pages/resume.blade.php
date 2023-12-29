@@ -22,7 +22,11 @@
             @if ($page->state === \App\Enums\Pages\State::PUBLISHED)
                 <livewire:pages.published :date="$page->published_at"/>
             @endif
-            <livewire:pages.like :page="$page" :likes_count="$page->likes_count"/>
+            @if (Auth::check())
+                <livewire:pages.like :user="Auth::user()" :page="$page" :likes_count="$page->likes_count"/>
+            @else
+                <livewire:pages.like :user="Null" :page="$page" :likes_count="$page->likes_count"/>
+            @endif
             <livewire:pages.followed :page="$page" :followers_count="$page->followers_count"/>
             <livewire:pages.commented :comments_count="$page->comments_count"/>
 
