@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Tests\Feature\Pages;
 
-
 test('top page screen can be rendered if login', function (): void {
     $response = asUser()->get('/code/top');
 

@@ -18,6 +18,7 @@ use App\Actions\Pages\CreatePageAction;
 use App\Models\Page;
 use App\Models\Team;
 use App\Models\User;
+use Tests\TestCase;
 
 uses(
     Tests\TestCase::class,
@@ -76,4 +77,17 @@ function makePage(bool $is_accept_version = false): Page
     );
 
     return $page;
+}
+
+function asUser(): TestCase
+{
+    $user = User::factory()->create([
+        'current_team_id' => 1,
+    ]);
+    Team::factory(1)->create([
+        'user_id' => $user->id,
+        'name' => 'Grazulex',
+        'personal_team' => true]);
+
+    return test()->actingAs($user);
 }
