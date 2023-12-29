@@ -20,10 +20,10 @@ Back to [README](../README.md)
   - [X] Check Model file
   - [X] Create Actions file
   - [X] Implement tests
-- [ ] Implement Like comment
-  -[ ] Check Migration file
-  - [ ] Check Model file
-  - [ ] Create Actions file
+- [X] Implement Like comment
+  - [X] Check Migration file
+  - [X] Check Model file
+  - [X] Create Actions file
 
 
 ### Frontend
