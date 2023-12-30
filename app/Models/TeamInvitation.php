@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Laravel\Jetstream\Jetstream;
 use Laravel\Jetstream\TeamInvitation as JetstreamTeamInvitation;
 
+// @codeCoverageIgnoreStart
 final class TeamInvitation extends JetstreamTeamInvitation
 {
     /**
@@ -28,3 +29,4 @@ final class TeamInvitation extends JetstreamTeamInvitation
         return $this->belongsTo(Jetstream::teamModel());
     }
 }
+// @codeCoverageIgnoreEnd

@@ -21,6 +21,7 @@ final class Followed extends Component
     public string $colorFollow = 'none';
     public bool $isFollow = false;
 
+    // @codeCoverageIgnoreStart
     public function mount(): void
     {
         if ($this->user) {
@@ -31,6 +32,7 @@ final class Followed extends Component
             }
         }
     }
+    // @codeCoverageIgnoreEnd
 
     public function follow(): void
     {

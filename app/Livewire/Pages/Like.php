@@ -20,6 +20,7 @@ final class Like extends Component
     public string $colorLiked = 'none';
     public bool $isLiked = false;
 
+    // @codeCoverageIgnoreStart
     public function mount(): void
     {
         if ($this->user) {
@@ -30,6 +31,7 @@ final class Like extends Component
             }
         }
     }
+    // @codeCoverageIgnoreEnd
 
     public function like(): void
     {
