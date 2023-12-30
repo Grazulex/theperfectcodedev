@@ -1,4 +1,4 @@
-<form action="{{ route('pages.store') }}" method="POST">
+<form action="{{ route('pages.store') }}" method="POST" id="createPageForm">
     @csrf
     <div class="mt-4">
         <fieldset>
@@ -38,8 +38,9 @@
     </div>
     <div class="mt-4">
         <fieldset>
-            <label for="code" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Code Section</label>
-            <textarea name="code" id="code" rows="5" aria-describedby="code-explanation" class="block w-full mt-1 border-gray-300 rounded-md shadow-sm dark:bg-gray-700 dark:text-gray-200 dark:border-gray-700 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">{{ old('code') }}</textarea>
+            <label for="editor" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Code Section</label>
+            <input type="hidden" name="code" id="code">
+            <div name="code" id="editor" rows="5" aria-describedby="code-explanation" class="block w-full mt-1 border-gray-300 rounded-md shadow-sm dark:bg-gray-700 dark:text-gray-200 dark:border-gray-700 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">{{ old('code') }}</div>
             <p id="code-explanation" class="text-gray-600 text-xs italic">Please enter or paste the code you wish to enhance here. Ensure that the entirety of the relevant code is provided for a comprehensive assessment. You may also include comments or annotations to better explain key sections of the code. Example: Code snippet for sorting algorithm requiring optimization.</p>
             @if ($errors->has('code'))
                 @foreach ($errors->get('code') as $error)

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Http\Controllers\Page;
+namespace App\Http\Controllers\Pages;
 
 use App\Actions\Pages\CreatePageAction;
 use App\Http\Controllers\Controller;

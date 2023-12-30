@@ -70,6 +70,11 @@ final class Page extends Model
         'is_accept_version' => 'boolean',
     ];
 
+    public function getRouteKeyName(): string
+    {
+        return 'slug';
+    }
+
     public function user(): belongsTo
     {
         return $this->belongsTo(

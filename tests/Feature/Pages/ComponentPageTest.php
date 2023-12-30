@@ -4,10 +4,9 @@ declare(strict_types=1);
 
 namespace Tests\Feature\Pages;
 
-
 use App\View\Components\pages\Resume;
 
-test ('resume view can be rendered', function (): void {
+test('resume view can be rendered', function (): void {
     $page = makePage();
     $page->status()->publish();
     $page = $page::withCount(['likes','followers', 'comments'])->first();
@@ -21,7 +20,7 @@ test ('resume view can be rendered', function (): void {
         ->assertSee($page->resume);
 });
 
-test ('resume component can be rendered', function (): void {
+test('resume component can be rendered', function (): void {
     $page = makePage();
     $page->status()->publish();
     $page = $page::withCount(['likes','followers', 'comments'])->first();
