@@ -11,10 +11,9 @@ final readonly class ArchivePageAction
 {
     public function handle(Page $page): Page
     {
-        $page = (new UpdatePageAction())->handle($page, [
+        return (new UpdatePageAction())->handle($page, [
             'state' => State::ARCHIVED,
         ]);
 
-        return $page;
     }
 }

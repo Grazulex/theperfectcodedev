@@ -11,7 +11,9 @@ final class PublishVersionState extends BaseVersionState
 {
     public function archive(): void
     {
-        $this->version = (new ArchiveVersionAction())->handle($this->version);
+        $this->version = (new ArchiveVersionAction())->handle(
+            version: $this->version
+        );
 
         (new NotifyVersionUserAction())->archive(
             version: $this->version,

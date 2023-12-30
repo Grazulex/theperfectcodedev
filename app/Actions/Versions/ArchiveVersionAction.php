@@ -11,10 +11,9 @@ final readonly class ArchiveVersionAction
 {
     public function handle(Version $version): Version
     {
-        $version = (new UpdateVersionAction())->handle($version, [
+        return (new UpdateVersionAction())->handle($version, [
             'state' => State::ARCHIVED,
         ]);
 
-        return $version;
     }
 }
