@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight flex gap-3 align-middle">
-            {{ $page->title }} <div class="text-sm">V.{{ $page->version }}</div>
+            <x-pages.title :page="$page"/>
         </h2>
         <h3 class="pt-4 text-lg font-bold mb-5">
             {{ $page->resume }}
@@ -16,9 +16,7 @@
                     {!! nl2br($page->description) !!}
                     <div class="mt-4">
                         <h4>Code</h4>
-                        <div class="prose lg:prose-l max-w-none mb-8">
-                            {!! Str::markdown($page->code) !!}
-                        </div>
+                        <x-pages.code :code="$page->code"/>
                     </div>
                 </div>
             </div>
@@ -26,9 +24,6 @@
                 <div class="p-6 lg:p-8 bg-white dark:bg-gray-800 dark:bg-gradient-to-bl dark:from-gray-700/50 dark:via-transparent border-b border-gray-200 dark:border-gray-700">
                     <x-users.card :user="$page->user" />
                     <div class="inline-flex flex-wrap items-center gap-3 mt-8 group">
-                        @if ($page->state === \App\Enums\Pages\State::PUBLISHED)
-                            <livewire:pages.published :date="$page->published_at"/>
-                        @endif
                         @if (Auth::check())
                             <livewire:pages.like :user="Auth::user()" :page="$page" :likes_count="$page->likes_count"/>
                             <livewire:pages.followed :user="Auth::user()" :page="$page" :followers_count="$page->followers_count"/>
@@ -45,12 +40,7 @@
                 <div class="p-6 lg:p-8 bg-white dark:bg-gray-800 dark:bg-gradient-to-bl dark:from-gray-700/50 dark:via-transparent border-b border-gray-200 dark:border-gray-700">
                     <h4>Comments</h4>
                     <div class="mt-4">
-                        @foreach ($page->comments as $comment)
-                            <div class="flex flex-col gap-2">
-                                {{ $comment->content }}
-                                <hr>
-                            </div>
-                        @endforeach
+                        <x-pages.comments :page="$page"/>
                     </div>
                 </div>
             </div>

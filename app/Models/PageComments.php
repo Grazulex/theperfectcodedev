@@ -61,13 +61,13 @@ final class PageComments extends Model
         );
     }
 
-    public function master(): belongsTo
+    public function parent(): belongsTo
     {
         return $this->belongsTo(
             related: PageComments::class,
             foreignKey: 'response_id',
             ownerKey: 'id',
-            relation: 'master'
+            relation: 'parent'
         );
     }
 

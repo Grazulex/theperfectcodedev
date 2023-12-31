@@ -74,7 +74,7 @@ it('can create a response', function (): void {
         ->and($page->comments->last()->content)->toBe('This is a response')
         ->and($comment->responses->count())->toBe(1)
         ->and($comment->responses->first()->content)->toBe('This is a response')
-        ->and($response->master->id)->toBe($comment->id)->and($response->master->content)->toBe('This is a comment');
+        ->and($response->parent->id)->toBe($comment->id)->and($response->parent->content)->toBe('This is a comment');
 
 });
 

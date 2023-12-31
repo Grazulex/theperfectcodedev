@@ -21,6 +21,10 @@ final class Card extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.users.card');
+        $userWithCount = User::where('id', $this->user->id)
+            ->withCount(['pages', 'comments' , 'followers', 'likes'])
+            ->first();
+
+        return view('components.users.card', ['userWithCount' => $userWithCount]);
     }
 }

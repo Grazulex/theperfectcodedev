@@ -21,13 +21,13 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => ['web']], function (): void {
     Route::get('/', fn() => view('homepage'))->name('homepage');
-    Route::get('top', TopListController::class)->name('pages.top');
+    Route::get('code/top', TopListController::class)->name('pages.top');
+    Route::get('code/view/{page:slug}', ViewController::class)->name('pages.view');
     Route::group(['middleware' => ['auth']], function (): void {
         Route::group(['prefix' => 'code'], function (): void {
             Route::get('my', MyListController::class)->name('pages.my');
             Route::get('new', fn() => view('pages.new-pages'))->name('pages.new');
             Route::post('store', CreateController::class)->name('pages.store');
-            Route::get('view/{page:slug}', ViewController::class)->name('pages.view');
         });
     });
 });
