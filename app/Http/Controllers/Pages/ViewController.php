@@ -10,9 +10,6 @@ use App\Models\PageComments;
 
 final class ViewController extends Controller
 {
-    /**
-     * Handle the incoming request.
-     */
     public function __invoke(Page $page)
     {
         $page = Page::find($page->id)
@@ -25,6 +22,8 @@ final class ViewController extends Controller
             ->orderBy('created_at', 'desc')
             ->paginate();
 
-        return view('pages.view', ['page' => $page, 'comments' => $comments]);
+        $authUser = (auth()->check()) ? auth()->user() : null;
+
+        return view('pages.view', ['page' => $page, 'comments' => $comments, 'authUser' => $authUser]);
     }
 }

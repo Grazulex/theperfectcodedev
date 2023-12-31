@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\View\Components\Pages;
 
+use App\Enums\Pages\State;
 use App\Models\Page;
 use Closure;
 use Illuminate\Contracts\View\View;
@@ -21,7 +22,8 @@ final class Title extends Component
      */
     public function render(): View|Closure|string
     {
+        $publishedAt = ($this->page->state === State::PUBLISHED) ? $this->page->published_at->shortRelativeDiffForHumans() : null;
 
-        return view('components.pages.title', ['title' => $this->page->title, 'version' => $this->page->version, 'published_at' => $this->page->published_at->shortRelativeDiffForHumans()]);
+        return view('components.pages.title', ['title' => $this->page->title, 'version' => $this->page->version, 'published_at' => $publishedAt]);
     }
 }

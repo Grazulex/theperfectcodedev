@@ -24,13 +24,8 @@
                 <div class="p-6 lg:p-8 bg-white dark:bg-gray-800 dark:bg-gradient-to-bl dark:from-gray-700/50 dark:via-transparent border-b border-gray-200 dark:border-gray-700">
                     <x-users.card :user="$page->user" />
                     <div class="inline-flex flex-wrap items-center gap-3 mt-8 group">
-                        @if (Auth::check())
-                            <livewire:pages.like :user="Auth::user()" :page="$page" :likes_count="$page->likes_count"/>
-                            <livewire:pages.followed :user="Auth::user()" :page="$page" :followers_count="$page->followers_count"/>
-                        @else
-                            <livewire:pages.like :user="Null" :page="$page" :likes_count="$page->likes_count"/>
-                            <livewire:pages.followed :user="Null" :page="$page" :followers_count="$page->followers_count"/>
-                        @endif
+                        <livewire:pages.like :user="$authUser" :page="$page" :likes_count="$page->likes_count"/>
+                        <livewire:pages.followed :user="$authUser" :page="$page" :followers_count="$page->followers_count"/>
                     </div>
                 </div>
             </div>
