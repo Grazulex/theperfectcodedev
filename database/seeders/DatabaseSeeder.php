@@ -22,7 +22,7 @@ final class DatabaseSeeder extends Seeder
     {
         $me = User::factory()->create([
             'name' => 'Admin',
-            'email' => 'jms@grazulex.be',
+            'email' => 'admin@test.com',
             'password' => bcrypt('password'),
             'current_team_id' => 1,
         ]);
