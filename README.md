@@ -9,3 +9,19 @@
 ## Todo
 Find here the [Todo](docs/todo.md) list.
 
+
+## Test data (login)
+
+```
+php artisan migrate:fresh --seed
+```
+
+```
+$me = User::factory()->create([
+'name' => 'Admin',
+'email' => 'admin@test.com',
+'password' => bcrypt('password'),
+'current_team_id' => 1,
+]);
+```
+
