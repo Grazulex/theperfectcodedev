@@ -25,5 +25,10 @@ Back to [README](../README.md)
   - [X] Check Model file
   - [X] Create Actions file
 
+### To fix
+- [ ] Fix Update Page - tags fields
+- [ ] Fix Update Page - slug and boolean
+- [ ] Fix Update Page - can edit if no version
+
 
 ### Frontend

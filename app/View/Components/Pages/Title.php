@@ -22,7 +22,7 @@ final class Title extends Component
      */
     public function render(): View|Closure|string
     {
-        $publishedAt = ($this->page->state === State::PUBLISHED) ? $this->page->published_at->shortRelativeDiffForHumans() : null;
+        $publishedAt = (State::PUBLISHED === $this->page->state) ? $this->page->published_at->shortRelativeDiffForHumans() : null;
 
         return view('components.pages.title', ['title' => $this->page->title, 'version' => $this->page->version, 'published_at' => $publishedAt]);
     }

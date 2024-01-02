@@ -5,7 +5,10 @@ declare(strict_types=1);
 use App\Http\Controllers\Pages\CreateController;
 use App\Http\Controllers\Pages\MyListController;
 use App\Http\Controllers\Pages\TopListController;
+use App\Http\Controllers\Pages\UpdateController;
+use App\Http\Controllers\Pages\UpdateContrtoller;
 use App\Http\Controllers\Pages\ViewController;
+use App\Models\Page;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,6 +31,8 @@ Route::group(['middleware' => ['web']], function (): void {
             Route::get('my', MyListController::class)->name('pages.my');
             Route::get('new', fn() => view('pages.new-pages'))->name('pages.new');
             Route::post('store', CreateController::class)->name('pages.store');
+            Route::get('edit/{page:slug}', fn(Page $page) => view('pages.edit-pages',['page'=>$page]))->name('pages.edit');
+            Route::post('edit/{page:slug}', action: UpdateController::class)->name('pages.update');
         });
     });
 });

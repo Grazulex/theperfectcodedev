@@ -12,10 +12,7 @@ final class ViewController extends Controller
 {
     public function __invoke(Page $page)
     {
-        $page = Page::find($page->id)
-            ->withCount(['likes','followers', 'comments'])
-            ->with(['user', 'comments.user'])
-            ->first();
+        $page->loadCount(['likes','followers', 'comments']);
 
         $comments = PageComments::where('page_id', $page->id)
             ->with(['user'])

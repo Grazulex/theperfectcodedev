@@ -18,9 +18,9 @@
                 </div>
                 @if (Auth::check())
                     <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                        <a class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" href="{{ route('pages.new') }}" :active="request()->routeIs('pages.new')">
-                            +
-                        </a>
+                        <x-nav-link href="{{ route('pages.new') }}" :active="request()->routeIs('pages.new')">
+                            {{ __('New') }}
+                        </x-nav-link>
                     </div>
                 @endif
 

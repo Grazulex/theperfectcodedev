@@ -11,8 +11,21 @@ const editor = new Editor({
     placeholder: 'Write your code here.',
 })
 
-document.querySelector('#createPageForm').addEventListener('submit', e => {
-    e.preventDefault();
-    document.querySelector('#code').value = editor.getMarkdown();
-    e.target.submit();
-});
+if (document.querySelector('#createPageForm')) {
+    document.querySelector('#createPageForm').addEventListener('submit', e => {
+        e.preventDefault();
+        document.querySelector('#code').value = editor.getMarkdown();
+        e.target.submit();
+    });
+}
+
+if (document.querySelector('#updatePageForm')) {
+    editor.setMarkdown(document.querySelector('#oldCode').value);
+
+    document.querySelector('#updatePageForm').addEventListener('submit', e => {
+        e.preventDefault();
+        document.querySelector('#code').value = editor.getMarkdown();
+        e.target.submit();
+    });
+}
+

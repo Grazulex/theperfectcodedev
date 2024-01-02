@@ -5,8 +5,10 @@ declare(strict_types=1);
 namespace App\Providers;
 
 use App\Models\ConnectedAccount;
+use App\Models\Page;
 use App\Models\Team;
 use App\Policies\ConnectedAccountPolicy;
+use App\Policies\PagePolicy;
 use App\Policies\TeamPolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
@@ -20,6 +22,7 @@ final class AuthServiceProvider extends ServiceProvider
     protected $policies = [
         Team::class => TeamPolicy::class,
         ConnectedAccount::class => ConnectedAccountPolicy::class,
+        Page::class => PagePolicy::class,
     ];
 
     /**
