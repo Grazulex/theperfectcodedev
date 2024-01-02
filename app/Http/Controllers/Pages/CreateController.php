@@ -17,9 +17,9 @@ final class CreateController extends Controller
     public function __invoke(CreatePageRequest $request): RedirectResponse
     {
         $data = $request->validated();
-        $data['user_id'] = $request->user()->id;
 
         (new CreatePageAction())->handle(
+            user: $request->user(),
             attributes: $data
         );
 

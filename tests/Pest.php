@@ -65,6 +65,7 @@ function makePage(bool $is_accept_version = false): Page
 {
     $user = makeUser();
     return (new CreatePageAction())->handle(
+        user: $user,
         attributes: [
             'title' => 'test',
             'description' => 'test',

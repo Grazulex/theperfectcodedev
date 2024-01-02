@@ -11,8 +11,7 @@ final readonly class DeleteCommentAction
     public function handle(PageComments $comment): PageComments
     {
         $comment->delete();
-        $comment->refresh();
 
-        return $comment;
+        return $comment->refresh();
     }
 }

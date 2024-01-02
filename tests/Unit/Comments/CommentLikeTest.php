@@ -10,6 +10,7 @@ it('like a comment', function (): void {
     Queue::fake();
     $page = makePage();
     $comment = (new CreateCommentAction())->handle(
+        page: $page,
         attributes : [
             'page_id' => $page->id,
             'user_id' => $page->user->id,
@@ -29,6 +30,7 @@ it('unlike a comment', function (): void {
     Queue::fake();
     $page = makePage();
     $comment = (new CreateCommentAction())->handle(
+        page: $page,
         attributes : [
             'page_id' => $page->id,
             'user_id' => $page->user->id,

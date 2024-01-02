@@ -15,6 +15,7 @@ use App\Notifications\Versions\RefuseNotification;
 it('create version without auto accept publishing', function (): void {
     Notification::fake();
     $page = makePage();
+    $page->status()->publish();
 
     $version = (new CreateVersionAction())->handle(
         page : $page,
@@ -27,7 +28,7 @@ it('create version without auto accept publishing', function (): void {
     );
 
     expect($page->followers()->where('user_id', $page->user->id)->exists())->toBe(true)
-        ->and($page->state)->toBe(PageState::DRAFT)
+        ->and($page->state)->toBe(PageState::PUBLISHED)
         ->and($version->state)->toBe(VersionState::DRAFT)
         ->and($page->version)->toBe(1)
         ->and($page->description)->toBe('test')

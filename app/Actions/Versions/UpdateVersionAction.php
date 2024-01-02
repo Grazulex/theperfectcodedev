@@ -11,8 +11,7 @@ final readonly class UpdateVersionAction
     public function handle(Version $version, array $attributes): Version
     {
         $version->update($attributes);
-        $version->refresh();
 
-        return $version;
+        return $version->refresh();
     }
 }

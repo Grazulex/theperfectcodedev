@@ -11,8 +11,7 @@ final readonly class DeletePageAction
     public function handle(Page $page): Page
     {
         $page->delete();
-        $page->refresh();
 
-        return $page;
+        return $page->refresh();
     }
 }

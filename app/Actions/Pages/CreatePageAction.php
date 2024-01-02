@@ -4,28 +4,16 @@ declare(strict_types=1);
 
 namespace App\Actions\Pages;
 
-use App\Enums\Pages\State;
 use App\Models\Page;
-use Illuminate\Support\Str;
+use App\Models\User;
 
 final readonly class CreatePageAction
 {
-    public function handle(array $attributes): Page
+    public function handle(User $user, array $attributes): Page
     {
-        $attributes['state'] = State::DRAFT;
-        $attributes['version'] = 1;
-        $attributes['slug'] = Str::slug($attributes['title']);
+        $page =  $user->pages()->create($attributes);
+        $user->followers()->attach($page->id);
 
-        $page =  Page::create($attributes);
-        $page->followers()->attach($page->user_id);
-
-        (new NotifyPageUserAction())->draft(
-            page: $page,
-            user: $page->user
-        );
-
-        $page->refresh();
-
-        return $page;
+        return $page->refresh();
     }
 }

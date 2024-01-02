@@ -11,8 +11,7 @@ final readonly class DeleteVersionAction
     public function handle(Version $version): Version
     {
         $version->delete();
-        $version->refresh();
 
-        return $version;
+        return $version->refresh();
     }
 }

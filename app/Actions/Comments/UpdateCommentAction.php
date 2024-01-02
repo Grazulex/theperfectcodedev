@@ -11,8 +11,7 @@ final readonly class UpdateCommentAction
     public function handle(PageComments $comment, array $attributes): PageComments
     {
         $comment->update($attributes);
-        $comment->refresh();
 
-        return $comment;
+        return $comment->refresh();
     }
 }

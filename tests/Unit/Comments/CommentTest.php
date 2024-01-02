@@ -14,11 +14,14 @@ it('can create a comment', function (): void {
     Notification::fake();
     $page = makePage();
 
-    $comment = (new CreateCommentAction())->handle([
-        'user_id' => $page->user->id,
-        'page_id' => $page->id,
-        'content' => 'This is a comment',
-    ]);
+    $comment = (new CreateCommentAction())->handle(
+        page: $page,
+        attributes: [
+            'user_id' => $page->user->id,
+            'page_id' => $page->id,
+            'content' => 'This is a comment',
+        ]
+    );
 
     expect($comment->user_id)->toBe($page->user->id)
         ->and($comment->response_id)->toBeNull()
@@ -48,6 +51,7 @@ it('can create a comment', function (): void {
 it('can create a response', function (): void {
     $page = makePage();
     $comment = (new CreateCommentAction())->handle(
+        page: $page,
         attributes : [
             'page_id' => $page->id,
             'user_id' => $page->user->id,
@@ -56,6 +60,7 @@ it('can create a response', function (): void {
     );
 
     $response = (new CreateCommentAction())->handle(
+        page: $page,
         attributes: [
             'user_id' => $page->user->id,
             'page_id' => $page->id,
@@ -82,6 +87,7 @@ it('update comment', function (): void {
     Notification::fake();
     $page = makePage();
     $comment = (new CreateCommentAction())->handle(
+        page: $page,
         attributes : [
             'page_id' => $page->id,
             'user_id' => $page->user->id,
@@ -109,6 +115,7 @@ it('can refuse a comment', function (): void {
     Notification::fake();
     $page = makePage();
     $comment = (new CreateCommentAction())->handle(
+        page: $page,
         attributes : [
             'page_id' => $page->id,
             'user_id' => $page->user->id,
@@ -138,6 +145,7 @@ it('can delete a comment', function (): void {
     Notification::fake();
     $page = makePage();
     $comment = (new CreateCommentAction())->handle(
+        page: $page,
         attributes : [
             'page_id' => $page->id,
             'user_id' => $page->user->id,
@@ -169,6 +177,7 @@ it(/**
  */ 'none existing state to delete', function (): void {
     $page = makePage();
     $comment = (new CreateCommentAction())->handle(
+        page: $page,
         attributes : [
             'page_id' => $page->id,
             'user_id' => $page->user->id,
