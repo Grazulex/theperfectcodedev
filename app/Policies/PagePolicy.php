@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Policies;
 
+use App\Enums\Versions\State;
 use App\Models\Page;
 use App\Models\User;
 
@@ -38,7 +39,7 @@ final class PagePolicy
      */
     public function update(User $user, Page $page): bool
     {
-        return $user->id === $page->user_id;
+        return $user->id === $page->user_id && 0 === $page->versions()->where('state', State::PUBLISHED)->count();
     }
 
     /**
