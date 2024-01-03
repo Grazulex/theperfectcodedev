@@ -65,6 +65,8 @@ it('create version with auto accept publishing', function (): void {
         is_accept_version: true
     );
 
+    $page->status()->publish();
+
     $version = (new CreateVersionAction())->handle(
         page : $page,
         attributes: [
@@ -74,9 +76,10 @@ it('create version with auto accept publishing', function (): void {
             'user_id' => $page->user->id,
         ]
     );
+    $page->refresh();
 
     expect($page->followers()->where('user_id', $page->user->id)->exists())->toBe(true)
-        ->and($page->state)->toBe(PageState::DRAFT)
+        ->and($page->state)->toBe(PageState::PUBLISHED)
         ->and($version->state)->toBe(VersionState::PUBLISHED)
         ->and($page->version)->toBe(2)
         ->and($page->description)->toBe('test version')

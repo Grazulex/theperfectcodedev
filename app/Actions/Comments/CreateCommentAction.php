@@ -11,7 +11,21 @@ final readonly class CreateCommentAction
 {
     public function handle(Page $page, array $attributes): PageComments
     {
-        return $page->comments()->create($attributes);
+        $pageComments = $page->comments()->create($attributes);
+
+        (new NotifyCommentUserAction())->publish(
+            comment: $pageComments,
+            user: $pageComments->user,
+        );
+
+        foreach ($pageComments->page->followers as $follower) {
+            (new NotifyCommentUserAction())->publish(
+                comment: $pageComments,
+                user: $follower,
+            );
+        }
+
+        return $pageComments->refresh();
     }
 
 }

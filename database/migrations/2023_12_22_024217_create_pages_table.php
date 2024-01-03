@@ -24,7 +24,7 @@ return new class () extends Migration {
 
             $table->integer('version')->default(1);
 
-            $table->string('state')->default(State::DRAFT->value);
+            $table->string('state')->default(State::DRAFT);
 
             $table->timestamp('published_at')->nullable();
 

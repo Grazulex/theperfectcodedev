@@ -4,12 +4,6 @@ declare(strict_types=1);
 
 namespace App\Providers;
 
-use App\Models\Page;
-use App\Models\PageComments;
-use App\Models\Version;
-use App\Observers\PageCommentsObserver;
-use App\Observers\PageObserver;
-use App\Observers\VersionObserver;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -30,12 +24,7 @@ final class EventServiceProvider extends ServiceProvider
     /**
      * Register any events for your application.
      */
-    public function boot(): void
-    {
-        Page::observe(PageObserver::class);
-        Version::observe(VersionObserver::class);
-        PageComments::observe(PageCommentsObserver::class);
-    }
+    public function boot(): void {}
 
     /**
      * Determine if events and listeners should be automatically discovered.

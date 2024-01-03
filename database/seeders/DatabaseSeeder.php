@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Enums\Pages\State;
+use App\Enums\Versions\State as VersionState;
 use App\Models\Page;
 use App\Models\PageComments;
 use App\Models\Team;
@@ -39,7 +41,10 @@ final class DatabaseSeeder extends Seeder
 
         foreach (User::all() as $user) {
             Page::factory(25)->create(
-                ['user_id' => $user->id]
+                [
+                    'user_id' => $user->id,
+                    'state' => State::DRAFT
+                ]
             );
         }
         $pages = Page::all();
@@ -50,6 +55,7 @@ final class DatabaseSeeder extends Seeder
             Version::factory(10)->create([
                 'page_id' => $page->id,
                 'user_id' => User::all()->random(rand(1, count(User::all())))->pluck('id')->first(),
+                'state' => VersionState::DRAFT
             ]);
             foreach ($page->versions as $version) {
                 if ( ! $version->page->is_accept_version) {

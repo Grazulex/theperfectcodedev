@@ -12,6 +12,7 @@ use App\StateMachines\Pages\ArchivedPageState;
 use App\StateMachines\Pages\DraftPageState;
 use App\StateMachines\Pages\PublishedPageState;
 use App\StateMachines\Pages\RefusedPageState;
+use App\Traits\Sluggable;
 use Carbon\CarbonInterface;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -45,6 +46,7 @@ use InvalidArgumentException;
 final class Page extends Model
 {
     use HasFactory;
+    use Sluggable;
     use SoftDeletes;
 
     protected $fillable = [
@@ -70,10 +72,7 @@ final class Page extends Model
         'is_accept_version' => 'boolean',
     ];
 
-    public function getRouteKeyName(): string
-    {
-        return 'slug';
-    }
+    protected string $sluggable = 'title';
 
     public function user(): belongsTo
     {

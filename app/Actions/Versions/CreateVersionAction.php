@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Actions\Versions;
 
+use App\Actions\Pages\NotifyPageUserAction;
 use App\Models\Page;
 use App\Models\Version;
 
@@ -13,7 +14,21 @@ final readonly class CreateVersionAction
     {
         $version = $page->versions()->create($attributes);
 
-        $page->refresh();
+        if ($page->is_accept_version) {
+            $version = (new PromoteVersionAction())->handle(
+                version: $version,
+                user: $page->user
+            );
+        } else {
+            (new NotifyVersionUserAction())->draft(
+                version: $version,
+                user: $version->user
+            );
+            (new NotifyPageUserAction())->newVersion(
+                page :$version->page,
+                user: $version->page->user
+            );
+        }
 
         return $version->refresh();
     }

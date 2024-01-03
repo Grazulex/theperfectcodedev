@@ -19,7 +19,7 @@ return new class () extends Migration {
 
             $table->foreignId('response_id')->nullable()->constrained('page_comments')->onDelete('cascade');
 
-            $table->string('state')->default(\App\Enums\Comments\State::PUBLISHED->value);
+            $table->string('state')->default(\App\Enums\Comments\State::PUBLISHED);
 
             $table->softDeletes();
             $table->timestamps();
