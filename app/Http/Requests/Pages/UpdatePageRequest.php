@@ -30,8 +30,8 @@ final class UpdatePageRequest extends FormRequest
             'description' => ['required', 'string'],
             'code' => ['required', 'string'],
             'tags' => ['required','array'],
-            'is_public' => ['boolean'],
-            'is_accept_version' => ['boolean'],
+            'is_public' => ['integer', 'min:1', 'nullable'],
+            'is_accept_version' => ['integer', 'min:1', 'nullable'],
         ];
     }
 }

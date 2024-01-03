@@ -61,7 +61,7 @@ function makeUser(): User
     return $user;
 }
 
-function makePage(bool $is_accept_version = false): Page
+function makePage(int $is_accept_version = 0): Page
 {
     $user = makeUser();
     return (new CreatePageAction())->handle(

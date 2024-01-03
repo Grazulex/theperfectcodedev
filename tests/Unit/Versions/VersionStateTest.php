@@ -62,7 +62,7 @@ it('create version without auto accept publishing', function (): void {
 it('create version with auto accept publishing', function (): void {
     Notification::fake();
     $page = makePage(
-        is_accept_version: true
+        is_accept_version: 1
     );
 
     $page->status()->publish();

@@ -28,8 +28,8 @@ return new class () extends Migration {
 
             $table->timestamp('published_at')->nullable();
 
-            $table->boolean('is_public')->default(true);
-            $table->boolean('is_accept_version')->default(false);
+            $table->smallInteger('is_public')->default(1);
+            $table->smallInteger('is_accept_version')->default(1);
 
             $table->softDeletes();
             $table->timestamps();

@@ -68,8 +68,8 @@ final class Page extends Model
         'tags' => 'array',
         'state' => State::class,
         'published_at' => 'datetime',
-        'is_public' => 'boolean',
-        'is_accept_version' => 'boolean',
+        'is_public' => 'int',
+        'is_accept_version' => 'int',
     ];
 
     protected string $sluggable = 'title';

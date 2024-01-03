@@ -31,8 +31,8 @@ final class PageFactory extends Factory
             'version' => 1,
             'state' => $state,
             'published_at' => $publishedAt,
-            'is_public' => $this->faker->boolean(90),
-            'is_accept_version' => $this->faker->boolean(50),
+            'is_public' => $this->faker->randomElement([0,1]),
+            'is_accept_version' => $this->faker->randomElement([0,1]),
         ];
     }
 }
