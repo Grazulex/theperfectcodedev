@@ -47,6 +47,6 @@ final readonly class PromoteVersionAction
             user: $version->user
         );
 
-        return $version;
+        return $version->refresh();
     }
 }

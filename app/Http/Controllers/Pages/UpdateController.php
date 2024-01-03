@@ -24,6 +24,12 @@ final class UpdateController extends Controller
         }
 
         $data = $request->validated();
+        if ((1 === (int)$page->is_public) && ( ! array_key_exists('is_public', $data))) {
+            $data['is_public'] = 0;
+        }
+        if ((1 === (int)$page->is_accept_version) && ( ! array_key_exists('is_accept_version', $data))) {
+            $data['is_accept_version'] = 0;
+        }
 
         (new UpdatePageAction())->handle(
             page: $page,

@@ -66,7 +66,6 @@ it('create version with auto accept publishing', function (): void {
     );
 
     $page->status()->publish();
-
     $version = (new CreateVersionAction())->handle(
         page : $page,
         attributes: [

@@ -35,8 +35,8 @@ use InvalidArgumentException;
  * @property State $state
  * @property null|CarbonInterface $published_at
  * @property User $user
- * @property bool $is_public
- * @property bool $is_accept_version
+ * @property int $is_public
+ * @property int $is_accept_version
  * @property Collection<Version> $versions
  * @property Collection<User> $likes
  * @property Collection<PageComments> $comments

@@ -27,7 +27,7 @@ Back to [README](../README.md)
 
 ### To fix
 - [ ] Fix Update Page - tags fields not update or create :-(
-- [ ] Fix Update Page - bad management ~~of slug~~ and boolean
+- [X] Fix Update Page - bad management ~~of slug~~ and boolean
 - [X] Fix Update Page - policies can edit if no version
 
 
