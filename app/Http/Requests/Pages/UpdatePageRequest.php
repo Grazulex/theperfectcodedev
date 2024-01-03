@@ -14,7 +14,7 @@ final class UpdatePageRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return (auth()->user()->can('update', $this->route('page')));
+        return true;
     }
 
     /**

@@ -9,12 +9,19 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Pages\UpdatePageRequest;
 use App\Models\Page;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Gate;
 
 final class UpdateController extends Controller
 {
     public function __invoke(UpdatePageRequest $request, Page $page): RedirectResponse
     {
-        $this->authorize('update', $page);
+        $response = Gate::inspect('update', $page);
+        if ($response->denied()) {
+            session()->flash('flash.banner', $response->message());
+            session()->flash('flash.bannerStyle', 'danger');
+
+            return redirect()->route('pages.my');
+        }
 
         $data = $request->validated();
 

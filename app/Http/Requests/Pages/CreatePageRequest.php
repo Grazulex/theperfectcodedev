@@ -4,14 +4,13 @@ declare(strict_types=1);
 
 namespace App\Http\Requests\Pages;
 
-use App\Models\Page;
 use Illuminate\Foundation\Http\FormRequest;
 
 final class CreatePageRequest extends FormRequest
 {
     public function authorize(): bool
     {
-        return $this->user()->can('create', Page::class);
+        return true;
     }
 
     public function rules(): array

@@ -7,6 +7,7 @@ namespace App\Policies;
 use App\Enums\Versions\State;
 use App\Models\Page;
 use App\Models\User;
+use Illuminate\Auth\Access\Response;
 
 final class PagePolicy
 {
@@ -37,9 +38,17 @@ final class PagePolicy
     /**
      * Determine whether the user can update the model.
      */
-    public function update(User $user, Page $page): bool
+    public function update(User $user, Page $page): Response
     {
-        return $user->id === $page->user_id && 0 === $page->versions()->where('state', State::PUBLISHED)->count();
+        ($user->id === $page->user_id) ? $response = null : $response = 'You are not the owner of this page.';
+        if (null === $response) {
+            ($page->versions()->where('state', State::PUBLISHED)->count() > 0) ? $response = 'You cannot edit a published page. You need to create a new version.' : $response = null;
+        }
+        if (null === $response) {
+            return Response::allow();
+        }
+        return Response::deny($response);
+
     }
 
     /**
