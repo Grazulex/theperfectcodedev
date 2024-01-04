@@ -39,6 +39,6 @@ final class UpdateController extends Controller
         session()->flash('flash.banner', 'Code updated successfully');
         session()->flash('flash.bannerStyle', 'success');
 
-        return redirect()->route('pages.my');
+        return redirect()->route('pages.view', $page->slug);
     }
 }

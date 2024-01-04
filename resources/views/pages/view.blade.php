@@ -27,6 +27,13 @@
                         <livewire:pages.like :user="$authUser" :page="$page" :likes_count="$page->likes_count"/>
                         <livewire:pages.followed :user="$authUser" :page="$page" :followers_count="$page->followers_count"/>
                     </div>
+                    @can('update', $page)
+                        <div class="mt-8">
+                            <x-action-link href="{{ route('pages.edit', ['page'=>$page]) }}">
+                                {{ __('Edit') }}
+                            </x-action-link>
+                        </div>
+                    @endcan
                 </div>
             </div>
         </div>
