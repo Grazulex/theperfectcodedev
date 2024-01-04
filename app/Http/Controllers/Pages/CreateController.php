@@ -10,7 +10,6 @@ use App\Http\Requests\Pages\CreatePageRequest;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
-
 final class CreateController extends Controller
 {
     /**

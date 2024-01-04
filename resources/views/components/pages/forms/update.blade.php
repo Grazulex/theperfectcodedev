@@ -28,7 +28,7 @@
     </div>
 
     <div class="mt-4">
-        <livewire:forms.tags />
+        <livewire:forms.tags :tag-input="$page->tags" />
     </div>
 
     <div class="block mt-4">

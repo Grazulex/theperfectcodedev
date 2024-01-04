@@ -4,7 +4,7 @@
         <input id="tagsInput" type="text"  aria-describedby="tags-explanation" class="block w-full mt-1 border-gray-300 rounded-md shadow-sm dark:bg-gray-700 dark:text-gray-200 dark:border-gray-700 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" wire:model.blur="tagInput">
         <ul class="flex flex-wrap">
             @foreach ($tagsSelected as $index => $tag)
-                <input type="hidden" name="tags[]" wire:model="tagsSelected.{{$index}}">
+                <input type="hidden" name="tags[]" wire:model="tagsSelected.{{ $index }}">
                 <li class="bg-gray-200 rounded-full py-1 px-3 text-sm mr-2 mb-2">
                     {{ $tag }}
                     <button class="ml-1" wire:click.prevent="removeTag({{ $index }})">x</button>

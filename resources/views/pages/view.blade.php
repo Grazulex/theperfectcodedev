@@ -6,6 +6,9 @@
         <h3 class="pt-4 text-lg font-bold mb-5">
             {{ $page->resume }}
         </h3>
+        <div class="pt-4 text-lg font-bold mb-5">
+            <livewire:pages.tags :tags="$page->tags"/>
+        </div>
     </x-slot>
 
     <div class="py-12">

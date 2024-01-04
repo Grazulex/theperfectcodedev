@@ -26,7 +26,7 @@ Back to [README](../README.md)
     - [X] Create Actions file
 
 ### To fix
-- [ ] Fix Update Page - tags fields not update or create :-(
+- [X] Fix Update Page - tags fields not update or create :-(
 - [X] Fix Update Page - bad management ~~of slug~~ and boolean
 - [X] Fix Update Page - policies can edit if no version
 
