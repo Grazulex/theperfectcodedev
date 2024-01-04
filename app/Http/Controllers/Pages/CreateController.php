@@ -8,6 +8,8 @@ use App\Actions\Pages\CreatePageAction;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Pages\CreatePageRequest;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
+
 
 final class CreateController extends Controller
 {

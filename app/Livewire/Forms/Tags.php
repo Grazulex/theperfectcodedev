@@ -11,7 +11,7 @@ use Livewire\Component;
 
 final class Tags extends Component
 {
-    public $tags = [];
+    public $tagsSelected = [];
     public $tagInput = '';
 
     public function updated(): void
@@ -20,18 +20,17 @@ final class Tags extends Component
 
         foreach ($tagsToAdd as $tag) {
             $tag = trim($tag);
-            if ('' !== $tag && ! in_array($tag, $this->tags)) {
-                $this->tags[] = $tag;
+            if ('' !== $tag && ! in_array($tag, $this->tagsSelected)) {
+                $this->tagsSelected[] = $tag;
             }
         }
-
         $this->tagInput = '';
     }
 
     public function removeTag($index): void
     {
-        unset($this->tags[$index]);
-        $this->tags = array_values($this->tags);
+        unset($this->tagsSelected[$index]);
+        //$this->tagsSelected = $this->tagsSelected;
     }
 
     public function render(): View|Factory|Application
