@@ -56,7 +56,7 @@ final class Like extends Component
 
     private function dispatchLikeJob(): void
     {
-        ProcessLike::dispatch($this->page, $this->user);
+        ProcessLike::dispatch($this->page, $this->user)->onQueue('likes-queue');
     }
 
 }

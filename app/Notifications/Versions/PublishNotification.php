@@ -21,6 +21,13 @@ final class PublishNotification extends Notification implements ShouldQueue
         public Version $version
     ) {}
 
+    public function viaQueues(): array
+    {
+        return [
+            'mail' => 'mail-queue',
+        ];
+    }
+
     /**
      * Get the notification's delivery channels.
      *

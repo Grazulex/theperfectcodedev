@@ -20,6 +20,13 @@ final class DeleteNotification extends Notification implements ShouldQueue
         public string $pageTitle
     ) {}
 
+    public function viaQueues(): array
+    {
+        return [
+            'mail' => 'mail-queue',
+        ];
+    }
+
     /**
      * Get the notification's delivery channels.
      *

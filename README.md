@@ -25,3 +25,12 @@ $me = User::factory()->create([
 ]);
 ```
 
+
+## Queues
+
+./artisan queue:work --queue=mail-queue,likes-queue,follows-queue --tries=3 --timeout=90
+
+- mail-queue
+- likes-queue
+- follows-queue
+

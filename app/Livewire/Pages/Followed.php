@@ -56,6 +56,6 @@ final class Followed extends Component
 
     private function dispatchFollowJob(): void
     {
-        ProcessFollow::dispatch($this->page, $this->user);
+        ProcessFollow::dispatch($this->page, $this->user)->onQueue('follows-queue');
     }
 }

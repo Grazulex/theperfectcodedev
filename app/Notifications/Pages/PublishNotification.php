@@ -17,7 +17,16 @@ final class PublishNotification extends Notification implements ShouldQueue
     /**
      * Create a new notification instance.
      */
-    public function __construct(public Page $page) {}
+    public function __construct(
+        public Page $page
+    ) {}
+
+    public function viaQueues(): array
+    {
+        return [
+            'mail' => 'mail-queue',
+        ];
+    }
 
     /**
      * Get the notification's delivery channels.
