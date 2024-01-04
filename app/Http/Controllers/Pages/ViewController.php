@@ -21,6 +21,6 @@ final class ViewController extends Controller
 
         $authUser = (auth()->check()) ? auth()->user() : null;
 
-        return view('pages.view', ['page' => $page, 'comments' => $comments, 'authUser' => $authUser]);
+        return view('pages.view-pages', ['page' => $page, 'comments' => $comments, 'authUser' => $authUser]);
     }
 }

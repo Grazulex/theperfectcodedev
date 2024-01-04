@@ -36,6 +36,12 @@
                                 {{ __('Edit') }}
                             </x-action-link>
                         </div>
+                    @else
+                        <div class="mt-8">
+                            <x-action-link href="{{ route('pages.edit', ['page'=>$page]) }}" class="bg-emerald-600">
+                                {{ __('New version') }}
+                            </x-action-link>
+                        </div>
                     @endcan
                 </div>
             </div>
