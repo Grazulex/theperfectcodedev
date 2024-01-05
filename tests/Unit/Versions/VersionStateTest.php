@@ -6,24 +6,27 @@ use App\Actions\Versions\CreateVersionAction;
 use App\Enums\Pages\State as PageState;
 use App\Enums\Versions\State as VersionState;
 use App\Exceptions\VersionNoStateException;
+use App\Models\User;
 use App\Notifications\Pages\NewVersionNotification;
 use App\Notifications\Versions\ArchiveNotification;
 use App\Notifications\Versions\DeleteNotification;
 use App\Notifications\Versions\DraftNotification;
+use App\Notifications\Versions\PublishNotification;
 use App\Notifications\Versions\RefuseNotification;
 
 it('create version without auto accept publishing', function (): void {
     Notification::fake();
+    $user = User::factory()->create();
     $page = makePage();
     $page->status()->publish();
 
     $version = (new CreateVersionAction())->handle(
+        user: $user,
         page : $page,
         attributes: [
             'page_id' => $page->id,
             'description' => 'test version',
             'code' => 'test version',
-            'user_id' => $page->user->id,
         ]
     );
 
@@ -35,9 +38,9 @@ it('create version without auto accept publishing', function (): void {
         ->and($page->versions()->count())->toBe(1)
         ->and($page->followers()->count())->toBe(1);
 
-    Notification::assertSentTo($page->user, DraftNotification::class, function ($notification, $channels) use ($page) {
+    Notification::assertSentTo($user, DraftNotification::class, function ($notification, $channels) use ($version, $user) {
         $this->assertContains('mail', $channels);
-        $mailNotification = (object)$notification->toMail($page->user);
+        $mailNotification = (object)$notification->toMail($user);
         $this->assertEquals('Draft Notification', $mailNotification->subject);
         $this->assertEquals('The introduction to the notification.', $mailNotification->introLines[0]);
         $this->assertEquals('Thank you for using our application!', $mailNotification->outroLines[0]);
@@ -46,10 +49,10 @@ it('create version without auto accept publishing', function (): void {
 
         return true;
     });
-    Notification::assertSentTo($version->user, DraftNotification::class, function ($notification, $channels) use ($version) {
+    Notification::assertSentTo($page->user, NewVersionNotification::class, function ($notification, $channels) use ($page) {
         $this->assertContains('mail', $channels);
-        $mailNotification = (object)$notification->toMail($version->user);
-        $this->assertEquals('Draft Notification', $mailNotification->subject);
+        $mailNotification = (object)$notification->toMail($page->user);
+        $this->assertEquals('New Version Notification', $mailNotification->subject);
         $this->assertEquals('The introduction to the notification.', $mailNotification->introLines[0]);
         $this->assertEquals('Thank you for using our application!', $mailNotification->outroLines[0]);
         $this->assertEquals('Notification Action', $mailNotification->actionText);
@@ -61,18 +64,19 @@ it('create version without auto accept publishing', function (): void {
 
 it('create version with auto accept publishing', function (): void {
     Notification::fake();
+    $user = User::factory()->create();
     $page = makePage(
         is_accept_version: 1
     );
 
     $page->status()->publish();
     $version = (new CreateVersionAction())->handle(
+        user: $user,
         page : $page,
         attributes: [
             'page_id' => $page->id,
             'description' => 'test version',
             'code' => 'test version',
-            'user_id' => $page->user->id,
         ]
     );
     $page->refresh();
@@ -85,10 +89,21 @@ it('create version with auto accept publishing', function (): void {
         ->and($page->versions()->count())->toBe(1)
         ->and($page->followers()->count())->toBe(1);
 
-    Notification::assertSentTo($version->user, NewVersionNotification::class, function ($notification, $channels) use ($version) {
+    Notification::assertSentTo($page->user, NewVersionNotification::class, function ($notification, $channels) use ($page) {
         $this->assertContains('mail', $channels);
-        $mailNotification = (object)$notification->toMail($version->user);
+        $mailNotification = (object)$notification->toMail($page->user);
         $this->assertEquals('New Version Notification', $mailNotification->subject);
+        $this->assertEquals('The introduction to the notification.', $mailNotification->introLines[0]);
+        $this->assertEquals('Thank you for using our application!', $mailNotification->outroLines[0]);
+        $this->assertEquals('Notification Action', $mailNotification->actionText);
+        $this->assertEquals($mailNotification->actionUrl, url('/'));
+
+        return true;
+    });
+    Notification::assertSentTo($user, PublishNotification::class, function ($notification, $channels) use ($version, $user) {
+        $this->assertContains('mail', $channels);
+        $mailNotification = (object)$notification->toMail($user);
+        $this->assertEquals('Publish Notification', $mailNotification->subject);
         $this->assertEquals('The introduction to the notification.', $mailNotification->introLines[0]);
         $this->assertEquals('Thank you for using our application!', $mailNotification->outroLines[0]);
         $this->assertEquals('Notification Action', $mailNotification->actionText);
@@ -113,19 +128,43 @@ it('create version with auto accept publishing', function (): void {
 
 it('create version without auto accept publishing and publish it', function (): void {
     Notification::fake();
+    $user = User::factory()->create();
     $page = makePage();
 
     $page->status()->publish();
 
     $version = (new CreateVersionAction())->handle(
+        user: $user,
         page : $page,
         attributes: [
             'page_id' => $page->id,
             'description' => 'test version',
             'code' => 'test version',
-            'user_id' => $page->user->id,
         ]
     );
+
+    Notification::assertSentTo($user, DraftNotification::class, function ($notification, $channels) use ($version, $user) {
+        $this->assertContains('mail', $channels);
+        $mailNotification = (object)$notification->toMail($user);
+        $this->assertEquals('Draft Notification', $mailNotification->subject);
+        $this->assertEquals('The introduction to the notification.', $mailNotification->introLines[0]);
+        $this->assertEquals('Thank you for using our application!', $mailNotification->outroLines[0]);
+        $this->assertEquals('Notification Action', $mailNotification->actionText);
+        $this->assertEquals($mailNotification->actionUrl, url('/'));
+
+        return true;
+    });
+    Notification::assertSentTo($page->user, NewVersionNotification::class, function ($notification, $channels) use ($page) {
+        $this->assertContains('mail', $channels);
+        $mailNotification = (object)$notification->toMail($page->user);
+        $this->assertEquals('New Version Notification', $mailNotification->subject);
+        $this->assertEquals('The introduction to the notification.', $mailNotification->introLines[0]);
+        $this->assertEquals('Thank you for using our application!', $mailNotification->outroLines[0]);
+        $this->assertEquals('Notification Action', $mailNotification->actionText);
+        $this->assertEquals($mailNotification->actionUrl, url('/'));
+
+        return true;
+    });
 
     $version->status()->publish();
     $page->refresh();
@@ -138,32 +177,9 @@ it('create version without auto accept publishing and publish it', function (): 
         ->and($page->versions()->count())->toBe(1)
         ->and($page->followers()->count())->toBe(1);
 
-    Notification::assertSentTo($page->user, DraftNotification::class, function ($notification, $channels) use ($page) {
+    Notification::assertSentTo($page->user, NewVersionNotification::class, function ($notification, $channels) use ($page) {
         $this->assertContains('mail', $channels);
         $mailNotification = (object)$notification->toMail($page->user);
-        $this->assertEquals('Draft Notification', $mailNotification->subject);
-        $this->assertEquals('The introduction to the notification.', $mailNotification->introLines[0]);
-        $this->assertEquals('Thank you for using our application!', $mailNotification->outroLines[0]);
-        $this->assertEquals('Notification Action', $mailNotification->actionText);
-        $this->assertEquals($mailNotification->actionUrl, url('/'));
-
-        return true;
-    });
-
-    Notification::assertSentTo($version->user, DraftNotification::class, function ($notification, $channels) use ($version) {
-        $this->assertContains('mail', $channels);
-        $mailNotification = (object)$notification->toMail($version->user);
-        $this->assertEquals('Draft Notification', $mailNotification->subject);
-        $this->assertEquals('The introduction to the notification.', $mailNotification->introLines[0]);
-        $this->assertEquals('Thank you for using our application!', $mailNotification->outroLines[0]);
-        $this->assertEquals('Notification Action', $mailNotification->actionText);
-        $this->assertEquals($mailNotification->actionUrl, url('/'));
-
-        return true;
-    });
-    Notification::assertSentTo($version->user, NewVersionNotification::class, function ($notification, $channels) use ($version) {
-        $this->assertContains('mail', $channels);
-        $mailNotification = (object)$notification->toMail($version->user);
         $this->assertEquals('New Version Notification', $mailNotification->subject);
         $this->assertEquals('The introduction to the notification.', $mailNotification->introLines[0]);
         $this->assertEquals('Thank you for using our application!', $mailNotification->outroLines[0]);
@@ -186,19 +202,31 @@ it('create version without auto accept publishing and publish it', function (): 
             return true;
         });
     }
+    Notification::assertSentTo($user, PublishNotification::class, function ($notification, $channels) use ($version, $user) {
+        $this->assertContains('mail', $channels);
+        $mailNotification = (object)$notification->toMail($user);
+        $this->assertEquals('Publish Notification', $mailNotification->subject);
+        $this->assertEquals('The introduction to the notification.', $mailNotification->introLines[0]);
+        $this->assertEquals('Thank you for using our application!', $mailNotification->outroLines[0]);
+        $this->assertEquals('Notification Action', $mailNotification->actionText);
+        $this->assertEquals($mailNotification->actionUrl, url('/'));
+
+        return true;
+    });
 });
 
 it('create version but refuse it', function (): void {
     Notification::fake();
+    $user = User::factory()->create();
     $page = makePage();
 
     $version = (new CreateVersionAction())->handle(
+        user: $user,
         page : $page,
         attributes: [
             'page_id' => $page->id,
             'description' => 'test version',
             'code' => 'test version',
-            'user_id' => $page->user->id,
         ]
     );
 
@@ -213,8 +241,6 @@ it('create version but refuse it', function (): void {
         ->and($page->versions()->count())->toBe(1)
         ->and($page->followers()->count())->toBe(1);
 
-    Notification::assertSentTo($page->user, DraftNotification::class);
-    Notification::assertSentTo($version->user, DraftNotification::class);
     Notification::assertSentTo($version->user, RefuseNotification::class, function ($notification, $channels) use ($version) {
         $this->assertContains('mail', $channels);
         $mailNotification = (object)$notification->toMail($version->user);
@@ -230,16 +256,17 @@ it('create version but refuse it', function (): void {
 
 it('create version and archive it after publishing', function (): void {
     Notification::fake();
+    $user = User::factory()->create();
     $page = makePage();
     $page->status()->publish();
 
     $version = (new CreateVersionAction())->handle(
+        user: $user,
         page : $page,
         attributes: [
             'page_id' => $page->id,
             'description' => 'test version',
             'code' => 'test version',
-            'user_id' => $page->user->id,
         ]
     );
 
@@ -256,12 +283,6 @@ it('create version and archive it after publishing', function (): void {
         ->and($page->versions()->count())->toBe(1)
         ->and($page->followers()->count())->toBe(1);
 
-    Notification::assertSentTo($page->user, DraftNotification::class);
-    Notification::assertSentTo($version->user, DraftNotification::class);
-    Notification::assertSentTo($version->user, NewVersionNotification::class);
-    foreach ($page->followers as $follower) {
-        Notification::assertSentTo($follower, NewVersionNotification::class);
-    }
     Notification::assertSentTo($version->user, ArchiveNotification::class, function ($notification, $channels) use ($version) {
         $this->assertContains('mail', $channels);
         $mailNotification = (object)$notification->toMail($version->user);
@@ -277,17 +298,18 @@ it('create version and archive it after publishing', function (): void {
 
 it('create version but delete it after refusing', function (): void {
     Notification::fake();
+    $user = User::factory()->create();
     $page = makePage();
 
     $page->status()->publish();
 
     $version = (new CreateVersionAction())->handle(
+        user: $user,
         page : $page,
         attributes: [
             'page_id' => $page->id,
             'description' => 'test version',
             'code' => 'test version',
-            'user_id' => $page->user->id,
         ]
     );
 
@@ -312,24 +334,23 @@ it('create version but delete it after refusing', function (): void {
         ->and($page->description)->toBe('test')
         ->and($page->followers()->count())->toBe(1);
 
-    Notification::assertSentTo($page->user, DraftNotification::class);
-
     $this->assertSoftDeleted($version);
 });
 
 it('none existing state', function (): void {
+    $user = User::factory()->create();
     Notification::fake();
     $page = makePage();
 
     $page->status()->publish();
 
     $version = (new CreateVersionAction())->handle(
+        user: $user,
         page : $page,
         attributes: [
             'page_id' => $page->id,
             'description' => 'test version',
             'code' => 'test version',
-            'user_id' => $page->user->id,
         ]
     );
 

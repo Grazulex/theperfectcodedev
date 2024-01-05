@@ -19,6 +19,14 @@ if (document.querySelector('#createPageForm')) {
     });
 }
 
+if (document.querySelector('#createVersionForm')) {
+    document.querySelector('#createVersionForm').addEventListener('submit', e => {
+        e.preventDefault();
+        document.querySelector('#code').value = editor.getMarkdown();
+        e.target.submit();
+    });
+}
+
 if (document.querySelector('#updatePageForm')) {
     editor.setMarkdown(document.querySelector('#oldCode').value);
 
