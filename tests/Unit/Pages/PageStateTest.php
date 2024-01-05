@@ -20,7 +20,7 @@ it('create page', function (): void {
 
     Notification::assertSentTo($page->user, DraftNotification::class, function ($notification, $channels) use ($page) {
         $this->assertContains('mail', $channels);
-        $mailNotification = (object)$notification->toMail($page->user);
+        $mailNotification = (object) $notification->toMail($page->user);
         $this->assertEquals('Draft Notification', $mailNotification->subject);
         $this->assertEquals('The introduction to the notification.', $mailNotification->introLines[0]);
         $this->assertEquals('Thank you for using our application!', $mailNotification->outroLines[0]);
@@ -38,7 +38,7 @@ it('publish page', function (): void {
     $page->status()->publish();
     Notification::assertSentTo($page->user, PublishNotification::class, function ($notification, $channels) use ($page) {
         $this->assertContains('mail', $channels);
-        $mailNotification = (object)$notification->toMail($page->user);
+        $mailNotification = (object) $notification->toMail($page->user);
         $this->assertEquals('Publish Notification', $mailNotification->subject);
         $this->assertEquals('The introduction to the notification.', $mailNotification->introLines[0]);
         $this->assertEquals('Thank you for using our application!', $mailNotification->outroLines[0]);
@@ -60,7 +60,7 @@ it('archive page', function (): void {
     foreach ($page->followers as $follower) {
         Notification::assertSentTo($follower, ArchiveNotification::class, function ($notification, $channels) use ($follower) {
             $this->assertContains('mail', $channels);
-            $mailNotification = (object)$notification->toMail($follower);
+            $mailNotification = (object) $notification->toMail($follower);
             $this->assertEquals('Archive Notification', $mailNotification->subject);
             $this->assertEquals('The introduction to the notification.', $mailNotification->introLines[0]);
             $this->assertEquals('Thank you for using our application!', $mailNotification->outroLines[0]);
@@ -88,7 +88,7 @@ it('delete page', function (): void {
     $page->status()->refuse();
     Notification::assertSentTo($page->user, RefuseNotification::class, function ($notification, $channels) use ($page) {
         $this->assertContains('mail', $channels);
-        $mailNotification = (object)$notification->toMail($page->user);
+        $mailNotification = (object) $notification->toMail($page->user);
         $this->assertEquals('Refuse Notification', $mailNotification->subject);
         $this->assertEquals('The introduction to the notification.', $mailNotification->introLines[0]);
         $this->assertEquals('Thank you for using our application!', $mailNotification->outroLines[0]);
@@ -100,7 +100,7 @@ it('delete page', function (): void {
     $page->status()->delete();
     Notification::assertSentTo($page->user, DeleteNotification::class, function ($notification, $channels) use ($page) {
         $this->assertContains('mail', $channels);
-        $mailNotification = (object)$notification->toMail($page->user);
+        $mailNotification = (object) $notification->toMail($page->user);
         $this->assertEquals('Delete Notification', $mailNotification->subject);
         $this->assertEquals('The introduction to the notification.', $mailNotification->introLines[0]);
         $this->assertEquals('Thank you for using our application!', $mailNotification->outroLines[0]);

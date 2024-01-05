@@ -35,6 +35,11 @@
                             <x-action-link href="{{ route('pages.edit', ['page'=>$page]) }}">
                                 {{ __('Edit') }}
                             </x-action-link>
+                            @if ($page->state === \App\Enums\Pages\State::DRAFT)
+                                <x-action-link href="{{ route('pages.publish', ['page'=>$page]) }}" class="bg-emerald-600">
+                                    {{ __('Publish') }}
+                                </x-action-link>
+                            @endif
                         </div>
                     @else
                         <div class="mt-8">

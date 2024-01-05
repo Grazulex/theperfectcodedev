@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+use App\Actions\Pages\UpdatePageAction;
+use App\Enums\Pages\State;
 use App\Http\Controllers\Pages\CreateController;
 use App\Http\Controllers\Pages\EditController;
 use App\Http\Controllers\Pages\MyListController;
@@ -33,9 +35,23 @@ Route::group(['middleware' => ['web']], function (): void {
             Route::post('store', CreateController::class)->name('pages.store');
             Route::get('edit/{page:slug}', action: EditController::class)->name('pages.edit');
             Route::post('edit/{page:slug}', action: UpdateController::class)->name('pages.update');
+            Route::get(('publish/{page:slug}'), function (Page $page) {
+                (new UpdatePageAction())->handle(
+                    page:$page,
+                    attributes: [
+                        'state' => State::PUBLISHED,
+                        'published_at' => now()
+                    ]
+                );
+
+                session()->flash('flash.banner', 'Code published successfully');
+                session()->flash('flash.bannerStyle', 'success');
+
+                return redirect()->route('pages.view', $page->slug);
+            })->name('pages.publish');
             Route::group(['prefix' => 'version'], function (): void {
-                Route::get('{page:slug}/new', \App\Http\Controllers\Versions\CreateController::class)->name('versions.new');
-                Route::post('{page:slug}/store', \App\Http\Controllers\Versions\StoreController::class)->name('versions.store');
+                Route::get('{page:slug}/new', App\Http\Controllers\Versions\CreateController::class)->name('versions.new');
+                Route::post('{page:slug}/store', App\Http\Controllers\Versions\StoreController::class)->name('versions.store');
             });
         });
 

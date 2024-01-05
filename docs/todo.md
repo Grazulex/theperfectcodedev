@@ -12,8 +12,10 @@ Back to [README](../README.md)
     - [ ] Implement View Version history
 - [ ] Implement Page Controller
     - [X] Implement Create Page
-    - [X] Implement Update/Publishing Page
+    - [X] Implement Update
+    - [X] Publishing Page
     - [ ] Implement Delete Page
+    - [ ] Implement Archive Page
     - [ ] Implement View Page history
 - [ ] Implement Comment Actions
     - [X] Check Migration file

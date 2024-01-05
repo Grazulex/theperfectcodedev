@@ -33,7 +33,7 @@ it('can create a comment', function (): void {
 
     Notification::assertSentTo($page->user, PublishNotification::class, function ($notification, $channels) use ($comment) {
         $this->assertContains('mail', $channels);
-        $mailNotification = (object)$notification->toMail($comment->user);
+        $mailNotification = (object) $notification->toMail($comment->user);
         $this->assertEquals('Publish Notification', $mailNotification->subject);
         $this->assertEquals('The introduction to the notification.', $mailNotification->introLines[0]);
         $this->assertEquals('Thank you for using our application!', $mailNotification->outroLines[0]);
@@ -127,7 +127,7 @@ it('can refuse a comment', function (): void {
 
     Notification::assertSentTo($page->user, RefuseNotification::class, function ($notification, $channels) use ($comment) {
         $this->assertContains('mail', $channels);
-        $mailNotification = (object)$notification->toMail($comment->user);
+        $mailNotification = (object) $notification->toMail($comment->user);
         $this->assertEquals('Refuse Notification', $mailNotification->subject);
         $this->assertEquals('The introduction to the notification.', $mailNotification->introLines[0]);
         $this->assertEquals('Thank you for using our application!', $mailNotification->outroLines[0]);
@@ -159,7 +159,7 @@ it('can delete a comment', function (): void {
     Notification::assertSentTo($page->user, RefuseNotification::class);
     Notification::assertSentTo($page->user, DeleteNotification::class, function ($notification, $channels) use ($comment) {
         $this->assertContains('mail', $channels);
-        $mailNotification = (object)$notification->toMail($comment->user);
+        $mailNotification = (object) $notification->toMail($comment->user);
         $this->assertEquals('Delete Notification', $mailNotification->subject);
         $this->assertEquals('The introduction to the notification.', $mailNotification->introLines[0]);
         $this->assertEquals('Thank you for using our application!', $mailNotification->outroLines[0]);

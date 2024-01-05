@@ -33,9 +33,10 @@ final class AuthServiceProvider extends ServiceProvider
     public function boot(): void
     {
         $this->registerPolicies();
-        Gate::define('viewPulse', function (User $user) {
-            return $user->email === 'jms@grazulex.be';
-        });
+        if('production' === config('app.env')) {
+            Gate::define('viewPulse', fn(User $user) => 'jms@grazulex.be' === $user->email);
+        }
+
 
 
     }

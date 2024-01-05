@@ -40,7 +40,7 @@ it('create version without auto accept publishing', function (): void {
 
     Notification::assertSentTo($user, DraftNotification::class, function ($notification, $channels) use ($user) {
         $this->assertContains('mail', $channels);
-        $mailNotification = (object)$notification->toMail($user);
+        $mailNotification = (object) $notification->toMail($user);
         $this->assertEquals('Draft Notification', $mailNotification->subject);
         $this->assertEquals('The introduction to the notification.', $mailNotification->introLines[0]);
         $this->assertEquals('Thank you for using our application!', $mailNotification->outroLines[0]);
@@ -51,7 +51,7 @@ it('create version without auto accept publishing', function (): void {
     });
     Notification::assertSentTo($page->user, NewVersionNotification::class, function ($notification, $channels) use ($page) {
         $this->assertContains('mail', $channels);
-        $mailNotification = (object)$notification->toMail($page->user);
+        $mailNotification = (object) $notification->toMail($page->user);
         $this->assertEquals('New Version Notification', $mailNotification->subject);
         $this->assertEquals('The introduction to the notification.', $mailNotification->introLines[0]);
         $this->assertEquals('Thank you for using our application!', $mailNotification->outroLines[0]);
@@ -91,7 +91,7 @@ it('create version with auto accept publishing', function (): void {
 
     Notification::assertSentTo($page->user, NewVersionNotification::class, function ($notification, $channels) use ($page) {
         $this->assertContains('mail', $channels);
-        $mailNotification = (object)$notification->toMail($page->user);
+        $mailNotification = (object) $notification->toMail($page->user);
         $this->assertEquals('New Version Notification', $mailNotification->subject);
         $this->assertEquals('The introduction to the notification.', $mailNotification->introLines[0]);
         $this->assertEquals('Thank you for using our application!', $mailNotification->outroLines[0]);
@@ -102,7 +102,7 @@ it('create version with auto accept publishing', function (): void {
     });
     Notification::assertSentTo($user, PublishNotification::class, function ($notification, $channels) use ($user) {
         $this->assertContains('mail', $channels);
-        $mailNotification = (object)$notification->toMail($user);
+        $mailNotification = (object) $notification->toMail($user);
         $this->assertEquals('Publish Notification', $mailNotification->subject);
         $this->assertEquals('The introduction to the notification.', $mailNotification->introLines[0]);
         $this->assertEquals('Thank you for using our application!', $mailNotification->outroLines[0]);
@@ -114,7 +114,7 @@ it('create version with auto accept publishing', function (): void {
     foreach ($page->followers as $follower) {
         Notification::assertSentTo($follower, NewVersionNotification::class, function ($notification, $channels) use ($follower) {
             $this->assertContains('mail', $channels);
-            $mailNotification = (object)$notification->toMail($follower);
+            $mailNotification = (object) $notification->toMail($follower);
             $this->assertEquals('New Version Notification', $mailNotification->subject);
             $this->assertEquals('The introduction to the notification.', $mailNotification->introLines[0]);
             $this->assertEquals('Thank you for using our application!', $mailNotification->outroLines[0]);
@@ -145,7 +145,7 @@ it('create version without auto accept publishing and publish it', function (): 
 
     Notification::assertSentTo($user, DraftNotification::class, function ($notification, $channels) use ($user) {
         $this->assertContains('mail', $channels);
-        $mailNotification = (object)$notification->toMail($user);
+        $mailNotification = (object) $notification->toMail($user);
         $this->assertEquals('Draft Notification', $mailNotification->subject);
         $this->assertEquals('The introduction to the notification.', $mailNotification->introLines[0]);
         $this->assertEquals('Thank you for using our application!', $mailNotification->outroLines[0]);
@@ -156,7 +156,7 @@ it('create version without auto accept publishing and publish it', function (): 
     });
     Notification::assertSentTo($page->user, NewVersionNotification::class, function ($notification, $channels) use ($page) {
         $this->assertContains('mail', $channels);
-        $mailNotification = (object)$notification->toMail($page->user);
+        $mailNotification = (object) $notification->toMail($page->user);
         $this->assertEquals('New Version Notification', $mailNotification->subject);
         $this->assertEquals('The introduction to the notification.', $mailNotification->introLines[0]);
         $this->assertEquals('Thank you for using our application!', $mailNotification->outroLines[0]);
@@ -179,7 +179,7 @@ it('create version without auto accept publishing and publish it', function (): 
 
     Notification::assertSentTo($page->user, NewVersionNotification::class, function ($notification, $channels) use ($page) {
         $this->assertContains('mail', $channels);
-        $mailNotification = (object)$notification->toMail($page->user);
+        $mailNotification = (object) $notification->toMail($page->user);
         $this->assertEquals('New Version Notification', $mailNotification->subject);
         $this->assertEquals('The introduction to the notification.', $mailNotification->introLines[0]);
         $this->assertEquals('Thank you for using our application!', $mailNotification->outroLines[0]);
@@ -192,7 +192,7 @@ it('create version without auto accept publishing and publish it', function (): 
     foreach ($page->followers as $follower) {
         Notification::assertSentTo($follower, NewVersionNotification::class, function ($notification, $channels) use ($follower) {
             $this->assertContains('mail', $channels);
-            $mailNotification = (object)$notification->toMail($follower);
+            $mailNotification = (object) $notification->toMail($follower);
             $this->assertEquals('New Version Notification', $mailNotification->subject);
             $this->assertEquals('The introduction to the notification.', $mailNotification->introLines[0]);
             $this->assertEquals('Thank you for using our application!', $mailNotification->outroLines[0]);
@@ -204,7 +204,7 @@ it('create version without auto accept publishing and publish it', function (): 
     }
     Notification::assertSentTo($user, PublishNotification::class, function ($notification, $channels) use ($user) {
         $this->assertContains('mail', $channels);
-        $mailNotification = (object)$notification->toMail($user);
+        $mailNotification = (object) $notification->toMail($user);
         $this->assertEquals('Publish Notification', $mailNotification->subject);
         $this->assertEquals('The introduction to the notification.', $mailNotification->introLines[0]);
         $this->assertEquals('Thank you for using our application!', $mailNotification->outroLines[0]);
@@ -243,7 +243,7 @@ it('create version but refuse it', function (): void {
 
     Notification::assertSentTo($version->user, RefuseNotification::class, function ($notification, $channels) use ($version) {
         $this->assertContains('mail', $channels);
-        $mailNotification = (object)$notification->toMail($version->user);
+        $mailNotification = (object) $notification->toMail($version->user);
         $this->assertEquals('Refuse Notification', $mailNotification->subject);
         $this->assertEquals('The introduction to the notification.', $mailNotification->introLines[0]);
         $this->assertEquals('Thank you for using our application!', $mailNotification->outroLines[0]);
@@ -285,7 +285,7 @@ it('create version and archive it after publishing', function (): void {
 
     Notification::assertSentTo($version->user, ArchiveNotification::class, function ($notification, $channels) use ($version) {
         $this->assertContains('mail', $channels);
-        $mailNotification = (object)$notification->toMail($version->user);
+        $mailNotification = (object) $notification->toMail($version->user);
         $this->assertEquals('Archive Notification', $mailNotification->subject);
         $this->assertEquals('The introduction to the notification.', $mailNotification->introLines[0]);
         $this->assertEquals('Thank you for using our application!', $mailNotification->outroLines[0]);
@@ -318,7 +318,7 @@ it('create version but delete it after refusing', function (): void {
 
     Notification::assertSentTo($version->user, DeleteNotification::class, function ($notification, $channels) use ($version) {
         $this->assertContains('mail', $channels);
-        $mailNotification = (object)$notification->toMail($version->user);
+        $mailNotification = (object) $notification->toMail($version->user);
         $this->assertEquals('Delete Notification', $mailNotification->subject);
         $this->assertEquals('The introduction to the notification.', $mailNotification->introLines[0]);
         $this->assertEquals('Thank you for using our application!', $mailNotification->outroLines[0]);
