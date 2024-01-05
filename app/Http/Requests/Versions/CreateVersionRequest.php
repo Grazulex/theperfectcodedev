@@ -7,7 +7,7 @@ namespace App\Http\Requests\Versions;
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
 
-class CreateVersionRequest extends FormRequest
+final class CreateVersionRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.

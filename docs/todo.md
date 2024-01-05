@@ -6,13 +6,13 @@ Back to [README](../README.md)
 - [X] Check test Version Model/Actions/StateMachine
 - [ ] Check test User Model/Actions/StateMachine
 - [ ] Implement Version Controller
-    - [ ] Implement Create Version
+    - [X] Implement Create Version
     - [ ] Implement Update/Publishing Version
     - [ ] Implement Delete Version
     - [ ] Implement View Version history
 - [ ] Implement Page Controller
     - [X] Implement Create Page
-    - [ ] Implement Update/Publishing Page
+    - [X] Implement Update/Publishing Page
     - [ ] Implement Delete Page
     - [ ] Implement View Page history
 - [ ] Implement Comment Actions

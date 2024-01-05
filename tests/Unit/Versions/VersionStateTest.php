@@ -38,7 +38,7 @@ it('create version without auto accept publishing', function (): void {
         ->and($page->versions()->count())->toBe(1)
         ->and($page->followers()->count())->toBe(1);
 
-    Notification::assertSentTo($user, DraftNotification::class, function ($notification, $channels) use ($version, $user) {
+    Notification::assertSentTo($user, DraftNotification::class, function ($notification, $channels) use ($user) {
         $this->assertContains('mail', $channels);
         $mailNotification = (object)$notification->toMail($user);
         $this->assertEquals('Draft Notification', $mailNotification->subject);
@@ -100,7 +100,7 @@ it('create version with auto accept publishing', function (): void {
 
         return true;
     });
-    Notification::assertSentTo($user, PublishNotification::class, function ($notification, $channels) use ($version, $user) {
+    Notification::assertSentTo($user, PublishNotification::class, function ($notification, $channels) use ($user) {
         $this->assertContains('mail', $channels);
         $mailNotification = (object)$notification->toMail($user);
         $this->assertEquals('Publish Notification', $mailNotification->subject);
@@ -143,7 +143,7 @@ it('create version without auto accept publishing and publish it', function (): 
         ]
     );
 
-    Notification::assertSentTo($user, DraftNotification::class, function ($notification, $channels) use ($version, $user) {
+    Notification::assertSentTo($user, DraftNotification::class, function ($notification, $channels) use ($user) {
         $this->assertContains('mail', $channels);
         $mailNotification = (object)$notification->toMail($user);
         $this->assertEquals('Draft Notification', $mailNotification->subject);
@@ -202,7 +202,7 @@ it('create version without auto accept publishing and publish it', function (): 
             return true;
         });
     }
-    Notification::assertSentTo($user, PublishNotification::class, function ($notification, $channels) use ($version, $user) {
+    Notification::assertSentTo($user, PublishNotification::class, function ($notification, $channels) use ($user) {
         $this->assertContains('mail', $channels);
         $mailNotification = (object)$notification->toMail($user);
         $this->assertEquals('Publish Notification', $mailNotification->subject);
