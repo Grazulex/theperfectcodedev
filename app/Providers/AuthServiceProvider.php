@@ -7,10 +7,12 @@ namespace App\Providers;
 use App\Models\ConnectedAccount;
 use App\Models\Page;
 use App\Models\Team;
+use App\Models\User;
 use App\Policies\ConnectedAccountPolicy;
 use App\Policies\PagePolicy;
 use App\Policies\TeamPolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+use Illuminate\Support\Facades\Gate;
 
 final class AuthServiceProvider extends ServiceProvider
 {
@@ -31,6 +33,9 @@ final class AuthServiceProvider extends ServiceProvider
     public function boot(): void
     {
         $this->registerPolicies();
+        Gate::define('viewPulse', function (User $user) {
+            return $user->email === 'jms@grazulex.be';
+        });
 
 
     }
