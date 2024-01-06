@@ -172,9 +172,30 @@
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link href="{{ route('homepage') }}" :active="request()->routeIs('homepage')">
-                {{ __('Dashboard') }}
+                {{ __('Homepage') }}
             </x-responsive-nav-link>
         </div>
+        @if (Auth::check())
+            <div class="pt-2 pb-3 space-y-1">
+                <x-responsive-nav-link href="{{ route('pages.new') }}" :active="request()->routeIs('pages.new')">
+                    {{ __('New') }}
+                </x-responsive-nav-link>
+            </div>
+        @endif
+
+        <div class="pt-2 pb-3 space-y-1">
+            <x-responsive-nav-link href="{{ route('pages.top') }}" :active="request()->routeIs('pages.top')">
+                {{ __('Top 10') }}
+            </x-responsive-nav-link>
+        </div>
+
+        @if (Auth::check())
+            <div class="pt-2 pb-3 space-y-1">
+                <x-responsive-nav-link href="{{ route('pages.my') }}" :active="request()->routeIs('pages.my')">
+                    {{ __('My codes') }}
+                </x-responsive-nav-link>
+            </div>
+        @endif
 
         <!-- Responsive Settings Options -->
         @if (Auth::check())
@@ -249,6 +270,16 @@
                 </div>
             </div>
         @else
+            <div class="pt-4 pb-1 border-t border-gray-200 dark:border-gray-600">
+                <div class="mt-3 space-y-1">
+                    <x-responsive-nav-link href="{{ route('login') }}" :active="request()->routeIs('login')">
+                        {{ __('Login') }}
+                    </x-responsive-nav-link>
+                    <x-responsive-nav-link href="{{ route('register') }}" :active="request()->routeIs('register')">
+                        {{ __('Register') }}
+                    </x-responsive-nav-link>
+                </div>
+            </div>
         @endif
     </div>
 </nav>
