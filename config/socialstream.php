@@ -11,7 +11,7 @@ return [
     'providers' => [
         Providers::github(),
         Providers::gitlab(),
-        Providers::linkedin(),
+        Providers::google(),
     ],
     'features' => [
         Features::createAccountOnFirstLogin(),
