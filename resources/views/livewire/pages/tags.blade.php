@@ -7,4 +7,3 @@
         @endforeach
     </div>
 </div>
-View|Application|Factory|\Illuminate\Contracts\Foundation\Application
