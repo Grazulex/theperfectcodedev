@@ -21,7 +21,10 @@
                 <livewire:pages.followed :user="Null" :page="$page" :followers_count="$page->followers_count"/>
             @endif
             <livewire:pages.commented :comments_count="$page->comments_count"/>
-
+            @if (Route::currentRouteName() == 'pages.my')
+                <livewire:pages.state :page="$page"/>
+                <livewire:pages.others :page="$page"/>
+            @endif
         </div>
     </div>
     <div class="p-6 pt-3">
