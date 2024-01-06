@@ -18,8 +18,8 @@ final class TopListController extends Controller
     public function __invoke(Request $request): Application|View|\Illuminate\Foundation\Application|Factory
     {
         $topPages =  Cache::remember(
-            key: 'top',
-            ttl: now()->addDay(),
+            key: 'top10',
+            ttl: now()->addHour(),
             callback:  fn() => Page::withCount(['likes', 'followers', 'comments'])
                 ->with('user')
                 ->where('state', State::PUBLISHED)
