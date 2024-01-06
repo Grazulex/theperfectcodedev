@@ -67,7 +67,7 @@ return [
         'redis' => [
             'driver' => 'redis',
             'connection' => 'default',
-            'queue' => ['mail-queue','likes-queue','follows-likes'],
+            'queue' => ['mail-queue','likes-queue','follows-queue'],
             'retry_after' => 90,
             'block_for' => null,
             'after_commit' => false,
