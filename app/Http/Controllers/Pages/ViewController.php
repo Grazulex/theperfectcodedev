@@ -7,11 +7,23 @@ namespace App\Http\Controllers\Pages;
 use App\Http\Controllers\Controller;
 use App\Models\Page;
 use App\Models\PageComments;
+use App\Models\Version;
 
 final class ViewController extends Controller
 {
-    public function __invoke(Page $page)
+    public function __invoke(Page $page, ?Version $version = null)
     {
+        if ($version) {
+            $page->load(['versions' => function ($query) use ($version): void {
+                $query->where('id', $version->id);
+            }]);
+        } else {
+            $page->load(['versions' => function ($query): void {
+                $query->where('state', 'published')
+                    ->orderBy('version', 'desc')
+                    ->limit(1);
+            }]);
+        }
         $page->loadCount(['likes','followers', 'comments']);
 
         $comments = PageComments::where('page_id', $page->id)

@@ -5,6 +5,7 @@
             <h5 class="block font-sans text-xl antialiased font-medium leading-snug tracking-normal text-blue-gray-900">
                 <x-pages.title :page="$page" />
             </h5>
+            v.{{ $page->version }}
         </div>
         <p class="block font-sans text-base antialiased font-light leading-relaxed text-gray-700">
             {{ $page->resume }}

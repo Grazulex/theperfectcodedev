@@ -24,6 +24,6 @@ final class Title extends Component
     {
         $publishedAt = (State::PUBLISHED === $this->page->state) ? $this->page->published_at->shortRelativeDiffForHumans() : null;
 
-        return view('components.pages.title', ['title' => $this->page->title, 'version' => $this->page->version, 'published_at' => $publishedAt]);
+        return view('components.pages.title', ['title' => $this->page->title, 'published_at' => $publishedAt]);
     }
 }

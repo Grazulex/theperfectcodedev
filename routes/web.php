@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 Route::group(['middleware' => ['web']], function (): void {
     Route::get('/', fn() => view('homepage'))->name('homepage');
     Route::get('code/top', TopListController::class)->name('pages.top');
-    Route::get('code/view/{page:slug}', ViewController::class)->name('pages.view');
+    Route::get('code/view/{page:slug}/{version?}', ViewController::class)->name('pages.view');
     Route::group(['middleware' => ['auth']], function (): void {
         Route::group(['prefix' => 'code'], function (): void {
             Route::get(uri: 'my', action: MyListController::class)->name(name:'pages.my');
@@ -26,6 +26,7 @@ Route::group(['middleware' => ['web']], function (): void {
             Route::group(['prefix' => 'version'], function (): void {
                 Route::get(uri: '{page:slug}/new', action: App\Http\Controllers\Versions\CreateController::class)->name(name: 'versions.new');
                 Route::post(uri: '{page:slug}/store', action: App\Http\Controllers\Versions\StoreController::class)->name(name: 'versions.store');
+                Route::get(uri: '{page:slug}/publish/{version}', action: App\Http\Controllers\Versions\PublishController::class)->name(name: 'versions.publish');
             });
         });
 
