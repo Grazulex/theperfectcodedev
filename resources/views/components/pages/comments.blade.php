@@ -2,7 +2,7 @@
     @foreach ($comments as $comment)
         <div class="flex flex-col gap-2">
             <x-users.card :user="$comment->user" />
-           <p>{{ $comment->created_at->diffForHumans() }} - on V.{{ $comment->version }}</p>
+           <p>Commented {{ $comment->created_at->diffForHumans() }} on V.{{ $comment->version }}</p>
             {{ $comment->content }}
                 @if ($comment->responses_count > 0)
                     <details class="group">

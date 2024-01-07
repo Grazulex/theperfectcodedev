@@ -19,10 +19,10 @@
                 </div>
                 <div class="p-2 lg:p-4 bg-white dark:bg-gray-800 dark:bg-gradient-to-bl dark:from-gray-700/50 dark:via-transparent border-b border-gray-200 dark:border-gray-700">
                     <h4>Description</h4>
-                    {!! nl2br($page->versions->first()->description) !!}
+                    {!! nl2br(($page->versions->count() > 0) ? $page->versions->first()->description : $page->description) !!}
                     <div class="mt-4">
                         <h4>Code</h4>
-                        <x-pages.code :code="$page->versions->first()->code"/>
+                        <x-pages.code :code="($page->versions->count() > 0) ? $page->versions->first()->code : $page->code"/>
                     </div>
                 </div>
             </div>
