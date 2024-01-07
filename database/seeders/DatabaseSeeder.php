@@ -74,14 +74,16 @@ final class DatabaseSeeder extends Seeder
             $comments = PageComments::factory(5)->create([
                 'page_id' => $page->id,
                 'user_id' => User::all()->random(rand(1, count(User::all())))->pluck('id')->first(),
-                'response_id' => null
+                'response_id' => null,
+                'version' => $page->version
             ]);
 
             foreach ($comments as $comment) {
                 $comments = PageComments::factory(5)->create([
                     'page_id' => $page->id,
                     'user_id' => User::all()->random(rand(1, count(User::all())))->pluck('id')->first(),
-                    'response_id' => $comment->id
+                    'response_id' => $comment->id,
+                    'version' => $page->version
                 ]);
 
                 $comment->likes()->attach(

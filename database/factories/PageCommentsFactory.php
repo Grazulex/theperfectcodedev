@@ -22,9 +22,11 @@ final class PageCommentsFactory extends Factory
      */
     public function definition(): array
     {
+        $page = Page::factory()->create();
         return [
             'user_id' => User::factory(),
-            'page_id' => Page::factory(),
+            'page_id' => $page,
+            'version' => $page->version,
             'response_id' => PageComments::factory(),
             'content' => $this->faker->text,
             'state' => State::PUBLISHED,

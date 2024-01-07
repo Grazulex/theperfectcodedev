@@ -14,12 +14,15 @@ it('can create a comment', function (): void {
     Notification::fake();
     $page = makePage();
 
+    $page->status()->publish();
+
     $comment = (new CreateCommentAction())->handle(
         page: $page,
         attributes: [
             'user_id' => $page->user->id,
             'page_id' => $page->id,
             'content' => 'This is a comment',
+            'version' => $page->version,
         ]
     );
 
@@ -28,6 +31,7 @@ it('can create a comment', function (): void {
         ->and($comment->page_id)->toBe($page->id)
         ->and($comment->content)->toBe('This is a comment')
         ->and($comment->state)->toBe(State::PUBLISHED)
+        ->and($comment->version)->toBe($page->version)
         ->and($page->comments()->count())->toBe(1)
         ->and($page->comments->first()->content)->toBe('This is a comment');
 
