@@ -10,6 +10,16 @@
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+
+        <!-- Favicons -->
+        <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('images/ico/apple-icon-180x180.png') }}">
+        <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('images/ico/favicon-32x32.png') }}">
+        <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('images/ico/favicon-16x16.png') }}">
+        <link rel="manifest" href="{{ asset('images/ico/manifest.json') }}">
+        <link rel="mask-icon" href="{{ asset('images/ico/safari-pinned-tab.svg') }}" color="#5bbad5">
+        <meta name="msapplication-TileColor" content="#ffffff">
+        <meta name="theme-color" content="#ffffff">
+
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
 
