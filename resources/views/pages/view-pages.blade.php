@@ -1,4 +1,25 @@
 <x-app-layout>
+    <x-slot name="meta">
+        <meta name="description" content="{{ $page->resume }}">
+        <meta name="keywords" content="{{ implode(",", $page->tags) }}">
+        <meta property="og:title" content="{{ $page->title }}">
+        <meta property="og:description" content="{{ $page->resume }}">
+        <meta property="og:image" content="{{ $page->image }}">
+        <meta property="og:url" content="{{ route('pages.view', ['page'=>$page]) }}">
+        <meta property="og:site_name" content="{{ config('app.name', 'Laravel') }}">
+        <meta property="og:locale" content="{{ str_replace('_', '-', app()->getLocale()) }}">
+        <meta property="og:type" content="article">
+        <meta property="article:published_time" content="{{ $page->created_at }}">
+        <meta property="article:modified_time" content="{{ $page->updated_at }}">
+        <meta property="article:author" content="{{ $page->user->name }}">
+        <meta property="article:section" content="{{ implode(",", $page->tags) }}">
+        <meta property="article:tag" content="{{ implode(",", $page->tags) }}">
+        <meta property="twitter:title" content="{{ $page->title }}">
+        <meta property="twitter:description" content="{{ $page->resume }}">
+        <meta property="twitter:url" content="{{ route('pages.view', ['page'=>$page]) }}">
+        <meta property="twitter:site" content="{{ config('app.name', 'Laravel') }}">
+        <meta property="twitter:creator" content="{{ $page->user->name }}">
+    </x-slot>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight flex gap-3 align-middle">
             <x-pages.title :page="$page"/>
