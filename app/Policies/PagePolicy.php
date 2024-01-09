@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Policies;
 
+use App\Enums\Pages\State as PageState;
 use App\Enums\Versions\State;
 use App\Models\Page;
 use App\Models\User;
@@ -22,9 +23,31 @@ final class PagePolicy
     /**
      * Determine whether the user can view the model.
      */
-    public function view(User $user, Page $page): bool
+    public function view(?User $user, Page $page): Response
     {
-        return true;
+        if ($user) {
+            if ($page->user->id === $user->id) {
+                return Response::allow();
+            }
+            if (PageState::PUBLISHED !== $page->state) {
+                return Response::deny('This page is not published.');
+            }
+            if(1 === $page->is_public) {
+                if(! $page->user->currentTeam ||  ! $page->user->currentTeam->hasUser($user->id)) {
+                    return Response::deny('This page is private.');
+                }
+            }
+
+        } else {
+            if (PageState::PUBLISHED !== $page->state) {
+                return Response::deny('This page is not published.');
+            }
+            if(1 === $page->is_public) {
+                return Response::deny('This page is private.');
+            }
+        }
+
+        return Response::allow();
     }
 
     /**

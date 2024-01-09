@@ -8,11 +8,19 @@ use App\Http\Controllers\Controller;
 use App\Models\Page;
 use App\Models\PageComments;
 use App\Models\Version;
+use Illuminate\Support\Facades\Gate;
 
 final class ViewController extends Controller
 {
     public function __invoke(Page $page, ?Version $version = null)
     {
+        $response = Gate::inspect('view', $page);
+        if ($response->denied()) {
+            session()->flash('flash.banner', $response->message());
+            session()->flash('flash.bannerStyle', 'danger');
+
+            return redirect()->back();
+        }
         if ($version) {
             $page->load(['versions' => function ($query) use ($version): void {
                 $query->where('id', $version->id);
