@@ -33,7 +33,7 @@ final class PagePolicy
                 return Response::deny('This page is not published.');
             }
             if(1 === $page->is_public) {
-                if(! $page->user->currentTeam ||  ! $page->user->currentTeam->hasUser($user->id)) {
+                if( ! $page->user->currentTeam ||  ! $page->user->currentTeam->hasUser($user->id)) {
                     return Response::deny('This page is private.');
                 }
             }
