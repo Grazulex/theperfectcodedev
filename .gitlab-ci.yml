@@ -79,7 +79,7 @@ deploy_prod:
     - curl https://forge.laravel.com/servers/546270/sites/2208781/deploy/http?token=D1p66liZmO0Ru80KxY8b8dSHpKskGnHeHhLrsYMu
     - exit 0
   only:
-    - master
+    - main
   environment:
     name: production
     url: https://www.theperfectcodedev.com
