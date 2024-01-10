@@ -26,6 +26,7 @@ final class PageRepository extends BaseRepository
     {
         return $this->model->withCount(['likes', 'followers', 'comments'])
             ->with('user')
+            ->where('is_public', 1)
             ->where('state', $state)
             ->orderBy('likes_count', 'desc');
     }

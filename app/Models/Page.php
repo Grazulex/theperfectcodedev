@@ -122,7 +122,6 @@ final class Page extends Model
         return new FollowersService($this);
     }
 
-
     public function status(): PageStateContract
     {
         return match ($this->state) {
