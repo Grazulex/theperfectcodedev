@@ -32,17 +32,16 @@ final class PagePolicy
             if (PageState::PUBLISHED !== $page->state) {
                 return Response::deny('This page is not published.');
             }
-            if(1 === $page->is_public) {
+            if(1 !== $page->is_public) {
                 if( ! $page->user->currentTeam ||  ! $page->user->currentTeam->hasUser($user->id)) {
                     return Response::deny('This page is private.');
                 }
             }
-
         } else {
             if (PageState::PUBLISHED !== $page->state) {
                 return Response::deny('This page is not published.');
             }
-            if(1 === $page->is_public) {
+            if(1 !== $page->is_public) {
                 return Response::deny('This page is private.');
             }
         }
