@@ -2,6 +2,28 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+    font-family: AntipastoPro;
+    src: url(/public/Fonts/AntipastoPro-Medium_trial.ttf);
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: AntipastoPro;
+    src: url(/public/Fonts/AntipastoPro-Bold_trial.ttf);
+    font-weight: bold;
+}
+
+body {
+    font-family: AntipastoPro, sans-serif;
+    font-weight: normal;
+}
+
 [x-cloak] {
     display: none;
+}
+
+:root {
+    --primary:  #4357ee;
+    --gray-smoke: #606688;
 }

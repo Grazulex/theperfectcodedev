@@ -1,13 +1,13 @@
-<div class="relative flex w-full flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-lg">
+<div class="relative flex flex-col w-full text-gray-700 bg-white shadow-lg rounded-xl bg-clip-border">
     <div class="p-6">
         <livewire:pages.tags :tags="$page->tags"/>
         <div class="flex items-center justify-between mb-3">
-            <h5 class="block font-sans text-xl antialiased font-medium leading-snug tracking-normal text-blue-gray-900">
+            <h5 class="block text-xl antialiased font-medium leading-snug tracking-normal text-blue-gray-900">
                 <x-pages.title :page="$page" />
             </h5>
             v.{{ $page->version }}
         </div>
-        <p class="block font-sans text-base antialiased font-light leading-relaxed text-gray-700">
+        <p class="block text-base antialiased font-light leading-relaxed text-gray-700">
             {{ $page->resume }}
         </p>
         <div class="inline-flex flex-wrap items-center gap-3 mt-8 group">
@@ -30,7 +30,7 @@
     </div>
     <div class="p-6 pt-3">
         <a href="{{ route('pages.view',['page'=>$page]) }}"
-                class="block w-full select-none rounded-lg bg-gray-900 py-3.5 px-7 text-center align-middle font-sans text-sm font-bold uppercase text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                class="block w-full select-none rounded-lg bg-gray-900 py-3.5 px-7 text-center align-middle text-sm font-bold uppercase text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
                 type="button">
             View
         </a>
