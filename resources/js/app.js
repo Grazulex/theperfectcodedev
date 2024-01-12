@@ -3,6 +3,20 @@ import Editor from '@toast-ui/editor';
 import 'codemirror/lib/codemirror.css';
 import '@toast-ui/editor/dist/toastui-editor.css';
 
+window.themeSwitcher = function () {
+    return {
+        switchOn: JSON.parse(localStorage.getItem('isDark')) || false,
+        switchTheme() {
+            if (this.switchOn) {
+                document.documentElement.classList.add('dark')
+            } else {
+                document.documentElement.classList.remove('dark')
+            }
+            localStorage.setItem('isDark', this.switchOn)
+        }
+    }
+}
+
 const editor = new Editor({
     el: document.querySelector('#editor'),
     height: '400px',

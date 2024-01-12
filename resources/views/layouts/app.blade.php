@@ -29,7 +29,7 @@
         <!-- Styles -->
         @livewireStyles
     </head>
-    <body class="antialiased">
+    <body class="antialiased" x-data="themeSwitcher()" :class="{ 'dark': switchOn }">
         <x-banner />
         <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
             @livewire('navigation-menu')
