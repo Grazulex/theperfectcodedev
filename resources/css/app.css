@@ -9,8 +9,8 @@
 }
 
 @font-face {
-    font-family: AntipastoPro;
-    src: url(/public/Fonts/AntipastoPro-Bold_trial.ttf);
+    font-family: Dosis;
+    src: url(/public/Fonts/Dosis-Bold.ttf);
     font-weight: bold;
 }
 /* временно отключил шрифты */
