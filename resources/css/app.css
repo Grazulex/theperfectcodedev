@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 @font-face {
-    font-family: Dosis;
-    src: url(/public/Fonts/Dosis-Medium.ttf);
+    font-family: AntipastoPro;
+    src: url(/public/Fonts/AntipastoPro-Light_trial.ttf);
     font-weight: normal;
 }
 
@@ -13,11 +13,11 @@
     src: url(/public/Fonts/Dosis-Bold.ttf);
     font-weight: bold;
 }
-
-body {
-    font-family: Dosis, sans-serif;
+/* временно отключил шрифты */
+/* body {
+    font-family: AntipastoPro, sans-serif;
     font-weight: normal;
-}
+} */
 
 [x-cloak] {
     display: none;
