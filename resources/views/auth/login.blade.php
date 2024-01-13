@@ -3,9 +3,6 @@
         <x-slot name="logo">
             <x-authentication-card-logo />
         </x-slot>
-        <div class="mb-6 text-5xl text-center text-white">
-            Let’s level up your code, together👌🏼
-        </div>
 
         <x-validation-errors class="mb-4" />
 

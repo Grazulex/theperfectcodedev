@@ -4,7 +4,7 @@
 
 @font-face {
     font-family: AntipastoPro;
-    src: url(/public/Fonts/AntipastoPro-Medium_trial.ttf);
+    src: url(/public/Fonts/AntipastoPro-Light_trial.ttf);
     font-weight: normal;
 }
 
@@ -13,11 +13,11 @@
     src: url(/public/Fonts/AntipastoPro-Bold_trial.ttf);
     font-weight: bold;
 }
-
-body {
+/* временно отключил шрифты */
+/* body {
     font-family: AntipastoPro, sans-serif;
     font-weight: normal;
-}
+} */
 
 [x-cloak] {
     display: none;
