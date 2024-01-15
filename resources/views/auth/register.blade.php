@@ -28,10 +28,12 @@
                 <x-label for="password_confirmation" value="{{ __('Confirm Password') }}" />
                 <x-input id="password_confirmation" class="block w-full mt-1" type="password" name="password_confirmation" required autocomplete="new-password" />
             </div>
- <div class="flex justify-between mt-4 mb-4">
-                @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
-                    <label for="terms" class="items-center">
-                        <x-checkbox name="terms" id="terms" required />
+
+            @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
+                <div class="mt-4">
+                    <x-label for="terms">
+                        <div class="flex items-center">
+                            <x-checkbox name="terms" id="terms" required />
 
                             <div class="ml-2">
                                 {!! __('I agree to the :terms_of_service and :privacy_policy', [
@@ -39,15 +41,16 @@
                                         'privacy_policy' => '<a target="_blank" href="'.route('policy.show').'" class="text-sm text-gray-600 underline rounded-md dark:text-gray-400 hover:text-gray-500 dark:hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800">'.__('Privacy Policy').'</a>',
                                 ]) !!}
                             </div>
-                    </label>
-                @endif
-            </div>
+                        </div>
+                    </x-label>
+                </div>
+            @endif
+
             <div class="flex items-center justify-end mt-4">
                 <a class="text-sm text-gray-600 underline rounded-md dark:text-gray-400 hover:text-gray-500 dark:hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('login') }}">
                     {{ __('Already registered?') }}
                 </a>
             </div>
-
             <x-button class="w-full justify-center bg-[var(--primary)]">
                 {{ __('Register') }}
             </x-button>
