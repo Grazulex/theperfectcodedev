@@ -26,7 +26,7 @@
   </head>
     <body class="antialiased text-gray-900" x-data="themeSwitcher()" :class="{ 'dark': switchOn }">
     <div>
-        <div class="xl:grid xl:grid-cols-2 xl:space-y-0 bg-[#0F1828]">
+        <div class="xl:grid xl:grid-cols-2 xl:space-y-0 dark:bg-[#0F1828]">
             <div class="bg-right-bottom bg-cover bg-no-repeat relative group bg-[url('/resources/images/imagelogin.jpg')]">
             </div>
 
