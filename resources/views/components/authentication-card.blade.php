@@ -2,7 +2,7 @@
     <div>
         {{ $logo }}
     </div>
-    <div class="text-5xl text-center text-white">
+    <div class="text-5xl text-center dark:text-white">
         Let’s level up your code, together👌🏼
     </div>
     <div class="w-full px-6 py-4 mt-6 shadow-md overflow-hidde sm:max-w-md dark:bg-gray-800 sm:rounded-lg">

@@ -1,72 +1,53 @@
-<nav x-data="{ open: false }" class="bg-white dark:bg-gray-800 border-b border-gray-100 dark:border-gray-700">
+<nav x-data="{ open: false }" class="bg-white border-b border-gray-100 dark:bg-gray-800 dark:border-gray-700">
     <!-- Primary Navigation Menu -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
+            <!-- Logo -->
+            <div class="flex items-center shrink-0">
+                <a href="{{ route('homepage') }}">
+                    <x-application-mark class="block w-auto h-9" />
+                </a>
+            </div>
             <div class="flex">
-                <!-- Logo -->
-                <div class="shrink-0 flex items-center">
-                    <a href="{{ route('homepage') }}">
-                        <x-application-mark class="block h-9 w-auto" />
-                    </a>
-                </div>
-
-                <!-- Navigation Links -->
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link href="{{ route('homepage') }}" :active="request()->routeIs('homepage')">
-                        {{ __('Homepage') }}
-                    </x-nav-link>
-                </div>
-                @if (Auth::check())
+                <div class="flex">
+                    <!-- Navigation Links -->
                     <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                        <x-nav-link href="{{ route('pages.new') }}" :active="request()->routeIs('pages.new')">
-                            {{ __('New') }}
+                        <x-nav-link href="{{ route('homepage') }}" :active="request()->routeIs('homepage')">
+                            {{ __('Homepage') }}
                         </x-nav-link>
                     </div>
-                @endif
+                    @if (Auth::check())
+                        <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                            <x-nav-link href="{{ route('pages.new') }}" :active="request()->routeIs('pages.new')">
+                                {{ __('New') }}
+                            </x-nav-link>
+                        </div>
+                    @endif
 
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link href="{{ route('pages.top') }}" :active="request()->routeIs('pages.top')">
-                        {{ __('Top 10') }}
-                    </x-nav-link>
+                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                        <x-nav-link href="{{ route('pages.top') }}" :active="request()->routeIs('pages.top')">
+                            {{ __('Top 10') }}
+                        </x-nav-link>
+                    </div>
+
+                    @if (Auth::check())
+                        <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                            <x-nav-link href="{{ route('pages.my') }}" :active="request()->routeIs('pages.my')">
+                                {{ __('My codes') }}
+                            </x-nav-link>
+                        </div>
+                    @endif
                 </div>
 
                 @if (Auth::check())
-                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                        <x-nav-link href="{{ route('pages.my') }}" :active="request()->routeIs('pages.my')">
-                            {{ __('My codes') }}
-                        </x-nav-link>
-                    </div>
-                @endif
-            </div>
-
-            <div x-data="window.themeSwitcher()" x-init="switchTheme()" @keydown.window.tab="switchOn = false" class="flex items-center justify-center space-x-2">
-                <input id="thisId" type="checkbox" name="switch" class="hidden" :checked="switchOn">
-
-                <button
-                    x-ref="switchButton"
-                    type="button"
-                    @click="switchOn = ! switchOn; switchTheme()"
-                    :class="switchOn ? 'bg-blue-600' : 'bg-neutral-200'"
-                    class="relative inline-flex h-6 py-0.5 ml-4 focus:outline-none rounded-full w-10">
-                    <span :class="switchOn ? 'translate-x-[18px]' : 'translate-x-0.5'" class="w-5 h-5 duration-200 ease-in-out bg-white rounded-full shadow-md"></span>
-                </button>
-
-                <label @click="$refs.switchButton.click(); $refs.switchButton.focus()" :id="$id('switch')"
-                       :class="{ 'text-blue-600': switchOn, 'text-gray-400': ! switchOn }"
-                       class="text-sm select-none">
-                    Dark Mode
-                </label>
-            </div>
-
-            @if (Auth::check())
                 <div class="hidden sm:flex sm:items-center sm:ms-6">
                     <!-- Teams Dropdown -->
                     @if (Laravel\Jetstream\Jetstream::hasTeamFeatures())
-                        <div class="ms-3 relative">
+                        <div class="relative ms-3">
                             <x-dropdown align="right" width="60">
                                 <x-slot name="trigger">
                                     <span class="inline-flex rounded-md">
-                                        <button type="button" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none focus:bg-gray-50 dark:focus:bg-gray-700 active:bg-gray-50 dark:active:bg-gray-700 transition ease-in-out duration-150">
+                                        <button type="button" class="inline-flex items-center px-3 py-2 text-sm font-medium leading-4 text-gray-500 transition duration-150 ease-in-out bg-white border border-transparent rounded-md dark:text-gray-400 dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none focus:bg-gray-50 dark:focus:bg-gray-700 active:bg-gray-50 dark:active:bg-gray-700">
                                             {{ Auth::user()->currentTeam->name }}
 
                                             <svg class="ms-2 -me-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -113,16 +94,16 @@
                     @endif
 
                     <!-- Settings Dropdown -->
-                    <div class="ms-3 relative">
+                    <div class="relative ms-3">
                         <x-dropdown align="right" width="48">
                             <x-slot name="trigger">
                                 @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
-                                    <button class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition">
-                                        <img class="h-8 w-8 rounded-full object-cover" src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" />
+                                    <button class="flex text-sm transition border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300">
+                                        <img class="object-cover w-8 h-8 rounded-full" src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" />
                                     </button>
                                 @else
                                     <span class="inline-flex rounded-md">
-                                        <button type="button" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none focus:bg-gray-50 dark:focus:bg-gray-700 active:bg-gray-50 dark:active:bg-gray-700 transition ease-in-out duration-150">
+                                        <button type="button" class="inline-flex items-center px-3 py-2 text-sm font-medium leading-4 text-gray-500 transition duration-150 ease-in-out bg-white border border-transparent rounded-md dark:text-gray-400 dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none focus:bg-gray-50 dark:focus:bg-gray-700 active:bg-gray-50 dark:active:bg-gray-700">
                                             {{ Auth::user()->name }}
 
                                             <svg class="ms-2 -me-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -164,24 +145,39 @@
                         </x-dropdown>
                     </div>
                 </div>
-            @else
-                <div class="hidden sm:flex sm:items-center sm:ms-6">
-                    <x-nav-link href="{{ route('login') }}" :active="request()->routeIs('login')">
-                        {{ __('Login') }}
-                    </x-nav-link>
-                    <x-nav-link href="{{ route('register') }}" :active="request()->routeIs('register')">
-                        {{ __('Register') }}
-                    </x-nav-link>
+                @else
+                <div class="flex">
+                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                        <x-nav-link href="{{ route('login') }}" :active="request()->routeIs('login')">
+                            {{ __('Login') }}
+                        </x-nav-link>
+                    </div>
+                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                        <x-nav-link href="{{ route('register') }}" :active="request()->routeIs('register')">
+                            {{ __('Register') }}
+                        </x-nav-link>
+                    </div>
                 </div>
-            @endif
+                @endif
 
-            <!-- Hamburger -->
-            <div class="-me-2 flex items-center sm:hidden">
-                <button @click="open = ! open" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 dark:text-gray-500 hover:text-gray-500 dark:hover:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-900 focus:outline-none focus:bg-gray-100 dark:focus:bg-gray-900 focus:text-gray-500 dark:focus:text-gray-400 transition duration-150 ease-in-out">
-                    <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
-                        <path :class="{'hidden': open, 'inline-flex': ! open }" class="inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                        <path :class="{'hidden': ! open, 'inline-flex': open }" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                    </svg>
+                <!-- Hamburger -->
+                <div class="flex items-center -me-2 sm:hidden">
+                    <button @click="open = ! open" class="inline-flex items-center justify-center p-2 text-gray-400 transition duration-150 ease-in-out rounded-md dark:text-gray-500 hover:text-gray-500 dark:hover:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-900 focus:outline-none focus:bg-gray-100 dark:focus:bg-gray-900 focus:text-gray-500 dark:focus:text-gray-400">
+                        <svg class="w-6 h-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                            <path :class="{'hidden': open, 'inline-flex': ! open }" class="inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                            <path :class="{'hidden': ! open, 'inline-flex': open }" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+                <button class="self-center ml-4" @click="switchOn = ! switchOn; switchTheme()" type="button">
+                    <label class="relative p-2 cursor-pointer" for="light-switch">
+                        <svg class="dark:hidden" width="24" height="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 21 20" fill="none">>
+                            <path d="M19.1447 13.2501C18.1081 13.6667 16.9761 13.8959 15.7905 13.8959C10.82 13.8959 6.79053 9.8665 6.79053 4.89594C6.79053 3.71036 7.01977 2.57833 7.43634 1.54175C4.12701 2.87167 1.79053 6.11095 1.79053 9.89594C1.79053 14.8665 5.81996 18.8959 10.7905 18.8959C14.5755 18.8959 17.8148 16.5595 19.1447 13.2501Z" stroke="#27395E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <svg class="hidden dark:block" width="24" height="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 29 29" fill="none">
+                        <path d="M14.4678 1.09375V2.55208M14.4678 25.8854V27.3438M27.5928 14.2188H26.1344M2.80111 14.2187H1.34277M23.7485 23.4995L22.7174 22.4683M6.21819 5.96917L5.187 4.93797M23.7486 4.93805L22.7174 5.96925M6.21827 22.4684L5.18707 23.4996M20.3011 14.2188C20.3011 17.4404 17.6894 20.0521 14.4678 20.0521C11.2461 20.0521 8.63444 17.4404 8.63444 14.2188C8.63444 10.9971 11.2461 8.38542 14.4678 8.38542C17.6894 8.38542 20.3011 10.9971 20.3011 14.2188Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </label>
                 </button>
             </div>
         </div>
@@ -222,13 +218,13 @@
                 <div class="flex items-center px-4">
                     @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
                         <div class="shrink-0 me-3">
-                            <img class="h-10 w-10 rounded-full object-cover" src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" />
+                            <img class="object-cover w-10 h-10 rounded-full" src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" />
                         </div>
                     @endif
 
                     <div>
-                        <div class="font-medium text-base text-gray-800 dark:text-gray-200">{{ Auth::user()->name }}</div>
-                        <div class="font-medium text-sm text-gray-500">{{ Auth::user()->email }}</div>
+                        <div class="text-base font-medium text-gray-800 dark:text-gray-200">{{ Auth::user()->name }}</div>
+                        <div class="text-sm font-medium text-gray-500">{{ Auth::user()->email }}</div>
                     </div>
                 </div>
 

@@ -28,7 +28,7 @@
             <div class="flex justify-between mt-4 mb-4">
                 <label for="remember_me" class="items-center">
                     <x-checkbox id="remember_me" name="remember" />
-                    <span class="ml-2 text-sm text-gray-600 dark:text-gray-400">{{ __('Remember me') }}</span>
+                    <span class="ml-2 text-sm text-[var(--light-gray)] dark:text-gray-400">{{ __('Remember me') }}</span>
                 </label>
 
 
