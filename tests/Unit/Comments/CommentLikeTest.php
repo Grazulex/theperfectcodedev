@@ -10,12 +10,12 @@ it('like a comment', function (): void {
     Queue::fake();
     $page = makePage();
     $comment = (new CreateCommentAction())->handle(
+        user: $page->user,
         page: $page,
         attributes : [
-            'page_id' => $page->id,
-            'user_id' => $page->user->id,
             'content' => 'This is a comment',
-        ]
+        ],
+        version: $page->versions->first()
     );
     (new ProcessLike(
         comment: $comment,
@@ -30,12 +30,12 @@ it('unlike a comment', function (): void {
     Queue::fake();
     $page = makePage();
     $comment = (new CreateCommentAction())->handle(
+        user: $page->user,
         page: $page,
         attributes : [
-            'page_id' => $page->id,
-            'user_id' => $page->user->id,
             'content' => 'This is a comment',
-        ]
+        ],
+        version: $page->versions->first()
     );
 
     (new ProcessLike(
