@@ -17,13 +17,12 @@ it('can create a comment', function (): void {
     $page->status()->publish();
 
     $comment = (new CreateCommentAction())->handle(
+        user: $page->user,
         page: $page,
         attributes: [
-            'user_id' => $page->user->id,
-            'page_id' => $page->id,
             'content' => 'This is a comment',
-            'version' => $page->version,
-        ]
+        ],
+        version: $page->versions->first(),
     );
 
     expect($comment->user_id)->toBe($page->user->id)
@@ -31,7 +30,7 @@ it('can create a comment', function (): void {
         ->and($comment->page_id)->toBe($page->id)
         ->and($comment->content)->toBe('This is a comment')
         ->and($comment->state)->toBe(State::PUBLISHED)
-        ->and($comment->version)->toBe($page->version)
+        ->and($comment->version)->toBe($page->versions->first())
         ->and($page->comments()->count())->toBe(1)
         ->and($page->comments->first()->content)->toBe('This is a comment');
 
@@ -55,22 +54,22 @@ it('can create a comment', function (): void {
 it('can create a response', function (): void {
     $page = makePage();
     $comment = (new CreateCommentAction())->handle(
+        user: $page->user,
         page: $page,
         attributes : [
-            'page_id' => $page->id,
-            'user_id' => $page->user->id,
             'content' => 'This is a comment',
-        ]
+        ],
+        version: $page->versions->first()
     );
 
     $response = (new CreateCommentAction())->handle(
+        user: $page->user,
         page: $page,
         attributes: [
-            'user_id' => $page->user->id,
-            'page_id' => $page->id,
             'response_id' => $comment->id,
             'content' => 'This is a response',
-        ]
+        ],
+        version: $page->versions->first()
     );
 
     expect($response->user_id)->toBe($page->user->id)
@@ -91,12 +90,12 @@ it('update comment', function (): void {
     Notification::fake();
     $page = makePage();
     $comment = (new CreateCommentAction())->handle(
+        user: $page->user,
         page: $page,
         attributes : [
-            'page_id' => $page->id,
-            'user_id' => $page->user->id,
             'content' => 'This is a comment',
-        ]
+        ],
+        version: $page->versions->first(),
     );
 
     $comment = (new UpdateCommentAction())->handle(
@@ -119,12 +118,12 @@ it('can refuse a comment', function (): void {
     Notification::fake();
     $page = makePage();
     $comment = (new CreateCommentAction())->handle(
+        user: $page->user,
         page: $page,
         attributes : [
-            'page_id' => $page->id,
-            'user_id' => $page->user->id,
             'content' => 'This is a comment',
-        ]
+        ],
+        version: $page->versions->first()
     );
 
     $comment->status()->refuse();
@@ -149,12 +148,12 @@ it('can delete a comment', function (): void {
     Notification::fake();
     $page = makePage();
     $comment = (new CreateCommentAction())->handle(
+        user: $page->user,
         page: $page,
         attributes : [
-            'page_id' => $page->id,
-            'user_id' => $page->user->id,
             'content' => 'This is a comment',
-        ]
+        ],
+        version: $page->versions->first()
     );
 
     $comment->status()->refuse();
@@ -181,12 +180,12 @@ it(/**
  */ 'none existing state to delete', function (): void {
     $page = makePage();
     $comment = (new CreateCommentAction())->handle(
+        user : $page->user,
         page: $page,
         attributes : [
-            'page_id' => $page->id,
-            'user_id' => $page->user->id,
             'content' => 'This is a comment',
-        ]
+        ],
+        version: $page->versions->first()
     );
 
     $comment->status()->delete();
