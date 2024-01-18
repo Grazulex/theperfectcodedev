@@ -1,4 +1,4 @@
-<div class="w-full">
+<div class="w-full p-3">
     <div class="text-sm">
         <p class="leading-none text-gray-600">{{ $userWithCount->name }}</p>
         <p class="text-gray-600">{{ $userWithCount->created_at->shortRelativeDiffForHumans() }}</p>
