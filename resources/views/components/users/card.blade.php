@@ -1,17 +1,28 @@
-<div>
-    <div class="items-center">
-        <button class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition">
-            <img class="h-8 w-8 rounded-full object-cover" src="{{ $userWithCount->profile_photo_url }}" alt="{{ $userWithCount->name }}" />
-        </button>
-        <div class="text-sm">
-            <p class="text-gray-900 leading-none">{{ $userWithCount->name }}</p>
-            <p class="text-gray-600">{{ $userWithCount->created_at->shortRelativeDiffForHumans() }}</p>
+<div class="w-full">
+    <div class="text-sm">
+        <p class="leading-none text-gray-900">{{ $userWithCount->name }}</p>
+        <p class="text-gray-600">{{ $userWithCount->created_at->shortRelativeDiffForHumans() }}</p>
+    </div>
+    <div class="flex flex-row text-white">
+        <div class="mr-8">
+            <div class="w-[150px] dark:text-white text-black justify-between flex">
+                <div>pages: </div>
+                <div>{{ $userWithCount->pages_count }}</div>
+            </div>
+            <div class="w-[150px] dark:text-white text-black justify-between flex">
+                <div>comments:</div>
+                <div>{{ $userWithCount->comments_count }}</div>
+            </div>
         </div>
-        <div class="text-xs">
-            <p class="text-gray-600">{{ $userWithCount->pages_count }} pages</p>
-            <p class="text-gray-600">{{ $userWithCount->comments_count }} comments</p>
-            <p class="text-gray-600">{{ $userWithCount->followers_count }} followers</p>
-            <p class="text-gray-600">{{ $userWithCount->likes_count }} likes</p>
+        <div>
+            <div class="w-[150px] dark:text-white text-black justify-between flex">
+                <div>followers:</div>
+                <div>{{ $userWithCount->followers_count }}</div>
+            </div>
+            <div class="w-[150px] dark:text-white text-black justify-between flex">
+                <div>likes:</div>
+                <div>{{ $userWithCount->likes_count }}</div>
+            </div>
         </div>
     </div>
 </div>

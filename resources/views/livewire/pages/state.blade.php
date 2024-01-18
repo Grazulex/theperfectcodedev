@@ -1,6 +1,6 @@
 <div>
-    <div class="flex items-center justify-end mb-3">
-        <div class="ml-4 text-xs font-bold leading-sm uppercase px-3 py-1 rounded-full bg-white text-gray-700 border">
+    <div class="flex items-center justify-end mr-3">
+        <div class="px-3 py-1 ml-4 text-xs font-bold text-white uppercase bg-[var(--primary)] rounded-full leading-sm">
             {{ $page->state->name }}
         </div>
     </div>
