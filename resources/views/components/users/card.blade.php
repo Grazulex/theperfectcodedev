@@ -1,6 +1,6 @@
 <div class="w-full">
     <div class="text-sm">
-        <p class="leading-none text-gray-900">{{ $userWithCount->name }}</p>
+        <p class="leading-none text-gray-600">{{ $userWithCount->name }}</p>
         <p class="text-gray-600">{{ $userWithCount->created_at->shortRelativeDiffForHumans() }}</p>
     </div>
     <div class="flex flex-row text-white">

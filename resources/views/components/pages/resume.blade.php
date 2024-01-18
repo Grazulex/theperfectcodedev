@@ -32,8 +32,9 @@
                     @endif
                     <!-- <livewire:pages.commented :comments_count="$page->comments_count"/> -->
                     @if (Route::currentRouteName() == 'pages.my')
+                        <livewire:pages.others :page="$page"/>
                         <livewire:pages.state :page="$page"/>
-                        <!-- <livewire:pages.others :page="$page"/> -->
+
                     @endif
                 </div>
             </div>

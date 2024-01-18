@@ -25,7 +25,11 @@
 
 :root {
     --primary:  #4357ee;
+    --light-blue: #6C9DDB;
     --gray-smoke: #606688;
     --light-gray: #677DA0;
     --light-primary: #E8F1FA;
+    --day-light: #F0F7F8;
+    --dark: #171F31;
+    --card-dark: #101624;
 }
