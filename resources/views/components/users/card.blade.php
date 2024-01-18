@@ -3,7 +3,7 @@
         <p class="leading-none text-gray-600">{{ $userWithCount->name }}</p>
         <p class="text-gray-600">{{ $userWithCount->created_at->shortRelativeDiffForHumans() }}</p>
     </div>
-    <div class="flex flex-row text-white">
+    <div class="flex-row text-white lg:flex">
         <div class="mr-8">
             <div class="w-[150px] dark:text-white text-black justify-between flex">
                 <div>pages: </div>
