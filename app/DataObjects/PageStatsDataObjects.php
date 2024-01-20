@@ -23,4 +23,13 @@ final readonly class PageStatsDataObjects
         );
     }
 
+    public static function toArray(Page $page): array
+    {
+        return [
+            'likes_count' => $page->likes()->count(),
+            'comments_count' => $page->comments()->count(),
+            'followers_count' => $page->followers()->count(),
+        ];
+    }
+
 }

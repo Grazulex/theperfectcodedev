@@ -25,7 +25,19 @@ final readonly class UserDataObject
             email: $user->email,
             profile_photo_path: $user->profile_photo_path,
             profile_photo_url: $user->profile_photo_url,
-            stats: UserStatsDataObject::fromEloquentModel($user)
+            stats: UserStatsDataObject::fromEloquentModel($user),
         );
+    }
+
+    public static function toArray(User $user): array
+    {
+        return [
+            'id' => $user->id,
+            'name' => $user->name,
+            'email' => $user->email,
+            'profile_photo_path' => $user->profile_photo_path,
+            'profile_photo_url' => $user->profile_photo_url,
+            'stats' => UserStatsDataObject::toArray($user),
+        ];
     }
 }

@@ -4,10 +4,7 @@ declare(strict_types=1);
 
 namespace App\DataObjects;
 
-use App\Enums\Pages\State;
 use App\Models\Page;
-use Carbon\Carbon;
-use Carbon\CarbonInterface;
 use Illuminate\Support\Collection;
 
 final readonly class PageDataObject
@@ -21,12 +18,12 @@ final readonly class PageDataObject
         public string $code,
         public Collection $tags,
         public int $version,
-        public State $state,
+        public EnumDataObject $state,
         public bool $is_public,
         public bool $is_accept_version,
-        public CarbonInterface $created_at,
-        public ?CarbonInterface $updated_at,
-        public ?CarbonInterface $published_at,
+        public DateDataObject $created_at,
+        public ?DateDataObject $updated_at,
+        public ?DateDataObject $published_at,
         public UserDataObject $user,
         public PageStatsDataObjects $stats,
     ) {}
@@ -42,15 +39,37 @@ final readonly class PageDataObject
             code: $page->code,
             tags:  new Collection($page->tags),
             version: $page->version,
-            state: $page->state,
+            state: new EnumDataObject($page->state),
             is_public: (bool) $page->is_public,
             is_accept_version: (bool) $page->is_accept_version,
-            created_at: new Carbon($page->created_at),
-            updated_at: ($page->updated_at) ? new Carbon($page->updated_at) : null,
-            published_at: ($page->published_at) ? new Carbon($page->published_at) : null,
+            created_at: new DateDataObject($page->created_at),
+            updated_at: ($page->updated_at) ? new DateDataObject($page->updated_at) : null,
+            published_at: ($page->published_at) ? new DateDataObject($page->published_at) : null,
             user: UserDataObject::fromEloquentModel($page->user),
             stats: PageStatsDataObjects::fromEloquentModel($page),
         );
+    }
+
+    public static function toArray(Page $page): array
+    {
+        return [
+            'id' => $page->id,
+            'title' => $page->title,
+            'slug' => $page->slug,
+            'resume' => $page->resume,
+            'description' => $page->description,
+            'code' => $page->code,
+            'tags' =>  $page->tags,
+            'version' => $page->version,
+            'state' => EnumDataObject::toArray($page->state),
+            'is_public' => (bool) $page->is_public,
+            'is_accept_version' => (bool) $page->is_accept_version,
+            'created_at' => DateDataObject::toArray($page->created_at),
+            'updated_at' => ($page->updated_at) ? DateDataObject::toArray($page->updated_at) : null,
+            'published_at' => ($page->published_at) ? DateDataObject::toArray($page->published_at) : null,
+            'user' => UserDataObject::toArray($page->user),
+            'stats' => PageStatsDataObjects::toArray($page),
+        ];
     }
 
 }
