@@ -135,7 +135,7 @@ final class User extends Authenticatable implements MustVerifyEmail
     public function commentLikes(): BelongsToMany
     {
         return $this->BelongsToMany(
-            related: Page::class,
+            related: PageComments::class,
             table: 'comment_user_likes',
         );
     }
