@@ -15,7 +15,7 @@ use Livewire\Component;
 final class Like extends Component
 {
     public int $likes_count;
-    public Page $page;
+    public int $page_id;
     public ?User $user;
     public string $colorLiked = 'none';
     public bool $isLiked = false;
@@ -24,7 +24,7 @@ final class Like extends Component
     public function mount(): void
     {
         if ($this->user) {
-            $hasLiked = $this->page->likesService()->isLikedBy($this->user);
+            $hasLiked = Page::find($this->page_id)->likesService()->isLikedBy($this->user);
             if ($hasLiked) {
                 $this->isLiked = true;
                 $this->colorLiked = 'red';
@@ -56,7 +56,7 @@ final class Like extends Component
 
     private function dispatchLikeJob(): void
     {
-        ProcessLike::dispatch($this->page, $this->user)->onQueue('likes-queue');
+        ProcessLike::dispatch(Page::find($this->page_id), $this->user)->onQueue('likes-queue');
     }
 
 }

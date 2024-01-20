@@ -15,7 +15,7 @@ use Livewire\Component;
 final class Followed extends Component
 {
     public int $followers_count;
-    public Page $page;
+    public int $page_id;
     public ?User $user;
 
     public string $colorFollow = 'none';
@@ -25,7 +25,7 @@ final class Followed extends Component
     public function mount(): void
     {
         if ($this->user) {
-            $hasFollow = $this->page->followersService()->isFollowedBy($this->user);
+            $hasFollow = Page::find($this->page_id)->followersService()->isFollowedBy($this->user);
             if ($hasFollow) {
                 $this->isFollow = true;
                 $this->colorFollow = 'green';
@@ -56,6 +56,6 @@ final class Followed extends Component
 
     private function dispatchFollowJob(): void
     {
-        ProcessFollow::dispatch($this->page, $this->user)->onQueue('follows-queue');
+        ProcessFollow::dispatch(Page::find($this->page_id), $this->user)->onQueue('follows-queue');
     }
 }
