@@ -6,6 +6,8 @@ namespace App\Http\Controllers\Pages;
 
 use App\DataObjects\PageDataObject;
 use App\DataObjects\UserDataObject;
+use App\DataObjects\VersionDataObject;
+use App\Enums\Versions\State;
 use App\Http\Controllers\Controller;
 use App\Models\Page;
 use App\Models\PageComments;
@@ -24,17 +26,15 @@ final class ViewController extends Controller
             return redirect()->back();
         }
         if ($version) {
-            $page->load(['versions' => function ($query) use ($version): void {
-                $query->where('id', $version->id);
-            }]);
+            $versionArray = VersionDataObject::from($version)->toArray();
         } else {
-            $page->load(['versions' => function ($query): void {
-                $query->where('state', 'published')
-                    ->orderBy('version', 'desc')
-                    ->limit(1);
-            }]);
+            $lastVersion = $page->versions()->where('state', State::PUBLISHED)->orderBy('version', 'desc')->first();
+            if ($lastVersion) {
+                $versionArray = VersionDataObject::from($lastVersion)->toArray();
+            } else {
+                $versionArray = null;
+            }
         }
-        $page->loadCount(['likes','followers', 'comments']);
 
         $pageArray = PageDataObject::from($page)->toArray();
 
@@ -45,6 +45,6 @@ final class ViewController extends Controller
 
         $authArray = (auth()->check()) ? UserDataObject::from(auth()->user()) : null;
 
-        return view('pages.view-pages', ['pageArray' => $pageArray, 'comments' => $comments, 'authArray' => $authArray]);
+        return view('pages.view-pages', ['pageArray' => $pageArray, 'comments' => $comments, 'authArray' => $authArray, 'versionArray' => $versionArray]);
     }
 }

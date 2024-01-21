@@ -22,7 +22,6 @@ final class TopListController extends Controller
             ->limit(10)
             ->get())->toArray();
 
-
         return view('pages.top-pages', ['pagesCollection' => $pagesCollection]);
     }
 }

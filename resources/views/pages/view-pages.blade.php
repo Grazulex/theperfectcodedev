@@ -35,42 +35,42 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 flex flex-row"><p>
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-xl sm:rounded-lg basic-4/5">
                 <div class="p-2 lg:p-4 bg-white dark:bg-gray-800 dark:bg-gradient-to-bl dark:from-gray-700/50 dark:via-transparent border-b border-gray-200 dark:border-gray-700">
-                    <livewire:pages.versions :page-array="$pageArray"/>
+                    <livewire:pages.versions :page-array="$pageArray" :versionArray="$versionArray"/>
                 </div>
                 <div class="p-2 lg:p-4 bg-white dark:bg-gray-800 dark:bg-gradient-to-bl dark:from-gray-700/50 dark:via-transparent border-b border-gray-200 dark:border-gray-700">
                     <h4>Description</h4>
-                    {!! nl2br(($pageArray['stats']['versions_count'] > 0) ? $page->versions->first()->description : $page->description) !!}
+                    {!! nl2br(($pageArray['stats']['versions_count'] > 0) ? $versionArray['description'] : $pageArray['description']) !!}
                     <div class="mt-4">
                         <h4>Code</h4>
-                        <x-pages.code :code="($pageArray['stats']['versions_count'] > 0) ? $page->versions->first()->code : $page->code"/>
+                        <x-pages.code :code="($pageArray['stats']['versions_count'] > 0) ? $versionArray['code'] : $pageArray['code']"/>
                     </div>
                 </div>
             </div>
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-xl sm:rounded-lg basic-1/5">
                 <div class="p-2 lg:p-4 bg-white dark:bg-gray-800 dark:bg-gradient-to-bl dark:from-gray-700/50 dark:via-transparent border-b border-gray-200 dark:border-gray-700">
-                    <x-users.card :user="$page->user" />
+                    <x-users.card :user="$pageArray['user']" :created_at="$pageArray['user']['created_at']" />
                     <div class="inline-flex flex-wrap items-center gap-3 mt-8 group">
-                        <livewire:pages.like :user="$authUser" :page="$page" :likes_count="$page->likes_count"/>
-                        <livewire:pages.followed :user="$authUser" :page="$page" :followers_count="$page->followers_count"/>
+                        <livewire:pages.followed :user="$authArray" :page_id="$pageArray['id']" :followers_count="$pageArray['stats']['followers_count']"/>
+                        <livewire:pages.like :user="$authArray" :page_id="$pageArray['id']" :likes_count="$pageArray['stats']['likes_count']"/>
                     </div>
-                    @if (Auth::check() && Auth::user()->id === $page->user->id)
-                        <livewire:pages.state :page="$page"/>
-                        <livewire:pages.others :page="$page"/>
+                    @if (Auth::check() && Auth::user()->id === $pageArray['user']['id'])
+                        <livewire:pages.others :is_public="$pageArray['is_public']"/>
+                        <livewire:pages.state :state_name="$pageArray['state']"/>
                     @endif
-                    @can('update', $page)
+                    @can('update', $pageArray['id'])
                         <div class="mt-8">
-                            <x-action-link href="{{ route('pages.edit', ['page'=>$page]) }}">
+                            <x-action-link href="{{ route('pages.edit', ['page'=>$pageArray['slug']]) }}">
                                 {{ __('Edit') }}
                             </x-action-link>
-                            @if ($page->state === \App\Enums\Pages\State::DRAFT)
-                                <x-action-link href="{{ route('pages.publish', ['page'=>$page]) }}" class="bg-emerald-600">
+                            @if ($pageArray['state'] === \App\Enums\Pages\State::DRAFT)
+                                <x-action-link href="{{ route('pages.publish', ['page'=>$pageArray['slug']]) }}" class="bg-emerald-600">
                                     {{ __('Publish') }}
                                 </x-action-link>
                             @endif
                         </div>
                     @else
                         <div class="mt-8">
-                            <x-action-link href="{{ route('versions.new', ['page'=>$page]) }}" class="bg-emerald-600">
+                            <x-action-link href="{{ route('versions.new', ['page'=>$pageArray['slug']]) }}" class="bg-emerald-600">
                                 {{ __('New version') }}
                             </x-action-link>
                         </div>
@@ -83,7 +83,7 @@
                 <div class="p-6 lg:p-8 bg-white dark:bg-gray-800 dark:bg-gradient-to-bl dark:from-gray-700/50 dark:via-transparent border-b border-gray-200 dark:border-gray-700">
                     <h4>Comments</h4>
                     <div class="mt-4">
-                        <x-pages.comments :page="$pageArray"/>
+                        <x-pages.comments :page_id="$pageArray['id']"/>
                     </div>
                 </div>
             </div>

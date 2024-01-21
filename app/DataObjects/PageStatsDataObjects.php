@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace App\DataObjects;
 
+use App\Enums\Pages\State;
 use App\Models\Page;
+use Illuminate\Support\Facades\Auth;
 use Spatie\LaravelData\Data;
 
 final class PageStatsDataObjects extends Data
@@ -22,7 +24,13 @@ final class PageStatsDataObjects extends Data
             likes_count: $page->likes()->count(),
             comments_count: $page->comments()->count(),
             followers_count: $page->followers()->count(),
-            versions_count: $page->versions()->count(),
+            versions_count: $page->versions()->where(
+                'state',
+                (
+                    Auth::check() && Auth::user()->id === $page->user->id
+                ) ?
+                    State::cases() : State::PUBLISHED
+            )->count(),
         );
     }
 

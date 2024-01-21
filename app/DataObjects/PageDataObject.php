@@ -7,6 +7,7 @@ namespace App\DataObjects;
 use App\Enums\Pages\State;
 use App\Models\Page;
 use Carbon\Carbon;
+use Spatie\LaravelData\Attributes\DataCollectionOf;
 use Spatie\LaravelData\Attributes\WithCast;
 use Spatie\LaravelData\Casts\DateTimeInterfaceCast;
 use Spatie\LaravelData\Casts\EnumCast;
@@ -33,7 +34,9 @@ final class PageDataObject extends Data
         public ?Carbon $updated_at,
         #[WithCast(DateTimeInterfaceCast::class)]
         public ?Carbon $published_at,
+        #[DataCollectionOf(UserDataObject::class)]
         public UserDataObject $user,
+        #[DataCollectionOf(PageStatsDataObjects::class)]
         public PageStatsDataObjects $stats,
     ) {}
 

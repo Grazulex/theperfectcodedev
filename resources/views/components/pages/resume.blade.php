@@ -34,7 +34,6 @@
                     @if (Route::currentRouteName() == 'pages.my')
                         <livewire:pages.others :is_public="$pageArray['is_public']"/>
                         <livewire:pages.state :state_name="$pageArray['state']"/>
-
                     @endif
                 </div>
             </div>

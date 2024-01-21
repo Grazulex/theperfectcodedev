@@ -17,7 +17,7 @@ final class MyListController extends Controller
     public function __construct(private readonly PageRepository $repository) {}
     public function __invoke(Request $request): Application|View|\Illuminate\Foundation\Application|Factory
     {
-        $pagesCollection = PageDataObject::collection($this->repository->retrieveAllMyPagesByUser($request->user()->id)->get())->toArray();
+        $pagesCollection = PageDataObject::collection($this->repository->retrieveAllMyPagesByUser($request->user()->id)->paginate(10))->toArray();
 
         return view('pages.my-pages', ['pagesCollection' => $pagesCollection]);
     }
