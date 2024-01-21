@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers\Pages;
 
+use App\DataObjects\PageDataObject;
+use App\DataObjects\UserDataObject;
 use App\Http\Controllers\Controller;
 use App\Models\Page;
 use App\Models\PageComments;
@@ -34,13 +36,15 @@ final class ViewController extends Controller
         }
         $page->loadCount(['likes','followers', 'comments']);
 
+        $pageArray = PageDataObject::from($page)->toArray();
+
         $comments = PageComments::where('page_id', $page->id)
             ->with(['user'])
             ->orderBy('created_at', 'desc')
             ->paginate();
 
-        $authUser = (auth()->check()) ? auth()->user() : null;
+        $authArray = (auth()->check()) ? UserDataObject::from(auth()->user()) : null;
 
-        return view('pages.view-pages', ['page' => $page, 'comments' => $comments, 'authUser' => $authUser]);
+        return view('pages.view-pages', ['pageArray' => $pageArray, 'comments' => $comments, 'authArray' => $authArray]);
     }
 }

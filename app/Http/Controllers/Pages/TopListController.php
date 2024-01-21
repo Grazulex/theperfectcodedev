@@ -18,10 +18,11 @@ final class TopListController extends Controller
     public function __construct(private readonly PageRepository $repository) {}
     public function __invoke(Request $request): Application|View|\Illuminate\Foundation\Application|Factory
     {
-        $topPages = PageDataObject::collection($this->repository->retrieveTopPagesByState(State::PUBLISHED)
+        $pagesCollection = PageDataObject::collection($this->repository->retrieveTopPagesByState(State::PUBLISHED)
             ->limit(10)
             ->get())->toArray();
 
-        return view('pages.top-pages', ['topPages' => $topPages]);
+
+        return view('pages.top-pages', ['pagesCollection' => $pagesCollection]);
     }
 }

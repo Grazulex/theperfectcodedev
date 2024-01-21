@@ -1,15 +1,15 @@
 <div class="relative flex flex-col justify-between dark:bg-[var(--dark)] y-between w-full dark:text-[white] text-gray-800 bg-[var(--day-light)] shadow-lg rounded-xl bg-clip-border">
     <div>
-        <livewire:pages.tags :tags="$page['tags']"/>
+        <livewire:pages.tags :tags="$pageArray['tags']"/>
         <div class="pl-5 pr-5">
             <div class="flex items-center justify-between mb-3">
                 <h5 class="block text-xl antialiased font-medium leading-snug tracking-normal text-blue-gray-900">
-                    <x-pages.title :title="$page['title']" :published_at="$page['published_at']" />
+                    <x-pages.title :title="$pageArray['title']" :published_at="$pageArray['published_at']" />
                 </h5>
-                v.{{ $page['version'] }}
+                v.{{ $pageArray['version'] }}
             </div>
             <p class="block text-base antialiased font-light leading-relaxed">
-                {{ $page['resume'] }}
+                {{ $pageArray['resume'] }}
             </p>
         </div>
     </div>
@@ -24,24 +24,24 @@
                 </div>
                 <div class="flex self-center">
                     @if (Auth::check())
-                        <livewire:pages.followed :user="Auth::user()" :page_id="$page['id']" :followers_count="$page['stats']['followers_count']"/>
-                        <livewire:pages.like :user="Auth::user()" :page_id="$page['id']" :likes_count="$page['stats']['likes_count']"/>
+                        <livewire:pages.followed :user="Auth::user()" :page_id="$pageArray['id']" :followers_count="$pageArray['stats']['followers_count']"/>
+                        <livewire:pages.like :user="Auth::user()" :page_id="$pageArray['id']" :likes_count="$pageArray['stats']['likes_count']"/>
                     @else
-                        <livewire:pages.followed :user="Null" :page_id="$page['id']" :followers_count="$page['stats']['followers_count']"/>
-                        <livewire:pages.like :user="Null" :page_id="$page['id']" :likes_count="$page['stats']['likes_count']"/>
+                        <livewire:pages.followed :user="Null" :page_id="$pageArray['id']" :followers_count="$pageArray['stats']['followers_count']"/>
+                        <livewire:pages.like :user="Null" :page_id="$pageArray['id']" :likes_count="$pageArray['stats']['likes_count']"/>
                     @endif
-                    <livewire:pages.commented :comments_count="$page['stats']['comments_count']"/>
+                    <livewire:pages.commented :comments_count="$pageArray['stats']['comments_count']"/>
                     @if (Route::currentRouteName() == 'pages.my')
-                        <livewire:pages.others :page="$page"/>
-                        <livewire:pages.state :page="$page"/>
+                        <livewire:pages.others :is_public="$pageArray['is_public']"/>
+                        <livewire:pages.state :state_name="$pageArray['state']"/>
 
                     @endif
                 </div>
             </div>
 
-            <x-users.card :user="$page['user']" :created_at="$page['user']['created_at']" />
+            <x-users.card :user="$pageArray['user']" :created_at="$pageArray['user']['created_at']" />
         </div>
-        <a href="{{ route('pages.view',['page'=>$page['slug']]) }}"
+        <a href="{{ route('pages.view',['page'=>$pageArray['slug']]) }}"
                 class="block w-full select-none rounded-lg bg-[var(--primary)]  py-3.5 px-7 text-center align-middle text-sm font-bold uppercase text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
                 type="button">
             View

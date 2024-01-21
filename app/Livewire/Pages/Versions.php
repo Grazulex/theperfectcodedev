@@ -13,19 +13,20 @@ use Livewire\Component;
 
 final class Versions extends Component
 {
-    public Page $page;
+    public array $pageArray;
     public Collection $listVersions;
 
     public function mount(): void
     {
-        if (Auth::check() && Auth::user()->id === $this->page->user_id) {
-            $this->listVersions = Version::where('page_id', $this->page->id)
+        $page = Page::findOrFail($this->pageArray['id']);
+        if (Auth::check() && Auth::user()->id === $this->pageArray['user']['id']) {
+            $this->listVersions = Version::where('page_id', $this->pageArray['id'])
                 ->with('user')
                 ->orderBy('state', 'asc')
                 ->orderBy('version', 'desc')
                 ->get();
         } else {
-            $this->listVersions = Version::where('page_id', $this->page->id)
+            $this->listVersions = Version::where('page_id', $this->pageArray['id'])
                 ->where('state', State::PUBLISHED)
                 ->with('user')
                 ->orderBy('version', 'desc')

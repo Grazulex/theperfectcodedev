@@ -13,6 +13,7 @@ final class PageStatsDataObjects extends Data
         public int $likes_count,
         public int $comments_count,
         public int $followers_count,
+        public int $versions_count,
     ) {}
 
     public static function fromModel(Page $page): self
@@ -21,6 +22,7 @@ final class PageStatsDataObjects extends Data
             likes_count: $page->likes()->count(),
             comments_count: $page->comments()->count(),
             followers_count: $page->followers()->count(),
+            versions_count: $page->versions()->count(),
         );
     }
 
