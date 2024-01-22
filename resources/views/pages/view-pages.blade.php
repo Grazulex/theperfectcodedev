@@ -50,8 +50,8 @@
                 <div class="p-2 lg:p-4 bg-white dark:bg-gray-800 dark:bg-gradient-to-bl dark:from-gray-700/50 dark:via-transparent border-b border-gray-200 dark:border-gray-700">
                     <x-users.card :user="$pageArray['user']" :created_at="$pageArray['user']['created_at']" />
                     <div class="inline-flex flex-wrap items-center gap-3 mt-8 group">
-                        <livewire:pages.followed :user="$authArray" :page_id="$pageArray['id']" :followers_count="$pageArray['stats']['followers_count']"/>
-                        <livewire:pages.like :user="$authArray" :page_id="$pageArray['id']" :likes_count="$pageArray['stats']['likes_count']"/>
+                        <livewire:pages.followed :user="$authArray" :page_id="$pageArray['id']" :followers_count="$pageArray['stats']['followers_count']" :is_followed_by_me="$pageArray['is_followed_by_me']"/>
+                        <livewire:pages.like :user="$authArray" :page_id="$pageArray['id']" :likes_count="$pageArray['stats']['likes_count']" :is_liked_by_me="$pageArray['is_liked_by_me']"/>
                     </div>
                     @if (Auth::check() && Auth::user()->id === $pageArray['user']['id'])
                         <livewire:pages.others :is_public="$pageArray['is_public']"/>
