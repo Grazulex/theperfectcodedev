@@ -7,6 +7,7 @@ namespace App\Livewire\Pages;
 use App\Jobs\Pages\ProcessLike;
 use App\Models\Page;
 use App\Models\User;
+use App\Services\Pages\LikesService;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Foundation\Application;
@@ -15,6 +16,7 @@ use Livewire\Component;
 final class Like extends Component
 {
     public int $likes_count;
+    public bool $is_liked_by_me;
     public int $page_id;
     public ?User $user;
     public string $colorLiked = 'none';
@@ -24,8 +26,7 @@ final class Like extends Component
     public function mount(): void
     {
         if ($this->user) {
-            $hasLiked = Page::find($this->page_id)->likesService()->isLikedBy($this->user);
-            if ($hasLiked) {
+            if ($this->is_liked_by_me) {
                 $this->isLiked = true;
                 $this->colorLiked = 'red';
             }

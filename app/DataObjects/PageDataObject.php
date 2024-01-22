@@ -7,11 +7,13 @@ namespace App\DataObjects;
 use App\Enums\Pages\State;
 use App\Models\Page;
 use Carbon\Carbon;
+use Spatie\LaravelData\Attributes\Computed;
 use Spatie\LaravelData\Attributes\DataCollectionOf;
 use Spatie\LaravelData\Attributes\WithCast;
 use Spatie\LaravelData\Casts\DateTimeInterfaceCast;
 use Spatie\LaravelData\Casts\EnumCast;
 use Spatie\LaravelData\Data;
+use Spatie\LaravelData\Optional;
 
 final class PageDataObject extends Data
 {
@@ -38,6 +40,8 @@ final class PageDataObject extends Data
         public UserDataObject $user,
         #[DataCollectionOf(PageStatsDataObjects::class)]
         public PageStatsDataObjects $stats,
+        public bool $is_liked_by_me = false,
+        public bool $is_followed_by_me = false,
     ) {}
 
     public static function fromModel(Page $page): self
@@ -59,6 +63,8 @@ final class PageDataObject extends Data
             published_at: $page->published_at,
             user: UserDataObject::fromModel($page->user),
             stats: PageStatsDataObjects::fromModel($page),
+            is_liked_by_me: auth()->check() && $page->likes()->where('user_id', auth()->id())->exists(),
+            is_followed_by_me: auth()->check() && $page->followers()->where('user_id', auth()->id())->exists(),
         );
     }
 

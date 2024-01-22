@@ -21,9 +21,9 @@ final class PageStatsDataObjects extends Data
     public static function fromModel(Page $page): self
     {
         return new self(
-            likes_count: $page->likes()->count(),
-            comments_count: $page->comments()->count(),
-            followers_count: $page->followers()->count(),
+            likes_count: $page->likes_count,
+            comments_count: $page->comments_count,
+            followers_count: $page->followers_count,
             versions_count: $page->versions()->where(
                 'state',
                 (

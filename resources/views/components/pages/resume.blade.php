@@ -24,11 +24,11 @@
                 </div>
                 <div class="flex self-center">
                     @if (Auth::check())
-                        <livewire:pages.followed :user="Auth::user()" :page_id="$pageArray['id']" :followers_count="$pageArray['stats']['followers_count']"/>
-                        <livewire:pages.like :user="Auth::user()" :page_id="$pageArray['id']" :likes_count="$pageArray['stats']['likes_count']"/>
+                        <livewire:pages.followed :user="Auth::user()" :is_followed_by_me="$pageArray['is_followed_by_me']" :page_id="$pageArray['id']" :followers_count="$pageArray['stats']['followers_count']"/>
+                        <livewire:pages.like :user="Auth::user()" :is_liked_by_me="$pageArray['is_liked_by_me']"  :page_id="$pageArray['id']" :likes_count="$pageArray['stats']['likes_count']"/>
                     @else
-                        <livewire:pages.followed :user="Null" :page_id="$pageArray['id']" :followers_count="$pageArray['stats']['followers_count']"/>
-                        <livewire:pages.like :user="Null" :page_id="$pageArray['id']" :likes_count="$pageArray['stats']['likes_count']"/>
+                        <livewire:pages.followed :user="Null" :is_followed_by_me="$pageArray['is_followed_by_me']"  :page_id="$pageArray['id']" :followers_count="$pageArray['stats']['followers_count']"/>
+                        <livewire:pages.like :user="Null" :is_liked_by_me="$pageArray['is_liked_by_me']"  :page_id="$pageArray['id']" :likes_count="$pageArray['stats']['likes_count']"/>
                     @endif
                     <livewire:pages.commented :comments_count="$pageArray['stats']['comments_count']"/>
                     @if (Route::currentRouteName() == 'pages.my')

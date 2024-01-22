@@ -15,6 +15,7 @@ use Livewire\Component;
 final class Followed extends Component
 {
     public int $followers_count;
+    public bool $is_followed_by_me;
     public int $page_id;
     public ?User $user;
 
@@ -25,8 +26,7 @@ final class Followed extends Component
     public function mount(): void
     {
         if ($this->user) {
-            $hasFollow = Page::find($this->page_id)->followersService()->isFollowedBy($this->user);
-            if ($hasFollow) {
+            if ($this->is_followed_by_me) {
                 $this->isFollow = true;
                 $this->colorFollow = 'green';
             }

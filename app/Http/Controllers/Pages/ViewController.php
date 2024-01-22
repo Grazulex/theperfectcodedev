@@ -11,7 +11,9 @@ use App\Enums\Versions\State;
 use App\Http\Controllers\Controller;
 use App\Models\Page;
 use App\Models\PageComments;
+use App\Models\User;
 use App\Models\Version;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 
 final class ViewController extends Controller
@@ -26,24 +28,24 @@ final class ViewController extends Controller
             return redirect()->back();
         }
         if ($version) {
-            $versionArray = VersionDataObject::from($version)->toArray();
+            $versionArray = VersionDataObject::fromModel($version)->toArray();
         } else {
             $lastVersion = $page->versions()->where('state', State::PUBLISHED)->orderBy('version', 'desc')->first();
             if ($lastVersion) {
-                $versionArray = VersionDataObject::from($lastVersion)->toArray();
+                $versionArray = VersionDataObject::fromModel($lastVersion)->toArray();
             } else {
                 $versionArray = null;
             }
         }
 
-        $pageArray = PageDataObject::from($page)->toArray();
+        $pageArray = PageDataObject::fromModel($page)->toArray();
 
         $comments = PageComments::where('page_id', $page->id)
             ->with(['user'])
             ->orderBy('created_at', 'desc')
             ->paginate();
 
-        $authArray = (auth()->check()) ? UserDataObject::from(auth()->user()) : null;
+        $authArray = (auth()->check()) ?auth()->user()->toArray() : null;
 
         return view('pages.view-pages', ['pageArray' => $pageArray, 'comments' => $comments, 'authArray' => $authArray, 'versionArray' => $versionArray]);
     }

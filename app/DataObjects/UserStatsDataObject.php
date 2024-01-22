@@ -15,18 +15,16 @@ final class UserStatsDataObject extends Data
         public int $likes_count,
         public int $comments_count,
         public int $followers_count,
-        public int $comment_likes_count,
     ) {}
 
     public static function fromModel(User $user): self
     {
         return new self(
-            pages_count: $user->pages()->count(),
-            versions_count: $user->versions()->count(),
-            likes_count: $user->likes()->count(),
-            comments_count: $user->comments()->count(),
-            followers_count: $user->followers()->count(),
-            comment_likes_count: $user->commentLikes()->count(),
+            pages_count: $user->pages_count,
+            versions_count: $user->versions_count,
+            likes_count: $user->likes_count,
+            comments_count: $user->comments_count,
+            followers_count: $user->followers_count,
         );
     }
 }
