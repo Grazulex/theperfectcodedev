@@ -5,15 +5,12 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Pages;
 
 use App\DataObjects\PageDataObject;
-use App\DataObjects\UserDataObject;
 use App\DataObjects\VersionDataObject;
 use App\Enums\Versions\State;
 use App\Http\Controllers\Controller;
 use App\Models\Page;
 use App\Models\PageComments;
-use App\Models\User;
 use App\Models\Version;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 
 final class ViewController extends Controller
@@ -45,7 +42,7 @@ final class ViewController extends Controller
             ->orderBy('created_at', 'desc')
             ->paginate();
 
-        $authArray = (auth()->check()) ?auth()->user()->toArray() : null;
+        $authArray = (auth()->check()) ? auth()->user()->toArray() : null;
 
         return view('pages.view-pages', ['pageArray' => $pageArray, 'comments' => $comments, 'authArray' => $authArray, 'versionArray' => $versionArray]);
     }

@@ -12,11 +12,12 @@ test('resume view can be rendered', function (): void {
     $page = makePage();
     $page->status()->publish();
     $page = PageDataObject::fromModel(
-        Page::where('id', $page->id)->with('user',
+        Page::where('id', $page->id)->with(
+            'user',
             fn($query) => $query->withCount('followers', 'pages', 'likes', 'comments', 'versions')
         )
-        ->withCount('likes', 'comments', 'followers', 'versions')
-        ->first()
+            ->withCount('likes', 'comments', 'followers', 'versions')
+            ->first()
     )->toArray();
     $this->blade('<x-pages.resume :page_array="$page" />', ['page' => $page])
         ->assertSee($page['title'])
@@ -31,7 +32,8 @@ test('resume component can be rendered', function (): void {
     $page = makePage();
     $page->status()->publish();
     $page = PageDataObject::fromModel(
-        Page::where('id', $page->id)->with('user',
+        Page::where('id', $page->id)->with(
+            'user',
             fn($query) => $query->withCount('followers', 'pages', 'likes', 'comments', 'versions')
         )
             ->withCount('likes', 'comments', 'followers', 'versions')
