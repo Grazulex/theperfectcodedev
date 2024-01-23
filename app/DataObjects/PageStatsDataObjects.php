@@ -24,13 +24,7 @@ final class PageStatsDataObjects extends Data
             likes_count: $page->likes_count,
             comments_count: $page->comments_count,
             followers_count: $page->followers_count,
-            versions_count: $page->versions()->where(
-                'state',
-                (
-                    Auth::check() && Auth::user()->id === $page->user->id
-                ) ?
-                    State::cases() : State::PUBLISHED
-            )->count(),
+            versions_count: $page->versions_count,
         );
     }
 

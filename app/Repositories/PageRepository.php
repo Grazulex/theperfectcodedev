@@ -17,15 +17,13 @@ final class PageRepository extends BaseRepository
 
     public function retrieveAllMyPagesByUser($userId): Builder
     {
-        return $this->model->withCount(['likes','followers', 'comments'])
-            ->where('user_id', $userId)
+        return $this->model->where('user_id', $userId)
             ->orderBy('created_at', 'desc');
     }
 
     public function retrieveTopPagesByState(State $state): Builder
     {
-        return $this->model->withCount(['likes', 'followers', 'comments'])
-            ->with('user')
+        return $this->model->with('user')
             ->where('is_public', 1)
             ->where('state', $state)
             ->orderBy('likes_count', 'desc');

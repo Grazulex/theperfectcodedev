@@ -21,7 +21,6 @@ final class Versions extends Component
         if (Auth::check() && Auth::user()->id === $this->pageArray['user']['id']) {
             $this->versionsCollection = VersionDataObject::collection(Version::where('page_id', $this->pageArray['id'])
                 ->with('user', fn($query) => $query->withcount(['pages', 'versions', 'likes', 'comments', 'followers']))
-                ->orderBy('state', 'asc')
                 ->orderBy('version', 'desc')
                 ->get())->toArray();
         } else {

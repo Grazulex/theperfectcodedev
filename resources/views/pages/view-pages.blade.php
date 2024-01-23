@@ -39,10 +39,10 @@
                 </div>
                 <div class="p-2 lg:p-4 bg-white dark:bg-gray-800 dark:bg-gradient-to-bl dark:from-gray-700/50 dark:via-transparent border-b border-gray-200 dark:border-gray-700">
                     <h4>Description</h4>
-                    {!! nl2br(($pageArray['stats']['versions_count'] > 0) ? $versionArray['description'] : $pageArray['description']) !!}
+                    {!! nl2br(($pageArray['stats']['versions_count'] > 0 && $versionArray) ? $versionArray['description'] : $pageArray['description']) !!}
                     <div class="mt-4">
                         <h4>Code</h4>
-                        <x-pages.code :code="($pageArray['stats']['versions_count'] > 0) ? $versionArray['code'] : $pageArray['code']"/>
+                        <x-pages.code :code="($pageArray['stats']['versions_count'] > 0 && $versionArray) ? $versionArray['code'] : $pageArray['code']"/>
                     </div>
                 </div>
             </div>

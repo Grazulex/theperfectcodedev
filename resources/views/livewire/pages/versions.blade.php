@@ -1,7 +1,7 @@
 <div>
     <h3 class="">Versions</h3>
     <p>Last version V.{{ $pageArray['version'] }}</p>
-    @if ($pageArray['stats']['versions_count'] > 0)
+    @if ($pageArray['stats']['versions_count'] > 0 && $versionArray)
         <p>Showing version V.{{ $versionArray['version'] }}</p>
         @if (Auth::check() && Auth::user()->id === $pageArray['user']['id'])
             @if ($versionsCollection[0]['state'] === \App\Enums\Versions\State::DRAFT)
@@ -12,12 +12,12 @@
         @endif
         <h3 class="">History</h3>
         <ul class="">
-            @foreach ($versionsCollection as $versionArray)
+            @foreach ($versionsCollection as $versionCollectionArray)
                 <li>
-                    <a href="{{ route('pages.view', ['page'=>$pageArray['slug'], 'version'=>$versionArray['id']]) }}">
-                        V.{{ $versionArray['version'] }} - {{ $versionArray['created_at'] }} by {{ $versionArray['user']['name'] }}
+                    <a href="{{ route('pages.view', ['page'=>$pageArray['slug'], 'version'=>$versionCollectionArray['id']]) }}">
+                        V.{{ $versionCollectionArray['version'] }} - {{ $versionCollectionArray['created_at'] }} by {{ $versionCollectionArray['user']['name'] }}
                         @if (Auth::check() && Auth::user()->id === $pageArray['user']['id'])
-                            ({{ $version['state'] }})
+                            ({{ $versionCollectionArray['state'] }})
                         @endif
                     </a>
                 </li>

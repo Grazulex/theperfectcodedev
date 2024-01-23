@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Models;
 
 use App\Enums\Versions\State;
+use App\Models\Scopes\Versions\DefaultScope;
 use App\Notifications\Versions\ArchiveNotification;
 use App\StateMachines\Contracts\VersionStateContract;
 use App\StateMachines\Versions\DraftVersionState;
@@ -26,7 +27,7 @@ use InvalidArgumentException;
  * @property Page $page
  * @property User $user
  */
-final class Version extends Model
+class Version extends Model
 {
     use HasFactory;
     use SoftDeletes;
@@ -43,6 +44,11 @@ final class Version extends Model
     protected $casts = [
         'state' => State::class
     ];
+
+    protected static function booted(): void
+    {
+        static::addGlobalScope(new DefaultScope());
+    }
 
     public function page(): belongsTo
     {

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Models;
 
 use App\Enums\Pages\State;
+use App\Models\Scopes\Pages\DefaultScope;
 use App\Services\Pages\FollowersService;
 use App\Services\Pages\LikesService;
 use App\StateMachines\Contracts\PageStateContract;
@@ -43,7 +44,7 @@ use InvalidArgumentException;
  * @property Collection<PageCommentLikes> $commentLikes
  * @property Collection<User> $followers
  */
-final class Page extends Model
+class Page extends Model
 {
     use HasFactory;
     use Sluggable;
@@ -73,6 +74,11 @@ final class Page extends Model
     ];
 
     protected string $sluggable = 'title';
+
+    protected static function booted(): void
+    {
+        static::addGlobalScope(new DefaultScope());
+    }
 
     public function user(): belongsTo
     {

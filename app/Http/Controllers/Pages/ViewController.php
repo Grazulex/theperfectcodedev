@@ -25,36 +25,23 @@ final class ViewController extends Controller
             return redirect()->back();
         }
 
-        $pageModel = Page::where('id', $page->id)
-            ->withCount(['versions', 'likes', 'comments', 'followers'])
-            ->with('user',
-                fn($query) => $query->withcount(['pages', 'versions', 'likes', 'comments', 'followers'])
-            )->first();
-
+        $versionArray = null;
         if ($version) {
-            $versionModel = Version::where('id', $version->id)
-                ->with('user',
-                fn($query) => $query->withcount(['pages', 'versions', 'likes', 'comments', 'followers'])
-            )->first();
-            $versionArray = VersionDataObject::fromModel($versionModel)->toArray();
+            $versionArray = VersionDataObject::fromModel($version)->toArray();
         } else {
-            $lastVersion = $page->versions()->where('state', State::PUBLISHED)->with('user',
-                fn($query) => $query->withcount(['pages', 'versions', 'likes', 'comments', 'followers'])
-            )->orderBy('version', 'desc')->first();
+            $lastVersion = $page->versions()->where('state', State::PUBLISHED)->orderBy('version', 'desc')->first();
             if ($lastVersion) {
                 $versionArray = VersionDataObject::fromModel($lastVersion)->toArray();
-            } else {
-                $versionArray = null;
             }
         }
-
-        $pageArray = PageDataObject::fromModel($pageModel)->toArray();
 
         $comments = PageComments::where('page_id', $page->id)
             ->with(['user'])
             ->orderBy('created_at', 'desc')
             ->paginate();
 
+
+        $pageArray = PageDataObject::fromModel($page)->toArray();
         $authArray = (auth()->check()) ? auth()->user() : null;
 
         return view('pages.view-pages', ['pageArray' => $pageArray, 'comments' => $comments, 'authArray' => $authArray, 'versionArray' => $versionArray]);
