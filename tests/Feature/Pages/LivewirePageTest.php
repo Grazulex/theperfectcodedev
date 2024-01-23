@@ -28,7 +28,7 @@ test('commented componant can be rendered', function (): void {
 test('like componant can be rendered', function (): void {
     $page = makePage();
     $page->status()->publish();
-    Livewire::test('pages.like', ['user' => null, 'page' => $page,'likes_count' => $page->likes->count()])
+    Livewire::test('pages.like', ['user' => null, 'page_id' => $page->id,'likes_count' => $page->likes->count(), 'is_liked_by_me' => false])
         ->assertStatus(200)
         ->assertSee($page->likes->count());
 });
@@ -38,7 +38,7 @@ test('like componant can be liked', function (): void {
     $user = makeUser();
     $page = makePage();
     $page->status()->publish();
-    Livewire::actingAs($user)->test('pages.like', ['user' => $user, 'page' => $page,'likes_count' => $page->likes->count()])
+    Livewire::actingAs($user)->test('pages.like', ['user' => $user, 'page_id' => $page->id,'likes_count' => $page->likes->count(), 'is_liked_by_me' => false])
         ->assertStatus(200)
         ->assertSee($page->likes->count())
         ->call('like')
@@ -56,7 +56,7 @@ test('like componant can be unliked', function (): void {
     $user = makeUser();
     $page = makePage();
     $page->status()->publish();
-    Livewire::actingAs($user)->test('pages.like', ['user' => $user, 'page' => $page,'likes_count' => $page->likes->count()])
+    Livewire::actingAs($user)->test('pages.like', ['user' => $user, 'page_id' => $page->id,'likes_count' => $page->likes->count(), 'is_liked_by_me' => true])
         ->assertStatus(200)
         ->assertSee($page->likes->count())
         ->call('unlike')
@@ -74,7 +74,7 @@ test('like componant can be followed', function (): void {
     $user = makeUser();
     $page = makePage();
     $page->status()->publish();
-    Livewire::actingAs($user)->test('pages.followed', ['user' => $user, 'page' => $page,'followers_count' => $page->followers->count()])
+    Livewire::actingAs($user)->test('pages.followed', ['user' => $user, 'page_id' => $page->id,'followers_count' => $page->followers->count(), 'is_followed_by_me' => false])
         ->assertStatus(200)
         ->assertSee($page->likes->count())
         ->call('follow')
@@ -92,7 +92,7 @@ test('like componant can be unfollowed', function (): void {
     $user = makeUser();
     $page = makePage();
     $page->status()->publish();
-    Livewire::actingAs($user)->test('pages.followed', ['user' => $user, 'page' => $page,'followers_count' => $page->followers->count()])
+    Livewire::actingAs($user)->test('pages.followed', ['user' => $user, 'page_id' => $page->id,'followers_count' => $page->followers->count(), 'is_followed_by_me' => true])
         ->assertStatus(200)
         ->assertSee($page->likes->count())
         ->call('unfollow')

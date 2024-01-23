@@ -1,7 +1,7 @@
 <div>
     @foreach ($comments as $comment)
         <div class="flex flex-col gap-2">
-            <x-users.card :user="$comment->user" />
+            <!--TODO : add user card -->
            <p>Commented {{ $comment->created_at->diffForHumans() }} on V.{{ $comment->version }}</p>
             {{ $comment->content }}
                 @if ($comment->responses_count > 0)
@@ -14,7 +14,7 @@
                             </span>
                         </summary>
                         <p class="text-neutral-600 mt-3 group-open:animate-fadeIn">
-                            <x-pages.comments :page="$comment->page" :level="$comment->id"/>
+                            <x-pages.comments :page_array="$pageArray" :level="$comment->id"/>
                         </p>
                     </details>
                 @endif

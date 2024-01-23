@@ -4,27 +4,20 @@ declare(strict_types=1);
 
 namespace App\View\Components\Users;
 
-use App\Models\User;
 use Closure;
+use DateTime;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
 final class Card extends Component
 {
-    /**
-     * Create a new component instance.
-     */
-    public function __construct(public User $user) {}
+    public function __construct(
+        public array $user,
+        public ?DateTime $created_at = null,
+    ) {}
 
-    /**
-     * Get the view / contents that represent the component.
-     */
     public function render(): View|Closure|string
     {
-        $userWithCount = User::where('id', $this->user->id)
-            ->withCount(['pages', 'comments' , 'followers', 'likes'])
-            ->first();
-
-        return view('components.users.card', ['userWithCount' => $userWithCount]);
+        return view('components.users.card', ['user' => $this->user, 'created_at' => $this->created_at]);
     }
 }

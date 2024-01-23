@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Models;
 
 use App\Enums\Versions\State;
+use App\Models\Scopes\Versions\DefaultScope;
 use App\Notifications\Versions\ArchiveNotification;
 use App\StateMachines\Contracts\VersionStateContract;
 use App\StateMachines\Versions\DraftVersionState;
@@ -67,6 +68,11 @@ final class Version extends Model
             State::REFUSED => new RefusedVersionState($this),
             default => throw new InvalidArgumentException('Invalid state'),
         };
+    }
+
+    protected static function booted(): void
+    {
+        static::addGlobalScope(new DefaultScope());
     }
 
 

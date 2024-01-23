@@ -10,13 +10,13 @@
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-xl sm:rounded-lg">
                 <div class="p-6 lg:p-8 bg-white dark:bg-gray-800 dark:bg-gradient-to-bl dark:from-gray-700/50 dark:via-transparent border-b border-gray-200 dark:border-gray-700">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                        @foreach ($myPages as $page)
-                            <x-pages.resume :page="$page" />
+                        @foreach ($pagesCollection['data'] as $pageArray)
+                            <x-pages.resume :page-array="$pageArray" />
                         @endforeach
                     </div>
                 </div>
             </div>
-            {{ $myPages->links() }}
+
         </div>
     </div>
 </x-app-layout>

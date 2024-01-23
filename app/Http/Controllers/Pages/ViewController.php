@@ -4,14 +4,21 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers\Pages;
 
+use App\DataObjects\PageDataObject;
+use App\DataObjects\VersionDataObject;
+use App\Enums\Versions\State;
 use App\Http\Controllers\Controller;
 use App\Models\Page;
-use App\Models\PageComments;
 use App\Models\Version;
+use App\Repositories\VersionRepository;
 use Illuminate\Support\Facades\Gate;
 
 final class ViewController extends Controller
 {
+    public function __construct(
+        private readonly VersionRepository $versionRepository,
+    ) {}
+
     public function __invoke(Page $page, ?Version $version = null)
     {
         $response = Gate::inspect('view', $page);
@@ -21,26 +28,26 @@ final class ViewController extends Controller
 
             return redirect()->back();
         }
+
+        $versionArray = null;
         if ($version) {
-            $page->load(['versions' => function ($query) use ($version): void {
-                $query->where('id', $version->id);
-            }]);
+            $versionArray = VersionDataObject::fromModel($version)->toArray();
         } else {
-            $page->load(['versions' => function ($query): void {
-                $query->where('state', 'published')
-                    ->orderBy('version', 'desc')
-                    ->limit(1);
-            }]);
+            $lastVersion = $this->versionRepository
+                ->retrieveAllMyVersionsByPageAndStatus(
+                    page: $page,
+                    state: State::PUBLISHED
+                )
+                ->first();
+            if ($lastVersion) {
+                $versionArray = VersionDataObject::fromModel($lastVersion)->toArray();
+            }
         }
-        $page->loadCount(['likes','followers', 'comments']);
 
-        $comments = PageComments::where('page_id', $page->id)
-            ->with(['user'])
-            ->orderBy('created_at', 'desc')
-            ->paginate();
 
-        $authUser = (auth()->check()) ? auth()->user() : null;
+        $pageArray = PageDataObject::fromModel($page)->toArray();
+        $authArray = (auth()->check()) ? auth()->user() : null;
 
-        return view('pages.view-pages', ['page' => $page, 'comments' => $comments, 'authUser' => $authUser]);
+        return view('pages.view-pages', ['pageArray' => $pageArray, 'authArray' => $authArray, 'versionArray' => $versionArray]);
     }
 }

@@ -10,5 +10,4 @@ enum State: string
     case PUBLISHED = 'published';
     case ARCHIVED = 'archived';
     case REFUSED = 'refused';
-
 }
