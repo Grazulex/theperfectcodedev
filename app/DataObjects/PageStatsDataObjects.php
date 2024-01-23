@@ -4,9 +4,7 @@ declare(strict_types=1);
 
 namespace App\DataObjects;
 
-use App\Enums\Pages\State;
 use App\Models\Page;
-use Illuminate\Support\Facades\Auth;
 use Spatie\LaravelData\Data;
 
 final class PageStatsDataObjects extends Data

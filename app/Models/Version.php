@@ -27,7 +27,7 @@ use InvalidArgumentException;
  * @property Page $page
  * @property User $user
  */
-class Version extends Model
+final class Version extends Model
 {
     use HasFactory;
     use SoftDeletes;
@@ -44,11 +44,6 @@ class Version extends Model
     protected $casts = [
         'state' => State::class
     ];
-
-    protected static function booted(): void
-    {
-        static::addGlobalScope(new DefaultScope());
-    }
 
     public function page(): belongsTo
     {
@@ -73,6 +68,11 @@ class Version extends Model
             State::REFUSED => new RefusedVersionState($this),
             default => throw new InvalidArgumentException('Invalid state'),
         };
+    }
+
+    protected static function booted(): void
+    {
+        static::addGlobalScope(new DefaultScope());
     }
 
 

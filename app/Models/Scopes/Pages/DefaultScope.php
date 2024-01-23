@@ -1,12 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Models\Scopes\Pages;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Scope;
 
-class DefaultScope implements Scope
+final class DefaultScope implements Scope
 {
     /**
      * Apply the scope to a given Eloquent query builder.

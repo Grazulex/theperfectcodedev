@@ -44,7 +44,7 @@ use InvalidArgumentException;
  * @property Collection<PageCommentLikes> $commentLikes
  * @property Collection<User> $followers
  */
-class Page extends Model
+final class Page extends Model
 {
     use HasFactory;
     use Sluggable;
@@ -74,11 +74,6 @@ class Page extends Model
     ];
 
     protected string $sluggable = 'title';
-
-    protected static function booted(): void
-    {
-        static::addGlobalScope(new DefaultScope());
-    }
 
     public function user(): belongsTo
     {
@@ -137,5 +132,10 @@ class Page extends Model
             State::REFUSED => new RefusedPageState($this),
             default => throw new InvalidArgumentException('Invalid state'),
         };
+    }
+
+    protected static function booted(): void
+    {
+        static::addGlobalScope(new DefaultScope());
     }
 }
