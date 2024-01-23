@@ -63,7 +63,11 @@ test:
     - npm install --save-dev vite laravel-vite-plugin
     - npm run build
     - export XDEBUG_MODE=coverage
-    - php -d memory_limit=4G ./vendor/bin/pest --coverage --coverage-cobertura=coverage.cobertura.xml --colors=never --log-junit report.xml
+    - touch coverage.cobertura.xml
+    - touch report.xml
+    - chmod 777 coverage.cobertura.xml
+    - chmod 777 report.xml
+    - php -d memory_limit=4G ./vendor/bin/pest --coverage --coverage-cobertura coverage.cobertura.xml --colors=never --log-junit report.xml
   artifacts:
     when: always
     reports:
