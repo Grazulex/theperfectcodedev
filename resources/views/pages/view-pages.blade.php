@@ -46,7 +46,7 @@
                                 <img class="object-cover w-8 h-8 rounded-full" src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" />
                             </button>
                             <div class="self-center">
-                                <x-label class="truncate max-w-[100px]" for="name" value="{{ __('Jean-marc Strauven') }}" />
+                                <x-label class="truncate max-w-[100px] dark:text-[white] text-gray-800" for="name" value="{{ __('Jean-marc Strauven') }}" />
                                 @if (Auth::check() && Auth::user()->id === $pageArray['user']['id'])
                                     <livewire:pages.others :is_public="$pageArray['is_public']"/>
                                 @endif
