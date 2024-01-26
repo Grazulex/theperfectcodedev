@@ -19,10 +19,8 @@
         <div class="inline-flex mb-3 flex-wrap items-center gap-3 bg-white group dark:bg-[var(--card-dark)] w-full">
             <div class="flex justify-between w-full border-b border-[#3A445B]">
                 <div class="flex">
-                    <button class="flex p-2 text-sm transition border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300">
-                        @if (Auth::user()->profile_photo_url)
-                            <img class="object-cover w-8 h-8 rounded-full" src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" />
-                        @endif
+                    <button class="flex m-2 text-sm transition border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300">
+                        <img class="object-cover w-8 h-8 rounded-full" src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" />
                     </button>
                     <div class="self-center">
                         <x-label  class="dark:text-[white] text-[16px] text-gray-800" for="name" value="{{ __('Jean-marc Strauven') }}" />
