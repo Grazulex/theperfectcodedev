@@ -20,24 +20,77 @@
         <meta property="twitter:creator" content="{{ $pageArray['user']['name'] }}">
     </x-slot>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight flex gap-3 align-middle">
-            <x-pages.title :title="$pageArray['title']"/>
-        </h2>
-        <h3 class="pt-4 text-lg font-bold mb-5">
-            {{ $pageArray['resume'] }}
-        </h3>
-        <div class="pt-4 text-lg font-bold mb-5">
-            <livewire:pages.tags :tags="$pageArray['tags']"/>
+        <div class="grid md:grid-cols-4 rid-cols-1">
+            <div class="bg-white md:col-span-3 sm:rounded-lg dark:bg-gray-800">
+                <div class="md:flex border-b p-5 border-[#3A445B] justify-between">
+                    <h2 class="self-center gap-3 text-xl font-semibold leading-tight text-gray-800 align-middle dark:text-gray-200">
+                        <x-pages.title :title="$pageArray['title']"/>
+                    </h2>
+                    <div>
+                        <livewire:pages.tags :tags="$pageArray['tags']"/>
+                    </div>
+                </div>
+                <div class="p-5">
+                    <h3 class="pt-4 mb-5 text-lg font-bold text-gray-800 dark:text-gray-200">
+                        {{ $pageArray['resume'] }}
+                    </h3>
+                    <livewire:pages.versions :page-array="$pageArray" :versionArray="$versionArray"/>
+                </div>
+            </div>
+
+            <div class="md:pl-5">
+                <div class="overflow-hidden bg-white shadow-xl dark:bg-gray-800 sm:rounded-lg md:basic-1/5">
+                    <div class="flex justify-between w-full border-b border-[#3A445B]">
+                        <div class="flex">
+                            <button class="flex p-2 text-sm transition border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300">
+                                <img class="object-cover w-8 h-8 rounded-full" src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" />
+                            </button>
+                            <div class="self-center">
+                                <x-label class="truncate max-w-[100px]" for="name" value="{{ __('Jean-marc Strauven') }}" />
+                                @if (Auth::check() && Auth::user()->id === $pageArray['user']['id'])
+                                    <livewire:pages.others :is_public="$pageArray['is_public']"/>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="flex self-center">
+                            @if (Auth::check() && Auth::user()->id === $pageArray['user']['id'])
+                                <livewire:pages.state :state_name="$pageArray['state']"/>
+                            @endif
+                        </div>
+                    </div>
+
+                    <div class="bg-white border-b border-gray-200 dark:bg-gray-800 dark:bg-gradient-to-bl dark:from-gray-700/50 dark:via-transparent dark:border-gray-700">
+                        <x-users.card :user="$pageArray['user']" :created_at="$pageArray['user']['created_at']" />
+                        <div class="p-3 border-t border-gray-700">
+                            @can('update', $pageArray['id'])
+                                <div>
+                                    <x-action-link href="{{ route('pages.edit', ['page'=>$pageArray['slug']]) }}">
+                                        {{ __('Edit') }}
+                                    </x-action-link>
+                                    @if ($pageArray['state'] === \App\Enums\Pages\State::DRAFT)
+                                        <x-action-link href="{{ route('pages.publish', ['page'=>$pageArray['slug']]) }}">
+                                            {{ __('Publish') }}
+                                        </x-action-link>
+                                    @endif
+                                </div>
+                            @else
+                                <div>
+                                    <x-action-link href="{{ route('versions.new', ['page'=>$pageArray['slug']]) }}">
+                                        {{ __('New version') }}
+                                    </x-action-link>
+                                </div>
+                            @endcan
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </x-slot>
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 flex flex-row"><p>
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-xl sm:rounded-lg basic-4/5">
-                <div class="p-2 lg:p-4 bg-white dark:bg-gray-800 dark:bg-gradient-to-bl dark:from-gray-700/50 dark:via-transparent border-b border-gray-200 dark:border-gray-700">
-                    <livewire:pages.versions :page-array="$pageArray" :versionArray="$versionArray"/>
-                </div>
-                <div class="p-2 lg:p-4 bg-white dark:bg-gray-800 dark:bg-gradient-to-bl dark:from-gray-700/50 dark:via-transparent border-b border-gray-200 dark:border-gray-700">
+    <div>
+        <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
+            <div class="overflow-hidden text-gray-800 bg-white shadow-xl dark:text-gray-200 dark:bg-gray-800 sm:rounded-lg basic-4/5">
+                <div class="p-2 bg-white border-b border-gray-200 lg:p-4 dark:bg-gray-800 dark:bg-gradient-to-bl dark:from-gray-700/50 dark:via-transparent dark:border-gray-700">
                     <h4>Description</h4>
                     {!! nl2br(($pageArray['stats']['versions_count'] > 0 && $versionArray) ? $versionArray['description'] : $pageArray['description']) !!}
                     <div class="mt-4">
@@ -46,41 +99,10 @@
                     </div>
                 </div>
             </div>
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-xl sm:rounded-lg basic-1/5">
-                <div class="p-2 lg:p-4 bg-white dark:bg-gray-800 dark:bg-gradient-to-bl dark:from-gray-700/50 dark:via-transparent border-b border-gray-200 dark:border-gray-700">
-                    <x-users.card :user="$pageArray['user']" :created_at="$pageArray['user']['created_at']" />
-                    <div class="inline-flex flex-wrap items-center gap-3 mt-8 group">
-                        <livewire:pages.followed :user="$authArray" :page_id="$pageArray['id']" :followers_count="$pageArray['stats']['followers_count']" :is_followed_by_me="$pageArray['is_followed_by_me']"/>
-                        <livewire:pages.like :user="$authArray" :page_id="$pageArray['id']" :likes_count="$pageArray['stats']['likes_count']" :is_liked_by_me="$pageArray['is_liked_by_me']"/>
-                    </div>
-                    @if (Auth::check() && Auth::user()->id === $pageArray['user']['id'])
-                        <livewire:pages.others :is_public="$pageArray['is_public']"/>
-                        <livewire:pages.state :state_name="$pageArray['state']"/>
-                    @endif
-                    @can('update', $pageArray['id'])
-                        <div class="mt-8">
-                            <x-action-link href="{{ route('pages.edit', ['page'=>$pageArray['slug']]) }}">
-                                {{ __('Edit') }}
-                            </x-action-link>
-                            @if ($pageArray['state'] === \App\Enums\Pages\State::DRAFT)
-                                <x-action-link href="{{ route('pages.publish', ['page'=>$pageArray['slug']]) }}" class="bg-emerald-600">
-                                    {{ __('Publish') }}
-                                </x-action-link>
-                            @endif
-                        </div>
-                    @else
-                        <div class="mt-8">
-                            <x-action-link href="{{ route('versions.new', ['page'=>$pageArray['slug']]) }}" class="bg-emerald-600">
-                                {{ __('New version') }}
-                            </x-action-link>
-                        </div>
-                    @endcan
-                </div>
-            </div>
         </div>
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-xl sm:rounded-lg">
-                <div class="p-6 lg:p-8 bg-white dark:bg-gray-800 dark:bg-gradient-to-bl dark:from-gray-700/50 dark:via-transparent border-b border-gray-200 dark:border-gray-700">
+        <div class="mx-auto text-gray-800 dark:text-gray-200 max-w-7xl sm:px-6 lg:px-8">
+            <div class="overflow-hidden bg-white shadow-xl dark:bg-gray-800 sm:rounded-lg">
+                <div class="p-6 bg-white border-b border-gray-200 lg:p-8 dark:bg-gray-800 dark:bg-gradient-to-bl dark:from-gray-700/50 dark:via-transparent dark:border-gray-700">
                     <h4>Comments</h4>
                     <div class="mt-4">
                         <x-pages.comments :page_array="$pageArray"/>
