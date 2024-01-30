@@ -4,20 +4,19 @@
 
 @font-face {
     font-family: AntipastoPro;
-    src: url(/public/Fonts/AntipastoPro-Light_trial.ttf);
+    src: url(/public/Fonts/Arial-Rounded.otf);
     font-weight: normal;
 }
 
 @font-face {
     font-family: Dosis;
-    src: url(/public/Fonts/Dosis-Bold.ttf);
+    src: url(/public/Fonts/Arial-RoundedBold.otf);
     font-weight: bold;
 }
-/* временно отключил шрифты */
-/* body {
+body {
     font-family: AntipastoPro, sans-serif;
     font-weight: normal;
-} */
+}
 
 [x-cloak] {
     display: none;
