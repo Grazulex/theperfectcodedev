@@ -1,6 +1,8 @@
 <div class="relative flex flex-col justify-between dark:bg-[var(--dark)] y-between w-full dark:text-[white] text-gray-800 bg-[var(--day-light)] shadow-lg rounded-xl bg-clip-border">
     <div>
-        <livewire:pages.tags :tags="$pageArray['tags']"/>
+        <div class="border-b border-[#3A445B] pr-5 mb-5">
+            <livewire:pages.tags :tags="$pageArray['tags']"/>
+        </div>
         <div class="pl-5 pr-5">
             <div class="flex items-center justify-between mb-3">
                 <h5 class="block text-xl antialiased font-medium leading-snug tracking-normal text-blue-gray-900">
@@ -13,14 +15,19 @@
             </p>
         </div>
     </div>
-    <div class="p-6 pt-3">
+    <div class="p-5 pt-3">
         <div class="inline-flex mb-3 flex-wrap items-center gap-3 bg-white group dark:bg-[var(--card-dark)] w-full">
             <div class="flex justify-between w-full border-b border-[#3A445B]">
-                <div class="p-2">
-                    <button class="flex text-sm transition border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300">
-                        <div class="bg-cover bg-no-repeat relative group bg-[url('/resources/images/image.png')] w-[38px] h-[38px]">
-                        </div>
+                <div class="flex">
+                    <button class="flex m-2 text-sm transition border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300">
+                        @if (Auth::user())
+                            <img class="object-cover w-8 h-8 rounded-full" src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" />
+                        @endif
                     </button>
+                    <div class="self-center">
+                        <x-label  class="dark:text-[white] text-[16px] text-gray-800" for="name" value="{{ __('Jean-marc Strauven') }}" />
+                        <livewire:pages.others :is_public="$pageArray['is_public']"/>
+                    </div>
                 </div>
                 <div class="flex self-center">
                     @if (Auth::check())
@@ -32,7 +39,7 @@
                     @endif
                     <livewire:pages.commented :comments_count="$pageArray['stats']['comments_count']"/>
                     @if (Route::currentRouteName() == 'pages.my')
-                        <livewire:pages.others :is_public="$pageArray['is_public']"/>
+                        <!-- <livewire:pages.others :is_public="$pageArray['is_public']"/> -->
                         <livewire:pages.state :state_name="$pageArray['state']"/>
                     @endif
                 </div>

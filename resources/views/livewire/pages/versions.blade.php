@@ -1,4 +1,4 @@
-<div>
+<div class="text-gray-800 dark:text-gray-200">
     <h3 class="">Versions</h3>
     <p>Last version V.{{ $pageArray['version'] }}</p>
     @if ($pageArray['stats']['versions_count'] > 0 && $versionArray)
