@@ -89,8 +89,8 @@
 
     <div>
         <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
-            <div class="overflow-hidden text-gray-800 bg-white shadow-xl dark:text-gray-200 dark:bg-gray-800 sm:rounded-lg basic-4/5">
-                <div class="p-2 bg-white border-b border-gray-200 lg:p-4 dark:bg-gray-800 dark:bg-gradient-to-bl dark:from-gray-700/50 dark:via-transparent dark:border-gray-700">
+            <div class="overflow-hidden text-gray-800 bg-white shadow-xl dark:text-gray-200 dark:bg-[var(--dark)] sm:rounded-lg basic-4/5">
+                <div class="p-2 bg-white border-b border-gray-200 lg:p-4 dark:bg-gradient-to-bl dark:bg-[var(--dark)] dark:from-gray-700/50 dark:via-transparent dark:border-gray-700">
                     <h4>Description</h4>
                     {!! nl2br(($pageArray['stats']['versions_count'] > 0 && $versionArray) ? $versionArray['description'] : $pageArray['description']) !!}
                     <div class="mt-4">
@@ -101,8 +101,8 @@
             </div>
         </div>
         <div class="mx-auto text-gray-800 dark:text-gray-200 max-w-7xl sm:px-6 lg:px-8">
-            <div class="overflow-hidden bg-white shadow-xl dark:bg-gray-800 sm:rounded-lg">
-                <div class="p-6 bg-white border-b border-gray-200 lg:p-8 dark:bg-gray-800 dark:bg-gradient-to-bl dark:from-gray-700/50 dark:via-transparent dark:border-gray-700">
+            <div class="overflow-hidden bg-white shadow-xl dark:bg-[var(--dark)] sm:rounded-lg">
+                <div class="p-6 bg-white border-b border-gray-200 lg:p-8 dark:bg-[var(--dark)] dark:bg-gradient-to-bl dark:from-gray-700/50 dark:via-transparent dark:border-gray-700">
                     <h4>Comments</h4>
                     <div class="mt-4">
                         <x-pages.comments :page_array="$pageArray"/>
