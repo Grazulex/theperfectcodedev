@@ -1,9 +1,9 @@
 @props(['provider', 'createdAt' => null])
 
 <div>
-    <div class="pl-3 flex items-center justify-between">
+    <div class="flex items-center justify-between pl-3">
         <div class="flex items-center">
-            <x-socialstream-icons.provider-icon :provider="$provider['id']" class="h-6 w-6" />
+            <x-socialstream-icons.provider-icon :provider="$provider['id']" class="w-6 h-6" />
 
             <div class="ml-2">
                 <div class="text-sm font-semibold text-gray-600 dark:text-gray-400">
@@ -28,7 +28,7 @@
     </div>
 
     @error($provider['id'].'_connect_error')
-    <div class="text-sm font-semibold text-red-500 px-3 mt-2">
+    <div class="px-3 mt-2 text-sm font-semibold text-red-500">
         {{ $message }}
     </div>
     @enderror

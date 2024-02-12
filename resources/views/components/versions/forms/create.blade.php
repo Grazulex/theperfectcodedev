@@ -2,7 +2,7 @@
     @csrf
     <div class="mt-4">
         <x-label for="description" value="Code Description" />
-        <textarea name="description" id="description" rows="5" aria-describedby="description-explanation" class="block w-full mt-1 border-gray-300 rounded-md shadow-sm dark:bg-[#182F44] dark:text-gray-200 dark:border-gray-700 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">{{ old('description') }}</textarea>
+        <textarea name="description" id="description" rows="5" aria-describedby="description-explanation" class="block w-full my-2 border-gray-300 rounded-md shadow-sm bg-[var(--day-light)] dark:bg-[#182F44] dark:text-gray-200 dark:border-gray-700 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">{{ old('description') }}</textarea>
         <p id="description-explanation" class="text-sm font-normal text-gray-500">Use this space to provide an in-depth description of the code in question. Describe its purpose, structure, any existing issues, and the desired enhancements extensively. Include relevant technical details and any additional information that can aid in understanding the context. Example: 'A comprehensive overview of the current sorting script, highlighting algorithmic gaps and suggestions to enhance efficiency by leveraging optimized data structures'.</p>
         <x-input-error for="description" class="mt-2" />
     </div>
@@ -15,7 +15,7 @@
     </div>
 
     <div class="flex items-center justify-end mt-4">
-        <x-button class="ml-4">
+        <x-button>
             {{ __('Create') }}
         </x-button>
     </div>
