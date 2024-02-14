@@ -8,11 +8,11 @@
     </x-slot>
 
     <x-slot name="content">
-        <div class="p-4 bg-red-500/10 dark:bg-red-500/5 text-red-500 border-l-4 border-red-600 dark:border-red-700 rounded font-medium text-sm">
+        <div class="p-4 text-sm font-medium text-red-500 border-l-4 border-red-600 rounded bg-red-500/10 dark:bg-red-500/5 dark:border-red-700">
             {{ __('If you feel any of your connected accounts have been compromised, you should disconnect them immediately and change your password.') }}
         </div>
 
-        <div class="space-y-6 mt-6">
+        <div class="mt-6 space-y-6">
             @foreach ($this->providers as $provider)
                 @php
                     $account = null;
@@ -24,7 +24,7 @@
                         @if (! is_null($account))
                             <div class="flex items-center space-x-6">
                                 @if (Laravel\Jetstream\Jetstream::managesProfilePhotos() && ! is_null($account->avatar_path))
-                                    <button class="cursor-pointer ms-6 text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none" wire:click="setAvatarAsProfilePhoto({{ $account->id }})">
+                                    <button class="text-sm text-gray-500 cursor-pointer ms-6 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none" wire:click="setAvatarAsProfilePhoto({{ $account->id }})">
                                         {{ __('Use Avatar as Profile Photo') }}
                                     </button>
                                 @endif
@@ -56,7 +56,7 @@
                 {{ __('Please enter your password to confirm you would like to remove this account.') }}
 
                 <div class="mt-4" x-data="{}" x-on:confirming-delete-user.window="setTimeout(() => $refs.password.focus(), 250)">
-                    <x-input type="password" class="mt-1 block w-3/4"
+                    <x-input type="password" class="block w-3/4 mt-1"
                              autocomplete="current-password"
                              placeholder="{{ __('Password') }}"
                              x-ref="password"
