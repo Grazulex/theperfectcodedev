@@ -10,7 +10,7 @@
         <form wire:submit="{{ $submit }}">
             <x-section-border />
             <div class="px-4 pb-5 bg-white dark:bg-[var(--dark)] sm:p-6 sm:pt-0 shadow {{ isset($actions) ? 'sm:rounded-tl-md sm:rounded-tr-md' : 'sm:rounded-md' }}">
-                <div class="grid grid-cols-6 gap-6">
+                <div>
                     {{ $form }}
                 </div>
             </div>
