@@ -48,7 +48,7 @@
             <x-users.card :user="$pageArray['user']" :created_at="$pageArray['user']['created_at']" />
         </div>
         <a href="{{ route('pages.view',['page'=>$pageArray['slug']]) }}"
-                class="block w-full select-none rounded-lg bg-[var(--primary)]  py-3.5 px-7 text-center align-middle text-sm font-bold uppercase text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                class="block w-full select-none rounded-lg bg-[var(--primary)]  py-3 px-7 text-center align-middle text-sm font-bold uppercase text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
                 type="button">
             View
         </a>
