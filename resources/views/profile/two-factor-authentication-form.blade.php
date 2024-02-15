@@ -92,7 +92,7 @@
                     </x-confirms-password>
                 @elseif ($showingConfirmation)
                     <x-confirms-password wire:then="confirmTwoFactorAuthentication">
-                        <x-button type="button" class="me-3" wire:loading.attr="disabled">
+                        <x-button type="button" class="mb-2 me-3" wire:loading.attr="disabled">
                             {{ __('Confirm') }}
                         </x-button>
                     </x-confirms-password>
