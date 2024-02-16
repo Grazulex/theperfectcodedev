@@ -20,7 +20,7 @@
                         <x-input id="email" type="email" class="block w-full mt-1" wire:model="addTeamMemberForm.email" />
                         <x-input-error for="email" class="mt-2" />
                         <div class="col-span-6">
-                            <div class="max-w-xl text-sm text-gray-600 dark:text-gray-400">
+                            <div class="text-sm text-gray-600 dark:text-gray-400">
                                 {{ __('Please provide the email address of the person you would like to add to this team.') }}
                             </div>
                         </div>
