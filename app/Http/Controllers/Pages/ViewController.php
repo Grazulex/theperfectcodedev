@@ -31,7 +31,7 @@ final class ViewController extends Controller
 
         $versionArray = null;
         if ($version) {
-            $versionArray = VersionDataObject::fromModel($version)->toArray();
+            $versionArray = VersionDataObject::from($version)->toArray();
         } else {
             $lastVersion = $this->versionRepository
                 ->retrieveAllMyVersionsByPageAndStatus(
@@ -40,12 +40,12 @@ final class ViewController extends Controller
                 )
                 ->first();
             if ($lastVersion) {
-                $versionArray = VersionDataObject::fromModel($lastVersion)->toArray();
+                $versionArray = VersionDataObject::from($lastVersion)->toArray();
             }
         }
 
 
-        $pageArray = PageDataObject::fromModel($page)->toArray();
+        $pageArray = PageDataObject::from($page)->toArray();
         $authArray = (auth()->check()) ? auth()->user() : null;
 
         return view('pages.view-pages', ['pageArray' => $pageArray, 'authArray' => $authArray, 'versionArray' => $versionArray]);
