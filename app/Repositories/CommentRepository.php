@@ -17,7 +17,7 @@ final class CommentRepository extends BaseRepository
 
     public function retrieveAllMyVersionsByPage(Page $page): Builder
     {
-        return $this->model->where('page_id', $page->id)
+        return $this->model::query()->where('page_id', $page->id)
             ->with(['user'])
             ->orderBy('created_at', 'desc');
     }

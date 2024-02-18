@@ -8,16 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 
 abstract class BaseRepository
 {
-    protected Model $model;
-
-    public function __construct(Model $model)
-    {
-        $this->model = $model;
-    }
+    public function __construct(protected Model $model) {}
 
     public function find($id): ?Model
     {
-        return $this->model->find($id);
+        return $this->model::query()->find($id);
     }
 
 }

@@ -18,7 +18,7 @@ final class VersionRepository extends BaseRepository
 
     public function retrieveAllMyVersionsByPageAndStatus(Page $page, State $state): Builder
     {
-        return $this->model->where('page_id', $page->id)
+        return $this->model::query()->where('page_id', $page->id)
             ->where('state', $state)
             ->orderBy('version', 'desc');
     }

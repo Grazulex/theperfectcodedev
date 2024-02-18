@@ -17,7 +17,7 @@ final class PageRepository extends BaseRepository
 
     public function retrieveAllMyPagesByUser($userId): Builder
     {
-        return $this->model->where('user_id', $userId)
+        return $this->model::query()->where('user_id', $userId)
             ->orderBy('created_at', 'desc');
     }
 
