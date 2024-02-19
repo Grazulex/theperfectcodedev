@@ -22,13 +22,16 @@
                     <button class="flex m-2 text-sm transition border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300">
                         @if (Auth::user())
                             <img class="object-cover w-8 h-8 rounded-full" src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" />
+                        @else
+                            <img class="object-cover w-8 h-8 rounded-full" src="{{ $pageArray['user']['profile_photo_url'] }}" alt="{{ $pageArray['user']['name'] }}" />
                         @endif
-                    </button>
+                        </button>
                     <div class="self-center">
-                        <x-label  class="dark:text-[white] text-[16px] text-gray-800" for="name" value="{{ __('Jean-marc Strauven') }}" />
+                        <x-label  class="dark:text-[white] text-[16px] text-gray-800" for="name" value="{{ $pageArray['user']['name'] }}" />
                         <livewire:pages.others :is_public="$pageArray['is_public']"/>
                     </div>
                 </div>
+
                 <div class="flex self-center">
                     @if (Auth::check())
                         <livewire:pages.followed :user="Auth::user()" :is_followed_by_me="$pageArray['is_followed_by_me']" :page_id="$pageArray['id']" :followers_count="$pageArray['stats']['followers_count']"/>
