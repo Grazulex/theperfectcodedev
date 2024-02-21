@@ -18,6 +18,7 @@ final class Like extends Component
     public bool $is_liked_by_me;
     public int $page_id;
     public ?User $user;
+    // I did this but I would suggest doing $colorLiked (true/false)
     public string $colorLiked = 'dark:fill-white fill-black';
     public bool $isLiked = false;
 
