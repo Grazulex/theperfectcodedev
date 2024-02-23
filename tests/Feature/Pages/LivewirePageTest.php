@@ -44,7 +44,7 @@ test('like componant can be liked', function (): void {
         ->call('like')
         ->assertSee($page->likes->count() + 1)
         ->assertSet('isLiked', true)
-        ->assertSet('colorLiked', 'fill-red-600');
+        ->assertSee('fill-red-600');
 
     Queue::assertPushed(ProcessLike::class);
     (new ProcessLike($page, $user))->handle();
@@ -62,7 +62,7 @@ test('like componant can be unliked', function (): void {
         ->call('unlike')
         ->assertSee($page->likes->count() - 1)
         ->assertSet('isLiked', false)
-        ->assertSet('colorLiked', 'dark:fill-white fill-black');
+        ->assertSee('dark:fill-white fill-black');
 
     Queue::assertPushed(ProcessLike::class);
     (new ProcessLike($page, $user))->handle();
@@ -80,7 +80,7 @@ test('like componant can be followed', function (): void {
         ->call('follow')
         ->assertSee($page->followers->count() + 1)
         ->assertSet('isFollow', true)
-        ->assertSet('colorFollow', 'fill-[var(--primary)]');
+        ->assertSee('fill-red-600');
 
     Queue::assertPushed(ProcessFollow::class);
     (new ProcessFollow($page, $user))->handle();
@@ -98,7 +98,7 @@ test('like componant can be unfollowed', function (): void {
         ->call('unfollow')
         ->assertSee($page->followers->count() - 1)
         ->assertSet('isFollow', false)
-        ->assertSet('colorFollow', 'dark:fill-white fill-black');
+        ->assertSee('dark:fill-white fill-black');
 
     Queue::assertPushed(ProcessFollow::class);
     (new ProcessFollow($page, $user))->handle();

@@ -61,15 +61,13 @@ final class PagePolicy
      */
     public function update(User $user, Page $page): Response
     {
-        ($user->id === $page->user_id) ? $response = null : $response = 'You are not the owner of this page.';
-        if (null === $response) {
-            ($page->versions()->where('state', State::PUBLISHED)->count() > 0) ? $response = 'You cannot edit a published page. You need to create a new version.' : $response = null;
+        if ($page->user->id !== $user->id) {
+            return Response::deny('You are not the owner of this page.');
         }
-        if (null === $response) {
-            return Response::allow();
+        if ($page->versions()->where('state', State::PUBLISHED)->count() > 0) {
+            return Response::deny('You cannot edit a published page. You need to create a new version.');
         }
-        return Response::deny($response);
-
+        return Response::allow();
     }
 
     /**
