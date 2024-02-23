@@ -18,7 +18,8 @@ final class Like extends Component
     public bool $is_liked_by_me;
     public int $page_id;
     public ?User $user;
-    public string $colorLiked = 'none';
+    // I did this but I would suggest doing $colorLiked (true/false)
+    public string $colorLiked = 'dark:fill-white fill-black';
     public bool $isLiked = false;
 
     // @codeCoverageIgnoreStart
@@ -27,7 +28,7 @@ final class Like extends Component
         if ($this->user) {
             if ($this->is_liked_by_me) {
                 $this->isLiked = true;
-                $this->colorLiked = 'red';
+                $this->colorLiked = 'fill-red-600';
             }
         }
     }
@@ -37,7 +38,7 @@ final class Like extends Component
     {
         $this->likes_count++;
         $this->isLiked = true;
-        $this->colorLiked = 'red';
+        $this->colorLiked = 'fill-red-600';
         $this->dispatchLikeJob();
     }
 
@@ -45,7 +46,7 @@ final class Like extends Component
     {
         $this->likes_count--;
         $this->isLiked = false;
-        $this->colorLiked = 'none';
+        $this->colorLiked = 'dark:fill-white fill-black';
         $this->dispatchLikeJob();
     }
 
