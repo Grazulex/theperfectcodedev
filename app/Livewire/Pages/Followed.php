@@ -19,7 +19,6 @@ final class Followed extends Component
     public int $page_id;
     public ?User $user;
 
-    public string $colorFollow = 'dark:fill-white fill-black';
     public bool $isFollow = false;
 
     // @codeCoverageIgnoreStart
@@ -28,7 +27,6 @@ final class Followed extends Component
         if ($this->user) {
             if ($this->is_followed_by_me) {
                 $this->isFollow = true;
-                $this->colorFollow = 'fill-[var(--primary)]';
             }
         }
     }
@@ -38,7 +36,6 @@ final class Followed extends Component
     {
         $this->followers_count++;
         $this->isFollow = true;
-        $this->colorFollow = 'fill-[var(--primary)]';
         $this->dispatchFollowJob();
     }
 
@@ -46,7 +43,6 @@ final class Followed extends Component
     {
         $this->followers_count--;
         $this->isFollow = false;
-        $this->colorFollow = 'dark:fill-white fill-black';
         $this->dispatchFollowJob();
     }
     public function render(): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
