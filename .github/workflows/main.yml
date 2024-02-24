@@ -36,6 +36,7 @@ jobs:
       - name: Run tests
         run: php artisan test
   deploy:
+    needs: tests
     name: Laravel Forge Deploy
     runs-on: ubuntu-latest
     steps:
