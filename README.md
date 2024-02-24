@@ -1,8 +1,5 @@
-<p align="center">
 ![Latest workflow](https://github.com/Grazulex/theperfectcodedev/actions/workflows/laravel.yml/badge.svg)
 [![Laravel Forge Site Deployment Status](https://img.shields.io/endpoint?url=https%3A%2F%2Fforge.laravel.com%2Fsite-badges%2Ff386a02e-accf-494d-9f33-cd931f462b6c%3Fdate%3D1%26commit%3D1&style=plastic)](https://forge.laravel.com/servers/546270/sites/2208781)
-
-</p>
 
 ## About The Perfect Code Dev
 
