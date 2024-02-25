@@ -35,14 +35,13 @@ jobs:
         run: php -d memory_limit=4G artisan test --coverage --coverage-cobertura=coverage.cobertura.xml --colors=never
 
       - name: Code Coverage Summary Report
-        uses: irongut/CodeCoverageSummary@v1.3.0
+        uses: 5monkeys/cobertura-action@master
         with:
-          filename: coverage.cobertura.xml
-          badge: true
-          format: markdown
-          output: file
-      - name: Add Coverage PR Comment
+          path: coverage.cobertura.xml
+
+      - name: Add Coverage Comment
         uses: marocchino/sticky-pull-request-comment@v2
+        if: github.event_name == 'pull_request'
         with:
           recreate: true
           path: code-coverage-results.md
