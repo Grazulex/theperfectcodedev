@@ -20,7 +20,7 @@ jobs:
     name: Run tests
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@main
+      - uses: actions/checkout@v2
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
@@ -29,8 +29,15 @@ jobs:
           extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite, bcmath, soap, intl, gd, exif, iconv
           coverage: xdebug
 
+      - name: Cache multiple paths
+        uses: actions/cache@v2
+        with:
+          path: |
+            vendor
+          key: ${{ runner.os }}-${{ hashFiles('composer.lock') }}
+
       - name: Run composer install
-        run: composer install -n --prefer-dist
+        run: composer install --no-interaction --no-progress
 
       - name: Install vite
         run: npm install --save-dev vite laravel-vite-plugin
