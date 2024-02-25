@@ -2,6 +2,11 @@ name: Run tests & deploy
 
 on:
   push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main  
 
 jobs:
   tests:
