@@ -1,0 +1,3773 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE coverage SYSTEM "http://cobertura.sourceforge.net/xml/coverage-04.dtd">
+<coverage line-rate="0.72511848341232" branch-rate="0" lines-covered="612" lines-valid="844" branches-covered="0" branches-valid="0" complexity="304" version="0.4" timestamp="1708832251">
+  <sources>
+    <source>/var/www/html/app</source>
+  </sources>
+  <packages>
+    <package name="Actions/Comments/CreateCommentAction.php" line-rate="1" branch-rate="0" complexity="2">
+      <classes>
+        <class name="App\Actions\Comments\CreateCommentAction" filename="Actions/Comments/CreateCommentAction.php" line-rate="1" branch-rate="0" complexity="2">
+          <methods>
+            <method name="handle" signature="App\Models\User $user, App\Models\Page $page, array $attributes, ?App\Models\Version $version" line-rate="1" branch-rate="0" complexity="2">
+              <lines>
+                <line number="16" hits="8"/>
+                <line number="17" hits="8"/>
+                <line number="18" hits="8"/>
+                <line number="20" hits="8"/>
+                <line number="21" hits="8"/>
+                <line number="22" hits="8"/>
+                <line number="23" hits="8"/>
+                <line number="25" hits="8"/>
+                <line number="26" hits="8"/>
+                <line number="27" hits="8"/>
+                <line number="28" hits="8"/>
+                <line number="29" hits="8"/>
+                <line number="32" hits="8"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="16" hits="8"/>
+            <line number="17" hits="8"/>
+            <line number="18" hits="8"/>
+            <line number="20" hits="8"/>
+            <line number="21" hits="8"/>
+            <line number="22" hits="8"/>
+            <line number="23" hits="8"/>
+            <line number="25" hits="8"/>
+            <line number="26" hits="8"/>
+            <line number="27" hits="8"/>
+            <line number="28" hits="8"/>
+            <line number="29" hits="8"/>
+            <line number="32" hits="8"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="Actions/Comments/DeleteCommentAction.php" line-rate="1" branch-rate="0" complexity="1">
+      <classes>
+        <class name="App\Actions\Comments\DeleteCommentAction" filename="Actions/Comments/DeleteCommentAction.php" line-rate="1" branch-rate="0" complexity="1">
+          <methods>
+            <method name="handle" signature="App\Models\PageComments $comment" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="13" hits="1"/>
+                <line number="15" hits="1"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="13" hits="1"/>
+            <line number="15" hits="1"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="Actions/Comments/NotifyCommentUserAction.php" line-rate="1" branch-rate="0" complexity="3">
+      <classes>
+        <class name="App\Actions\Comments\NotifyCommentUserAction" filename="Actions/Comments/NotifyCommentUserAction.php" line-rate="1" branch-rate="0" complexity="3">
+          <methods>
+            <method name="publish" signature="App\Models\PageComments $comment, App\Models\User $user" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="17" hits="8"/>
+                <line number="18" hits="8"/>
+                <line number="19" hits="8"/>
+                <line number="20" hits="8"/>
+                <line number="21" hits="8"/>
+              </lines>
+            </method>
+            <method name="refuse" signature="App\Models\PageComments $comment, App\Models\User $user" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="26" hits="2"/>
+                <line number="27" hits="2"/>
+                <line number="28" hits="2"/>
+                <line number="29" hits="2"/>
+                <line number="30" hits="2"/>
+              </lines>
+            </method>
+            <method name="delete" signature="App\Models\PageComments $comment, App\Models\User $user" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="34" hits="1"/>
+                <line number="35" hits="1"/>
+                <line number="36" hits="1"/>
+                <line number="37" hits="1"/>
+                <line number="38" hits="1"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="17" hits="8"/>
+            <line number="18" hits="8"/>
+            <line number="19" hits="8"/>
+            <line number="20" hits="8"/>
+            <line number="21" hits="8"/>
+            <line number="26" hits="2"/>
+            <line number="27" hits="2"/>
+            <line number="28" hits="2"/>
+            <line number="29" hits="2"/>
+            <line number="30" hits="2"/>
+            <line number="34" hits="1"/>
+            <line number="35" hits="1"/>
+            <line number="36" hits="1"/>
+            <line number="37" hits="1"/>
+            <line number="38" hits="1"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="Actions/Comments/UpdateCommentAction.php" line-rate="1" branch-rate="0" complexity="1">
+      <classes>
+        <class name="App\Actions\Comments\UpdateCommentAction" filename="Actions/Comments/UpdateCommentAction.php" line-rate="1" branch-rate="0" complexity="1">
+          <methods>
+            <method name="handle" signature="App\Models\PageComments $comment, array $attributes" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="13" hits="3"/>
+                <line number="15" hits="3"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="13" hits="3"/>
+            <line number="15" hits="3"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="Actions/Pages/ArchivePageAction.php" line-rate="1" branch-rate="0" complexity="1">
+      <classes>
+        <class name="App\Actions\Pages\ArchivePageAction" filename="Actions/Pages/ArchivePageAction.php" line-rate="1" branch-rate="0" complexity="1">
+          <methods>
+            <method name="handle" signature="App\Models\Page $page" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="14" hits="1"/>
+                <line number="15" hits="1"/>
+                <line number="16" hits="1"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="14" hits="1"/>
+            <line number="15" hits="1"/>
+            <line number="16" hits="1"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="Actions/Pages/CreatePageAction.php" line-rate="1" branch-rate="0" complexity="1">
+      <classes>
+        <class name="App\Actions\Pages\CreatePageAction" filename="Actions/Pages/CreatePageAction.php" line-rate="1" branch-rate="0" complexity="1">
+          <methods>
+            <method name="handle" signature="App\Models\User $user, array $attributes" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="14" hits="40"/>
+                <line number="15" hits="40"/>
+                <line number="17" hits="40"/>
+                <line number="18" hits="40"/>
+                <line number="19" hits="40"/>
+                <line number="20" hits="40"/>
+                <line number="22" hits="40"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="14" hits="40"/>
+            <line number="15" hits="40"/>
+            <line number="17" hits="40"/>
+            <line number="18" hits="40"/>
+            <line number="19" hits="40"/>
+            <line number="20" hits="40"/>
+            <line number="22" hits="40"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="Actions/Pages/DeletePageAction.php" line-rate="1" branch-rate="0" complexity="1">
+      <classes>
+        <class name="App\Actions\Pages\DeletePageAction" filename="Actions/Pages/DeletePageAction.php" line-rate="1" branch-rate="0" complexity="1">
+          <methods>
+            <method name="handle" signature="App\Models\Page $page" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="13" hits="1"/>
+                <line number="15" hits="1"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="13" hits="1"/>
+            <line number="15" hits="1"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="Actions/Pages/NotifyPageUserAction.php" line-rate="1" branch-rate="0" complexity="6">
+      <classes>
+        <class name="App\Actions\Pages\NotifyPageUserAction" filename="Actions/Pages/NotifyPageUserAction.php" line-rate="1" branch-rate="0" complexity="6">
+          <methods>
+            <method name="draft" signature="App\Models\Page $page, App\Models\User $user" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="20" hits="40"/>
+                <line number="21" hits="40"/>
+                <line number="22" hits="40"/>
+                <line number="23" hits="40"/>
+                <line number="24" hits="40"/>
+              </lines>
+            </method>
+            <method name="publish" signature="App\Models\Page $page, App\Models\User $user" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="29" hits="21"/>
+                <line number="30" hits="21"/>
+                <line number="31" hits="21"/>
+                <line number="32" hits="21"/>
+                <line number="33" hits="21"/>
+              </lines>
+            </method>
+            <method name="refuse" signature="App\Models\Page $page, App\Models\User $user" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="38" hits="2"/>
+                <line number="39" hits="2"/>
+                <line number="40" hits="2"/>
+                <line number="41" hits="2"/>
+                <line number="42" hits="2"/>
+              </lines>
+            </method>
+            <method name="archive" signature="App\Models\Page $page, App\Models\User $user" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="47" hits="1"/>
+                <line number="48" hits="1"/>
+                <line number="49" hits="1"/>
+                <line number="50" hits="1"/>
+                <line number="51" hits="1"/>
+              </lines>
+            </method>
+            <method name="delete" signature="App\Models\Page $page, App\Models\User $user" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="56" hits="1"/>
+                <line number="57" hits="1"/>
+                <line number="58" hits="1"/>
+                <line number="59" hits="1"/>
+                <line number="60" hits="1"/>
+              </lines>
+            </method>
+            <method name="newVersion" signature="App\Models\Page $page, App\Models\User $user" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="65" hits="7"/>
+                <line number="66" hits="7"/>
+                <line number="67" hits="7"/>
+                <line number="68" hits="7"/>
+                <line number="69" hits="7"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="20" hits="40"/>
+            <line number="21" hits="40"/>
+            <line number="22" hits="40"/>
+            <line number="23" hits="40"/>
+            <line number="24" hits="40"/>
+            <line number="29" hits="21"/>
+            <line number="30" hits="21"/>
+            <line number="31" hits="21"/>
+            <line number="32" hits="21"/>
+            <line number="33" hits="21"/>
+            <line number="38" hits="2"/>
+            <line number="39" hits="2"/>
+            <line number="40" hits="2"/>
+            <line number="41" hits="2"/>
+            <line number="42" hits="2"/>
+            <line number="47" hits="1"/>
+            <line number="48" hits="1"/>
+            <line number="49" hits="1"/>
+            <line number="50" hits="1"/>
+            <line number="51" hits="1"/>
+            <line number="56" hits="1"/>
+            <line number="57" hits="1"/>
+            <line number="58" hits="1"/>
+            <line number="59" hits="1"/>
+            <line number="60" hits="1"/>
+            <line number="65" hits="7"/>
+            <line number="66" hits="7"/>
+            <line number="67" hits="7"/>
+            <line number="68" hits="7"/>
+            <line number="69" hits="7"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="Actions/Pages/PromotePageAction.php" line-rate="0" branch-rate="0" complexity="1">
+      <classes>
+        <class name="App\Actions\Pages\PromotePageAction" filename="Actions/Pages/PromotePageAction.php" line-rate="0" branch-rate="0" complexity="1">
+          <methods>
+            <method name="handle" signature="App\Models\Page $page" line-rate="0" branch-rate="0" complexity="1">
+              <lines>
+                <line number="14" hits="0"/>
+                <line number="15" hits="0"/>
+                <line number="16" hits="0"/>
+                <line number="17" hits="0"/>
+                <line number="18" hits="0"/>
+                <line number="19" hits="0"/>
+                <line number="20" hits="0"/>
+                <line number="22" hits="0"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="14" hits="0"/>
+            <line number="15" hits="0"/>
+            <line number="16" hits="0"/>
+            <line number="17" hits="0"/>
+            <line number="18" hits="0"/>
+            <line number="19" hits="0"/>
+            <line number="20" hits="0"/>
+            <line number="22" hits="0"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="Actions/Pages/UpdatePageAction.php" line-rate="1" branch-rate="0" complexity="1">
+      <classes>
+        <class name="App\Actions\Pages\UpdatePageAction" filename="Actions/Pages/UpdatePageAction.php" line-rate="1" branch-rate="0" complexity="1">
+          <methods>
+            <method name="handle" signature="App\Models\Page $page, array $attributes" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="13" hits="23"/>
+                <line number="15" hits="23"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="13" hits="23"/>
+            <line number="15" hits="23"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="Actions/Versions/ArchiveVersionAction.php" line-rate="1" branch-rate="0" complexity="1">
+      <classes>
+        <class name="App\Actions\Versions\ArchiveVersionAction" filename="Actions/Versions/ArchiveVersionAction.php" line-rate="1" branch-rate="0" complexity="1">
+          <methods>
+            <method name="handle" signature="App\Models\Version $version" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="14" hits="1"/>
+                <line number="15" hits="1"/>
+                <line number="16" hits="1"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="14" hits="1"/>
+            <line number="15" hits="1"/>
+            <line number="16" hits="1"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="Actions/Versions/CreateVersionAction.php" line-rate="1" branch-rate="0" complexity="2">
+      <classes>
+        <class name="App\Actions\Versions\CreateVersionAction" filename="Actions/Versions/CreateVersionAction.php" line-rate="1" branch-rate="0" complexity="2">
+          <methods>
+            <method name="handle" signature="App\Models\User $user, App\Models\Page $page, array $attributes" line-rate="1" branch-rate="0" complexity="2">
+              <lines>
+                <line number="16" hits="7"/>
+                <line number="17" hits="7"/>
+                <line number="19" hits="7"/>
+                <line number="20" hits="1"/>
+                <line number="21" hits="1"/>
+                <line number="22" hits="1"/>
+                <line number="23" hits="1"/>
+                <line number="25" hits="6"/>
+                <line number="26" hits="6"/>
+                <line number="27" hits="6"/>
+                <line number="28" hits="6"/>
+                <line number="29" hits="6"/>
+                <line number="30" hits="6"/>
+                <line number="31" hits="6"/>
+                <line number="32" hits="6"/>
+                <line number="35" hits="7"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="16" hits="7"/>
+            <line number="17" hits="7"/>
+            <line number="19" hits="7"/>
+            <line number="20" hits="1"/>
+            <line number="21" hits="1"/>
+            <line number="22" hits="1"/>
+            <line number="23" hits="1"/>
+            <line number="25" hits="6"/>
+            <line number="26" hits="6"/>
+            <line number="27" hits="6"/>
+            <line number="28" hits="6"/>
+            <line number="29" hits="6"/>
+            <line number="30" hits="6"/>
+            <line number="31" hits="6"/>
+            <line number="32" hits="6"/>
+            <line number="35" hits="7"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="Actions/Versions/DeleteVersionAction.php" line-rate="1" branch-rate="0" complexity="1">
+      <classes>
+        <class name="App\Actions\Versions\DeleteVersionAction" filename="Actions/Versions/DeleteVersionAction.php" line-rate="1" branch-rate="0" complexity="1">
+          <methods>
+            <method name="handle" signature="App\Models\Version $version" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="13" hits="1"/>
+                <line number="15" hits="1"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="13" hits="1"/>
+            <line number="15" hits="1"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="Actions/Versions/NotifyVersionUserAction.php" line-rate="1" branch-rate="0" complexity="5">
+      <classes>
+        <class name="App\Actions\Versions\NotifyVersionUserAction" filename="Actions/Versions/NotifyVersionUserAction.php" line-rate="1" branch-rate="0" complexity="5">
+          <methods>
+            <method name="publish" signature="App\Models\Version $version, App\Models\User $user" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="19" hits="3"/>
+                <line number="20" hits="3"/>
+                <line number="21" hits="3"/>
+                <line number="22" hits="3"/>
+                <line number="23" hits="3"/>
+              </lines>
+            </method>
+            <method name="draft" signature="App\Models\Version $version, App\Models\User $user" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="27" hits="6"/>
+                <line number="28" hits="6"/>
+                <line number="29" hits="6"/>
+                <line number="30" hits="6"/>
+                <line number="31" hits="6"/>
+              </lines>
+            </method>
+            <method name="refuse" signature="App\Models\Version $version, App\Models\User $user" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="36" hits="2"/>
+                <line number="37" hits="2"/>
+                <line number="38" hits="2"/>
+                <line number="39" hits="2"/>
+                <line number="40" hits="2"/>
+              </lines>
+            </method>
+            <method name="archive" signature="App\Models\Version $version, App\Models\User $user" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="45" hits="1"/>
+                <line number="46" hits="1"/>
+                <line number="47" hits="1"/>
+                <line number="48" hits="1"/>
+                <line number="49" hits="1"/>
+              </lines>
+            </method>
+            <method name="delete" signature="App\Models\Version $version, App\Models\User $user" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="54" hits="1"/>
+                <line number="55" hits="1"/>
+                <line number="56" hits="1"/>
+                <line number="57" hits="1"/>
+                <line number="58" hits="1"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="19" hits="3"/>
+            <line number="20" hits="3"/>
+            <line number="21" hits="3"/>
+            <line number="22" hits="3"/>
+            <line number="23" hits="3"/>
+            <line number="27" hits="6"/>
+            <line number="28" hits="6"/>
+            <line number="29" hits="6"/>
+            <line number="30" hits="6"/>
+            <line number="31" hits="6"/>
+            <line number="36" hits="2"/>
+            <line number="37" hits="2"/>
+            <line number="38" hits="2"/>
+            <line number="39" hits="2"/>
+            <line number="40" hits="2"/>
+            <line number="45" hits="1"/>
+            <line number="46" hits="1"/>
+            <line number="47" hits="1"/>
+            <line number="48" hits="1"/>
+            <line number="49" hits="1"/>
+            <line number="54" hits="1"/>
+            <line number="55" hits="1"/>
+            <line number="56" hits="1"/>
+            <line number="57" hits="1"/>
+            <line number="58" hits="1"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="Actions/Versions/PromoteVersionAction.php" line-rate="1" branch-rate="0" complexity="2">
+      <classes>
+        <class name="App\Actions\Versions\PromoteVersionAction" filename="Actions/Versions/PromoteVersionAction.php" line-rate="1" branch-rate="0" complexity="2">
+          <methods>
+            <method name="handle" signature="App\Models\Version $version, App\Models\User $user" line-rate="1" branch-rate="0" complexity="2">
+              <lines>
+                <line number="17" hits="1"/>
+                <line number="18" hits="1"/>
+                <line number="19" hits="1"/>
+                <line number="20" hits="1"/>
+                <line number="21" hits="1"/>
+                <line number="22" hits="1"/>
+                <line number="23" hits="1"/>
+                <line number="25" hits="1"/>
+                <line number="26" hits="1"/>
+                <line number="27" hits="1"/>
+                <line number="28" hits="1"/>
+                <line number="29" hits="1"/>
+                <line number="30" hits="1"/>
+                <line number="31" hits="1"/>
+                <line number="32" hits="1"/>
+                <line number="34" hits="1"/>
+                <line number="35" hits="1"/>
+                <line number="36" hits="1"/>
+                <line number="37" hits="1"/>
+                <line number="39" hits="1"/>
+                <line number="40" hits="1"/>
+                <line number="41" hits="1"/>
+                <line number="42" hits="1"/>
+                <line number="43" hits="1"/>
+                <line number="45" hits="1"/>
+                <line number="46" hits="1"/>
+                <line number="47" hits="1"/>
+                <line number="48" hits="1"/>
+                <line number="50" hits="1"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="17" hits="1"/>
+            <line number="18" hits="1"/>
+            <line number="19" hits="1"/>
+            <line number="20" hits="1"/>
+            <line number="21" hits="1"/>
+            <line number="22" hits="1"/>
+            <line number="23" hits="1"/>
+            <line number="25" hits="1"/>
+            <line number="26" hits="1"/>
+            <line number="27" hits="1"/>
+            <line number="28" hits="1"/>
+            <line number="29" hits="1"/>
+            <line number="30" hits="1"/>
+            <line number="31" hits="1"/>
+            <line number="32" hits="1"/>
+            <line number="34" hits="1"/>
+            <line number="35" hits="1"/>
+            <line number="36" hits="1"/>
+            <line number="37" hits="1"/>
+            <line number="39" hits="1"/>
+            <line number="40" hits="1"/>
+            <line number="41" hits="1"/>
+            <line number="42" hits="1"/>
+            <line number="43" hits="1"/>
+            <line number="45" hits="1"/>
+            <line number="46" hits="1"/>
+            <line number="47" hits="1"/>
+            <line number="48" hits="1"/>
+            <line number="50" hits="1"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="Actions/Versions/UpdateVersionAction.php" line-rate="1" branch-rate="0" complexity="1">
+      <classes>
+        <class name="App\Actions\Versions\UpdateVersionAction" filename="Actions/Versions/UpdateVersionAction.php" line-rate="1" branch-rate="0" complexity="1">
+          <methods>
+            <method name="handle" signature="App\Models\Version $version, array $attributes" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="13" hits="5"/>
+                <line number="15" hits="5"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="13" hits="5"/>
+            <line number="15" hits="5"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="Console/Kernel.php" line-rate="0" branch-rate="0" complexity="2">
+      <classes>
+        <class name="App\Console\Kernel" filename="Console/Kernel.php" line-rate="0" branch-rate="0" complexity="2">
+          <methods/>
+          <lines/>
+        </class>
+      </classes>
+    </package>
+    <package name="DataObjects/PageDataObject.php" line-rate="1" branch-rate="0" complexity="4">
+      <classes>
+        <class name="App\DataObjects\PageDataObject" filename="DataObjects/PageDataObject.php" line-rate="1" branch-rate="0" complexity="4">
+          <methods>
+            <method name="__construct" signature="int $id, string $title, string $slug, string $resume, string $description, string $code, array $tags, int $version, App\Enums\Pages\State $state, int $is_public, int $is_accept_version, Carbon\Carbon $created_at, ?Carbon\Carbon $updated_at, ?Carbon\Carbon $published_at, App\DataObjects\UserDataObject $user, App\DataObjects\PageStatsDataObjects $stats, bool $is_liked_by_me, bool $is_followed_by_me" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="43" hits="2"/>
+              </lines>
+            </method>
+            <method name="fromModel" signature="App\Models\Page $page" line-rate="1" branch-rate="0" complexity="3">
+              <lines>
+                <line number="47" hits="2"/>
+                <line number="48" hits="2"/>
+                <line number="49" hits="2"/>
+                <line number="50" hits="2"/>
+                <line number="51" hits="2"/>
+                <line number="52" hits="2"/>
+                <line number="53" hits="2"/>
+                <line number="54" hits="2"/>
+                <line number="55" hits="2"/>
+                <line number="56" hits="2"/>
+                <line number="57" hits="2"/>
+                <line number="58" hits="2"/>
+                <line number="59" hits="2"/>
+                <line number="60" hits="2"/>
+                <line number="61" hits="2"/>
+                <line number="62" hits="2"/>
+                <line number="63" hits="2"/>
+                <line number="64" hits="2"/>
+                <line number="65" hits="2"/>
+                <line number="66" hits="2"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="43" hits="2"/>
+            <line number="47" hits="2"/>
+            <line number="48" hits="2"/>
+            <line number="49" hits="2"/>
+            <line number="50" hits="2"/>
+            <line number="51" hits="2"/>
+            <line number="52" hits="2"/>
+            <line number="53" hits="2"/>
+            <line number="54" hits="2"/>
+            <line number="55" hits="2"/>
+            <line number="56" hits="2"/>
+            <line number="57" hits="2"/>
+            <line number="58" hits="2"/>
+            <line number="59" hits="2"/>
+            <line number="60" hits="2"/>
+            <line number="61" hits="2"/>
+            <line number="62" hits="2"/>
+            <line number="63" hits="2"/>
+            <line number="64" hits="2"/>
+            <line number="65" hits="2"/>
+            <line number="66" hits="2"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="DataObjects/PageStatsDataObjects.php" line-rate="1" branch-rate="0" complexity="2">
+      <classes>
+        <class name="App\DataObjects\PageStatsDataObjects" filename="DataObjects/PageStatsDataObjects.php" line-rate="1" branch-rate="0" complexity="2">
+          <methods>
+            <method name="__construct" signature="int $likes_count, int $comments_count, int $followers_count, int $versions_count" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="17" hits="2"/>
+              </lines>
+            </method>
+            <method name="fromModel" signature="App\Models\Page $page" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="21" hits="2"/>
+                <line number="22" hits="2"/>
+                <line number="23" hits="2"/>
+                <line number="24" hits="2"/>
+                <line number="25" hits="2"/>
+                <line number="26" hits="2"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="17" hits="2"/>
+            <line number="21" hits="2"/>
+            <line number="22" hits="2"/>
+            <line number="23" hits="2"/>
+            <line number="24" hits="2"/>
+            <line number="25" hits="2"/>
+            <line number="26" hits="2"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="DataObjects/UserDataObject.php" line-rate="1" branch-rate="0" complexity="2">
+      <classes>
+        <class name="App\DataObjects\UserDataObject" filename="DataObjects/UserDataObject.php" line-rate="1" branch-rate="0" complexity="2">
+          <methods>
+            <method name="__construct" signature="int $id, string $name, string $email, Carbon\Carbon $created_at, ?string $profile_photo_path, ?string $profile_photo_url, App\DataObjects\UserStatsDataObject $stats" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="24" hits="2"/>
+              </lines>
+            </method>
+            <method name="fromModel" signature="App\Models\User $user" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="28" hits="2"/>
+                <line number="29" hits="2"/>
+                <line number="30" hits="2"/>
+                <line number="31" hits="2"/>
+                <line number="32" hits="2"/>
+                <line number="33" hits="2"/>
+                <line number="34" hits="2"/>
+                <line number="35" hits="2"/>
+                <line number="36" hits="2"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="24" hits="2"/>
+            <line number="28" hits="2"/>
+            <line number="29" hits="2"/>
+            <line number="30" hits="2"/>
+            <line number="31" hits="2"/>
+            <line number="32" hits="2"/>
+            <line number="33" hits="2"/>
+            <line number="34" hits="2"/>
+            <line number="35" hits="2"/>
+            <line number="36" hits="2"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="DataObjects/UserStatsDataObject.php" line-rate="1" branch-rate="0" complexity="2">
+      <classes>
+        <class name="App\DataObjects\UserStatsDataObject" filename="DataObjects/UserStatsDataObject.php" line-rate="1" branch-rate="0" complexity="2">
+          <methods>
+            <method name="__construct" signature="int $pages_count, int $versions_count, int $likes_count, int $comments_count, int $followers_count" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="18" hits="2"/>
+              </lines>
+            </method>
+            <method name="fromModel" signature="App\Models\User $user" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="22" hits="2"/>
+                <line number="23" hits="2"/>
+                <line number="24" hits="2"/>
+                <line number="25" hits="2"/>
+                <line number="26" hits="2"/>
+                <line number="27" hits="2"/>
+                <line number="28" hits="2"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="18" hits="2"/>
+            <line number="22" hits="2"/>
+            <line number="23" hits="2"/>
+            <line number="24" hits="2"/>
+            <line number="25" hits="2"/>
+            <line number="26" hits="2"/>
+            <line number="27" hits="2"/>
+            <line number="28" hits="2"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="DataObjects/VersionDataObject.php" line-rate="0" branch-rate="0" complexity="2">
+      <classes>
+        <class name="App\DataObjects\VersionDataObject" filename="DataObjects/VersionDataObject.php" line-rate="0" branch-rate="0" complexity="2">
+          <methods>
+            <method name="__construct" signature="int $id, string $description, string $code, int $version, App\Enums\Versions\State $state, Carbon\Carbon $created_at, App\DataObjects\UserDataObject $user" line-rate="0" branch-rate="0" complexity="1">
+              <lines>
+                <line number="27" hits="0"/>
+              </lines>
+            </method>
+            <method name="fromModel" signature="App\Models\Version $version" line-rate="0" branch-rate="0" complexity="1">
+              <lines>
+                <line number="31" hits="0"/>
+                <line number="32" hits="0"/>
+                <line number="33" hits="0"/>
+                <line number="34" hits="0"/>
+                <line number="35" hits="0"/>
+                <line number="36" hits="0"/>
+                <line number="37" hits="0"/>
+                <line number="38" hits="0"/>
+                <line number="39" hits="0"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="27" hits="0"/>
+            <line number="31" hits="0"/>
+            <line number="32" hits="0"/>
+            <line number="33" hits="0"/>
+            <line number="34" hits="0"/>
+            <line number="35" hits="0"/>
+            <line number="36" hits="0"/>
+            <line number="37" hits="0"/>
+            <line number="38" hits="0"/>
+            <line number="39" hits="0"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="Enums/Comments/State.php" line-rate="0" branch-rate="0" complexity="0">
+      <classes/>
+    </package>
+    <package name="Enums/Pages/State.php" line-rate="0" branch-rate="0" complexity="0">
+      <classes/>
+    </package>
+    <package name="Enums/Versions/State.php" line-rate="0" branch-rate="0" complexity="0">
+      <classes/>
+    </package>
+    <package name="Exceptions/CommentNoStateException.php" line-rate="0" branch-rate="0" complexity="2">
+      <classes>
+        <class name="App\Exceptions\CommentNoStateException" filename="Exceptions/CommentNoStateException.php" line-rate="0" branch-rate="0" complexity="2">
+          <methods/>
+          <lines/>
+        </class>
+      </classes>
+    </package>
+    <package name="Exceptions/Handler.php" line-rate="1" branch-rate="0" complexity="1">
+      <classes>
+        <class name="App\Exceptions\Handler" filename="Exceptions/Handler.php" line-rate="1" branch-rate="0" complexity="1">
+          <methods>
+            <method name="register" signature="" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="28" hits="87"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="28" hits="87"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="Exceptions/PageNoStateException.php" line-rate="0" branch-rate="0" complexity="2">
+      <classes>
+        <class name="App\Exceptions\PageNoStateException" filename="Exceptions/PageNoStateException.php" line-rate="0" branch-rate="0" complexity="2">
+          <methods/>
+          <lines/>
+        </class>
+      </classes>
+    </package>
+    <package name="Exceptions/VersionNoStateException.php" line-rate="0" branch-rate="0" complexity="2">
+      <classes>
+        <class name="App\Exceptions\VersionNoStateException" filename="Exceptions/VersionNoStateException.php" line-rate="0" branch-rate="0" complexity="2">
+          <methods/>
+          <lines/>
+        </class>
+      </classes>
+    </package>
+    <package name="Http/Controllers/Comments/CreateController.php" line-rate="0" branch-rate="0" complexity="1">
+      <classes>
+        <class name="App\Http\Controllers\Comments\CreateController" filename="Http/Controllers/Comments/CreateController.php" line-rate="0" branch-rate="0" complexity="1">
+          <methods>
+            <method name="__invoke" signature="App\Models\Page $page, App\Models\Version $version" line-rate="0" branch-rate="0" complexity="1">
+              <lines>
+                <line number="18" hits="0"/>
+                <line number="19" hits="0"/>
+                <line number="20" hits="0"/>
+                <line number="21" hits="0"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="18" hits="0"/>
+            <line number="19" hits="0"/>
+            <line number="20" hits="0"/>
+            <line number="21" hits="0"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="Http/Controllers/Comments/StoreController.php" line-rate="0" branch-rate="0" complexity="1">
+      <classes>
+        <class name="App\Http\Controllers\Comments\StoreController" filename="Http/Controllers/Comments/StoreController.php" line-rate="0" branch-rate="0" complexity="1">
+          <methods>
+            <method name="__invoke" signature="App\Http\Requests\Comments\CreateCommentRequest $request, App\Models\Page $page, ?App\Models\Version $version" line-rate="0" branch-rate="0" complexity="1">
+              <lines>
+                <line number="17" hits="0"/>
+                <line number="19" hits="0"/>
+                <line number="20" hits="0"/>
+                <line number="21" hits="0"/>
+                <line number="22" hits="0"/>
+                <line number="23" hits="0"/>
+                <line number="24" hits="0"/>
+                <line number="26" hits="0"/>
+                <line number="27" hits="0"/>
+                <line number="29" hits="0"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="17" hits="0"/>
+            <line number="19" hits="0"/>
+            <line number="20" hits="0"/>
+            <line number="21" hits="0"/>
+            <line number="22" hits="0"/>
+            <line number="23" hits="0"/>
+            <line number="24" hits="0"/>
+            <line number="26" hits="0"/>
+            <line number="27" hits="0"/>
+            <line number="29" hits="0"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="Http/Controllers/Controller.php" line-rate="0" branch-rate="0" complexity="0">
+      <classes>
+        <class name="App\Http\Controllers\Controller" filename="Http/Controllers/Controller.php" line-rate="0" branch-rate="0" complexity="0">
+          <methods/>
+          <lines/>
+        </class>
+      </classes>
+    </package>
+    <package name="Http/Controllers/Pages/CreateController.php" line-rate="1" branch-rate="0" complexity="1">
+      <classes>
+        <class name="App\Http\Controllers\Pages\CreateController" filename="Http/Controllers/Pages/CreateController.php" line-rate="1" branch-rate="0" complexity="1">
+          <methods>
+            <method name="__invoke" signature="App\Http\Requests\Pages\CreatePageRequest $request" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="19" hits="1"/>
+                <line number="21" hits="1"/>
+                <line number="22" hits="1"/>
+                <line number="23" hits="1"/>
+                <line number="24" hits="1"/>
+                <line number="26" hits="1"/>
+                <line number="27" hits="1"/>
+                <line number="29" hits="1"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="19" hits="1"/>
+            <line number="21" hits="1"/>
+            <line number="22" hits="1"/>
+            <line number="23" hits="1"/>
+            <line number="24" hits="1"/>
+            <line number="26" hits="1"/>
+            <line number="27" hits="1"/>
+            <line number="29" hits="1"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="Http/Controllers/Pages/EditController.php" line-rate="0" branch-rate="0" complexity="2">
+      <classes>
+        <class name="App\Http\Controllers\Pages\EditController" filename="Http/Controllers/Pages/EditController.php" line-rate="0" branch-rate="0" complexity="2">
+          <methods>
+            <method name="__invoke" signature="App\Models\Page $page" line-rate="0" branch-rate="0" complexity="2">
+              <lines>
+                <line number="18" hits="0"/>
+                <line number="19" hits="0"/>
+                <line number="20" hits="0"/>
+                <line number="21" hits="0"/>
+                <line number="23" hits="0"/>
+                <line number="26" hits="0"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="18" hits="0"/>
+            <line number="19" hits="0"/>
+            <line number="20" hits="0"/>
+            <line number="21" hits="0"/>
+            <line number="23" hits="0"/>
+            <line number="26" hits="0"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="Http/Controllers/Pages/MyListController.php" line-rate="1" branch-rate="0" complexity="2">
+      <classes>
+        <class name="App\Http\Controllers\Pages\MyListController" filename="Http/Controllers/Pages/MyListController.php" line-rate="1" branch-rate="0" complexity="2">
+          <methods>
+            <method name="__construct" signature="App\Repositories\PageRepository $repository" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="17" hits="2"/>
+              </lines>
+            </method>
+            <method name="__invoke" signature="Illuminate\Http\Request $request" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="20" hits="1"/>
+                <line number="21" hits="1"/>
+                <line number="23" hits="1"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="17" hits="2"/>
+            <line number="20" hits="1"/>
+            <line number="21" hits="1"/>
+            <line number="23" hits="1"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="Http/Controllers/Pages/PublishController.php" line-rate="0" branch-rate="0" complexity="1">
+      <classes>
+        <class name="App\Http\Controllers\Pages\PublishController" filename="Http/Controllers/Pages/PublishController.php" line-rate="0" branch-rate="0" complexity="1">
+          <methods>
+            <method name="__invoke" signature="App\Models\Page $page" line-rate="0" branch-rate="0" complexity="1">
+              <lines>
+                <line number="16" hits="0"/>
+                <line number="18" hits="0"/>
+                <line number="19" hits="0"/>
+                <line number="21" hits="0"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="16" hits="0"/>
+            <line number="18" hits="0"/>
+            <line number="19" hits="0"/>
+            <line number="21" hits="0"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="Http/Controllers/Pages/TopListController.php" line-rate="1" branch-rate="0" complexity="2">
+      <classes>
+        <class name="App\Http\Controllers\Pages\TopListController" filename="Http/Controllers/Pages/TopListController.php" line-rate="1" branch-rate="0" complexity="2">
+          <methods>
+            <method name="__construct" signature="App\Repositories\PageRepository $repository" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="18" hits="2"/>
+              </lines>
+            </method>
+            <method name="__invoke" signature="Illuminate\Http\Request $request" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="21" hits="2"/>
+                <line number="22" hits="2"/>
+                <line number="23" hits="2"/>
+                <line number="25" hits="2"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="18" hits="2"/>
+            <line number="21" hits="2"/>
+            <line number="22" hits="2"/>
+            <line number="23" hits="2"/>
+            <line number="25" hits="2"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="Http/Controllers/Pages/UpdateController.php" line-rate="0" branch-rate="0" complexity="6">
+      <classes>
+        <class name="App\Http\Controllers\Pages\UpdateController" filename="Http/Controllers/Pages/UpdateController.php" line-rate="0" branch-rate="0" complexity="6">
+          <methods>
+            <method name="__invoke" signature="App\Http\Requests\Pages\UpdatePageRequest $request, App\Models\Page $page" line-rate="0" branch-rate="0" complexity="6">
+              <lines>
+                <line number="18" hits="0"/>
+                <line number="19" hits="0"/>
+                <line number="20" hits="0"/>
+                <line number="21" hits="0"/>
+                <line number="23" hits="0"/>
+                <line number="26" hits="0"/>
+                <line number="27" hits="0"/>
+                <line number="28" hits="0"/>
+                <line number="30" hits="0"/>
+                <line number="31" hits="0"/>
+                <line number="34" hits="0"/>
+                <line number="35" hits="0"/>
+                <line number="36" hits="0"/>
+                <line number="37" hits="0"/>
+                <line number="39" hits="0"/>
+                <line number="40" hits="0"/>
+                <line number="42" hits="0"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="18" hits="0"/>
+            <line number="19" hits="0"/>
+            <line number="20" hits="0"/>
+            <line number="21" hits="0"/>
+            <line number="23" hits="0"/>
+            <line number="26" hits="0"/>
+            <line number="27" hits="0"/>
+            <line number="28" hits="0"/>
+            <line number="30" hits="0"/>
+            <line number="31" hits="0"/>
+            <line number="34" hits="0"/>
+            <line number="35" hits="0"/>
+            <line number="36" hits="0"/>
+            <line number="37" hits="0"/>
+            <line number="39" hits="0"/>
+            <line number="40" hits="0"/>
+            <line number="42" hits="0"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="Http/Controllers/Pages/ViewController.php" line-rate="0" branch-rate="0" complexity="6">
+      <classes>
+        <class name="App\Http\Controllers\Pages\ViewController" filename="Http/Controllers/Pages/ViewController.php" line-rate="0" branch-rate="0" complexity="6">
+          <methods>
+            <method name="__construct" signature="App\Repositories\VersionRepository $versionRepository" line-rate="0" branch-rate="0" complexity="1">
+              <lines>
+                <line number="20" hits="0"/>
+              </lines>
+            </method>
+            <method name="__invoke" signature="App\Models\Page $page, ?App\Models\Version $version" line-rate="0" branch-rate="0" complexity="5">
+              <lines>
+                <line number="24" hits="0"/>
+                <line number="25" hits="0"/>
+                <line number="26" hits="0"/>
+                <line number="27" hits="0"/>
+                <line number="29" hits="0"/>
+                <line number="32" hits="0"/>
+                <line number="33" hits="0"/>
+                <line number="34" hits="0"/>
+                <line number="36" hits="0"/>
+                <line number="37" hits="0"/>
+                <line number="38" hits="0"/>
+                <line number="39" hits="0"/>
+                <line number="40" hits="0"/>
+                <line number="41" hits="0"/>
+                <line number="42" hits="0"/>
+                <line number="43" hits="0"/>
+                <line number="48" hits="0"/>
+                <line number="49" hits="0"/>
+                <line number="51" hits="0"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="20" hits="0"/>
+            <line number="24" hits="0"/>
+            <line number="25" hits="0"/>
+            <line number="26" hits="0"/>
+            <line number="27" hits="0"/>
+            <line number="29" hits="0"/>
+            <line number="32" hits="0"/>
+            <line number="33" hits="0"/>
+            <line number="34" hits="0"/>
+            <line number="36" hits="0"/>
+            <line number="37" hits="0"/>
+            <line number="38" hits="0"/>
+            <line number="39" hits="0"/>
+            <line number="40" hits="0"/>
+            <line number="41" hits="0"/>
+            <line number="42" hits="0"/>
+            <line number="43" hits="0"/>
+            <line number="48" hits="0"/>
+            <line number="49" hits="0"/>
+            <line number="51" hits="0"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="Http/Controllers/Versions/CreateController.php" line-rate="0" branch-rate="0" complexity="1">
+      <classes>
+        <class name="App\Http\Controllers\Versions\CreateController" filename="Http/Controllers/Versions/CreateController.php" line-rate="0" branch-rate="0" complexity="1">
+          <methods>
+            <method name="__invoke" signature="App\Models\Page $page" line-rate="0" branch-rate="0" complexity="1">
+              <lines>
+                <line number="18" hits="0"/>
+                <line number="19" hits="0"/>
+                <line number="20" hits="0"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="18" hits="0"/>
+            <line number="19" hits="0"/>
+            <line number="20" hits="0"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="Http/Controllers/Versions/PublishController.php" line-rate="0" branch-rate="0" complexity="1">
+      <classes>
+        <class name="App\Http\Controllers\Versions\PublishController" filename="Http/Controllers/Versions/PublishController.php" line-rate="0" branch-rate="0" complexity="1">
+          <methods>
+            <method name="__invoke" signature="App\Models\Page $page, App\Models\Version $version" line-rate="0" branch-rate="0" complexity="1">
+              <lines>
+                <line number="17" hits="0"/>
+                <line number="19" hits="0"/>
+                <line number="20" hits="0"/>
+                <line number="22" hits="0"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="17" hits="0"/>
+            <line number="19" hits="0"/>
+            <line number="20" hits="0"/>
+            <line number="22" hits="0"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="Http/Controllers/Versions/StoreController.php" line-rate="0" branch-rate="0" complexity="1">
+      <classes>
+        <class name="App\Http\Controllers\Versions\StoreController" filename="Http/Controllers/Versions/StoreController.php" line-rate="0" branch-rate="0" complexity="1">
+          <methods>
+            <method name="__invoke" signature="App\Http\Requests\Versions\CreateVersionRequest $request, App\Models\Page $page" line-rate="0" branch-rate="0" complexity="1">
+              <lines>
+                <line number="16" hits="0"/>
+                <line number="18" hits="0"/>
+                <line number="19" hits="0"/>
+                <line number="20" hits="0"/>
+                <line number="21" hits="0"/>
+                <line number="22" hits="0"/>
+                <line number="24" hits="0"/>
+                <line number="25" hits="0"/>
+                <line number="27" hits="0"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="16" hits="0"/>
+            <line number="18" hits="0"/>
+            <line number="19" hits="0"/>
+            <line number="20" hits="0"/>
+            <line number="21" hits="0"/>
+            <line number="22" hits="0"/>
+            <line number="24" hits="0"/>
+            <line number="25" hits="0"/>
+            <line number="27" hits="0"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="Http/Kernel.php" line-rate="0" branch-rate="0" complexity="0">
+      <classes>
+        <class name="App\Http\Kernel" filename="Http/Kernel.php" line-rate="0" branch-rate="0" complexity="0">
+          <methods/>
+          <lines/>
+        </class>
+      </classes>
+    </package>
+    <package name="Http/Requests/Comments/CreateCommentRequest.php" line-rate="0" branch-rate="0" complexity="2">
+      <classes>
+        <class name="App\Http\Requests\Comments\CreateCommentRequest" filename="Http/Requests/Comments/CreateCommentRequest.php" line-rate="0" branch-rate="0" complexity="2">
+          <methods>
+            <method name="authorize" signature="" line-rate="0" branch-rate="0" complexity="1">
+              <lines>
+                <line number="17" hits="0"/>
+              </lines>
+            </method>
+            <method name="rules" signature="" line-rate="0" branch-rate="0" complexity="1">
+              <lines>
+                <line number="27" hits="0"/>
+                <line number="28" hits="0"/>
+                <line number="29" hits="0"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="17" hits="0"/>
+            <line number="27" hits="0"/>
+            <line number="28" hits="0"/>
+            <line number="29" hits="0"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="Http/Requests/Pages/CreatePageRequest.php" line-rate="1" branch-rate="0" complexity="2">
+      <classes>
+        <class name="App\Http\Requests\Pages\CreatePageRequest" filename="Http/Requests/Pages/CreatePageRequest.php" line-rate="1" branch-rate="0" complexity="2">
+          <methods>
+            <method name="authorize" signature="" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="13" hits="1"/>
+              </lines>
+            </method>
+            <method name="rules" signature="" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="18" hits="1"/>
+                <line number="19" hits="1"/>
+                <line number="20" hits="1"/>
+                <line number="21" hits="1"/>
+                <line number="22" hits="1"/>
+                <line number="23" hits="1"/>
+                <line number="24" hits="1"/>
+                <line number="25" hits="1"/>
+                <line number="26" hits="1"/>
+                <line number="27" hits="1"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="13" hits="1"/>
+            <line number="18" hits="1"/>
+            <line number="19" hits="1"/>
+            <line number="20" hits="1"/>
+            <line number="21" hits="1"/>
+            <line number="22" hits="1"/>
+            <line number="23" hits="1"/>
+            <line number="24" hits="1"/>
+            <line number="25" hits="1"/>
+            <line number="26" hits="1"/>
+            <line number="27" hits="1"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="Http/Requests/Pages/UpdatePageRequest.php" line-rate="0" branch-rate="0" complexity="2">
+      <classes>
+        <class name="App\Http\Requests\Pages\UpdatePageRequest" filename="Http/Requests/Pages/UpdatePageRequest.php" line-rate="0" branch-rate="0" complexity="2">
+          <methods>
+            <method name="authorize" signature="" line-rate="0" branch-rate="0" complexity="1">
+              <lines>
+                <line number="17" hits="0"/>
+              </lines>
+            </method>
+            <method name="rules" signature="" line-rate="0" branch-rate="0" complexity="1">
+              <lines>
+                <line number="27" hits="0"/>
+                <line number="28" hits="0"/>
+                <line number="29" hits="0"/>
+                <line number="30" hits="0"/>
+                <line number="31" hits="0"/>
+                <line number="32" hits="0"/>
+                <line number="33" hits="0"/>
+                <line number="34" hits="0"/>
+                <line number="35" hits="0"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="17" hits="0"/>
+            <line number="27" hits="0"/>
+            <line number="28" hits="0"/>
+            <line number="29" hits="0"/>
+            <line number="30" hits="0"/>
+            <line number="31" hits="0"/>
+            <line number="32" hits="0"/>
+            <line number="33" hits="0"/>
+            <line number="34" hits="0"/>
+            <line number="35" hits="0"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="Http/Requests/Versions/CreateVersionRequest.php" line-rate="0" branch-rate="0" complexity="2">
+      <classes>
+        <class name="App\Http\Requests\Versions\CreateVersionRequest" filename="Http/Requests/Versions/CreateVersionRequest.php" line-rate="0" branch-rate="0" complexity="2">
+          <methods>
+            <method name="authorize" signature="" line-rate="0" branch-rate="0" complexity="1">
+              <lines>
+                <line number="17" hits="0"/>
+              </lines>
+            </method>
+            <method name="rules" signature="" line-rate="0" branch-rate="0" complexity="1">
+              <lines>
+                <line number="27" hits="0"/>
+                <line number="28" hits="0"/>
+                <line number="29" hits="0"/>
+                <line number="30" hits="0"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="17" hits="0"/>
+            <line number="27" hits="0"/>
+            <line number="28" hits="0"/>
+            <line number="29" hits="0"/>
+            <line number="30" hits="0"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="Jobs/Comments/ProcessLike.php" line-rate="1" branch-rate="0" complexity="2">
+      <classes>
+        <class name="App\Jobs\Comments\ProcessLike" filename="Jobs/Comments/ProcessLike.php" line-rate="1" branch-rate="0" complexity="2">
+          <methods>
+            <method name="__construct" signature="App\Models\PageComments $comment, App\Models\User $user" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="25" hits="2"/>
+              </lines>
+            </method>
+            <method name="handle" signature="" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="29" hits="2"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="25" hits="2"/>
+            <line number="29" hits="2"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="Jobs/Pages/ProcessFollow.php" line-rate="1" branch-rate="0" complexity="2">
+      <classes>
+        <class name="App\Jobs\Pages\ProcessFollow" filename="Jobs/Pages/ProcessFollow.php" line-rate="1" branch-rate="0" complexity="2">
+          <methods>
+            <method name="__construct" signature="App\Models\Page $page, App\Models\User $user" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="25" hits="4"/>
+              </lines>
+            </method>
+            <method name="handle" signature="" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="29" hits="4"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="25" hits="4"/>
+            <line number="29" hits="4"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="Jobs/Pages/ProcessLike.php" line-rate="1" branch-rate="0" complexity="2">
+      <classes>
+        <class name="App\Jobs\Pages\ProcessLike" filename="Jobs/Pages/ProcessLike.php" line-rate="1" branch-rate="0" complexity="2">
+          <methods>
+            <method name="__construct" signature="App\Models\Page $page, App\Models\User $user" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="25" hits="4"/>
+              </lines>
+            </method>
+            <method name="handle" signature="" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="29" hits="4"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="25" hits="4"/>
+            <line number="29" hits="4"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="Livewire/Forms/Tags.php" line-rate="0.125" branch-rate="0" complexity="6">
+      <classes>
+        <class name="App\Livewire\Forms\Tags" filename="Livewire/Forms/Tags.php" line-rate="0.125" branch-rate="0" complexity="6">
+          <methods>
+            <method name="updated" signature="" line-rate="0" branch-rate="0" complexity="4">
+              <lines>
+                <line number="19" hits="0"/>
+                <line number="21" hits="0"/>
+                <line number="22" hits="0"/>
+                <line number="23" hits="0"/>
+                <line number="24" hits="0"/>
+                <line number="27" hits="0"/>
+              </lines>
+            </method>
+            <method name="removeTag" signature="$index" line-rate="0" branch-rate="0" complexity="1">
+              <lines>
+                <line number="32" hits="0"/>
+              </lines>
+            </method>
+            <method name="render" signature="" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="38" hits="1"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="19" hits="0"/>
+            <line number="21" hits="0"/>
+            <line number="22" hits="0"/>
+            <line number="23" hits="0"/>
+            <line number="24" hits="0"/>
+            <line number="27" hits="0"/>
+            <line number="32" hits="0"/>
+            <line number="38" hits="1"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="Livewire/Pages/Commented.php" line-rate="1" branch-rate="0" complexity="1">
+      <classes>
+        <class name="App\Livewire\Pages\Commented" filename="Livewire/Pages/Commented.php" line-rate="1" branch-rate="0" complexity="1">
+          <methods>
+            <method name="render" signature="" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="20" hits="3"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="20" hits="3"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="Livewire/Pages/Followed.php" line-rate="1" branch-rate="0" complexity="7">
+      <classes>
+        <class name="App\Livewire\Pages\Followed" filename="Livewire/Pages/Followed.php" line-rate="1" branch-rate="0" complexity="7">
+          <methods>
+            <method name="follow" signature="" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="37" hits="1"/>
+                <line number="38" hits="1"/>
+                <line number="39" hits="1"/>
+              </lines>
+            </method>
+            <method name="unfollow" signature="" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="44" hits="1"/>
+                <line number="45" hits="1"/>
+                <line number="46" hits="1"/>
+              </lines>
+            </method>
+            <method name="render" signature="" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="50" hits="4"/>
+              </lines>
+            </method>
+            <method name="dispatchFollowJob" signature="" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="55" hits="2"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="37" hits="1"/>
+            <line number="38" hits="1"/>
+            <line number="39" hits="1"/>
+            <line number="44" hits="1"/>
+            <line number="45" hits="1"/>
+            <line number="46" hits="1"/>
+            <line number="50" hits="4"/>
+            <line number="55" hits="2"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="Livewire/Pages/Like.php" line-rate="1" branch-rate="0" complexity="7">
+      <classes>
+        <class name="App\Livewire\Pages\Like" filename="Livewire/Pages/Like.php" line-rate="1" branch-rate="0" complexity="7">
+          <methods>
+            <method name="like" signature="" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="36" hits="1"/>
+                <line number="37" hits="1"/>
+                <line number="38" hits="1"/>
+              </lines>
+            </method>
+            <method name="unlike" signature="" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="43" hits="1"/>
+                <line number="44" hits="1"/>
+                <line number="45" hits="1"/>
+              </lines>
+            </method>
+            <method name="render" signature="" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="50" hits="5"/>
+              </lines>
+            </method>
+            <method name="dispatchLikeJob" signature="" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="55" hits="2"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="36" hits="1"/>
+            <line number="37" hits="1"/>
+            <line number="38" hits="1"/>
+            <line number="43" hits="1"/>
+            <line number="44" hits="1"/>
+            <line number="45" hits="1"/>
+            <line number="50" hits="5"/>
+            <line number="55" hits="2"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="Livewire/Pages/Others.php" line-rate="1" branch-rate="0" complexity="1">
+      <classes>
+        <class name="App\Livewire\Pages\Others" filename="Livewire/Pages/Others.php" line-rate="1" branch-rate="0" complexity="1">
+          <methods>
+            <method name="render" signature="" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="17" hits="2"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="17" hits="2"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="Livewire/Pages/Published.php" line-rate="1" branch-rate="0" complexity="1">
+      <classes>
+        <class name="App\Livewire\Pages\Published" filename="Livewire/Pages/Published.php" line-rate="1" branch-rate="0" complexity="1">
+          <methods>
+            <method name="render" signature="" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="18" hits="1"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="18" hits="1"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="Livewire/Pages/State.php" line-rate="0" branch-rate="0" complexity="1">
+      <classes>
+        <class name="App\Livewire\Pages\State" filename="Livewire/Pages/State.php" line-rate="0" branch-rate="0" complexity="1">
+          <methods>
+            <method name="render" signature="" line-rate="0" branch-rate="0" complexity="1">
+              <lines>
+                <line number="17" hits="0"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="17" hits="0"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="Livewire/Pages/Tags.php" line-rate="1" branch-rate="0" complexity="1">
+      <classes>
+        <class name="App\Livewire\Pages\Tags" filename="Livewire/Pages/Tags.php" line-rate="1" branch-rate="0" complexity="1">
+          <methods>
+            <method name="render" signature="" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="17" hits="3"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="17" hits="3"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="Livewire/Pages/Versions.php" line-rate="0" branch-rate="0" complexity="4">
+      <classes>
+        <class name="App\Livewire\Pages\Versions" filename="Livewire/Pages/Versions.php" line-rate="0" branch-rate="0" complexity="4">
+          <methods>
+            <method name="mount" signature="" line-rate="0" branch-rate="0" complexity="3">
+              <lines>
+                <line number="21" hits="0"/>
+                <line number="22" hits="0"/>
+                <line number="23" hits="0"/>
+                <line number="24" hits="0"/>
+                <line number="25" hits="0"/>
+                <line number="27" hits="0"/>
+                <line number="28" hits="0"/>
+                <line number="29" hits="0"/>
+                <line number="30" hits="0"/>
+                <line number="31" hits="0"/>
+              </lines>
+            </method>
+            <method name="render" signature="" line-rate="0" branch-rate="0" complexity="1">
+              <lines>
+                <line number="37" hits="0"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="21" hits="0"/>
+            <line number="22" hits="0"/>
+            <line number="23" hits="0"/>
+            <line number="24" hits="0"/>
+            <line number="25" hits="0"/>
+            <line number="27" hits="0"/>
+            <line number="28" hits="0"/>
+            <line number="29" hits="0"/>
+            <line number="30" hits="0"/>
+            <line number="31" hits="0"/>
+            <line number="37" hits="0"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="Models/ConnectedAccount.php" line-rate="0" branch-rate="0" complexity="0">
+      <classes>
+        <class name="App\Models\ConnectedAccount" filename="Models/ConnectedAccount.php" line-rate="0" branch-rate="0" complexity="0">
+          <methods/>
+          <lines/>
+        </class>
+      </classes>
+    </package>
+    <package name="Models/Membership.php" line-rate="0" branch-rate="0" complexity="0">
+      <classes>
+        <class name="App\Models\Membership" filename="Models/Membership.php" line-rate="0" branch-rate="0" complexity="0">
+          <methods/>
+          <lines/>
+        </class>
+      </classes>
+    </package>
+    <package name="Models/Page.php" line-rate="1" branch-rate="0" complexity="9">
+      <classes>
+        <class name="App\Models\Page" filename="Models/Page.php" line-rate="1" branch-rate="0" complexity="9">
+          <methods>
+            <method name="user" signature="" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="80" hits="38"/>
+                <line number="81" hits="38"/>
+                <line number="82" hits="38"/>
+              </lines>
+            </method>
+            <method name="versions" signature="" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="87" hits="25"/>
+                <line number="88" hits="25"/>
+                <line number="89" hits="25"/>
+              </lines>
+            </method>
+            <method name="likes" signature="" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="94" hits="25"/>
+                <line number="95" hits="25"/>
+                <line number="96" hits="25"/>
+                <line number="97" hits="25"/>
+              </lines>
+            </method>
+            <method name="comments" signature="" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="103" hits="23"/>
+                <line number="104" hits="23"/>
+                <line number="105" hits="23"/>
+              </lines>
+            </method>
+            <method name="followers" signature="" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="110" hits="29"/>
+                <line number="111" hits="29"/>
+                <line number="112" hits="29"/>
+                <line number="113" hits="29"/>
+              </lines>
+            </method>
+            <method name="likesService" signature="" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="118" hits="4"/>
+              </lines>
+            </method>
+            <method name="followersService" signature="" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="123" hits="5"/>
+              </lines>
+            </method>
+            <method name="status" signature="" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="128" hits="25"/>
+                <line number="129" hits="25"/>
+                <line number="130" hits="25"/>
+                <line number="131" hits="25"/>
+                <line number="132" hits="25"/>
+                <line number="133" hits="25"/>
+                <line number="134" hits="25"/>
+              </lines>
+            </method>
+            <method name="booted" signature="" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="139" hits="44"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="80" hits="38"/>
+            <line number="81" hits="38"/>
+            <line number="82" hits="38"/>
+            <line number="87" hits="25"/>
+            <line number="88" hits="25"/>
+            <line number="89" hits="25"/>
+            <line number="94" hits="25"/>
+            <line number="95" hits="25"/>
+            <line number="96" hits="25"/>
+            <line number="97" hits="25"/>
+            <line number="103" hits="23"/>
+            <line number="104" hits="23"/>
+            <line number="105" hits="23"/>
+            <line number="110" hits="29"/>
+            <line number="111" hits="29"/>
+            <line number="112" hits="29"/>
+            <line number="113" hits="29"/>
+            <line number="118" hits="4"/>
+            <line number="123" hits="5"/>
+            <line number="128" hits="25"/>
+            <line number="129" hits="25"/>
+            <line number="130" hits="25"/>
+            <line number="131" hits="25"/>
+            <line number="132" hits="25"/>
+            <line number="133" hits="25"/>
+            <line number="134" hits="25"/>
+            <line number="139" hits="44"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="Models/PageComments.php" line-rate="1" branch-rate="0" complexity="7">
+      <classes>
+        <class name="App\Models\PageComments" filename="Models/PageComments.php" line-rate="1" branch-rate="0" complexity="7">
+          <methods>
+            <method name="user" signature="" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="54" hits="5"/>
+                <line number="55" hits="5"/>
+                <line number="56" hits="5"/>
+              </lines>
+            </method>
+            <method name="page" signature="" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="61" hits="8"/>
+                <line number="62" hits="8"/>
+                <line number="63" hits="8"/>
+              </lines>
+            </method>
+            <method name="parent" signature="" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="68" hits="1"/>
+                <line number="69" hits="1"/>
+                <line number="70" hits="1"/>
+                <line number="71" hits="1"/>
+                <line number="72" hits="1"/>
+                <line number="73" hits="1"/>
+              </lines>
+            </method>
+            <method name="responses" signature="" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="78" hits="1"/>
+                <line number="79" hits="1"/>
+                <line number="80" hits="1"/>
+                <line number="81" hits="1"/>
+                <line number="82" hits="1"/>
+              </lines>
+            </method>
+            <method name="likes" signature="" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="87" hits="2"/>
+                <line number="88" hits="2"/>
+                <line number="89" hits="2"/>
+                <line number="90" hits="2"/>
+              </lines>
+            </method>
+            <method name="likesService" signature="" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="95" hits="2"/>
+              </lines>
+            </method>
+            <method name="status" signature="" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="100" hits="3"/>
+                <line number="101" hits="3"/>
+                <line number="102" hits="3"/>
+                <line number="103" hits="3"/>
+                <line number="104" hits="3"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="54" hits="5"/>
+            <line number="55" hits="5"/>
+            <line number="56" hits="5"/>
+            <line number="61" hits="8"/>
+            <line number="62" hits="8"/>
+            <line number="63" hits="8"/>
+            <line number="68" hits="1"/>
+            <line number="69" hits="1"/>
+            <line number="70" hits="1"/>
+            <line number="71" hits="1"/>
+            <line number="72" hits="1"/>
+            <line number="73" hits="1"/>
+            <line number="78" hits="1"/>
+            <line number="79" hits="1"/>
+            <line number="80" hits="1"/>
+            <line number="81" hits="1"/>
+            <line number="82" hits="1"/>
+            <line number="87" hits="2"/>
+            <line number="88" hits="2"/>
+            <line number="89" hits="2"/>
+            <line number="90" hits="2"/>
+            <line number="95" hits="2"/>
+            <line number="100" hits="3"/>
+            <line number="101" hits="3"/>
+            <line number="102" hits="3"/>
+            <line number="103" hits="3"/>
+            <line number="104" hits="3"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="Models/Scopes/Pages/DefaultScope.php" line-rate="1" branch-rate="0" complexity="1">
+      <classes>
+        <class name="App\Models\Scopes\Pages\DefaultScope" filename="Models/Scopes/Pages/DefaultScope.php" line-rate="1" branch-rate="0" complexity="1">
+          <methods>
+            <method name="apply" signature="Illuminate\Database\Eloquent\Builder $builder, Illuminate\Database\Eloquent\Model $model" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="18" hits="22"/>
+                <line number="19" hits="22"/>
+                <line number="20" hits="22"/>
+                <line number="21" hits="22"/>
+                <line number="22" hits="22"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="18" hits="22"/>
+            <line number="19" hits="22"/>
+            <line number="20" hits="22"/>
+            <line number="21" hits="22"/>
+            <line number="22" hits="22"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="Models/Scopes/Users/DefaultScope.php" line-rate="0" branch-rate="0" complexity="1">
+      <classes>
+        <class name="App\Models\Scopes\Users\DefaultScope" filename="Models/Scopes/Users/DefaultScope.php" line-rate="0" branch-rate="0" complexity="1">
+          <methods>
+            <method name="apply" signature="Illuminate\Database\Eloquent\Builder $builder, Illuminate\Database\Eloquent\Model $model" line-rate="0" branch-rate="0" complexity="1">
+              <lines>
+                <line number="18" hits="0"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="18" hits="0"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="Models/Scopes/Versions/DefaultScope.php" line-rate="1" branch-rate="0" complexity="1">
+      <classes>
+        <class name="App\Models\Scopes\Versions\DefaultScope" filename="Models/Scopes/Versions/DefaultScope.php" line-rate="1" branch-rate="0" complexity="1">
+          <methods>
+            <method name="apply" signature="Illuminate\Database\Eloquent\Builder $builder, Illuminate\Database\Eloquent\Model $model" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="18" hits="24"/>
+                <line number="19" hits="24"/>
+                <line number="20" hits="24"/>
+                <line number="21" hits="24"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="18" hits="24"/>
+            <line number="19" hits="24"/>
+            <line number="20" hits="24"/>
+            <line number="21" hits="24"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="Models/Team.php" line-rate="0" branch-rate="0" complexity="0">
+      <classes>
+        <class name="App\Models\Team" filename="Models/Team.php" line-rate="0" branch-rate="0" complexity="0">
+          <methods/>
+          <lines/>
+        </class>
+      </classes>
+    </package>
+    <package name="Models/TeamInvitation.php" line-rate="0" branch-rate="0" complexity="1">
+      <classes>
+        <class name="App\Models\TeamInvitation" filename="Models/TeamInvitation.php" line-rate="0" branch-rate="0" complexity="1">
+          <methods/>
+          <lines/>
+        </class>
+      </classes>
+    </package>
+    <package name="Models/User.php" line-rate="0.79166666666667" branch-rate="0" complexity="8">
+      <classes>
+        <class name="App\Models\User" filename="Models/User.php" line-rate="0.79166666666667" branch-rate="0" complexity="8">
+          <methods>
+            <method name="profilePhotoUrl" signature="" line-rate="0.66666666666667" branch-rate="0" complexity="2">
+              <lines>
+                <line number="100" hits="14"/>
+                <line number="101" hits="0"/>
+                <line number="102" hits="14"/>
+              </lines>
+            </method>
+            <method name="pages" signature="" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="107" hits="40"/>
+                <line number="108" hits="40"/>
+                <line number="109" hits="40"/>
+              </lines>
+            </method>
+            <method name="versions" signature="" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="114" hits="19"/>
+                <line number="115" hits="19"/>
+                <line number="116" hits="19"/>
+              </lines>
+            </method>
+            <method name="likes" signature="" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="121" hits="19"/>
+                <line number="122" hits="19"/>
+                <line number="123" hits="19"/>
+                <line number="124" hits="19"/>
+              </lines>
+            </method>
+            <method name="comments" signature="" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="130" hits="19"/>
+                <line number="131" hits="19"/>
+                <line number="132" hits="19"/>
+              </lines>
+            </method>
+            <method name="commentLikes" signature="" line-rate="0" branch-rate="0" complexity="1">
+              <lines>
+                <line number="137" hits="0"/>
+                <line number="138" hits="0"/>
+                <line number="139" hits="0"/>
+                <line number="140" hits="0"/>
+              </lines>
+            </method>
+            <method name="followers" signature="" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="145" hits="40"/>
+                <line number="146" hits="40"/>
+                <line number="147" hits="40"/>
+                <line number="148" hits="40"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="100" hits="14"/>
+            <line number="101" hits="0"/>
+            <line number="102" hits="14"/>
+            <line number="107" hits="40"/>
+            <line number="108" hits="40"/>
+            <line number="109" hits="40"/>
+            <line number="114" hits="19"/>
+            <line number="115" hits="19"/>
+            <line number="116" hits="19"/>
+            <line number="121" hits="19"/>
+            <line number="122" hits="19"/>
+            <line number="123" hits="19"/>
+            <line number="124" hits="19"/>
+            <line number="130" hits="19"/>
+            <line number="131" hits="19"/>
+            <line number="132" hits="19"/>
+            <line number="137" hits="0"/>
+            <line number="138" hits="0"/>
+            <line number="139" hits="0"/>
+            <line number="140" hits="0"/>
+            <line number="145" hits="40"/>
+            <line number="146" hits="40"/>
+            <line number="147" hits="40"/>
+            <line number="148" hits="40"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="Models/Version.php" line-rate="1" branch-rate="0" complexity="4">
+      <classes>
+        <class name="App\Models\Version" filename="Models/Version.php" line-rate="1" branch-rate="0" complexity="4">
+          <methods>
+            <method name="page" signature="" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="50" hits="4"/>
+                <line number="51" hits="4"/>
+                <line number="52" hits="4"/>
+              </lines>
+            </method>
+            <method name="user" signature="" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="57" hits="5"/>
+                <line number="58" hits="5"/>
+                <line number="59" hits="5"/>
+              </lines>
+            </method>
+            <method name="status" signature="" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="64" hits="5"/>
+                <line number="65" hits="5"/>
+                <line number="66" hits="5"/>
+                <line number="67" hits="5"/>
+                <line number="68" hits="5"/>
+                <line number="69" hits="5"/>
+                <line number="70" hits="5"/>
+              </lines>
+            </method>
+            <method name="booted" signature="" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="75" hits="25"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="50" hits="4"/>
+            <line number="51" hits="4"/>
+            <line number="52" hits="4"/>
+            <line number="57" hits="5"/>
+            <line number="58" hits="5"/>
+            <line number="59" hits="5"/>
+            <line number="64" hits="5"/>
+            <line number="65" hits="5"/>
+            <line number="66" hits="5"/>
+            <line number="67" hits="5"/>
+            <line number="68" hits="5"/>
+            <line number="69" hits="5"/>
+            <line number="70" hits="5"/>
+            <line number="75" hits="25"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="Notifications/Comments/DeleteNotification.php" line-rate="0.7" branch-rate="0" complexity="4">
+      <classes>
+        <class name="App\Notifications\Comments\DeleteNotification" filename="Notifications/Comments/DeleteNotification.php" line-rate="0.7" branch-rate="0" complexity="4">
+          <methods>
+            <method name="__construct" signature="string $pageTitle" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="21" hits="1"/>
+              </lines>
+            </method>
+            <method name="viaQueues" signature="" line-rate="0" branch-rate="0" complexity="1">
+              <lines>
+                <line number="25" hits="0"/>
+                <line number="26" hits="0"/>
+                <line number="27" hits="0"/>
+              </lines>
+            </method>
+            <method name="via" signature="object $notifiable" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="37" hits="1"/>
+              </lines>
+            </method>
+            <method name="toMail" signature="object $notifiable" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="45" hits="1"/>
+                <line number="46" hits="1"/>
+                <line number="47" hits="1"/>
+                <line number="48" hits="1"/>
+                <line number="49" hits="1"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="21" hits="1"/>
+            <line number="25" hits="0"/>
+            <line number="26" hits="0"/>
+            <line number="27" hits="0"/>
+            <line number="37" hits="1"/>
+            <line number="45" hits="1"/>
+            <line number="46" hits="1"/>
+            <line number="47" hits="1"/>
+            <line number="48" hits="1"/>
+            <line number="49" hits="1"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="Notifications/Comments/PublishNotification.php" line-rate="1" branch-rate="0" complexity="4">
+      <classes>
+        <class name="App\Notifications\Comments\PublishNotification" filename="Notifications/Comments/PublishNotification.php" line-rate="1" branch-rate="0" complexity="4">
+          <methods>
+            <method name="__construct" signature="App\Models\PageComments $comment" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="22" hits="8"/>
+              </lines>
+            </method>
+            <method name="viaQueues" signature="" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="26" hits="3"/>
+                <line number="27" hits="3"/>
+                <line number="28" hits="3"/>
+              </lines>
+            </method>
+            <method name="via" signature="object $notifiable" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="38" hits="8"/>
+              </lines>
+            </method>
+            <method name="toMail" signature="object $notifiable" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="46" hits="3"/>
+                <line number="47" hits="3"/>
+                <line number="48" hits="3"/>
+                <line number="49" hits="3"/>
+                <line number="50" hits="3"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="22" hits="8"/>
+            <line number="26" hits="3"/>
+            <line number="27" hits="3"/>
+            <line number="28" hits="3"/>
+            <line number="38" hits="8"/>
+            <line number="46" hits="3"/>
+            <line number="47" hits="3"/>
+            <line number="48" hits="3"/>
+            <line number="49" hits="3"/>
+            <line number="50" hits="3"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="Notifications/Comments/RefuseNotification.php" line-rate="0.7" branch-rate="0" complexity="4">
+      <classes>
+        <class name="App\Notifications\Comments\RefuseNotification" filename="Notifications/Comments/RefuseNotification.php" line-rate="0.7" branch-rate="0" complexity="4">
+          <methods>
+            <method name="__construct" signature="App\Models\PageComments $comment" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="22" hits="2"/>
+              </lines>
+            </method>
+            <method name="viaQueues" signature="" line-rate="0" branch-rate="0" complexity="1">
+              <lines>
+                <line number="26" hits="0"/>
+                <line number="27" hits="0"/>
+                <line number="28" hits="0"/>
+              </lines>
+            </method>
+            <method name="via" signature="object $notifiable" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="38" hits="2"/>
+              </lines>
+            </method>
+            <method name="toMail" signature="object $notifiable" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="46" hits="1"/>
+                <line number="47" hits="1"/>
+                <line number="48" hits="1"/>
+                <line number="49" hits="1"/>
+                <line number="50" hits="1"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="22" hits="2"/>
+            <line number="26" hits="0"/>
+            <line number="27" hits="0"/>
+            <line number="28" hits="0"/>
+            <line number="38" hits="2"/>
+            <line number="46" hits="1"/>
+            <line number="47" hits="1"/>
+            <line number="48" hits="1"/>
+            <line number="49" hits="1"/>
+            <line number="50" hits="1"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="Notifications/Pages/ArchiveNotification.php" line-rate="0.7" branch-rate="0" complexity="4">
+      <classes>
+        <class name="App\Notifications\Pages\ArchiveNotification" filename="Notifications/Pages/ArchiveNotification.php" line-rate="0.7" branch-rate="0" complexity="4">
+          <methods>
+            <method name="__construct" signature="App\Models\Page $page" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="22" hits="1"/>
+              </lines>
+            </method>
+            <method name="viaQueues" signature="" line-rate="0" branch-rate="0" complexity="1">
+              <lines>
+                <line number="26" hits="0"/>
+                <line number="27" hits="0"/>
+                <line number="28" hits="0"/>
+              </lines>
+            </method>
+            <method name="via" signature="object $notifiable" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="38" hits="1"/>
+              </lines>
+            </method>
+            <method name="toMail" signature="object $notifiable" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="46" hits="1"/>
+                <line number="47" hits="1"/>
+                <line number="48" hits="1"/>
+                <line number="49" hits="1"/>
+                <line number="50" hits="1"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="22" hits="1"/>
+            <line number="26" hits="0"/>
+            <line number="27" hits="0"/>
+            <line number="28" hits="0"/>
+            <line number="38" hits="1"/>
+            <line number="46" hits="1"/>
+            <line number="47" hits="1"/>
+            <line number="48" hits="1"/>
+            <line number="49" hits="1"/>
+            <line number="50" hits="1"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="Notifications/Pages/DeleteNotification.php" line-rate="0.7" branch-rate="0" complexity="4">
+      <classes>
+        <class name="App\Notifications\Pages\DeleteNotification" filename="Notifications/Pages/DeleteNotification.php" line-rate="0.7" branch-rate="0" complexity="4">
+          <methods>
+            <method name="__construct" signature="string $pageTitle" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="21" hits="1"/>
+              </lines>
+            </method>
+            <method name="viaQueues" signature="" line-rate="0" branch-rate="0" complexity="1">
+              <lines>
+                <line number="25" hits="0"/>
+                <line number="26" hits="0"/>
+                <line number="27" hits="0"/>
+              </lines>
+            </method>
+            <method name="via" signature="object $notifiable" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="37" hits="1"/>
+              </lines>
+            </method>
+            <method name="toMail" signature="object $notifiable" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="45" hits="1"/>
+                <line number="46" hits="1"/>
+                <line number="47" hits="1"/>
+                <line number="48" hits="1"/>
+                <line number="49" hits="1"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="21" hits="1"/>
+            <line number="25" hits="0"/>
+            <line number="26" hits="0"/>
+            <line number="27" hits="0"/>
+            <line number="37" hits="1"/>
+            <line number="45" hits="1"/>
+            <line number="46" hits="1"/>
+            <line number="47" hits="1"/>
+            <line number="48" hits="1"/>
+            <line number="49" hits="1"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="Notifications/Pages/DraftNotification.php" line-rate="1" branch-rate="0" complexity="4">
+      <classes>
+        <class name="App\Notifications\Pages\DraftNotification" filename="Notifications/Pages/DraftNotification.php" line-rate="1" branch-rate="0" complexity="4">
+          <methods>
+            <method name="__construct" signature="App\Models\Page $page" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="22" hits="40"/>
+              </lines>
+            </method>
+            <method name="viaQueues" signature="" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="26" hits="23"/>
+                <line number="27" hits="23"/>
+                <line number="28" hits="23"/>
+              </lines>
+            </method>
+            <method name="via" signature="object $notifiable" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="38" hits="40"/>
+              </lines>
+            </method>
+            <method name="toMail" signature="object $notifiable" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="46" hits="15"/>
+                <line number="47" hits="15"/>
+                <line number="48" hits="15"/>
+                <line number="49" hits="15"/>
+                <line number="50" hits="15"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="22" hits="40"/>
+            <line number="26" hits="23"/>
+            <line number="27" hits="23"/>
+            <line number="28" hits="23"/>
+            <line number="38" hits="40"/>
+            <line number="46" hits="15"/>
+            <line number="47" hits="15"/>
+            <line number="48" hits="15"/>
+            <line number="49" hits="15"/>
+            <line number="50" hits="15"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="Notifications/Pages/NewVersionNotification.php" line-rate="0.7" branch-rate="0" complexity="4">
+      <classes>
+        <class name="App\Notifications\Pages\NewVersionNotification" filename="Notifications/Pages/NewVersionNotification.php" line-rate="0.7" branch-rate="0" complexity="4">
+          <methods>
+            <method name="__construct" signature="App\Models\Page $page" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="22" hits="7"/>
+              </lines>
+            </method>
+            <method name="viaQueues" signature="" line-rate="0" branch-rate="0" complexity="1">
+              <lines>
+                <line number="26" hits="0"/>
+                <line number="27" hits="0"/>
+                <line number="28" hits="0"/>
+              </lines>
+            </method>
+            <method name="via" signature="object $notifiable" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="38" hits="7"/>
+              </lines>
+            </method>
+            <method name="toMail" signature="object $notifiable" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="46" hits="3"/>
+                <line number="47" hits="3"/>
+                <line number="48" hits="3"/>
+                <line number="49" hits="3"/>
+                <line number="50" hits="3"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="22" hits="7"/>
+            <line number="26" hits="0"/>
+            <line number="27" hits="0"/>
+            <line number="28" hits="0"/>
+            <line number="38" hits="7"/>
+            <line number="46" hits="3"/>
+            <line number="47" hits="3"/>
+            <line number="48" hits="3"/>
+            <line number="49" hits="3"/>
+            <line number="50" hits="3"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="Notifications/Pages/PublishNotification.php" line-rate="1" branch-rate="0" complexity="4">
+      <classes>
+        <class name="App\Notifications\Pages\PublishNotification" filename="Notifications/Pages/PublishNotification.php" line-rate="1" branch-rate="0" complexity="4">
+          <methods>
+            <method name="__construct" signature="App\Models\Page $page" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="22" hits="21"/>
+              </lines>
+            </method>
+            <method name="viaQueues" signature="" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="26" hits="12"/>
+                <line number="27" hits="12"/>
+                <line number="28" hits="12"/>
+              </lines>
+            </method>
+            <method name="via" signature="object $notifiable" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="38" hits="21"/>
+              </lines>
+            </method>
+            <method name="toMail" signature="object $notifiable" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="46" hits="9"/>
+                <line number="47" hits="9"/>
+                <line number="48" hits="9"/>
+                <line number="49" hits="9"/>
+                <line number="50" hits="9"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="22" hits="21"/>
+            <line number="26" hits="12"/>
+            <line number="27" hits="12"/>
+            <line number="28" hits="12"/>
+            <line number="38" hits="21"/>
+            <line number="46" hits="9"/>
+            <line number="47" hits="9"/>
+            <line number="48" hits="9"/>
+            <line number="49" hits="9"/>
+            <line number="50" hits="9"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="Notifications/Pages/RefuseNotification.php" line-rate="0.7" branch-rate="0" complexity="4">
+      <classes>
+        <class name="App\Notifications\Pages\RefuseNotification" filename="Notifications/Pages/RefuseNotification.php" line-rate="0.7" branch-rate="0" complexity="4">
+          <methods>
+            <method name="__construct" signature="App\Models\Page $page" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="22" hits="2"/>
+              </lines>
+            </method>
+            <method name="viaQueues" signature="" line-rate="0" branch-rate="0" complexity="1">
+              <lines>
+                <line number="26" hits="0"/>
+                <line number="27" hits="0"/>
+                <line number="28" hits="0"/>
+              </lines>
+            </method>
+            <method name="via" signature="object $notifiable" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="38" hits="2"/>
+              </lines>
+            </method>
+            <method name="toMail" signature="object $notifiable" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="46" hits="1"/>
+                <line number="47" hits="1"/>
+                <line number="48" hits="1"/>
+                <line number="49" hits="1"/>
+                <line number="50" hits="1"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="22" hits="2"/>
+            <line number="26" hits="0"/>
+            <line number="27" hits="0"/>
+            <line number="28" hits="0"/>
+            <line number="38" hits="2"/>
+            <line number="46" hits="1"/>
+            <line number="47" hits="1"/>
+            <line number="48" hits="1"/>
+            <line number="49" hits="1"/>
+            <line number="50" hits="1"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="Notifications/Versions/ArchiveNotification.php" line-rate="0.7" branch-rate="0" complexity="4">
+      <classes>
+        <class name="App\Notifications\Versions\ArchiveNotification" filename="Notifications/Versions/ArchiveNotification.php" line-rate="0.7" branch-rate="0" complexity="4">
+          <methods>
+            <method name="__construct" signature="App\Models\Version $version" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="22" hits="1"/>
+              </lines>
+            </method>
+            <method name="viaQueues" signature="" line-rate="0" branch-rate="0" complexity="1">
+              <lines>
+                <line number="26" hits="0"/>
+                <line number="27" hits="0"/>
+                <line number="28" hits="0"/>
+              </lines>
+            </method>
+            <method name="via" signature="object $notifiable" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="38" hits="1"/>
+              </lines>
+            </method>
+            <method name="toMail" signature="object $notifiable" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="46" hits="1"/>
+                <line number="47" hits="1"/>
+                <line number="48" hits="1"/>
+                <line number="49" hits="1"/>
+                <line number="50" hits="1"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="22" hits="1"/>
+            <line number="26" hits="0"/>
+            <line number="27" hits="0"/>
+            <line number="28" hits="0"/>
+            <line number="38" hits="1"/>
+            <line number="46" hits="1"/>
+            <line number="47" hits="1"/>
+            <line number="48" hits="1"/>
+            <line number="49" hits="1"/>
+            <line number="50" hits="1"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="Notifications/Versions/DeleteNotification.php" line-rate="0.7" branch-rate="0" complexity="4">
+      <classes>
+        <class name="App\Notifications\Versions\DeleteNotification" filename="Notifications/Versions/DeleteNotification.php" line-rate="0.7" branch-rate="0" complexity="4">
+          <methods>
+            <method name="__construct" signature="string $pageTitle" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="21" hits="1"/>
+              </lines>
+            </method>
+            <method name="viaQueues" signature="" line-rate="0" branch-rate="0" complexity="1">
+              <lines>
+                <line number="25" hits="0"/>
+                <line number="26" hits="0"/>
+                <line number="27" hits="0"/>
+              </lines>
+            </method>
+            <method name="via" signature="object $notifiable" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="37" hits="1"/>
+              </lines>
+            </method>
+            <method name="toMail" signature="object $notifiable" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="45" hits="1"/>
+                <line number="46" hits="1"/>
+                <line number="47" hits="1"/>
+                <line number="48" hits="1"/>
+                <line number="49" hits="1"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="21" hits="1"/>
+            <line number="25" hits="0"/>
+            <line number="26" hits="0"/>
+            <line number="27" hits="0"/>
+            <line number="37" hits="1"/>
+            <line number="45" hits="1"/>
+            <line number="46" hits="1"/>
+            <line number="47" hits="1"/>
+            <line number="48" hits="1"/>
+            <line number="49" hits="1"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="Notifications/Versions/DraftNotification.php" line-rate="0.7" branch-rate="0" complexity="4">
+      <classes>
+        <class name="App\Notifications\Versions\DraftNotification" filename="Notifications/Versions/DraftNotification.php" line-rate="0.7" branch-rate="0" complexity="4">
+          <methods>
+            <method name="__construct" signature="App\Models\Version $version" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="22" hits="6"/>
+              </lines>
+            </method>
+            <method name="viaQueues" signature="" line-rate="0" branch-rate="0" complexity="1">
+              <lines>
+                <line number="26" hits="0"/>
+                <line number="27" hits="0"/>
+                <line number="28" hits="0"/>
+              </lines>
+            </method>
+            <method name="via" signature="object $notifiable" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="38" hits="6"/>
+              </lines>
+            </method>
+            <method name="toMail" signature="object $notifiable" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="46" hits="2"/>
+                <line number="47" hits="2"/>
+                <line number="48" hits="2"/>
+                <line number="49" hits="2"/>
+                <line number="50" hits="2"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="22" hits="6"/>
+            <line number="26" hits="0"/>
+            <line number="27" hits="0"/>
+            <line number="28" hits="0"/>
+            <line number="38" hits="6"/>
+            <line number="46" hits="2"/>
+            <line number="47" hits="2"/>
+            <line number="48" hits="2"/>
+            <line number="49" hits="2"/>
+            <line number="50" hits="2"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="Notifications/Versions/PublishNotification.php" line-rate="0.7" branch-rate="0" complexity="4">
+      <classes>
+        <class name="App\Notifications\Versions\PublishNotification" filename="Notifications/Versions/PublishNotification.php" line-rate="0.7" branch-rate="0" complexity="4">
+          <methods>
+            <method name="__construct" signature="App\Models\Version $version" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="22" hits="3"/>
+              </lines>
+            </method>
+            <method name="viaQueues" signature="" line-rate="0" branch-rate="0" complexity="1">
+              <lines>
+                <line number="26" hits="0"/>
+                <line number="27" hits="0"/>
+                <line number="28" hits="0"/>
+              </lines>
+            </method>
+            <method name="via" signature="object $notifiable" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="38" hits="3"/>
+              </lines>
+            </method>
+            <method name="toMail" signature="object $notifiable" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="46" hits="2"/>
+                <line number="47" hits="2"/>
+                <line number="48" hits="2"/>
+                <line number="49" hits="2"/>
+                <line number="50" hits="2"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="22" hits="3"/>
+            <line number="26" hits="0"/>
+            <line number="27" hits="0"/>
+            <line number="28" hits="0"/>
+            <line number="38" hits="3"/>
+            <line number="46" hits="2"/>
+            <line number="47" hits="2"/>
+            <line number="48" hits="2"/>
+            <line number="49" hits="2"/>
+            <line number="50" hits="2"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="Notifications/Versions/RefuseNotification.php" line-rate="0.7" branch-rate="0" complexity="4">
+      <classes>
+        <class name="App\Notifications\Versions\RefuseNotification" filename="Notifications/Versions/RefuseNotification.php" line-rate="0.7" branch-rate="0" complexity="4">
+          <methods>
+            <method name="__construct" signature="App\Models\Version $version" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="22" hits="2"/>
+              </lines>
+            </method>
+            <method name="viaQueues" signature="" line-rate="0" branch-rate="0" complexity="1">
+              <lines>
+                <line number="26" hits="0"/>
+                <line number="27" hits="0"/>
+                <line number="28" hits="0"/>
+              </lines>
+            </method>
+            <method name="via" signature="object $notifiable" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="38" hits="2"/>
+              </lines>
+            </method>
+            <method name="toMail" signature="object $notifiable" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="46" hits="1"/>
+                <line number="47" hits="1"/>
+                <line number="48" hits="1"/>
+                <line number="49" hits="1"/>
+                <line number="50" hits="1"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="22" hits="2"/>
+            <line number="26" hits="0"/>
+            <line number="27" hits="0"/>
+            <line number="28" hits="0"/>
+            <line number="38" hits="2"/>
+            <line number="46" hits="1"/>
+            <line number="47" hits="1"/>
+            <line number="48" hits="1"/>
+            <line number="49" hits="1"/>
+            <line number="50" hits="1"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="Policies/CommentPolicy.php" line-rate="0" branch-rate="0" complexity="7">
+      <classes>
+        <class name="App\Policies\CommentPolicy" filename="Policies/CommentPolicy.php" line-rate="0" branch-rate="0" complexity="7">
+          <methods>
+            <method name="viewAny" signature="App\Models\User $user" line-rate="0" branch-rate="0" complexity="1">
+              <lines>
+                <line number="15" hits="0"/>
+              </lines>
+            </method>
+            <method name="view" signature="App\Models\User $user, App\Models\PageComments $pageComments" line-rate="0" branch-rate="0" complexity="1">
+              <lines>
+                <line number="20" hits="0"/>
+              </lines>
+            </method>
+            <method name="create" signature="App\Models\User $user" line-rate="0" branch-rate="0" complexity="1">
+              <lines>
+                <line number="25" hits="0"/>
+              </lines>
+            </method>
+            <method name="update" signature="App\Models\User $user, App\Models\PageComments $pageComments" line-rate="0" branch-rate="0" complexity="1">
+              <lines>
+                <line number="30" hits="0"/>
+              </lines>
+            </method>
+            <method name="delete" signature="App\Models\User $user, App\Models\PageComments $pageComments" line-rate="0" branch-rate="0" complexity="1">
+              <lines>
+                <line number="35" hits="0"/>
+              </lines>
+            </method>
+            <method name="restore" signature="App\Models\User $user, App\Models\PageComments $pageComments" line-rate="0" branch-rate="0" complexity="1">
+              <lines>
+                <line number="40" hits="0"/>
+              </lines>
+            </method>
+            <method name="forceDelete" signature="App\Models\User $user, App\Models\PageComments $pageComments" line-rate="0" branch-rate="0" complexity="1">
+              <lines>
+                <line number="45" hits="0"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="15" hits="0"/>
+            <line number="20" hits="0"/>
+            <line number="25" hits="0"/>
+            <line number="30" hits="0"/>
+            <line number="35" hits="0"/>
+            <line number="40" hits="0"/>
+            <line number="45" hits="0"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="Policies/ConnectedAccountPolicy.php" line-rate="0" branch-rate="0" complexity="5">
+      <classes>
+        <class name="App\Policies\ConnectedAccountPolicy" filename="Policies/ConnectedAccountPolicy.php" line-rate="0" branch-rate="0" complexity="5">
+          <methods/>
+          <lines/>
+        </class>
+      </classes>
+    </package>
+    <package name="Policies/PagePolicy.php" line-rate="0" branch-rate="0" complexity="17">
+      <classes>
+        <class name="App\Policies\PagePolicy" filename="Policies/PagePolicy.php" line-rate="0" branch-rate="0" complexity="17">
+          <methods>
+            <method name="viewAny" signature="App\Models\User $user" line-rate="0" branch-rate="0" complexity="1">
+              <lines>
+                <line number="20" hits="0"/>
+              </lines>
+            </method>
+            <method name="view" signature="?App\Models\User $user, App\Models\Page $page" line-rate="0" branch-rate="0" complexity="9">
+              <lines>
+                <line number="28" hits="0"/>
+                <line number="29" hits="0"/>
+                <line number="30" hits="0"/>
+                <line number="32" hits="0"/>
+                <line number="33" hits="0"/>
+                <line number="35" hits="0"/>
+                <line number="36" hits="0"/>
+                <line number="37" hits="0"/>
+                <line number="41" hits="0"/>
+                <line number="42" hits="0"/>
+                <line number="44" hits="0"/>
+                <line number="45" hits="0"/>
+                <line number="49" hits="0"/>
+              </lines>
+            </method>
+            <method name="create" signature="App\Models\User $user" line-rate="0" branch-rate="0" complexity="1">
+              <lines>
+                <line number="57" hits="0"/>
+              </lines>
+            </method>
+            <method name="update" signature="App\Models\User $user, App\Models\Page $page" line-rate="0" branch-rate="0" complexity="3">
+              <lines>
+                <line number="64" hits="0"/>
+                <line number="65" hits="0"/>
+                <line number="67" hits="0"/>
+                <line number="68" hits="0"/>
+                <line number="70" hits="0"/>
+              </lines>
+            </method>
+            <method name="delete" signature="App\Models\User $user, App\Models\Page $page" line-rate="0" branch-rate="0" complexity="1">
+              <lines>
+                <line number="78" hits="0"/>
+              </lines>
+            </method>
+            <method name="restore" signature="App\Models\User $user, App\Models\Page $page" line-rate="0" branch-rate="0" complexity="1">
+              <lines>
+                <line number="86" hits="0"/>
+              </lines>
+            </method>
+            <method name="forceDelete" signature="App\Models\User $user, App\Models\Page $page" line-rate="0" branch-rate="0" complexity="1">
+              <lines>
+                <line number="94" hits="0"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="20" hits="0"/>
+            <line number="28" hits="0"/>
+            <line number="29" hits="0"/>
+            <line number="30" hits="0"/>
+            <line number="32" hits="0"/>
+            <line number="33" hits="0"/>
+            <line number="35" hits="0"/>
+            <line number="36" hits="0"/>
+            <line number="37" hits="0"/>
+            <line number="41" hits="0"/>
+            <line number="42" hits="0"/>
+            <line number="44" hits="0"/>
+            <line number="45" hits="0"/>
+            <line number="49" hits="0"/>
+            <line number="57" hits="0"/>
+            <line number="64" hits="0"/>
+            <line number="65" hits="0"/>
+            <line number="67" hits="0"/>
+            <line number="68" hits="0"/>
+            <line number="70" hits="0"/>
+            <line number="78" hits="0"/>
+            <line number="86" hits="0"/>
+            <line number="94" hits="0"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="Policies/TeamPolicy.php" line-rate="0" branch-rate="0" complexity="8">
+      <classes>
+        <class name="App\Policies\TeamPolicy" filename="Policies/TeamPolicy.php" line-rate="0" branch-rate="0" complexity="8">
+          <methods/>
+          <lines/>
+        </class>
+      </classes>
+    </package>
+    <package name="Repositories/BaseRepository.php" line-rate="0.5" branch-rate="0" complexity="2">
+      <classes>
+        <class name="App\Repositories\BaseRepository" filename="Repositories/BaseRepository.php" line-rate="0.5" branch-rate="0" complexity="2">
+          <methods>
+            <method name="__construct" signature="Illuminate\Database\Eloquent\Model $model" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="11" hits="4"/>
+              </lines>
+            </method>
+            <method name="find" signature="$id" line-rate="0" branch-rate="0" complexity="1">
+              <lines>
+                <line number="15" hits="0"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="11" hits="4"/>
+            <line number="15" hits="0"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="Repositories/CommentRepository.php" line-rate="0" branch-rate="0" complexity="2">
+      <classes>
+        <class name="App\Repositories\CommentRepository" filename="Repositories/CommentRepository.php" line-rate="0" branch-rate="0" complexity="2">
+          <methods>
+            <method name="__construct" signature="App\Models\PageComments $model" line-rate="0" branch-rate="0" complexity="1">
+              <lines>
+                <line number="15" hits="0"/>
+              </lines>
+            </method>
+            <method name="retrieveAllMyVersionsByPage" signature="App\Models\Page $page" line-rate="0" branch-rate="0" complexity="1">
+              <lines>
+                <line number="20" hits="0"/>
+                <line number="21" hits="0"/>
+                <line number="22" hits="0"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="15" hits="0"/>
+            <line number="20" hits="0"/>
+            <line number="21" hits="0"/>
+            <line number="22" hits="0"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="Repositories/PageRepository.php" line-rate="1" branch-rate="0" complexity="3">
+      <classes>
+        <class name="App\Repositories\PageRepository" filename="Repositories/PageRepository.php" line-rate="1" branch-rate="0" complexity="3">
+          <methods>
+            <method name="__construct" signature="App\Models\Page $model" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="15" hits="4"/>
+              </lines>
+            </method>
+            <method name="retrieveAllMyPagesByUser" signature="$userId" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="20" hits="1"/>
+                <line number="21" hits="1"/>
+              </lines>
+            </method>
+            <method name="retrieveTopPagesByState" signature="App\Enums\Pages\State $state" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="26" hits="2"/>
+                <line number="27" hits="2"/>
+                <line number="28" hits="2"/>
+                <line number="29" hits="2"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="15" hits="4"/>
+            <line number="20" hits="1"/>
+            <line number="21" hits="1"/>
+            <line number="26" hits="2"/>
+            <line number="27" hits="2"/>
+            <line number="28" hits="2"/>
+            <line number="29" hits="2"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="Repositories/VersionRepository.php" line-rate="0" branch-rate="0" complexity="2">
+      <classes>
+        <class name="App\Repositories\VersionRepository" filename="Repositories/VersionRepository.php" line-rate="0" branch-rate="0" complexity="2">
+          <methods>
+            <method name="__construct" signature="App\Models\Version $model" line-rate="0" branch-rate="0" complexity="1">
+              <lines>
+                <line number="16" hits="0"/>
+              </lines>
+            </method>
+            <method name="retrieveAllMyVersionsByPageAndStatus" signature="App\Models\Page $page, App\Enums\Versions\State $state" line-rate="0" branch-rate="0" complexity="1">
+              <lines>
+                <line number="21" hits="0"/>
+                <line number="22" hits="0"/>
+                <line number="23" hits="0"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="16" hits="0"/>
+            <line number="21" hits="0"/>
+            <line number="22" hits="0"/>
+            <line number="23" hits="0"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="Services/Comments/LikesService.php" line-rate="1" branch-rate="0" complexity="4">
+      <classes>
+        <class name="App\Services\Comments\LikesService" filename="Services/Comments/LikesService.php" line-rate="1" branch-rate="0" complexity="4">
+          <methods>
+            <method name="__construct" signature="App\Models\PageComments $comment" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="12" hits="2"/>
+              </lines>
+            </method>
+            <method name="isLikedBy" signature="App\Models\User $user" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="16" hits="2"/>
+              </lines>
+            </method>
+            <method name="toggleLikeBy" signature="App\Models\User $user" line-rate="1" branch-rate="0" complexity="2">
+              <lines>
+                <line number="21" hits="2"/>
+                <line number="22" hits="1"/>
+                <line number="24" hits="2"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="12" hits="2"/>
+            <line number="16" hits="2"/>
+            <line number="21" hits="2"/>
+            <line number="22" hits="1"/>
+            <line number="24" hits="2"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="Services/Pages/FollowersService.php" line-rate="1" branch-rate="0" complexity="4">
+      <classes>
+        <class name="App\Services\Pages\FollowersService" filename="Services/Pages/FollowersService.php" line-rate="1" branch-rate="0" complexity="4">
+          <methods>
+            <method name="__construct" signature="App\Models\Page $page" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="12" hits="5"/>
+              </lines>
+            </method>
+            <method name="isFollowedBy" signature="App\Models\User $user" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="16" hits="5"/>
+              </lines>
+            </method>
+            <method name="toggleFollowBy" signature="App\Models\User $user" line-rate="1" branch-rate="0" complexity="2">
+              <lines>
+                <line number="21" hits="4"/>
+                <line number="22" hits="2"/>
+                <line number="24" hits="3"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="12" hits="5"/>
+            <line number="16" hits="5"/>
+            <line number="21" hits="4"/>
+            <line number="22" hits="2"/>
+            <line number="24" hits="3"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="Services/Pages/LikesService.php" line-rate="1" branch-rate="0" complexity="4">
+      <classes>
+        <class name="App\Services\Pages\LikesService" filename="Services/Pages/LikesService.php" line-rate="1" branch-rate="0" complexity="4">
+          <methods>
+            <method name="__construct" signature="App\Models\Page $page" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="12" hits="4"/>
+              </lines>
+            </method>
+            <method name="isLikedBy" signature="App\Models\User $user" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="16" hits="4"/>
+              </lines>
+            </method>
+            <method name="toggleLikeBy" signature="App\Models\User $user" line-rate="1" branch-rate="0" complexity="2">
+              <lines>
+                <line number="21" hits="4"/>
+                <line number="22" hits="1"/>
+                <line number="24" hits="4"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="12" hits="4"/>
+            <line number="16" hits="4"/>
+            <line number="21" hits="4"/>
+            <line number="22" hits="1"/>
+            <line number="24" hits="4"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="StateMachines/Comments/BaseCommentState.php" line-rate="0.66666666666667" branch-rate="0" complexity="3">
+      <classes>
+        <class name="App\StateMachines\Comments\BaseCommentState" filename="StateMachines/Comments/BaseCommentState.php" line-rate="0.66666666666667" branch-rate="0" complexity="3">
+          <methods>
+            <method name="__construct" signature="App\Models\PageComments $comment" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="14" hits="3"/>
+              </lines>
+            </method>
+            <method name="refuse" signature="" line-rate="0" branch-rate="0" complexity="1">
+              <lines>
+                <line number="21" hits="0"/>
+              </lines>
+            </method>
+            <method name="delete" signature="" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="29" hits="1"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="14" hits="3"/>
+            <line number="21" hits="0"/>
+            <line number="29" hits="1"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="StateMachines/Comments/PublishedCommentState.php" line-rate="1" branch-rate="0" complexity="1">
+      <classes>
+        <class name="App\StateMachines\Comments\PublishedCommentState" filename="StateMachines/Comments/PublishedCommentState.php" line-rate="1" branch-rate="0" complexity="1">
+          <methods>
+            <method name="refuse" signature="" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="15" hits="2"/>
+                <line number="16" hits="2"/>
+                <line number="17" hits="2"/>
+                <line number="18" hits="2"/>
+                <line number="19" hits="2"/>
+                <line number="20" hits="2"/>
+                <line number="22" hits="2"/>
+                <line number="23" hits="2"/>
+                <line number="24" hits="2"/>
+                <line number="25" hits="2"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="15" hits="2"/>
+            <line number="16" hits="2"/>
+            <line number="17" hits="2"/>
+            <line number="18" hits="2"/>
+            <line number="19" hits="2"/>
+            <line number="20" hits="2"/>
+            <line number="22" hits="2"/>
+            <line number="23" hits="2"/>
+            <line number="24" hits="2"/>
+            <line number="25" hits="2"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="StateMachines/Comments/RefusedCommentState.php" line-rate="1" branch-rate="0" complexity="1">
+      <classes>
+        <class name="App\StateMachines\Comments\RefusedCommentState" filename="StateMachines/Comments/RefusedCommentState.php" line-rate="1" branch-rate="0" complexity="1">
+          <methods>
+            <method name="delete" signature="" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="14" hits="1"/>
+                <line number="15" hits="1"/>
+                <line number="16" hits="1"/>
+                <line number="18" hits="1"/>
+                <line number="19" hits="1"/>
+                <line number="20" hits="1"/>
+                <line number="21" hits="1"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="14" hits="1"/>
+            <line number="15" hits="1"/>
+            <line number="16" hits="1"/>
+            <line number="18" hits="1"/>
+            <line number="19" hits="1"/>
+            <line number="20" hits="1"/>
+            <line number="21" hits="1"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="StateMachines/Contracts/CommentStateContract.php" line-rate="0" branch-rate="0" complexity="0">
+      <classes/>
+    </package>
+    <package name="StateMachines/Contracts/PageStateContract.php" line-rate="0" branch-rate="0" complexity="0">
+      <classes/>
+    </package>
+    <package name="StateMachines/Contracts/VersionStateContract.php" line-rate="0" branch-rate="0" complexity="0">
+      <classes/>
+    </package>
+    <package name="StateMachines/Pages/ArchivedPageState.php" line-rate="0" branch-rate="0" complexity="0">
+      <classes>
+        <class name="App\StateMachines\Pages\ArchivedPageState" filename="StateMachines/Pages/ArchivedPageState.php" line-rate="0" branch-rate="0" complexity="0">
+          <methods/>
+          <lines/>
+        </class>
+      </classes>
+    </package>
+    <package name="StateMachines/Pages/BasePageState.php" line-rate="1" branch-rate="0" complexity="5">
+      <classes>
+        <class name="App\StateMachines\Pages\BasePageState" filename="StateMachines/Pages/BasePageState.php" line-rate="1" branch-rate="0" complexity="5">
+          <methods>
+            <method name="__construct" signature="App\Models\Page $page" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="14" hits="25"/>
+              </lines>
+            </method>
+            <method name="publish" signature="" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="21" hits="1"/>
+              </lines>
+            </method>
+            <method name="archive" signature="" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="29" hits="1"/>
+              </lines>
+            </method>
+            <method name="refuse" signature="" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="37" hits="1"/>
+              </lines>
+            </method>
+            <method name="delete" signature="" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="45" hits="1"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="14" hits="25"/>
+            <line number="21" hits="1"/>
+            <line number="29" hits="1"/>
+            <line number="37" hits="1"/>
+            <line number="45" hits="1"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="StateMachines/Pages/DraftPageState.php" line-rate="1" branch-rate="0" complexity="2">
+      <classes>
+        <class name="App\StateMachines\Pages\DraftPageState" filename="StateMachines/Pages/DraftPageState.php" line-rate="1" branch-rate="0" complexity="2">
+          <methods>
+            <method name="publish" signature="" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="15" hits="21"/>
+                <line number="16" hits="21"/>
+                <line number="17" hits="21"/>
+                <line number="18" hits="21"/>
+                <line number="19" hits="21"/>
+                <line number="20" hits="21"/>
+                <line number="21" hits="21"/>
+                <line number="23" hits="21"/>
+                <line number="24" hits="21"/>
+                <line number="25" hits="21"/>
+                <line number="26" hits="21"/>
+              </lines>
+            </method>
+            <method name="refuse" signature="" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="31" hits="2"/>
+                <line number="32" hits="2"/>
+                <line number="33" hits="2"/>
+                <line number="34" hits="2"/>
+                <line number="35" hits="2"/>
+                <line number="36" hits="2"/>
+                <line number="38" hits="2"/>
+                <line number="39" hits="2"/>
+                <line number="40" hits="2"/>
+                <line number="41" hits="2"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="15" hits="21"/>
+            <line number="16" hits="21"/>
+            <line number="17" hits="21"/>
+            <line number="18" hits="21"/>
+            <line number="19" hits="21"/>
+            <line number="20" hits="21"/>
+            <line number="21" hits="21"/>
+            <line number="23" hits="21"/>
+            <line number="24" hits="21"/>
+            <line number="25" hits="21"/>
+            <line number="26" hits="21"/>
+            <line number="31" hits="2"/>
+            <line number="32" hits="2"/>
+            <line number="33" hits="2"/>
+            <line number="34" hits="2"/>
+            <line number="35" hits="2"/>
+            <line number="36" hits="2"/>
+            <line number="38" hits="2"/>
+            <line number="39" hits="2"/>
+            <line number="40" hits="2"/>
+            <line number="41" hits="2"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="StateMachines/Pages/PublishedPageState.php" line-rate="1" branch-rate="0" complexity="2">
+      <classes>
+        <class name="App\StateMachines\Pages\PublishedPageState" filename="StateMachines/Pages/PublishedPageState.php" line-rate="1" branch-rate="0" complexity="2">
+          <methods>
+            <method name="archive" signature="" line-rate="1" branch-rate="0" complexity="2">
+              <lines>
+                <line number="15" hits="1"/>
+                <line number="16" hits="1"/>
+                <line number="17" hits="1"/>
+                <line number="19" hits="1"/>
+                <line number="20" hits="1"/>
+                <line number="21" hits="1"/>
+                <line number="22" hits="1"/>
+                <line number="23" hits="1"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="15" hits="1"/>
+            <line number="16" hits="1"/>
+            <line number="17" hits="1"/>
+            <line number="19" hits="1"/>
+            <line number="20" hits="1"/>
+            <line number="21" hits="1"/>
+            <line number="22" hits="1"/>
+            <line number="23" hits="1"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="StateMachines/Pages/RefusedPageState.php" line-rate="1" branch-rate="0" complexity="1">
+      <classes>
+        <class name="App\StateMachines\Pages\RefusedPageState" filename="StateMachines/Pages/RefusedPageState.php" line-rate="1" branch-rate="0" complexity="1">
+          <methods>
+            <method name="delete" signature="" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="14" hits="1"/>
+                <line number="15" hits="1"/>
+                <line number="16" hits="1"/>
+                <line number="18" hits="1"/>
+                <line number="19" hits="1"/>
+                <line number="20" hits="1"/>
+                <line number="21" hits="1"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="14" hits="1"/>
+            <line number="15" hits="1"/>
+            <line number="16" hits="1"/>
+            <line number="18" hits="1"/>
+            <line number="19" hits="1"/>
+            <line number="20" hits="1"/>
+            <line number="21" hits="1"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="StateMachines/Versions/ArchivedVersionState.php" line-rate="0" branch-rate="0" complexity="0">
+      <classes>
+        <class name="App\StateMachines\Versions\ArchivedVersionState" filename="StateMachines/Versions/ArchivedVersionState.php" line-rate="0" branch-rate="0" complexity="0">
+          <methods/>
+          <lines/>
+        </class>
+      </classes>
+    </package>
+    <package name="StateMachines/Versions/BaseVersionState.php" line-rate="0.4" branch-rate="0" complexity="5">
+      <classes>
+        <class name="App\StateMachines\Versions\BaseVersionState" filename="StateMachines/Versions/BaseVersionState.php" line-rate="0.4" branch-rate="0" complexity="5">
+          <methods>
+            <method name="__construct" signature="App\Models\Version $version" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="13" hits="5"/>
+              </lines>
+            </method>
+            <method name="publish" signature="" line-rate="0" branch-rate="0" complexity="1">
+              <lines>
+                <line number="20" hits="0"/>
+              </lines>
+            </method>
+            <method name="archive" signature="" line-rate="0" branch-rate="0" complexity="1">
+              <lines>
+                <line number="28" hits="0"/>
+              </lines>
+            </method>
+            <method name="refuse" signature="" line-rate="0" branch-rate="0" complexity="1">
+              <lines>
+                <line number="36" hits="0"/>
+              </lines>
+            </method>
+            <method name="delete" signature="" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="44" hits="1"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="13" hits="5"/>
+            <line number="20" hits="0"/>
+            <line number="28" hits="0"/>
+            <line number="36" hits="0"/>
+            <line number="44" hits="1"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="StateMachines/Versions/DraftVersionState.php" line-rate="1" branch-rate="0" complexity="3">
+      <classes>
+        <class name="App\StateMachines\Versions\DraftVersionState" filename="StateMachines/Versions/DraftVersionState.php" line-rate="1" branch-rate="0" complexity="3">
+          <methods>
+            <method name="publish" signature="" line-rate="1" branch-rate="0" complexity="2">
+              <lines>
+                <line number="17" hits="2"/>
+                <line number="18" hits="2"/>
+                <line number="19" hits="2"/>
+                <line number="20" hits="2"/>
+                <line number="21" hits="2"/>
+                <line number="22" hits="2"/>
+                <line number="23" hits="2"/>
+                <line number="25" hits="2"/>
+                <line number="26" hits="2"/>
+                <line number="27" hits="2"/>
+                <line number="28" hits="2"/>
+                <line number="30" hits="2"/>
+                <line number="31" hits="2"/>
+                <line number="32" hits="2"/>
+                <line number="33" hits="2"/>
+                <line number="34" hits="2"/>
+                <line number="35" hits="2"/>
+                <line number="36" hits="2"/>
+                <line number="37" hits="2"/>
+                <line number="39" hits="2"/>
+                <line number="40" hits="2"/>
+                <line number="41" hits="2"/>
+                <line number="42" hits="2"/>
+                <line number="44" hits="2"/>
+                <line number="45" hits="2"/>
+                <line number="46" hits="2"/>
+                <line number="47" hits="2"/>
+                <line number="48" hits="2"/>
+              </lines>
+            </method>
+            <method name="refuse" signature="" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="54" hits="2"/>
+                <line number="55" hits="2"/>
+                <line number="56" hits="2"/>
+                <line number="57" hits="2"/>
+                <line number="58" hits="2"/>
+                <line number="59" hits="2"/>
+                <line number="61" hits="2"/>
+                <line number="62" hits="2"/>
+                <line number="63" hits="2"/>
+                <line number="64" hits="2"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="17" hits="2"/>
+            <line number="18" hits="2"/>
+            <line number="19" hits="2"/>
+            <line number="20" hits="2"/>
+            <line number="21" hits="2"/>
+            <line number="22" hits="2"/>
+            <line number="23" hits="2"/>
+            <line number="25" hits="2"/>
+            <line number="26" hits="2"/>
+            <line number="27" hits="2"/>
+            <line number="28" hits="2"/>
+            <line number="30" hits="2"/>
+            <line number="31" hits="2"/>
+            <line number="32" hits="2"/>
+            <line number="33" hits="2"/>
+            <line number="34" hits="2"/>
+            <line number="35" hits="2"/>
+            <line number="36" hits="2"/>
+            <line number="37" hits="2"/>
+            <line number="39" hits="2"/>
+            <line number="40" hits="2"/>
+            <line number="41" hits="2"/>
+            <line number="42" hits="2"/>
+            <line number="44" hits="2"/>
+            <line number="45" hits="2"/>
+            <line number="46" hits="2"/>
+            <line number="47" hits="2"/>
+            <line number="48" hits="2"/>
+            <line number="54" hits="2"/>
+            <line number="55" hits="2"/>
+            <line number="56" hits="2"/>
+            <line number="57" hits="2"/>
+            <line number="58" hits="2"/>
+            <line number="59" hits="2"/>
+            <line number="61" hits="2"/>
+            <line number="62" hits="2"/>
+            <line number="63" hits="2"/>
+            <line number="64" hits="2"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="StateMachines/Versions/PublishVersionState.php" line-rate="1" branch-rate="0" complexity="1">
+      <classes>
+        <class name="App\StateMachines\Versions\PublishVersionState" filename="StateMachines/Versions/PublishVersionState.php" line-rate="1" branch-rate="0" complexity="1">
+          <methods>
+            <method name="archive" signature="" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="14" hits="1"/>
+                <line number="15" hits="1"/>
+                <line number="16" hits="1"/>
+                <line number="18" hits="1"/>
+                <line number="19" hits="1"/>
+                <line number="20" hits="1"/>
+                <line number="21" hits="1"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="14" hits="1"/>
+            <line number="15" hits="1"/>
+            <line number="16" hits="1"/>
+            <line number="18" hits="1"/>
+            <line number="19" hits="1"/>
+            <line number="20" hits="1"/>
+            <line number="21" hits="1"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="StateMachines/Versions/RefusedVersionState.php" line-rate="1" branch-rate="0" complexity="1">
+      <classes>
+        <class name="App\StateMachines\Versions\RefusedVersionState" filename="StateMachines/Versions/RefusedVersionState.php" line-rate="1" branch-rate="0" complexity="1">
+          <methods>
+            <method name="delete" signature="" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="14" hits="1"/>
+                <line number="15" hits="1"/>
+                <line number="16" hits="1"/>
+                <line number="18" hits="1"/>
+                <line number="19" hits="1"/>
+                <line number="20" hits="1"/>
+                <line number="21" hits="1"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="14" hits="1"/>
+            <line number="15" hits="1"/>
+            <line number="16" hits="1"/>
+            <line number="18" hits="1"/>
+            <line number="19" hits="1"/>
+            <line number="20" hits="1"/>
+            <line number="21" hits="1"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="Traits/Sluggable.php" line-rate="1" branch-rate="0" complexity="1">
+      <classes>
+        <class name="App\Traits\Sluggable" filename="Traits/Sluggable.php" line-rate="1" branch-rate="0" complexity="1">
+          <methods>
+            <method name="bootSluggable" signature="" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="13" hits="44"/>
+                <line number="14" hits="44"/>
+                <line number="15" hits="40"/>
+                <line number="16" hits="40"/>
+                <line number="17" hits="44"/>
+                <line number="18" hits="44"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="13" hits="44"/>
+            <line number="14" hits="44"/>
+            <line number="15" hits="40"/>
+            <line number="16" hits="40"/>
+            <line number="17" hits="44"/>
+            <line number="18" hits="44"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="View/Components/AppLayout.php" line-rate="1" branch-rate="0" complexity="1">
+      <classes>
+        <class name="App\View\Components\AppLayout" filename="View/Components/AppLayout.php" line-rate="1" branch-rate="0" complexity="1">
+          <methods>
+            <method name="render" signature="" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="17" hits="4"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="17" hits="4"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="View/Components/GuestLayout.php" line-rate="1" branch-rate="0" complexity="1">
+      <classes>
+        <class name="App\View\Components\GuestLayout" filename="View/Components/GuestLayout.php" line-rate="1" branch-rate="0" complexity="1">
+          <methods>
+            <method name="render" signature="" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="17" hits="6"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="17" hits="6"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="View/Components/Pages/Code.php" line-rate="0" branch-rate="0" complexity="2">
+      <classes>
+        <class name="App\View\Components\Pages\Code" filename="View/Components/Pages/Code.php" line-rate="0" branch-rate="0" complexity="2">
+          <methods>
+            <method name="__construct" signature="string $code" line-rate="0" branch-rate="0" complexity="1">
+              <lines>
+                <line number="13" hits="0"/>
+              </lines>
+            </method>
+            <method name="render" signature="" line-rate="0" branch-rate="0" complexity="1">
+              <lines>
+                <line number="17" hits="0"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="13" hits="0"/>
+            <line number="17" hits="0"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="View/Components/Pages/Comments.php" line-rate="0" branch-rate="0" complexity="3">
+      <classes>
+        <class name="App\View\Components\Pages\Comments" filename="View/Components/Pages/Comments.php" line-rate="0" branch-rate="0" complexity="3">
+          <methods>
+            <method name="__construct" signature="array $pageArray, mixed $level" line-rate="0" branch-rate="0" complexity="1">
+              <lines>
+                <line number="17" hits="0"/>
+              </lines>
+            </method>
+            <method name="render" signature="" line-rate="0" branch-rate="0" complexity="2">
+              <lines>
+                <line number="21" hits="0"/>
+                <line number="22" hits="0"/>
+                <line number="23" hits="0"/>
+                <line number="24" hits="0"/>
+                <line number="25" hits="0"/>
+                <line number="26" hits="0"/>
+                <line number="27" hits="0"/>
+                <line number="29" hits="0"/>
+                <line number="30" hits="0"/>
+                <line number="31" hits="0"/>
+                <line number="32" hits="0"/>
+                <line number="33" hits="0"/>
+                <line number="34" hits="0"/>
+                <line number="37" hits="0"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="17" hits="0"/>
+            <line number="21" hits="0"/>
+            <line number="22" hits="0"/>
+            <line number="23" hits="0"/>
+            <line number="24" hits="0"/>
+            <line number="25" hits="0"/>
+            <line number="26" hits="0"/>
+            <line number="27" hits="0"/>
+            <line number="29" hits="0"/>
+            <line number="30" hits="0"/>
+            <line number="31" hits="0"/>
+            <line number="32" hits="0"/>
+            <line number="33" hits="0"/>
+            <line number="34" hits="0"/>
+            <line number="37" hits="0"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="View/Components/Pages/Resume.php" line-rate="1" branch-rate="0" complexity="2">
+      <classes>
+        <class name="App\View\Components\Pages\Resume" filename="View/Components/Pages/Resume.php" line-rate="1" branch-rate="0" complexity="2">
+          <methods>
+            <method name="__construct" signature="array $pageArray" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="13" hits="2"/>
+              </lines>
+            </method>
+            <method name="render" signature="" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="17" hits="2"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="13" hits="2"/>
+            <line number="17" hits="2"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="View/Components/Pages/Title.php" line-rate="1" branch-rate="0" complexity="2">
+      <classes>
+        <class name="App\View\Components\Pages\Title" filename="View/Components/Pages/Title.php" line-rate="1" branch-rate="0" complexity="2">
+          <methods>
+            <method name="__construct" signature="string $title, ?DateTime $published_at" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="17" hits="2"/>
+              </lines>
+            </method>
+            <method name="render" signature="" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="21" hits="2"/>
+                <line number="22" hits="2"/>
+                <line number="23" hits="2"/>
+                <line number="24" hits="2"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="17" hits="2"/>
+            <line number="21" hits="2"/>
+            <line number="22" hits="2"/>
+            <line number="23" hits="2"/>
+            <line number="24" hits="2"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="View/Components/Users/Card.php" line-rate="1" branch-rate="0" complexity="2">
+      <classes>
+        <class name="App\View\Components\Users\Card" filename="View/Components/Users/Card.php" line-rate="1" branch-rate="0" complexity="2">
+          <methods>
+            <method name="__construct" signature="array $user, ?DateTime $created_at" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="17" hits="2"/>
+              </lines>
+            </method>
+            <method name="render" signature="" line-rate="1" branch-rate="0" complexity="1">
+              <lines>
+                <line number="21" hits="2"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="17" hits="2"/>
+            <line number="21" hits="2"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+  </packages>
+</coverage>

@@ -22,16 +22,16 @@ services:
         networks:
             - sail
         depends_on:
-            - mariadb
+            - mysql
             - redis
             - memcached
             - meilisearch
             - minio
             - mailpit
-    mariadb:
-        image: 'mariadb:10'
+    mysql:
+        image: "mysql/mysql-server:8.0"
         ports:
-            - '${FORWARD_DB_PORT:-3306}:3306'
+            - "${FORWARD_DB_PORT:-3306}:3306"
         environment:
             MYSQL_ROOT_PASSWORD: '${DB_PASSWORD}'
             MYSQL_ROOT_HOST: '%'
@@ -40,8 +40,8 @@ services:
             MYSQL_PASSWORD: '${DB_PASSWORD}'
             MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
         volumes:
-            - 'sail-mariadb:/var/lib/mysql'
-            - './vendor/laravel/sail/database/mysql/create-testing-database.sh:/docker-entrypoint-initdb.d/10-create-testing-database.sh'
+            - "sail-mysql:/var/lib/mysql"
+            - "./vendor/laravel/sail/database/mysql/create-testing-database.sh:/docker-entrypoint-initdb.d/10-create-testing-database.sh"
         networks:
             - sail
         healthcheck:
@@ -124,7 +124,7 @@ networks:
     sail:
         driver: bridge
 volumes:
-    sail-mariadb:
+    sail-mysql:
         driver: local
     sail-redis:
         driver: local
