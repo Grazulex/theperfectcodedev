@@ -38,6 +38,9 @@ jobs:
         uses: irongut/CodeCoverageSummary@v1.3.0
         with:
           filename: coverage.cobertura.xml
+          badge: true
+          format: markdown
+          output: both
   deploy:
     needs: tests
     if: contains(fromJson('["refs/heads/master", "refs/heads/main"]'), github.ref)
