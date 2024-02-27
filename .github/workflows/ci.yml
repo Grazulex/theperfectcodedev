@@ -3,8 +3,6 @@ name: Run tests & deploy
 on:
   workflow_dispatch:
   push:
-    branches:
-      - main
   pull_request:
 
 permissions:
@@ -69,7 +67,7 @@ jobs:
           path: code-coverage-results.md
   deploy:
     needs: tests
-    if: contains(fromJson('["refs/heads/master", "refs/heads/main"]'), github.ref)
+    if: contains(fromJson('["refs/heads/main"]'), github.ref)
     name: Laravel Forge Deploy
     runs-on: ubuntu-latest
     steps:
