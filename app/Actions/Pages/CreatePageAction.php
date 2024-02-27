@@ -11,7 +11,7 @@ final readonly class CreatePageAction
 {
     public function handle(User $user, array $attributes): Page
     {
-        $page =  $user->pages()->create($attributes);
+        $page = $user->pages()->create($attributes);
         $user->followers()->attach($page->id);
 
         (new NotifyPageUserAction())->draft(

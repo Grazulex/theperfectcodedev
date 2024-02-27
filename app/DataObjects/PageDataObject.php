@@ -40,7 +40,8 @@ final class PageDataObject extends Data
         public PageStatsDataObjects $stats,
         public bool $is_liked_by_me = false,
         public bool $is_followed_by_me = false,
-    ) {}
+    ) {
+    }
 
     public static function fromModel(Page $page): self
     {
@@ -65,5 +66,4 @@ final class PageDataObject extends Data
             is_followed_by_me: auth()->check() && $page->followers()->where('user_id', auth()->id())->exists(),
         );
     }
-
 }

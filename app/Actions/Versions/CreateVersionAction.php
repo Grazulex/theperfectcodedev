@@ -16,7 +16,7 @@ final readonly class CreateVersionAction
         $attributes['user_id'] = $user->id;
         $version = $page->versions()->create($attributes);
 
-        if (1 === (int) $page->is_accept_version) {
+        if (1 === $page->is_accept_version) {
             $version = (new PromoteVersionAction())->handle(
                 version: $version,
                 user: $page->user
@@ -27,7 +27,7 @@ final readonly class CreateVersionAction
                 user: $user
             );
             (new NotifyPageUserAction())->newVersion(
-                page :$page,
+                page: $page,
                 user: $page->user
             );
         }

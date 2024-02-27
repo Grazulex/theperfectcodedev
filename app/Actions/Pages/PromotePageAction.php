@@ -12,10 +12,10 @@ final readonly class PromotePageAction
     public function handle(Page $page): Page
     {
         $page = (new UpdatePageAction())->handle(
-            page:$page,
+            page: $page,
             attributes: [
                 'state' => State::PUBLISHED,
-                'published_at' => now()
+                'published_at' => now(),
             ]
         );
 

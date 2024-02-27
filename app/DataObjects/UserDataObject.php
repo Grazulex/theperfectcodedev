@@ -21,7 +21,8 @@ final class UserDataObject extends Data
         public ?string $profile_photo_path,
         public ?string $profile_photo_url,
         public UserStatsDataObject $stats,
-    ) {}
+    ) {
+    }
 
     public static function fromModel(User $user): self
     {
