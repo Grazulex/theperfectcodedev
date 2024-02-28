@@ -1,5 +1,5 @@
-<div class="mr-2" @if (Auth::check()) wire:click="@if ($isFollow) unfollow @else follow @endif" @endif>
-    <svg class="{{ $isFollow ? 'fill-red-600' : 'dark:fill-white fill-black' }}" width="24" height="24" viewBox="0 0 24 24" fill="none">
+<div @if (Auth::check()) class="cursor-pointer"  wire:click="@if  ($isFollow) unfollow @else follow @endif" @endif>
+    <svg class="mr-2 {{  $isFollow ? 'fill-red-600' : 'dark:fill-white fill-black' }}" width="24" height="24" viewBox="0 0 24 24" fill="none">
         <mask id="mask0_186_359" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
         <rect width="24" height="24" fill="#DD9D9"/>
         </mask>
