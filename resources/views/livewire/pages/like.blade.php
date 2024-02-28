@@ -1,6 +1,6 @@
 <div>
-    <div class="mr-2 cursor-pointer"  @if (Auth::check()) wire:click="@if ($isLiked) unlike @else like @endif" @endif >
-        <svg class="{{ $isLiked ? 'fill-red-600' : 'dark:fill-white fill-black' }}" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+    <div @if (Auth::check()) class="cursor-pointer"  wire:click="@if ($isLiked) unlike @else like @endif" @endif >
+        <svg class="mr-2 {{ $isLiked ? 'fill-red-600' : 'dark:fill-white fill-black' }}" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
             <mask id="mask0_186_354" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
             <rect width="24" height="24" fill="#D9D9D9"/>
             </mask>
