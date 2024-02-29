@@ -12,18 +12,24 @@ use Livewire\Component;
 final class Tags extends Component
 {
     public $tagsSelected = [];
+
     public $tagInput = '';
 
     public function updated(): void
     {
         $tagsToAdd = explode(',', $this->tagInput);
-
-        foreach ($tagsToAdd as $tag) {
-            $tag = trim($tag);
-            if ('' !== $tag && ! in_array($tag, $this->tagsSelected)) {
-                $this->tagsSelected[] = $tag;
+        if (0 === count($this->tagsSelected)) {
+            $this->tagsSelected = $tagsToAdd;
+        } else {
+            foreach ($tagsToAdd as $tag) {
+                if ('' !== $tag && ! in_array($tag, $this->tagsSelected)) {
+                    $this->tagsSelected[] = trim($tag);
+                }
             }
         }
+
+        //dd($this->tagsSelected);
+
         $this->tagInput = '';
     }
 
