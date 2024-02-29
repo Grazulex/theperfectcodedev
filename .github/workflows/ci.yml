@@ -76,7 +76,7 @@ jobs:
     runs-on: ubuntu-latest
     environment:
         name: production
-        url: ${{ secrets.FORGE_SITE_URL }}
+        url: "https://www.theperfectcodedev.com/"
     steps:
       - name: Deploy
         uses: PropFuel/laravel-forge-deploy-action@v1.0.1
