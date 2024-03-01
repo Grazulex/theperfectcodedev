@@ -24,6 +24,7 @@ final class CommentDataObject extends Data
         public Carbon $created_at,
         public UserDataObject $user,
         public int $responses_count,
+        public int $likes_count,
         public ?PageComments $parent,
     ) {}
 
@@ -37,6 +38,7 @@ final class CommentDataObject extends Data
             created_at: $comment->created_at,
             user: UserDataObject::fromModel($comment->user),
             responses_count: $comment->responses_count,
+            likes_count: $comment->likes_count,
             parent: $comment->parent,
         );
     }

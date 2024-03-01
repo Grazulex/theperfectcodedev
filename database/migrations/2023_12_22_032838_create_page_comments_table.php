@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use App\Enums\Comments\State;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -21,7 +22,7 @@ return new class () extends Migration {
 
             $table->foreignId('response_id')->nullable()->constrained('page_comments')->onDelete('cascade');
 
-            $table->string('state')->default(App\Enums\Comments\State::PUBLISHED);
+            $table->string('state')->default(State::PUBLISHED);
 
             $table->softDeletes();
             $table->timestamps();
