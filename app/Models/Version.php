@@ -45,14 +45,14 @@ final class Version extends Model
         'state' => State::class
     ];
 
-    public function page(): belongsTo
+    public function page(): BelongsTo
     {
         return $this->belongsTo(
             related: Page::class
         );
     }
 
-    public function user(): belongsTo
+    public function user(): BelongsTo
     {
         return $this->belongsTo(
             related: User::class
@@ -72,7 +72,7 @@ final class Version extends Model
 
     protected static function booted(): void
     {
-        static::addGlobalScope(new DefaultScope());
+        Version::addGlobalScope(new DefaultScope());
     }
 
 

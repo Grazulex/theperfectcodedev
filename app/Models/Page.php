@@ -75,14 +75,14 @@ final class Page extends Model
 
     protected string $sluggable = 'title';
 
-    public function user(): belongsTo
+    public function user(): BelongsTo
     {
         return $this->belongsTo(
             related: User::class
         );
     }
 
-    public function versions(): hasMany
+    public function versions(): HasMany
     {
         return $this->hasMany(
             related: Version::class
@@ -98,7 +98,7 @@ final class Page extends Model
     }
 
 
-    public function comments(): hasMany
+    public function comments(): HasMany
     {
         return $this->hasMany(
             related: PageComments::class
@@ -136,6 +136,6 @@ final class Page extends Model
 
     protected static function booted(): void
     {
-        static::addGlobalScope(new DefaultScope());
+        Page::addGlobalScope(new DefaultScope());
     }
 }
