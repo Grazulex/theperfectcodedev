@@ -15,8 +15,7 @@ final class UserStatsDataObject extends Data
         public int $likes_count,
         public int $comments_count,
         public int $followers_count,
-    ) {
-    }
+    ) {}
 
     public static function fromModel(User $user): self
     {

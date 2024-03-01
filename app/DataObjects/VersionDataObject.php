@@ -24,8 +24,7 @@ final class VersionDataObject extends Data
         #[WithCast(DateTimeInterfaceCast::class)]
         public Carbon $created_at,
         public UserDataObject $user,
-    ) {
-    }
+    ) {}
 
     public static function fromModel(Version $version): self
     {
