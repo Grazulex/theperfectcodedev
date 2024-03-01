@@ -27,25 +27,25 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@main
       - name: Cache composer dependencies
-        uses: actions/cache@v3
+        uses: actions/cache@main
         with:
           path: vendor
           key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
           restore-keys: |
             ${{ runner.os }}-composer-
       - name: Cache npm dependencies
-        uses: actions/cache@v3
+        uses: actions/cache@main
         with:
           path: node_modules
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-
       - name: Setup Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@main
         with:
           node-version: '20'
       - name: Setup PHP
-        uses: shivammathur/setup-php@v2
+        uses: shivammathur/setup-php@main
         with:
           php-version: '8.3'
           extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite, bcmath, soap, intl, gd, exif, iconv
@@ -87,7 +87,7 @@ jobs:
     permissions:
       contents: write
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@main
         with:
           ref: ${{ github.event.pull_request.merge_commit_sha }}
           fetch-depth: '0'
