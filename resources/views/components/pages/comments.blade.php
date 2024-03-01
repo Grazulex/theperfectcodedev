@@ -2,7 +2,7 @@
     @foreach ($comments as $comment)
         <div class="flex flex-col gap-2">
             <!--TODO : add user card -->
-           <p>Commented {{ $comment['created_at']}} on V.{{ $comment['version'] }}</p>
+           <p>Commented {{ $comment['created_at'] }} on V.{{ $comment['version'] }} ({{ $comment['likes_count'] }} likes)</p>
             {{ $comment['content'] }}
                 @if ($comment['responses_count'] > 0)
                     <details class="group">

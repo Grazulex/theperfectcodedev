@@ -19,7 +19,7 @@ final class CommentRepository extends BaseRepository
         return $this->model::query()->where('page_id', $page_id)
             ->where('response_id', $comment_id)
             ->with('user')
-            ->withCount(['responses'])
+            ->withCount(['responses', 'likes'])
             ->orderBy('created_at', 'desc');
     }
 
