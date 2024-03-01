@@ -74,12 +74,12 @@
                     <div class="bg-white border-b border-gray-200 dark:bg-gray-800 dark:bg-gradient-to-bl dark:from-gray-700/50 dark:via-transparent dark:border-gray-700">
                         <x-users.card :user="$pageArray['user']" :created_at="$pageArray['user']['created_at']" />
                         <div class="p-3 border-t border-gray-700">
-                            @can('update', $pageArray['id'])
+                            @if($canUpdate)
                                 <div>
                                     <x-action-link href="{{ route('pages.edit', ['page'=>$pageArray['slug']]) }}">
                                         {{ __('Edit') }}
                                     </x-action-link>
-                                    @if ($pageArray['state'] === \App\Enums\Pages\State::DRAFT)
+                                    @if ($pageArray['state'] === \App\Enums\Pages\State::DRAFT->value)
                                         <x-action-link href="{{ route('pages.publish', ['page'=>$pageArray['slug']]) }}">
                                             {{ __('Publish') }}
                                         </x-action-link>
