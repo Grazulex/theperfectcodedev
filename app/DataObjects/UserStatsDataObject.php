@@ -20,11 +20,11 @@ final class UserStatsDataObject extends Data
     public static function fromModel(User $user): self
     {
         return new self(
-            pages_count: $user->pages_count,
-            versions_count: $user->versions_count,
-            likes_count: $user->likes_count,
-            comments_count: $user->comments_count,
-            followers_count: $user->followers_count,
+            pages_count: ($user->pages_count) ? $user->pages_count : 0,
+            versions_count: ($user->versions_count) ? $user->versions_count : 0,
+            likes_count: ($user->likes_count) ? $user->likes_count : 0,
+            comments_count: ($user->comments_count) ? $user->comments_count : 0,
+            followers_count: ($user->followers_count) ? $user->followers_count : 0,
         );
     }
 }
