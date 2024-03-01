@@ -2,9 +2,9 @@
     @foreach ($comments as $comment)
         <div class="flex flex-col gap-2">
             <!--TODO : add user card -->
-           <p>Commented {{ $comment->created_at->diffForHumans() }} on V.{{ $comment->version }}</p>
-            {{ $comment->content }}
-                @if ($comment->responses_count > 0)
+           <p>Commented {{ $comment['created_at']}} on V.{{ $comment['version'] }}</p>
+            {{ $comment['content'] }}
+                @if ($comment['responses_count'] > 0)
                     <details class="group">
                         <summary class="flex justify-between items-center font-medium cursor-pointer list-none">
                             responses
@@ -14,13 +14,10 @@
                             </span>
                         </summary>
                         <p class="text-neutral-600 mt-3 group-open:animate-fadeIn">
-                            <x-pages.comments :page_array="$pageArray" :level="$comment->id"/>
+                            <x-pages.comments :page_array="$pageArray" :level="$comment['id']"/>
                         </p>
                     </details>
                 @endif
         </div>
     @endforeach
-    @if ($level === null)
-        {{ $comments->links() }}
-    @endif
 </div>

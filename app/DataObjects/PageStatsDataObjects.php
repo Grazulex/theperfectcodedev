@@ -14,8 +14,7 @@ final class PageStatsDataObjects extends Data
         public int $comments_count,
         public int $followers_count,
         public int $versions_count,
-    ) {
-    }
+    ) {}
 
     public static function fromModel(Page $page): self
     {

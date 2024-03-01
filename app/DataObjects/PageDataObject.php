@@ -40,8 +40,7 @@ final class PageDataObject extends Data
         public PageStatsDataObjects $stats,
         public bool $is_liked_by_me = false,
         public bool $is_followed_by_me = false,
-    ) {
-    }
+    ) {}
 
     public static function fromModel(Page $page): self
     {
