@@ -25,7 +25,7 @@ final class UserDataObject extends Data
             id: $user->id,
             name: $user->name,
             email: $user->email,
-            created_at: $user->created_at->format('Y-m-d'),
+            created_at: ($user->created_at) ? $user->created_at->format('Y-m-d') : null,
             profile_photo_path: $user->profile_photo_path,
             profile_photo_url: $user->profile_photo_url,
             stats: UserStatsDataObject::fromModel($user)
