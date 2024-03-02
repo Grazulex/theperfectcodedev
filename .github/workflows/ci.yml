@@ -1,4 +1,4 @@
-name: Run tests
+name: Run tests & create changelog
 
 on:
   workflow_dispatch:
@@ -66,3 +66,22 @@ jobs:
         with:
           recreate: true
           path: code-coverage-results.md
+  create-changelog:
+    needs: tests
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@main
+        with:
+          ref: ${{ github.event.pull_request.merge_commit_sha }}
+          fetch-depth: 0
+      - name: Create changelog
+        uses: BobAnkh/auto-generate-changelog@v1.2.5
+        with:
+          ACCESS_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          PATH: 'CHANGELOG.md'
+          COMMIT_MESSAGE: 'docs(CHANGELOG): update changelog notes'
+          TYPE: 'feat:Feature,fix:Bug Fixes,docs:Documentation,refactor:Refactor,perf:Performance Improvements,ci:Continuous Integration,build:Build System,style:Code Style,tests:Tests,security:Security'
