@@ -23,6 +23,7 @@ final class CommentDataObject extends Data
         public int $responses_count,
         public int $likes_count,
         public ?PageComments $parent,
+        public bool $is_liked_by_me = false,
     ) {}
 
     public static function fromModel(PageComments $comment): self
@@ -37,6 +38,7 @@ final class CommentDataObject extends Data
             responses_count: $comment->responses_count,
             likes_count: $comment->likes_count,
             parent: $comment->parent,
+            is_liked_by_me: auth()->check() && $comment->likes()->where('user_id', auth()->id())->exists(),
         );
     }
 }

@@ -1,11 +1,16 @@
 <div>
     @foreach ($comments as $comment)
         <div class="flex flex-col gap-2">
-            <!--TODO : add user card -->
+            <x-users.card :user="$comment['user']" />
            <p>Commented {{ $comment['created_at'] }} on V.{{ $comment['version'] }} ({{ $comment['likes_count'] }} likes)</p>
             {{ $comment['content'] }}
-                @if (app('auth')->check())
-                    <button wire:click="like({{ $comment['id'] }})" class="text-neutral-600 hover:text-neutral-800">Like</button>
+                @if (Auth::check())
+                    <livewire:comments.like :user="Auth::user()" :is_liked_by_me="$comment['is_liked_by_me']"  :comment_id="$comment['id']" :likes_count="$comment['likes_count']"/>
+                @else
+                    <livewire:comments.like :user="Null" :is_liked_by_me="$comment['is_liked_by_me']"  :comment_id="$comment['id']" :likes_count="$comment['likes_count']"/>
+                @endif
+
+                @if (Auth::check())
                     <button wire:click="response({{ $comment['id'] }})" class="text-neutral-600 hover:text-neutral-800">Response</button>
                 @endif
                 @if ($comment['responses_count'] > 0)
