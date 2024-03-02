@@ -68,7 +68,6 @@ jobs:
           path: code-coverage-results.md
   create-changelog:
     needs: tests
-    if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     permissions:
       contents: write
