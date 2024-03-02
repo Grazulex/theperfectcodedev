@@ -6,27 +6,7 @@ on:
     branches:
       - main
 
-permissions:
-  contents: write
-  pull-requests: write
-
 jobs:
-  create-changelog:
-    if: github.event.pull_request.merged == true
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@main
-        with:
-          fetch-depth: 0
-      - name: Create changelog
-        uses: BobAnkh/auto-generate-changelog@v1.2.5
-        with:
-          ACCESS_TOKEN: ${{secrets.GITHUB_TOKEN}}
-          PATH: 'CHANGELOG.md'
-          COMMIT_MESSAGE: 'docs(CHANGELOG): update changelog notes'
-          TYPE: 'feat:Feature,fix:Bug Fixes,docs:Documentation,refactor:Refactor,perf:Performance Improvements,ci:Continuous Integration,build:Build System,style:Code Style,tests:Tests,security:Security'
   build:
     if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
