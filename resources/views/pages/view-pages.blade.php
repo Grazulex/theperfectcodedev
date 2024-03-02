@@ -24,7 +24,10 @@
             <div class="bg-white md:col-span-3 sm:rounded-lg dark:bg-gray-800">
                 <div class="md:flex border-b p-5 border-[#3A445B] justify-between">
                     <h2 class="self-center gap-3 text-xl font-semibold leading-tight text-gray-800 align-middle dark:text-gray-200">
-                        <x-pages.title :title="$pageArray['title']"/>
+                        {{ Str::title($pageArray['title']) }}
+                        @if ($pageArray['published_at'])
+                            <div class="text-sm">First publishing {{ $pageArray['published_at'] }}</div>
+                        @endif
                     </h2>
                     <div>
                         <livewire:pages.tags :tags="$pageArray['tags']"/>
