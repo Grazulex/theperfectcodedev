@@ -11,11 +11,13 @@ use Illuminate\View\Component;
 final class Card extends Component
 {
     public function __construct(
-        public array $user,
+        public array $userArray,
     ) {}
 
     public function render(): View|Closure|string
     {
-        return view('components.users.card', ['user' => $this->user]);
+        return view(
+            'components.users.card'
+        );
     }
 }
