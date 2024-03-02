@@ -1,7 +1,7 @@
 <div class="w-full p-3">
     <div class="flex text-sm">
         <p class="mr-2 text-[18px] font-black text-gray-800 dark:text-gray-200 leading-non">{{ $user['name'] }}:</p>
-        <p class="text-gray-500">{{ $created_at->format('Y-m-d') }}</p>
+        <p class="text-gray-500">{{ $user['created_at'] }}</p>
     </div>
     <div class="flex flex-wrap text-white">
         <div class="mr-3">

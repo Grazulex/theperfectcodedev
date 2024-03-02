@@ -16,8 +16,7 @@ final class UserDataObject extends Data
         public int $id,
         public string $name,
         public string $email,
-        #[WithCast(DateTimeInterfaceCast::class)]
-        public Carbon $created_at,
+        public string $created_at,
         public ?string $profile_photo_path,
         public ?string $profile_photo_url,
         public UserStatsDataObject $stats,
@@ -29,7 +28,7 @@ final class UserDataObject extends Data
             id: $user->id,
             name: $user->name,
             email: $user->email,
-            created_at: $user->created_at,
+            created_at: $user->created_at->format('Y-m-d'),
             profile_photo_path: $user->profile_photo_path,
             profile_photo_url: $user->profile_photo_url,
             stats: UserStatsDataObject::fromModel($user)

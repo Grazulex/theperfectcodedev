@@ -20,8 +20,7 @@ final class CommentDataObject extends Data
         public int $version,
         #[WithCast(EnumCast::class, State::class)]
         public State $state,
-        #[WithCast(DateTimeInterfaceCast::class)]
-        public Carbon $created_at,
+        public string $created_at,
         public UserDataObject $user,
         public int $responses_count,
         public int $likes_count,
@@ -35,7 +34,7 @@ final class CommentDataObject extends Data
             content: $comment->content,
             version: $comment->version,
             state: $comment->state,
-            created_at: $comment->created_at,
+            created_at: $comment->created_at->format('Y-m-d'),
             user: UserDataObject::fromModel($comment->user),
             responses_count: $comment->responses_count,
             likes_count: $comment->likes_count,
