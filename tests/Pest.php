@@ -21,7 +21,7 @@ use App\Models\User;
 use Tests\TestCase;
 
 uses(
-    Tests\TestCase::class,
+    TestCase::class,
     Illuminate\Foundation\Testing\RefreshDatabase::class,
 )->in('Feature', 'Unit');
 
