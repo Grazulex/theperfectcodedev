@@ -5,9 +5,6 @@ declare(strict_types=1);
 namespace App\DataObjects;
 
 use App\Models\User;
-use Carbon\Carbon;
-use Spatie\LaravelData\Attributes\WithCast;
-use Spatie\LaravelData\Casts\DateTimeInterfaceCast;
 use Spatie\LaravelData\Data;
 
 final class UserDataObject extends Data
