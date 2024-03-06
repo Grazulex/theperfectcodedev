@@ -35,7 +35,7 @@ it('create version without auto accept publishing', function (): void {
         ->and($version->state)->toBe(VersionState::DRAFT)
         ->and($page->version)->toBe(1)
         ->and($page->description)->toBe('test')
-        ->and($page->versions()->count())->toBe(1)
+        ->and($page->versions()->count())->toBe(2)
         ->and($page->followers()->count())->toBe(1);
 
     Notification::assertSentTo($user, DraftNotification::class, function ($notification, $channels) use ($user) {
@@ -86,7 +86,7 @@ it('create version with auto accept publishing', function (): void {
         ->and($version->state)->toBe(VersionState::PUBLISHED)
         ->and($page->version)->toBe(2)
         ->and($page->description)->toBe('test version')
-        ->and($page->versions()->count())->toBe(1)
+        ->and($page->versions()->count())->toBe(2)
         ->and($page->followers()->count())->toBe(1);
 
     Notification::assertSentTo($page->user, NewVersionNotification::class, function ($notification, $channels) use ($page) {
@@ -174,7 +174,7 @@ it('create version without auto accept publishing and publish it', function (): 
         ->and($version->state)->toBe(VersionState::PUBLISHED)
         ->and($page->version)->toBe(2)
         ->and($page->description)->toBe('test version')
-        ->and($page->versions()->count())->toBe(1)
+        ->and($page->versions()->count())->toBe(2)
         ->and($page->followers()->count())->toBe(1);
 
     Notification::assertSentTo($page->user, NewVersionNotification::class, function ($notification, $channels) use ($page) {
@@ -238,7 +238,7 @@ it('create version but refuse it', function (): void {
         ->and($version->state)->toBe(VersionState::REFUSED)
         ->and($page->version)->toBe(1)
         ->and($page->description)->toBe('test')
-        ->and($page->versions()->count())->toBe(1)
+        ->and($page->versions()->count())->toBe(2)
         ->and($page->followers()->count())->toBe(1);
 
     Notification::assertSentTo($version->user, RefuseNotification::class, function ($notification, $channels) use ($version) {
@@ -280,7 +280,7 @@ it('create version and archive it after publishing', function (): void {
         ->and($version->state)->toBe(VersionState::ARCHIVED)
         ->and($page->version)->toBe(2)
         ->and($page->description)->toBe('test version')
-        ->and($page->versions()->count())->toBe(1)
+        ->and($page->versions()->count())->toBe(2)
         ->and($page->followers()->count())->toBe(1);
 
     Notification::assertSentTo($version->user, ArchiveNotification::class, function ($notification, $channels) use ($version) {

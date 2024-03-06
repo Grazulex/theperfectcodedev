@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use App\Providers\RouteServiceProvider;
 use JoelButcher\Socialstream\Features;
 use JoelButcher\Socialstream\Providers;
 
@@ -19,5 +20,9 @@ return [
         Features::rememberSession(),
         Features::providerAvatars(),
         Features::refreshOAuthTokens(),
+    ],
+    'redirects' => [
+        'login' => RouteServiceProvider::HOME,
+        'register' => RouteServiceProvider::HOME,
     ],
 ];
