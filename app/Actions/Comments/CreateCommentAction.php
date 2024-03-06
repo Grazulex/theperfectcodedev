@@ -7,13 +7,12 @@ namespace App\Actions\Comments;
 use App\Models\Page;
 use App\Models\PageComments;
 use App\Models\User;
-use App\Models\Version;
 
 final readonly class CreateCommentAction
 {
-    public function handle(User $user, Page $page, array $attributes, ?Version $version): PageComments
+    public function handle(User $user, Page $page, array $attributes, ?int $version_id): PageComments
     {
-        $attributes['version_id'] = ($version?->id);
+        $attributes['version_id'] = ($version_id) ?: null;
         $attributes['user_id'] = $user->id;
         $pageComments = $page->comments()->create($attributes);
 

@@ -22,7 +22,7 @@ it('can create a comment', function (): void {
         attributes: [
             'content' => 'This is a comment',
         ],
-        version: $page->versions->first(),
+        version_id: $page->versions->first()->id,
     );
 
     expect($comment->user_id)->toBe($page->user->id)
@@ -30,7 +30,7 @@ it('can create a comment', function (): void {
         ->and($comment->page_id)->toBe($page->id)
         ->and($comment->content)->toBe('This is a comment')
         ->and($comment->state)->toBe(State::PUBLISHED)
-        ->and($comment->version)->toBe($page->versions->first())
+        ->and($comment->version_id)->toBe($page->versions->first()->id)
         ->and($page->comments()->count())->toBe(1)
         ->and($page->comments->first()->content)->toBe('This is a comment');
 
@@ -59,7 +59,7 @@ it('can create a response', function (): void {
         attributes : [
             'content' => 'This is a comment',
         ],
-        version: $page->versions->first()
+        version_id: $page->versions->first()->id,
     );
 
     $response = (new CreateCommentAction())->handle(
@@ -69,7 +69,7 @@ it('can create a response', function (): void {
             'response_id' => $comment->id,
             'content' => 'This is a response',
         ],
-        version: $page->versions->first()
+        version_id: $page->versions->first()->id
     );
 
     expect($response->user_id)->toBe($page->user->id)
@@ -95,7 +95,7 @@ it('update comment', function (): void {
         attributes : [
             'content' => 'This is a comment',
         ],
-        version: $page->versions->first(),
+        version_id: $page->versions->first()->id,
     );
 
     $comment = (new UpdateCommentAction())->handle(
@@ -123,7 +123,7 @@ it('can refuse a comment', function (): void {
         attributes : [
             'content' => 'This is a comment',
         ],
-        version: $page->versions->first()
+        version_id: $page->versions->first()->id
     );
 
     $comment->status()->refuse();
@@ -153,7 +153,7 @@ it('can delete a comment', function (): void {
         attributes : [
             'content' => 'This is a comment',
         ],
-        version: $page->versions->first()
+        version_id: $page->versions->first()->id
     );
 
     $comment->status()->refuse();
@@ -185,7 +185,7 @@ it(/**
         attributes : [
             'content' => 'This is a comment',
         ],
-        version: $page->versions->first()
+        version_id: $page->versions->first()->id
     );
 
     $comment->status()->delete();

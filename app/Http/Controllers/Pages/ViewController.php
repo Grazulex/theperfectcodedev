@@ -44,7 +44,6 @@ final class ViewController extends Controller
             }
         }
 
-
         $pageArray = PageDataObject::from($page)->toArray();
         $authArray = (auth()->check()) ? auth()->user() : null;
         $checkCanUpdate = Gate::inspect('update', $page);

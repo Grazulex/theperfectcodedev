@@ -15,7 +15,7 @@ final class CommentDataObject extends Data
     public function __construct(
         public int $id,
         public string $content,
-        public int $version,
+        public int $version_id,
         #[WithCast(EnumCast::class, State::class)]
         public State $state,
         public string $created_at,
@@ -31,7 +31,7 @@ final class CommentDataObject extends Data
         return new self(
             id: $comment->id,
             content: $comment->content,
-            version: $comment->version,
+            version_id: $comment->version_id,
             state: $comment->state,
             created_at: $comment->created_at->format('Y-m-d'),
             user: UserDataObject::fromModel($comment->user),
