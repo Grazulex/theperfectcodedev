@@ -23,6 +23,7 @@
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+      @livewireStyles
   </head>
     <body class="antialiased text-gray-900" x-data="themeSwitcher()" :class="{ 'dark': switchOn }">
     <div>
@@ -37,5 +38,6 @@
             </div>
         </div>
     </div>
+    @livewireScripts
     </body>
 </html>
