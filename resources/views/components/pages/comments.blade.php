@@ -1,7 +1,10 @@
 <div>
+    @if (Auth::check())
+        <livewire:comments.form :user="Auth::user()" :page_id="$page_id" :version_id="$version_id" />
+    @endif
     @foreach ($comments as $comment)
         <div class="flex flex-col gap-2">
-           <p>Commented {{ $comment['created_at'] }} on V.{{ $comment['version'] }} by {{ $comment['user']['name'] }}</p>
+           <p>Commented {{ $comment['created_at'] }} on V.{{ $comment['version_id'] }} by {{ $comment['user']['name'] }}</p>
             {{ $comment['content'] }}
                 @if (Auth::check())
                     <livewire:comments.like :user="Auth::user()" :is_liked_by_me="$comment['is_liked_by_me']"  :comment_id="$comment['id']" :likes_count="$comment['likes_count']"/>
@@ -10,7 +13,7 @@
                 @endif
                 ({{ $comment['likes_count'] }} likes)
                 @if (Auth::check())
-                    <button wire:click="response({{ $comment['id'] }})" class="text-neutral-600 hover:text-neutral-800">Response</button>
+                    <livewire:comments.form :user="Auth::user()" :page_id="$page_id" :comment_id="$comment['id']" :version_id="$comment['version_id']" />
                 @endif
                 @if ($comment['responses_count'] > 0)
                     <details class="group">
@@ -22,7 +25,7 @@
                             </span>
                         </summary>
                         <p class="text-neutral-600 mt-3 group-open:animate-fadeIn">
-                            <x-pages.comments :page_array="$pageArray" :level="$comment['id']"/>
+                            <x-pages.comments :page_array="$pageArray" :versionArray="$versionArray" :level="$comment['id']"/>
                         </p>
                     </details>
                 @endif

@@ -15,6 +15,7 @@ final class Comments extends Component
     public function __construct(
         private readonly CommentRepository $repository,
         public array $pageArray,
+        public array $versionArray,
         public mixed $level = null
     ) {}
 
@@ -26,6 +27,6 @@ final class Comments extends Component
         )
             ->get())->toArray();
 
-        return view('components.pages.comments', ['comments' => $comments, 'level' => $this->level]);
+        return view('components.pages.comments', ['comments' => $comments, 'level' => $this->level, 'page_id' => $this->pageArray['id'], 'version_id' => $this->versionArray['version']]);
     }
 }
