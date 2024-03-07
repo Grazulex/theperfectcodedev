@@ -75,7 +75,7 @@ final class DatabaseSeeder extends Seeder
                 'page_id' => $page->id,
                 'user_id' => User::all()->random(rand(1, count(User::all())))->pluck('id')->first(),
                 'response_id' => null,
-                'version' => $page->version
+                'version_id' => $page->version
             ]);
 
             foreach ($comments as $comment) {
@@ -83,7 +83,7 @@ final class DatabaseSeeder extends Seeder
                     'page_id' => $page->id,
                     'user_id' => User::all()->random(rand(1, count(User::all())))->pluck('id')->first(),
                     'response_id' => $comment->id,
-                    'version' => $page->version
+                    'version_id' => $page->version
                 ]);
 
                 $comment->likes()->attach(

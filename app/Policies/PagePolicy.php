@@ -64,7 +64,7 @@ final class PagePolicy
         if ($page->user->id !== $user->id) {
             return Response::deny('You are not the owner of this page.');
         }
-        if ($page->versions()->where('state', State::PUBLISHED)->count() > 0) {
+        if ($page->versions()->where('state', State::PUBLISHED)->count() > 1) {
             return Response::deny('You cannot edit a published page. You need to create a new version.');
         }
         return Response::allow();

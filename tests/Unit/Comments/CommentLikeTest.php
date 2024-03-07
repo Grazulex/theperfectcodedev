@@ -15,7 +15,7 @@ it('like a comment', function (): void {
         attributes : [
             'content' => 'This is a comment',
         ],
-        version: $page->versions->first()
+        version_id: $page->versions->first()->id,
     );
     (new ProcessLike(
         comment: $comment,
@@ -35,7 +35,7 @@ it('unlike a comment', function (): void {
         attributes : [
             'content' => 'This is a comment',
         ],
-        version: $page->versions->first()
+        version_id: $page->versions->first()->id,
     );
 
     (new ProcessLike(

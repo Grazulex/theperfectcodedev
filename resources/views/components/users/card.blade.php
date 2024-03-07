@@ -1,7 +1,7 @@
 <div class="w-full p-3">
     <div class="flex text-sm">
-        <p class="mr-2 text-[18px] font-black text-gray-800 dark:text-gray-200 leading-non">{{ $user['name'] }}:</p>
-        <p class="text-gray-500">{{ $created_at->format('Y-m-d') }}</p>
+        <p class="mr-2 text-[18px] font-black text-gray-800 dark:text-gray-200 leading-non">{{ $userArray['name'] }}:</p>
+        <p class="text-gray-500">{{ $userArray['created_at'] }}</p>
     </div>
     <div class="flex flex-wrap text-white">
         <div class="mr-3">
@@ -14,7 +14,7 @@
                         pages:
                     </span>
                 </div>
-                <div class="min-w-10">{{ $user['stats']['pages_count'] }}</div>
+                <div class="min-w-10">{{ $userArray['stats']['pages_count'] }}</div>
             </div>
             <div class="min-w-[200px] dark:text-white text-black justify-between flex">
                 <div class="flex items-center w-full">
@@ -25,7 +25,7 @@
                         comments:
                     </span>
                 </div>
-                <div class="min-w-10">{{ $user['stats']['comments_count'] }}</div>
+                <div class="min-w-10">{{ $userArray['stats']['comments_count'] }}</div>
             </div>
         </div>
         <div>
@@ -44,7 +44,7 @@
                         likes:
                     </span>
                 </div>
-                <div class="min-w-10">{{ $user['stats']['likes_count'] }}</div>
+                <div class="min-w-10">{{ $userArray['stats']['likes_count'] }}</div>
             </div>
             <div class="min-w-[200px] dark:text-white text-black justify-between flex">
                 <div class="flex items-center w-full">
@@ -60,7 +60,7 @@
                         followers:
                     </span>
                 </div>
-                <div class="min-w-10">{{ $user['stats']['followers_count'] }}</div>
+                <div class="min-w-10">{{ $userArray['stats']['followers_count'] }}</div>
             </div>
         </div>
     </div>

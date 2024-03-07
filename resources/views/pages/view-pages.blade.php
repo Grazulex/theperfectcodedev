@@ -24,7 +24,10 @@
             <div class="bg-white md:col-span-3 sm:rounded-lg dark:bg-gray-800">
                 <div class="md:flex border-b p-5 border-[#3A445B] justify-between">
                     <h2 class="self-center gap-3 text-xl font-semibold leading-tight text-gray-800 align-middle dark:text-gray-200">
-                        <x-pages.title :title="$pageArray['title']"/>
+                        {{ Str::title($pageArray['title']) }}
+                        @if ($pageArray['published_at'])
+                            <div class="text-sm">First publishing {{ $pageArray['published_at'] }}</div>
+                        @endif
                     </h2>
                     <div>
                         <livewire:pages.tags :tags="$pageArray['tags']"/>
@@ -72,7 +75,7 @@
                     </div>
 
                     <div class="bg-white border-b border-gray-200 dark:bg-gray-800 dark:bg-gradient-to-bl dark:from-gray-700/50 dark:via-transparent dark:border-gray-700">
-                        <x-users.card :user="$pageArray['user']" :created_at="$pageArray['user']['created_at']" />
+                        <x-users.card :user-array="$pageArray['user']" />
                         <div class="p-3 border-t border-gray-700">
                             @if ($canUpdate)
                                 <div>

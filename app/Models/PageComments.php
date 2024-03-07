@@ -23,7 +23,7 @@ use InvalidArgumentException;
  * @property int $page_id
  * @property int $response_id
  * @property string $content
- * @property null|int $version
+ * @property null|int $version_id
  * @property User $user
  * @property Page $page
  * @property State $state
@@ -39,7 +39,7 @@ final class PageComments extends Model
     protected $fillable = [
         'user_id',
         'page_id',
-        'version',
+        'version_id',
         'response_id',
         'content',
         'state',
@@ -49,21 +49,21 @@ final class PageComments extends Model
         'state' => State::class,
     ];
 
-    public function user(): belongsTo
+    public function user(): BelongsTo
     {
         return $this->belongsTo(
             related: User::class
         );
     }
 
-    public function page(): belongsTo
+    public function page(): BelongsTo
     {
         return $this->belongsTo(
             related: Page::class
         );
     }
 
-    public function parent(): belongsTo
+    public function parent(): BelongsTo
     {
         return $this->belongsTo(
             related: PageComments::class,
@@ -73,7 +73,7 @@ final class PageComments extends Model
         );
     }
 
-    public function responses(): hasMany
+    public function responses(): HasMany
     {
         return $this->hasMany(
             related: PageComments::class,

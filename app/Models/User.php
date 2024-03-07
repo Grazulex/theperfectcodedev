@@ -102,14 +102,14 @@ final class User extends Authenticatable implements MustVerifyEmail
             : $this->getPhotoUrl();
     }
 
-    public function pages(): hasMany
+    public function pages(): HasMany
     {
         return $this->hasMany(
             related: Page::class
         );
     }
 
-    public function versions(): hasMany
+    public function versions(): HasMany
     {
         return $this->hasMany(
             related: Version::class
@@ -125,7 +125,7 @@ final class User extends Authenticatable implements MustVerifyEmail
     }
 
 
-    public function comments(): hasMany
+    public function comments(): HasMany
     {
         return $this->hasMany(
             related: PageComments::class

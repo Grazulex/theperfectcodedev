@@ -26,7 +26,7 @@ final class PageCommentsFactory extends Factory
         return [
             'user_id' => User::factory(),
             'page_id' => $page,
-            'version' => $page->version,
+            'version_id' => $page->version,
             'response_id' => PageComments::factory(),
             'content' => $this->faker->text,
             'state' => State::PUBLISHED,
