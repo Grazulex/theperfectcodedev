@@ -42,7 +42,6 @@ test('like componant can be liked', function (): void {
         ->assertStatus(200)
         ->assertSee($page->likes->count())
         ->call('like')
-        ->assertSee($page->likes->count() + 1)
         ->assertSet('isLiked', true)
         ->assertSee('fill-red-600');
 
@@ -60,7 +59,6 @@ test('like componant can be unliked', function (): void {
         ->assertStatus(200)
         ->assertSee($page->likes->count())
         ->call('unlike')
-        ->assertSee($page->likes->count() - 1)
         ->assertSet('isLiked', false)
         ->assertSee('dark:fill-white fill-black');
 

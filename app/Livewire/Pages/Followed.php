@@ -37,6 +37,7 @@ final class Followed extends Component
         $this->followers_count++;
         $this->isFollow = true;
         $this->dispatchFollowJob();
+        $this->dispatch('follow-added');
     }
 
     public function unfollow(): void
@@ -44,6 +45,7 @@ final class Followed extends Component
         $this->followers_count--;
         $this->isFollow = false;
         $this->dispatchFollowJob();
+        $this->dispatch('follow-removed');
     }
     public function render(): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
     {
