@@ -36,6 +36,7 @@ final class Like extends Component
         $this->likes_count++;
         $this->isLiked = true;
         $this->dispatchLikeJob();
+        $this->dispatch('like-added');
     }
 
     public function unlike(): void
@@ -43,6 +44,7 @@ final class Like extends Component
         $this->likes_count--;
         $this->isLiked = false;
         $this->dispatchLikeJob();
+        $this->dispatch('like-removed');
     }
 
     public function render(): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
