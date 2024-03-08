@@ -75,7 +75,7 @@
                     </div>
 
                     <div class="bg-white border-b border-gray-200 dark:bg-gray-800 dark:bg-gradient-to-bl dark:from-gray-700/50 dark:via-transparent dark:border-gray-700">
-                        <x-users.card :user-array="$pageArray['user']" />
+                        <livewire:users.card :user-array="$pageArray['user']" />
                         <div class="p-3 border-t border-gray-700">
                             @if ($canUpdate)
                                 <div>
