@@ -6,6 +6,7 @@ namespace App\View\Components\Pages;
 
 use App\DataObjects\CommentDataObject;
 use App\Repositories\CommentRepository;
+use App\Utils\Paginate;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
@@ -26,6 +27,8 @@ final class Comments extends Component
             comment_id: $this->level
         )
             ->get())->toArray();
+
+        $comments = Paginate::paginate($comments, 5);
 
         return view('components.pages.comments', ['comments' => $comments, 'level' => $this->level, 'page_id' => $this->pageArray['id'], 'version_id' => $this->versionArray['version']]);
     }

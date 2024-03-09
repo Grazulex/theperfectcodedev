@@ -7,8 +7,8 @@ namespace App\Livewire\Users;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Foundation\Application;
-use Livewire\Component;
 use Livewire\Attributes\On;
+use Livewire\Component;
 
 final class Card extends Component
 {

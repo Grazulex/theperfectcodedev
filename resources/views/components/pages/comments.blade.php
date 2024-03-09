@@ -31,4 +31,8 @@
                 @endif
         </div>
     @endforeach
+
+    <div class="flex justify-center">
+        {{ $comments->links() }}
+    </div>
 </div>
