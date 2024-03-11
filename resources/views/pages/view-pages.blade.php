@@ -103,7 +103,7 @@
     </x-slot>
 
     <div>
-        <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
+        <div class="pb-6 mx-auto max-w-7xl sm:px-6 lg:px-8">
             <div class="overflow-hidden text-gray-800 bg-white shadow-xl dark:text-gray-200 dark:bg-[var(--dark)] sm:rounded-lg basic-4/5">
                 <div class="p-2 bg-white border-b border-gray-200 lg:p-4 dark:bg-gradient-to-bl dark:bg-[var(--dark)] dark:from-gray-700/50 dark:via-transparent dark:border-gray-700">
                     <h4>Description</h4>
