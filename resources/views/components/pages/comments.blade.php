@@ -1,34 +1,28 @@
 <div>
     @if (Auth::check())
-        <livewire:comments.form :user="Auth::user()" :page_id="$page_id" :version_id="$version_id" />
+        <livewire:comments.form :user="Auth::user()" :comment_id="$commentId"  :page_id="$page_id" :version_id="$version_id" />
     @endif
     @foreach ($comments as $comment)
-        <div class="flex flex-col gap-2">
-           <p>Commented {{ $comment['created_at'] }} on V.{{ $comment['version_id'] }} by {{ $comment['user']['name'] }}</p>
-            {{ $comment['content'] }}
+        <div class="flex flex-col gap-2 mt-4 mb-4 ">
+            <div class="flex">
+                <p class="text-lg">{{ $comment['user']['name'] }}:</p>
+                <p class="self-center ml-2 text-sm text-gray-400">{{ $comment['created_at'] }} on V.{{ $comment['version_id'] }}</p>
+            </div>
+            <div class="text-lg">
+                {{ $comment['content'] }}
+            </div>
+            <div class="flex">
                 @if (Auth::check())
                     <livewire:comments.like :user="Auth::user()" :is_liked_by_me="$comment['is_liked_by_me']"  :comment_id="$comment['id']" :likes_count="$comment['likes_count']"/>
                 @else
                     <livewire:comments.like :user="Null" :is_liked_by_me="$comment['is_liked_by_me']"  :comment_id="$comment['id']" :likes_count="$comment['likes_count']"/>
                 @endif
                 ({{ $comment['likes_count'] }} likes)
-                @if (Auth::check())
-                    <livewire:comments.form :user="Auth::user()" :page_id="$page_id" :comment_id="$comment['id']" :version_id="$comment['version_id']" />
-                @endif
-                @if ($comment['responses_count'] > 0)
-                    <details class="group">
-                        <summary class="flex items-center justify-between font-medium list-none cursor-pointer">
-                            Responses:
-                            <span class="transition group-open:rotate-180">
-                                <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path>
-                                </svg>
-                            </span>
-                        </summary>
-                        <p class="mt-3 text-neutral-600 group-open:animate-fadeIn">
-                            <x-pages.comments :page_array="$pageArray" :versionArray="$versionArray" :level="$comment['id']"/>
-                        </p>
-                    </details>
-                @endif
+            </div>
+
+            @if ($comment['content'])
+                <x-pages.comments :page_array="$pageArray" :versionArray="$versionArray" :comment_id="$comment['id']"   :level="$comment['id']"/>
+            @endif
         </div>
     @endforeach
 

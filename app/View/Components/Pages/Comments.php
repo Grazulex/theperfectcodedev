@@ -17,7 +17,8 @@ final class Comments extends Component
         private readonly CommentRepository $repository,
         public array $pageArray,
         public array $versionArray,
-        public mixed $level = null
+        public mixed $level = null,
+        public mixed $commentId = null
     ) {}
 
     public function render(): View|Closure|string
