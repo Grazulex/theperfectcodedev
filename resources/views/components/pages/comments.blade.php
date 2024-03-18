@@ -4,6 +4,9 @@
     @endif
     @foreach ($comments as $comment)
         <div class="flex flex-col gap-2 mt-4 mb-4 ">
+            @if ($comment['parent'])
+                {{ $comment['parent']['id'] }}
+            @endif
             <div class="flex">
                 <p class="text-lg">{{ $comment['user']['name'] }}:</p>
                 <p class="self-center ml-2 text-sm text-gray-400">{{ $comment['created_at'] }} on V.{{ $comment['version_id'] }}</p>
@@ -21,7 +24,7 @@
             </div>
 
             @if ($comment['content'])
-                <x-pages.comments :page_array="$pageArray" :versionArray="$versionArray" :comment_id="$comment['id']"   :level="$comment['id']"/>
+                <x-pages.comments :page_array="$pageArray" :versionArray="$versionArray" :comment_id="$comment['id']" />
             @endif
         </div>
     @endforeach
