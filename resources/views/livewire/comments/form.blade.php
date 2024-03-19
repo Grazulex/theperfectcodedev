@@ -1,5 +1,5 @@
 <div>
-    <div class="flex flex-col gap-2 border-[#3A445B] pb-2 border-b">
+    <div class="flex flex-col gap-2 pb-2">
         @if ($commentId)
         <details class="group">
             <summary class="flex items-center justify-between font-medium list-none cursor-pointer">
