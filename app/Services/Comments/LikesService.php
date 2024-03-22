@@ -7,7 +7,7 @@ namespace App\Services\Comments;
 use App\Models\PageComments;
 use App\Models\User;
 
-final class LikesService
+final readonly class LikesService
 {
     public function __construct(private PageComments $comment) {}
 

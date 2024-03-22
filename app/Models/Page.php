@@ -23,6 +23,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use InvalidArgumentException;
+use Override;
 
 /**
  * @property string $title
@@ -134,6 +135,7 @@ final class Page extends Model
         };
     }
 
+    #[Override]
     protected static function booted(): void
     {
         Page::addGlobalScope(new DefaultScope());

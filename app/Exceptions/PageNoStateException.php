@@ -16,6 +16,5 @@ final class PageNoStateException extends Exception
     {
         Log::debug($this->message);
     }
-    public function render($request): void {}
 }
 // @codeCoverageIgnoreEnd

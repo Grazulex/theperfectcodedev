@@ -16,6 +16,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use InvalidArgumentException;
+use Override;
 
 /**
  * @property null|int $version
@@ -70,6 +71,7 @@ final class Version extends Model
         };
     }
 
+    #[Override]
     protected static function booted(): void
     {
         Version::addGlobalScope(new DefaultScope());

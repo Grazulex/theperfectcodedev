@@ -9,9 +9,11 @@ use App\Actions\Pages\UpdatePageAction;
 use App\Actions\Versions\NotifyVersionUserAction;
 use App\Actions\Versions\UpdateVersionAction;
 use App\Enums\Versions\State;
+use Override;
 
 final class DraftVersionState extends BaseVersionState
 {
+    #[Override]
     public function publish(): void
     {
         $this->version = (new UpdateVersionAction())->handle(
@@ -49,6 +51,7 @@ final class DraftVersionState extends BaseVersionState
         }
     }
 
+    #[Override]
     public function refuse(): void
     {
         $this->version = (new UpdateVersionAction())->handle(

@@ -8,12 +8,14 @@ use JoelButcher\Socialstream\Contracts\ResolvesSocialiteUsers;
 use JoelButcher\Socialstream\Socialstream;
 use Laravel\Socialite\Contracts\User;
 use Laravel\Socialite\Facades\Socialite;
+use Override;
 
 final class ResolveSocialiteUser implements ResolvesSocialiteUsers
 {
     /**
      * Resolve the user for a given provider.
      */
+    #[Override]
     public function resolve(string $provider): User
     {
         $user = Socialite::driver($provider)->user();

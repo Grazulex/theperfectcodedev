@@ -13,7 +13,7 @@ use Livewire\Component;
 final class Versions extends Component
 {
     public array $pageArray;
-    public ?array $versionArray;
+    public ?array $versionArray = null;
     public array $versionsCollection;
 
     public function mount(): void

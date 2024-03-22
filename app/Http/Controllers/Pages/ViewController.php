@@ -30,7 +30,7 @@ final class ViewController extends Controller
         }
 
         $versionArray = null;
-        if ($version) {
+        if ($version instanceof Version) {
             $versionArray = VersionDataObject::from($version)->toArray();
         } else {
             $lastVersion = $this->versionRepository

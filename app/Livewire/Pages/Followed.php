@@ -17,17 +17,15 @@ final class Followed extends Component
     public int $followers_count;
     public bool $is_followed_by_me;
     public int $page_id;
-    public ?User $user;
+    public ?User $user = null;
 
     public bool $isFollow = false;
 
     // @codeCoverageIgnoreStart
     public function mount(): void
     {
-        if ($this->user) {
-            if ($this->is_followed_by_me) {
-                $this->isFollow = true;
-            }
+        if ($this->user instanceof User && $this->is_followed_by_me) {
+            $this->isFollow = true;
         }
     }
     // @codeCoverageIgnoreEnd

@@ -7,7 +7,7 @@ namespace App\Services\Pages;
 use App\Models\Page;
 use App\Models\User;
 
-final class LikesService
+final readonly class LikesService
 {
     public function __construct(private Page $page) {}
 

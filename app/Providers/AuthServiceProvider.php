@@ -34,7 +34,7 @@ final class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
         if('production' === config('app.env')) {
-            Gate::define('viewPulse', fn(User $user) => 'jms@grazulex.be' === $user->email);
+            Gate::define('viewPulse', fn(User $user): bool => 'jms@grazulex.be' === $user->email);
         }
 
 
