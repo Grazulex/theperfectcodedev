@@ -23,7 +23,7 @@ final class RemoveTeamMemberTest extends TestCase
             ['role' => 'admin']
         );
 
-        $component = Livewire::test(TeamMemberManager::class, ['team' => $user->currentTeam])
+        Livewire::test(TeamMemberManager::class, ['team' => $user->currentTeam])
             ->set('teamMemberIdBeingRemoved', $otherUser->id)
             ->call('removeTeamMember');
 
@@ -41,7 +41,7 @@ final class RemoveTeamMemberTest extends TestCase
 
         $this->actingAs($otherUser);
 
-        $component = Livewire::test(TeamMemberManager::class, ['team' => $user->currentTeam])
+        Livewire::test(TeamMemberManager::class, ['team' => $user->currentTeam])
             ->set('teamMemberIdBeingRemoved', $user->id)
             ->call('removeTeamMember')
             ->assertStatus(403);

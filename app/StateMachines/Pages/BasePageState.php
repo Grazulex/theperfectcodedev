@@ -8,6 +8,7 @@ use App\Exceptions\PageNoStateException;
 use App\Models\Page;
 use App\StateMachines\Contracts\PageStateContract;
 use Exception;
+use Override;
 
 abstract class BasePageState implements PageStateContract
 {
@@ -16,6 +17,7 @@ abstract class BasePageState implements PageStateContract
     /**
      * @throws Exception
      */
+    #[Override]
     public function publish(): void
     {
         throw new PageNoStateException();
@@ -24,6 +26,7 @@ abstract class BasePageState implements PageStateContract
     /**
      * @throws Exception
      */
+    #[Override]
     public function archive(): void
     {
         throw new PageNoStateException();
@@ -32,6 +35,7 @@ abstract class BasePageState implements PageStateContract
     /**
      * @throws Exception
      */
+    #[Override]
     public function refuse(): void
     {
         throw new PageNoStateException();
@@ -40,6 +44,7 @@ abstract class BasePageState implements PageStateContract
     /**
      * @throws Exception
      */
+    #[Override]
     public function delete(): void
     {
         throw new PageNoStateException();

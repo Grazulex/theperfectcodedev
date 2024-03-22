@@ -25,17 +25,15 @@ final class PagePolicy
      */
     public function view(?User $user, Page $page): Response
     {
-        if ($user) {
+        if ($user instanceof User) {
             if ($page->user->id === $user->id) {
                 return Response::allow();
             }
             if (PageState::PUBLISHED !== $page->state) {
                 return Response::deny('This page is not published.');
             }
-            if(1 !== $page->is_public) {
-                if( ! $page->user->currentTeam ||  ! $page->user->currentTeam->hasUser($user->id)) {
-                    return Response::deny('This page is private.');
-                }
+            if(1 !== $page->is_public && ( ! $page->user->currentTeam ||  ! $page->user->currentTeam->hasUser($user->id))) {
+                return Response::deny('This page is private.');
             }
         } else {
             if (PageState::PUBLISHED !== $page->state) {

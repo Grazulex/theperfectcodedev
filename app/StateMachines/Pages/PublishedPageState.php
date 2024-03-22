@@ -6,9 +6,11 @@ namespace App\StateMachines\Pages;
 
 use App\Actions\Pages\ArchivePageAction;
 use App\Actions\Pages\NotifyPageUserAction;
+use Override;
 
 final class PublishedPageState extends BasePageState
 {
+    #[Override]
     public function archive(): void
     {
 

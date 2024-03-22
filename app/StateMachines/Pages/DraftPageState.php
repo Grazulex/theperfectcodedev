@@ -7,9 +7,11 @@ namespace App\StateMachines\Pages;
 use App\Actions\Pages\NotifyPageUserAction;
 use App\Actions\Pages\UpdatePageAction;
 use App\Enums\Pages\State;
+use Override;
 
 final class DraftPageState extends BasePageState
 {
+    #[Override]
     public function publish(): void
     {
         $this->page = (new UpdatePageAction())->handle(
@@ -26,6 +28,7 @@ final class DraftPageState extends BasePageState
         );
     }
 
+    #[Override]
     public function refuse(): void
     {
         $this->page = (new UpdatePageAction())->handle(

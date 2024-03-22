@@ -34,7 +34,7 @@ it('can create a comment', function (): void {
         ->and($page->comments()->count())->toBe(1)
         ->and($page->comments->first()->content)->toBe('This is a comment');
 
-    Notification::assertSentTo($page->user, PublishNotification::class, function ($notification, $channels) use ($comment) {
+    Notification::assertSentTo($page->user, PublishNotification::class, function ($notification, $channels) use ($comment): bool {
         $this->assertContains('mail', $channels);
         $mailNotification = (object) $notification->toMail($comment->user);
         $this->assertEquals('Publish Notification', $mailNotification->subject);
@@ -128,7 +128,7 @@ it('can refuse a comment', function (): void {
 
     $comment->status()->refuse();
 
-    Notification::assertSentTo($page->user, RefuseNotification::class, function ($notification, $channels) use ($comment) {
+    Notification::assertSentTo($page->user, RefuseNotification::class, function ($notification, $channels) use ($comment): bool {
         $this->assertContains('mail', $channels);
         $mailNotification = (object) $notification->toMail($comment->user);
         $this->assertEquals('Refuse Notification', $mailNotification->subject);
@@ -160,7 +160,7 @@ it('can delete a comment', function (): void {
     $comment->status()->delete();
 
     Notification::assertSentTo($page->user, RefuseNotification::class);
-    Notification::assertSentTo($page->user, DeleteNotification::class, function ($notification, $channels) use ($comment) {
+    Notification::assertSentTo($page->user, DeleteNotification::class, function ($notification, $channels) use ($comment): bool {
         $this->assertContains('mail', $channels);
         $mailNotification = (object) $notification->toMail($comment->user);
         $this->assertEquals('Delete Notification', $mailNotification->subject);

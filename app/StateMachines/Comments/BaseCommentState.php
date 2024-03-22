@@ -8,6 +8,7 @@ use App\Exceptions\CommentNoStateException;
 use App\Models\PageComments;
 use App\StateMachines\Contracts\CommentStateContract;
 use Exception;
+use Override;
 
 abstract class BaseCommentState implements CommentStateContract
 {
@@ -16,6 +17,7 @@ abstract class BaseCommentState implements CommentStateContract
     /**
      * @throws Exception
      */
+    #[Override]
     public function refuse(): void
     {
         throw new CommentNoStateException();
@@ -24,6 +26,7 @@ abstract class BaseCommentState implements CommentStateContract
     /**
      * @throws Exception
      */
+    #[Override]
     public function delete(): void
     {
         throw new CommentNoStateException();

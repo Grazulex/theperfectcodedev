@@ -10,6 +10,7 @@ use App\Utils\Paginate;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
+use Override;
 
 final class Comments extends Component
 {
@@ -20,6 +21,7 @@ final class Comments extends Component
         public mixed $level = null
     ) {}
 
+    #[Override]
     public function render(): View|Closure|string
     {
         $comments = CommentDataObject::collection($this->repository->retrieveCommentsFromPageWithParent(

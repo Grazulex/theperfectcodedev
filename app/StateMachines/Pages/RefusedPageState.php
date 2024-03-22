@@ -6,9 +6,11 @@ namespace App\StateMachines\Pages;
 
 use App\Actions\Pages\DeletePageAction;
 use App\Actions\Pages\NotifyPageUserAction;
+use Override;
 
 final class RefusedPageState extends BasePageState
 {
+    #[Override]
     public function delete(): void
     {
         $this->page = (new DeletePageAction())->handle(

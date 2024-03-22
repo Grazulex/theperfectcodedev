@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Laravel\Fortify\Contracts\CreatesNewUsers;
 use Laravel\Jetstream\Jetstream;
+use Override;
 
 final class CreateNewUser implements CreatesNewUsers
 {
@@ -21,6 +22,7 @@ final class CreateNewUser implements CreatesNewUsers
      *
      * @param  array<string, string>  $input
      */
+    #[Override]
     public function create(array $input): User
     {
         Validator::make($input, [
@@ -30,15 +32,13 @@ final class CreateNewUser implements CreatesNewUsers
             'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['accepted', 'required'] : '',
         ])->validate();
 
-        return DB::transaction(function () use ($input) {
-            return tap(User::create([
-                'name' => $input['name'],
-                'email' => $input['email'],
-                'password' => Hash::make($input['password']),
-            ]), function (User $user): void {
-                $this->createTeam($user);
-            });
-        });
+        return DB::transaction(fn() => tap(User::create([
+            'name' => $input['name'],
+            'email' => $input['email'],
+            'password' => Hash::make($input['password']),
+        ]), function (User $user): void {
+            $this->createTeam($user);
+        }));
     }
 
     /**

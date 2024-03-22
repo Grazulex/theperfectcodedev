@@ -16,6 +16,5 @@ final class CommentNoStateException extends Exception
     {
         Log::debug($this->message);
     }
-    public function render($request): void {}
 }
 // @codeCoverageIgnoreEnd

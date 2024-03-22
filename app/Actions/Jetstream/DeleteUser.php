@@ -8,32 +8,24 @@ use Illuminate\Support\Facades\DB;
 use Laravel\Jetstream\Contracts\DeletesTeams;
 use Laravel\Jetstream\Contracts\DeletesUsers;
 
-final class DeleteUser implements DeletesUsers
+final readonly class DeleteUser implements DeletesUsers
 {
-    /**
-     * The team deleter implementation.
-     *
-     * @var DeletesTeams
-     */
-    private $deletesTeams;
-
     /**
      * Create a new action instance.
      *
      * @return void
      */
-    public function __construct(DeletesTeams $deletesTeams)
-    {
-        $this->deletesTeams = $deletesTeams;
-    }
+    public function __construct(
+        /**
+         * The team deleter implementation.
+         */
+        private DeletesTeams $deletesTeams
+    ) {}
 
     /**
      * Delete the given user.
-     *
-     * @param  mixed  $user
-     * @return void
      */
-    public function delete($user): void
+    public function delete(mixed $user): void
     {
         DB::transaction(function () use ($user): void {
             $this->deleteTeams($user);
@@ -46,11 +38,8 @@ final class DeleteUser implements DeletesUsers
 
     /**
      * Delete the teams and team associations attached to the user.
-     *
-     * @param  mixed  $user
-     * @return void
      */
-    private function deleteTeams($user): void
+    private function deleteTeams(mixed $user): void
     {
         $user->teams()->detach();
 

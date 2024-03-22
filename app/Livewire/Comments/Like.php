@@ -17,16 +17,14 @@ final class Like extends Component
     public int $likes_count;
     public bool $is_liked_by_me;
     public int $comment_id;
-    public ?User $user;
+    public ?User $user = null;
     public bool $isLiked = false;
 
     // @codeCoverageIgnoreStart
     public function mount(): void
     {
-        if ($this->user) {
-            if ($this->is_liked_by_me) {
-                $this->isLiked = true;
-            }
+        if ($this->user instanceof User && $this->is_liked_by_me) {
+            $this->isLiked = true;
         }
     }
     // @codeCoverageIgnoreEnd

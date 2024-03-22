@@ -6,9 +6,11 @@ namespace App\StateMachines\Comments;
 
 use App\Actions\Comments\DeleteCommentAction;
 use App\Actions\Comments\NotifyCommentUserAction;
+use Override;
 
 final class RefusedCommentState extends BaseCommentState
 {
+    #[Override]
     public function delete(): void
     {
         (new DeleteCommentAction())->handle(
