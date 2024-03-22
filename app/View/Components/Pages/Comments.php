@@ -18,7 +18,7 @@ final class Comments extends Component
         private readonly CommentRepository $repository,
         public array $pageArray,
         public array $versionArray,
-        public mixed $level = null
+        public mixed $commentId = null
     ) {}
 
     #[Override]
@@ -26,12 +26,12 @@ final class Comments extends Component
     {
         $comments = CommentDataObject::collection($this->repository->retrieveCommentsFromPageWithParent(
             page_id: $this->pageArray['id'],
-            comment_id: $this->level
+            comment_id: $this->commentId
         )
             ->get())->toArray();
 
         $comments = Paginate::paginate($comments, 5);
 
-        return view('components.pages.comments', ['comments' => $comments, 'level' => $this->level, 'page_id' => $this->pageArray['id'], 'version_id' => $this->versionArray['version']]);
+        return view('components.pages.comments', ['comments' => $comments, 'comment_id' => $this->commentId, 'page_id' => $this->pageArray['id'], 'version_id' => $this->versionArray['version']]);
     }
 }
