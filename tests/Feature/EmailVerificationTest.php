@@ -17,21 +17,6 @@ final class EmailVerificationTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function test_email_verification_screen_can_be_rendered(): void
-    {
-        if ( ! Features::enabled(Features::emailVerification())) {
-            $this->markTestSkipped('Email verification not enabled.');
-
-            return;
-        }
-
-        $user = User::factory()->withPersonalTeam()->unverified()->create();
-
-        $response = $this->actingAs($user)->get('/email/verify');
-
-        $response->assertStatus(200);
-    }
-
     public function test_email_can_be_verified(): void
     {
         if ( ! Features::enabled(Features::emailVerification())) {
@@ -77,5 +62,20 @@ final class EmailVerificationTest extends TestCase
         $this->actingAs($user)->get($verificationUrl);
 
         $this->assertFalse($user->fresh()->hasVerifiedEmail());
+    }
+
+    public function test_email_verification_screen_can_be_rendered(): void
+    {
+        if ( ! Features::enabled(Features::emailVerification())) {
+            $this->markTestSkipped('Email verification not enabled.');
+
+            return;
+        }
+
+        $user = User::factory()->withPersonalTeam()->unverified()->create();
+
+        $response = $this->actingAs($user)->get('/email/verify');
+
+        $response->assertStatus(200);
     }
 }

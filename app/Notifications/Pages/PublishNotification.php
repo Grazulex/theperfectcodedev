@@ -21,11 +21,16 @@ final class PublishNotification extends Notification implements ShouldQueue
         public Page $page
     ) {}
 
-    public function viaQueues(): array
+    /**
+     * Get the mail representation of the notification.
+     */
+    public function toMail(object $notifiable): MailMessage
     {
-        return [
-            'mail' => 'mail-queue',
-        ];
+        return (new MailMessage())
+            ->subject('Publish Notification')
+            ->line('The introduction to the notification.')
+            ->action('Notification Action', url('/'))
+            ->line('Thank you for using our application!');
     }
 
     /**
@@ -38,15 +43,10 @@ final class PublishNotification extends Notification implements ShouldQueue
         return ['mail'];
     }
 
-    /**
-     * Get the mail representation of the notification.
-     */
-    public function toMail(object $notifiable): MailMessage
+    public function viaQueues(): array
     {
-        return (new MailMessage())
-            ->subject('Publish Notification')
-            ->line('The introduction to the notification.')
-            ->action('Notification Action', url('/'))
-            ->line('Thank you for using our application!');
+        return [
+            'mail' => 'mail-queue',
+        ];
     }
 }

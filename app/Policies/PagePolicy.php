@@ -13,11 +13,48 @@ use Illuminate\Auth\Access\Response;
 final class PagePolicy
 {
     /**
-     * Determine whether the user can view any models.
+     * Determine whether the user can create models.
      */
-    public function viewAny(User $user): bool
+    public function create(User $user): bool
     {
         return true;
+    }
+
+    /**
+     * Determine whether the user can delete the model.
+     */
+    public function delete(User $user, Page $page): bool
+    {
+        return $user->id === $page->user_id;
+    }
+
+    /**
+     * Determine whether the user can permanently delete the model.
+     */
+    public function forceDelete(User $user, Page $page): bool
+    {
+        return $user->id === $page->user_id;
+    }
+
+    /**
+     * Determine whether the user can restore the model.
+     */
+    public function restore(User $user, Page $page): bool
+    {
+        return $user->id === $page->user_id;
+    }
+    /**
+     * Determine whether the user can update the model.
+     */
+    public function update(User $user, Page $page): Response
+    {
+        if ($page->user->id !== $user->id) {
+            return Response::deny('You are not the owner of this page.');
+        }
+        if ($page->versions()->where('state', State::PUBLISHED)->count() > 1) {
+            return Response::deny('You cannot edit a published page. You need to create a new version.');
+        }
+        return Response::allow();
     }
 
     /**
@@ -46,49 +83,11 @@ final class PagePolicy
 
         return Response::allow();
     }
-
     /**
-     * Determine whether the user can create models.
+     * Determine whether the user can view any models.
      */
-    public function create(User $user): bool
+    public function viewAny(User $user): bool
     {
         return true;
-    }
-    /**
-     * Determine whether the user can update the model.
-     */
-    public function update(User $user, Page $page): Response
-    {
-        if ($page->user->id !== $user->id) {
-            return Response::deny('You are not the owner of this page.');
-        }
-        if ($page->versions()->where('state', State::PUBLISHED)->count() > 1) {
-            return Response::deny('You cannot edit a published page. You need to create a new version.');
-        }
-        return Response::allow();
-    }
-
-    /**
-     * Determine whether the user can delete the model.
-     */
-    public function delete(User $user, Page $page): bool
-    {
-        return $user->id === $page->user_id;
-    }
-
-    /**
-     * Determine whether the user can restore the model.
-     */
-    public function restore(User $user, Page $page): bool
-    {
-        return $user->id === $page->user_id;
-    }
-
-    /**
-     * Determine whether the user can permanently delete the model.
-     */
-    public function forceDelete(User $user, Page $page): bool
-    {
-        return $user->id === $page->user_id;
     }
 }

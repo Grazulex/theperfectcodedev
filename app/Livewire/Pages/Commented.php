@@ -12,8 +12,8 @@ use Livewire\Component;
 
 final class Commented extends Component
 {
-    public Page $page;
     public int $comments_count;
+    public Page $page;
 
     public function render(): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
     {

@@ -6,12 +6,11 @@ namespace App\StateMachines\Contracts;
 
 interface VersionStateContract
 {
-    public function publish(): void;
-
     public function archive(): void;
 
-    public function refuse(): void;
-
     public function delete(): void;
+    public function publish(): void;
+
+    public function refuse(): void;
 
 }

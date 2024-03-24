@@ -7,6 +7,10 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
 return new class () extends Migration {
+    public function down(): void
+    {
+        Schema::dropIfExists('users');
+    }
     public function up(): void
     {
         Schema::create('users', function (Blueprint $table): void {
@@ -20,10 +24,5 @@ return new class () extends Migration {
             $table->text('profile_photo_path')->nullable();
             $table->timestamps();
         });
-    }
-
-    public function down(): void
-    {
-        Schema::dropIfExists('users');
     }
 };

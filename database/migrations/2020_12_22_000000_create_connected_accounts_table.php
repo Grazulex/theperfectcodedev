@@ -7,6 +7,10 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
 return new class () extends Migration {
+    public function down(): void
+    {
+        Schema::dropIfExists('connected_accounts');
+    }
     public function up(): void
     {
         Schema::create('connected_accounts', function (Blueprint $table): void {
@@ -28,10 +32,5 @@ return new class () extends Migration {
             $table->index(['user_id', 'id']);
             $table->index(['provider', 'provider_id']);
         });
-    }
-
-    public function down(): void
-    {
-        Schema::dropIfExists('connected_accounts');
     }
 };

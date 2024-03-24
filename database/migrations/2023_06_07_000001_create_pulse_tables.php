@@ -7,6 +7,12 @@ use Illuminate\Support\Facades\Schema;
 use Laravel\Pulse\Support\PulseMigration;
 
 return new class () extends PulseMigration {
+    public function down(): void
+    {
+        Schema::dropIfExists('pulse_values');
+        Schema::dropIfExists('pulse_entries');
+        Schema::dropIfExists('pulse_aggregates');
+    }
     public function up(): void
     {
         if ( ! $this->shouldRun()) {
@@ -68,12 +74,5 @@ return new class () extends PulseMigration {
             $table->index('type'); // For purging...
             $table->index(['period', 'type', 'aggregate', 'bucket']); // For aggregate queries...
         });
-    }
-
-    public function down(): void
-    {
-        Schema::dropIfExists('pulse_values');
-        Schema::dropIfExists('pulse_entries');
-        Schema::dropIfExists('pulse_aggregates');
     }
 };

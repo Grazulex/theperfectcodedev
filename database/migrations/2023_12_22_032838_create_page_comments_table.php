@@ -8,6 +8,10 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
 return new class () extends Migration {
+    public function down(): void
+    {
+        Schema::dropIfExists('page_comments');
+    }
     public function up(): void
     {
         Schema::create('page_comments', function (Blueprint $table): void {
@@ -27,10 +31,5 @@ return new class () extends Migration {
             $table->softDeletes();
             $table->timestamps();
         });
-    }
-
-    public function down(): void
-    {
-        Schema::dropIfExists('page_comments');
     }
 };

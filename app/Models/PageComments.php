@@ -16,7 +16,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use InvalidArgumentException;
 
 /**
  * @property int $user_id
@@ -36,6 +35,10 @@ final class PageComments extends Model
     use HasFactory;
     use SoftDeletes;
 
+    protected $casts = [
+        'state' => State::class,
+    ];
+
     protected $fillable = [
         'user_id',
         'page_id',
@@ -45,15 +48,17 @@ final class PageComments extends Model
         'state',
     ];
 
-    protected $casts = [
-        'state' => State::class,
-    ];
-
-    public function user(): BelongsTo
+    public function likes(): BelongsToMany
     {
-        return $this->belongsTo(
-            related: User::class
+        return $this->BelongsToMany(
+            related: User::class,
+            table: 'comment_user_likes',
         );
+    }
+
+    public function likesService(): LikesService
+    {
+        return new LikesService($this);
     }
 
     public function page(): BelongsTo
@@ -82,25 +87,18 @@ final class PageComments extends Model
         );
     }
 
-    public function likes(): BelongsToMany
-    {
-        return $this->BelongsToMany(
-            related: User::class,
-            table: 'comment_user_likes',
-        );
-    }
-
-    public function likesService(): LikesService
-    {
-        return new LikesService($this);
-    }
-
     public function status(): CommentStateContract
     {
         return match ($this->state) {
             State::PUBLISHED => new PublishedCommentState($this),
-            State::REFUSED => new RefusedCommentState($this),
-            default => throw new InvalidArgumentException('Invalid state'),
+            State::REFUSED => new RefusedCommentState($this)
         };
+    }
+
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(
+            related: User::class
+        );
     }
 }

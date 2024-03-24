@@ -40,18 +40,17 @@ final class InviteTeamMember implements InvitesTeamMembers
     }
 
     /**
-     * Validate the invite member operation.
+     * Ensure that the user is not already on the team.
      */
-    private function validate(Team $team, string $email, ?string $role): void
+    private function ensureUserIsNotAlreadyOnTeam(Team $team, string $email): Closure
     {
-        Validator::make([
-            'email' => $email,
-            'role' => $role,
-        ], $this->rules($team), [
-            'email.unique' => __('This user has already been invited to the team.'),
-        ])->after(
-            $this->ensureUserIsNotAlreadyOnTeam($team, $email)
-        )->validateWithBag('addTeamMember');
+        return function ($validator) use ($team, $email): void {
+            $validator->errors()->addIf(
+                $team->hasUserWithEmail($email),
+                'email',
+                __('This user already belongs to the team.')
+            );
+        };
     }
 
     /**
@@ -75,16 +74,17 @@ final class InviteTeamMember implements InvitesTeamMembers
     }
 
     /**
-     * Ensure that the user is not already on the team.
+     * Validate the invite member operation.
      */
-    private function ensureUserIsNotAlreadyOnTeam(Team $team, string $email): Closure
+    private function validate(Team $team, string $email, ?string $role): void
     {
-        return function ($validator) use ($team, $email): void {
-            $validator->errors()->addIf(
-                $team->hasUserWithEmail($email),
-                'email',
-                __('This user already belongs to the team.')
-            );
-        };
+        Validator::make([
+            'email' => $email,
+            'role' => $role,
+        ], $this->rules($team), [
+            'email.unique' => __('This user has already been invited to the team.'),
+        ])->after(
+            $this->ensureUserIsNotAlreadyOnTeam($team, $email)
+        )->validateWithBag('addTeamMember');
     }
 }

@@ -14,32 +14,6 @@ use App\Notifications\Versions\RefuseNotification;
 
 final readonly class NotifyVersionUserAction
 {
-    public function publish(Version $version, User $user): void
-    {
-        $user->notify(
-            new PublishNotification(
-                version: $version
-            )
-        );
-    }
-    public function draft(Version $version, User $user): void
-    {
-        $user->notify(
-            new DraftNotification(
-                version: $version
-            )
-        );
-    }
-
-    public function refuse(Version $version, User $user): void
-    {
-        $user->notify(
-            new RefuseNotification(
-                version: $version
-            )
-        );
-    }
-
     public function archive(Version $version, User $user): void
     {
         $user->notify(
@@ -54,6 +28,31 @@ final readonly class NotifyVersionUserAction
         $user->notify(
             new DeleteNotification(
                 pageTitle: $version->page->title
+            )
+        );
+    }
+    public function draft(Version $version, User $user): void
+    {
+        $user->notify(
+            new DraftNotification(
+                version: $version
+            )
+        );
+    }
+    public function publish(Version $version, User $user): void
+    {
+        $user->notify(
+            new PublishNotification(
+                version: $version
+            )
+        );
+    }
+
+    public function refuse(Version $version, User $user): void
+    {
+        $user->notify(
+            new RefuseNotification(
+                version: $version
             )
         );
     }

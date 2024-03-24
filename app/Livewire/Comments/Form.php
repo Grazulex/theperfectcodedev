@@ -12,11 +12,11 @@ use Livewire\Component;
 
 final class Form extends Component
 {
-    public int $pageId;
     public ?int $commentId = null;
-    public int $versionId;
-    public User $user;
     public string $content = '';
+    public int $pageId;
+    public User $user;
+    public int $versionId;
 
     public function render(): View|Application|Factory|\Illuminate\View\View|\Illuminate\Contracts\Foundation\Application
     {

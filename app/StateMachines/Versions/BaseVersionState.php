@@ -17,15 +17,6 @@ abstract class BaseVersionState implements VersionStateContract
      * @throws VersionNoStateException
      */
     #[Override]
-    public function publish(): void
-    {
-        throw new VersionNoStateException();
-    }
-
-    /**
-     * @throws VersionNoStateException
-     */
-    #[Override]
     public function archive(): void
     {
         throw new VersionNoStateException();
@@ -35,7 +26,7 @@ abstract class BaseVersionState implements VersionStateContract
      * @throws VersionNoStateException
      */
     #[Override]
-    public function refuse(): void
+    public function delete(): void
     {
         throw new VersionNoStateException();
     }
@@ -44,7 +35,16 @@ abstract class BaseVersionState implements VersionStateContract
      * @throws VersionNoStateException
      */
     #[Override]
-    public function delete(): void
+    public function publish(): void
+    {
+        throw new VersionNoStateException();
+    }
+
+    /**
+     * @throws VersionNoStateException
+     */
+    #[Override]
+    public function refuse(): void
     {
         throw new VersionNoStateException();
     }

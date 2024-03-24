@@ -6,8 +6,7 @@ namespace App\StateMachines\Contracts;
 
 interface CommentStateContract
 {
-    public function refuse(): void;
-
     public function delete(): void;
+    public function refuse(): void;
 
 }

@@ -6,9 +6,9 @@ namespace App\Enums\Versions;
 
 enum State: string
 {
+    case ARCHIVED = 'archived';
     case DRAFT = 'draft';
     case PUBLISHED = 'published';
-    case ARCHIVED = 'archived';
     case REFUSED = 'refused';
 
 }

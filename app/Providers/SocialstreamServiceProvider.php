@@ -17,12 +17,6 @@ use Override;
 final class SocialstreamServiceProvider extends ServiceProvider
 {
     /**
-     * Register any application services.
-     */
-    #[Override]
-    public function register(): void {}
-
-    /**
      * Bootstrap any application services.
      */
     public function boot(): void
@@ -34,4 +28,9 @@ final class SocialstreamServiceProvider extends ServiceProvider
         Socialstream::handlesInvalidStateUsing(HandleInvalidState::class);
         Socialstream::generatesProvidersRedirectsUsing(GenerateRedirectForProvider::class);
     }
+    /**
+     * Register any application services.
+     */
+    #[Override]
+    public function register(): void {}
 }

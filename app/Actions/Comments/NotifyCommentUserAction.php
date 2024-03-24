@@ -12,6 +12,14 @@ use App\Notifications\Comments\RefuseNotification;
 
 final readonly class NotifyCommentUserAction
 {
+    public function delete(PageComments $comment, User $user): void
+    {
+        $user->notify(
+            new DeleteNotification(
+                pageTitle: $comment->page->title
+            )
+        );
+    }
     public function publish(PageComments $comment, User $user): void
     {
         $user->notify(
@@ -26,14 +34,6 @@ final readonly class NotifyCommentUserAction
         $user->notify(
             new RefuseNotification(
                 comment: $comment
-            )
-        );
-    }
-    public function delete(PageComments $comment, User $user): void
-    {
-        $user->notify(
-            new DeleteNotification(
-                pageTitle: $comment->page->title
             )
         );
     }

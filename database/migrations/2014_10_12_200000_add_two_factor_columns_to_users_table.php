@@ -8,6 +8,17 @@ use Illuminate\Support\Facades\Schema;
 use Laravel\Fortify\Fortify;
 
 return new class () extends Migration {
+    public function down(): void
+    {
+        Schema::table('users', function (Blueprint $table): void {
+            $table->dropColumn(array_merge([
+                'two_factor_secret',
+                'two_factor_recovery_codes',
+            ], Fortify::confirmsTwoFactorAuthentication() ? [
+                'two_factor_confirmed_at',
+            ] : []));
+        });
+    }
     public function up(): void
     {
         Schema::table('users', function (Blueprint $table): void {
@@ -24,18 +35,6 @@ return new class () extends Migration {
                     ->after('two_factor_recovery_codes')
                     ->nullable();
             }
-        });
-    }
-
-    public function down(): void
-    {
-        Schema::table('users', function (Blueprint $table): void {
-            $table->dropColumn(array_merge([
-                'two_factor_secret',
-                'two_factor_recovery_codes',
-            ], Fortify::confirmsTwoFactorAuthentication() ? [
-                'two_factor_confirmed_at',
-            ] : []));
         });
     }
 };

@@ -19,12 +19,6 @@ use Override;
 final class FortifyServiceProvider extends ServiceProvider
 {
     /**
-     * Register any application services.
-     */
-    #[Override]
-    public function register(): void {}
-
-    /**
      * Bootstrap any application services.
      */
     public function boot(): void
@@ -42,4 +36,9 @@ final class FortifyServiceProvider extends ServiceProvider
 
         RateLimiter::for('two-factor', fn(Request $request) => Limit::perMinute(5)->by($request->session()->get('login.id')));
     }
+    /**
+     * Register any application services.
+     */
+    #[Override]
+    public function register(): void {}
 }

@@ -18,7 +18,7 @@ abstract class BaseCommentState implements CommentStateContract
      * @throws Exception
      */
     #[Override]
-    public function refuse(): void
+    public function delete(): void
     {
         throw new CommentNoStateException();
     }
@@ -27,7 +27,7 @@ abstract class BaseCommentState implements CommentStateContract
      * @throws Exception
      */
     #[Override]
-    public function delete(): void
+    public function refuse(): void
     {
         throw new CommentNoStateException();
     }

@@ -14,19 +14,11 @@ final class TeamPolicy
     use HandlesAuthorization;
 
     /**
-     * Determine whether the user can view any models.
+     * Determine whether the user can add team members.
      */
-    public function viewAny(User $user): bool
+    public function addTeamMember(User $user, Team $team): bool
     {
-        return true;
-    }
-
-    /**
-     * Determine whether the user can view the model.
-     */
-    public function view(User $user, Team $team): bool
-    {
-        return $user->belongsToTeam($team);
+        return $user->ownsTeam($team);
     }
 
     /**
@@ -38,25 +30,9 @@ final class TeamPolicy
     }
 
     /**
-     * Determine whether the user can update the model.
+     * Determine whether the user can delete the model.
      */
-    public function update(User $user, Team $team): bool
-    {
-        return $user->ownsTeam($team);
-    }
-
-    /**
-     * Determine whether the user can add team members.
-     */
-    public function addTeamMember(User $user, Team $team): bool
-    {
-        return $user->ownsTeam($team);
-    }
-
-    /**
-     * Determine whether the user can update team member permissions.
-     */
-    public function updateTeamMember(User $user, Team $team): bool
+    public function delete(User $user, Team $team): bool
     {
         return $user->ownsTeam($team);
     }
@@ -70,11 +46,35 @@ final class TeamPolicy
     }
 
     /**
-     * Determine whether the user can delete the model.
+     * Determine whether the user can update the model.
      */
-    public function delete(User $user, Team $team): bool
+    public function update(User $user, Team $team): bool
     {
         return $user->ownsTeam($team);
+    }
+
+    /**
+     * Determine whether the user can update team member permissions.
+     */
+    public function updateTeamMember(User $user, Team $team): bool
+    {
+        return $user->ownsTeam($team);
+    }
+
+    /**
+     * Determine whether the user can view the model.
+     */
+    public function view(User $user, Team $team): bool
+    {
+        return $user->belongsToTeam($team);
+    }
+
+    /**
+     * Determine whether the user can view any models.
+     */
+    public function viewAny(User $user): bool
+    {
+        return true;
     }
 }
 // @codeCoverageIgnoreEnd

@@ -7,6 +7,10 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
 return new class () extends Migration {
+    public function down(): void
+    {
+        Schema::dropIfExists('page_user_followers');
+    }
     public function up(): void
     {
         Schema::create('page_user_followers', static function (Blueprint $table): void {
@@ -22,10 +26,5 @@ return new class () extends Migration {
 
             $table->unique(['page_id', 'user_id']);
         });
-    }
-
-    public function down(): void
-    {
-        Schema::dropIfExists('page_user_followers');
     }
 };

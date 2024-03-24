@@ -18,12 +18,6 @@ use Override;
 final class JetstreamServiceProvider extends ServiceProvider
 {
     /**
-     * Register any application services.
-     */
-    #[Override]
-    public function register(): void {}
-
-    /**
      * Bootstrap any application services.
      */
     public function boot(): void
@@ -38,6 +32,11 @@ final class JetstreamServiceProvider extends ServiceProvider
         Jetstream::deleteTeamsUsing(DeleteTeam::class);
         Jetstream::deleteUsersUsing(DeleteUser::class);
     }
+    /**
+     * Register any application services.
+     */
+    #[Override]
+    public function register(): void {}
 
     /**
      * Configure the roles and permissions that are available within the application.

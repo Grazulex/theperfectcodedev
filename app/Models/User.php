@@ -51,6 +51,25 @@ final class User extends Authenticatable implements MustVerifyEmail
     use TwoFactorAuthenticatable;
 
     /**
+     * The accessors to append to the model's array form.
+     *
+     * @var array<int, string>
+     */
+    protected $appends = [
+        'profile_photo_url',
+    ];
+
+    /**
+     * The attributes that should be cast to native types.
+     *
+     * @var array<string, string>
+     */
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+        'password' => 'hashed',
+    ];
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
@@ -73,54 +92,11 @@ final class User extends Authenticatable implements MustVerifyEmail
         'two_factor_secret',
     ];
 
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array<string, string>
-     */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-        'password' => 'hashed',
-    ];
-
-    /**
-     * The accessors to append to the model's array form.
-     *
-     * @var array<int, string>
-     */
-    protected $appends = [
-        'profile_photo_url',
-    ];
-
-    /**
-     * Get the URL to the user's profile photo.
-     */
-    public function profilePhotoUrl(): Attribute
-    {
-        return filter_var($this->profile_photo_path, FILTER_VALIDATE_URL)
-            ? Attribute::get(fn() => $this->profile_photo_path)
-            : $this->getPhotoUrl();
-    }
-
-    public function pages(): HasMany
-    {
-        return $this->hasMany(
-            related: Page::class
-        );
-    }
-
-    public function versions(): HasMany
-    {
-        return $this->hasMany(
-            related: Version::class
-        );
-    }
-
-    public function likes(): BelongsToMany
+    public function commentLikes(): BelongsToMany
     {
         return $this->BelongsToMany(
-            related: Page::class,
-            table: 'page_user_likes',
+            related: PageComments::class,
+            table: 'comment_user_likes',
         );
     }
 
@@ -132,19 +108,43 @@ final class User extends Authenticatable implements MustVerifyEmail
         );
     }
 
-    public function commentLikes(): BelongsToMany
-    {
-        return $this->BelongsToMany(
-            related: PageComments::class,
-            table: 'comment_user_likes',
-        );
-    }
-
     public function followers(): BelongsToMany
     {
         return $this->BelongsToMany(
             related: Page::class,
             table: 'page_user_followers',
+        );
+    }
+
+    public function likes(): BelongsToMany
+    {
+        return $this->BelongsToMany(
+            related: Page::class,
+            table: 'page_user_likes',
+        );
+    }
+
+    public function pages(): HasMany
+    {
+        return $this->hasMany(
+            related: Page::class
+        );
+    }
+
+    /**
+     * Get the URL to the user's profile photo.
+     */
+    public function profilePhotoUrl(): Attribute
+    {
+        return filter_var($this->profile_photo_path, FILTER_VALIDATE_URL)
+            ? Attribute::get(fn() => $this->profile_photo_path)
+            : $this->getPhotoUrl();
+    }
+
+    public function versions(): HasMany
+    {
+        return $this->hasMany(
+            related: Version::class
         );
     }
 }

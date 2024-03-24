@@ -48,6 +48,26 @@ final class UserFactory extends Factory
     }
 
     /**
+     * Indicate that the user should have a connected account for the given provider.
+     */
+    public function withConnectedAccount(string $provider, ?callable $callback = null): static
+    {
+        if ( ! Providers::enabled($provider)) {
+            return $this->state([]);
+        }
+
+        return $this->has(
+            ConnectedAccount::factory()
+                ->state(fn(array $attributes, User $user) => [
+                    'provider' => $provider,
+                    'user_id' => $user->id,
+                ])
+                ->when(is_callable($callback), $callback),
+            'ownedTeams'
+        );
+    }
+
+    /**
      * Indicate that the user should have a personal team.
      */
     public function withPersonalTeam(?callable $callback = null): static
@@ -62,26 +82,6 @@ final class UserFactory extends Factory
                     'name' => $user->name . '\'s Team',
                     'user_id' => $user->id,
                     'personal_team' => true,
-                ])
-                ->when(is_callable($callback), $callback),
-            'ownedTeams'
-        );
-    }
-
-    /**
-     * Indicate that the user should have a connected account for the given provider.
-     */
-    public function withConnectedAccount(string $provider, ?callable $callback = null): static
-    {
-        if ( ! Providers::enabled($provider)) {
-            return $this->state([]);
-        }
-
-        return $this->has(
-            ConnectedAccount::factory()
-                ->state(fn(array $attributes, User $user) => [
-                    'provider' => $provider,
-                    'user_id' => $user->id,
                 ])
                 ->when(is_callable($callback), $callback),
             'ownedTeams'

@@ -15,7 +15,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use InvalidArgumentException;
 use Override;
 
 /**
@@ -33,6 +32,10 @@ final class Version extends Model
     use HasFactory;
     use SoftDeletes;
 
+    protected $casts = [
+        'state' => State::class
+    ];
+
     protected $fillable = [
         'version',
         'page_id',
@@ -42,21 +45,10 @@ final class Version extends Model
         'state'
     ];
 
-    protected $casts = [
-        'state' => State::class
-    ];
-
     public function page(): BelongsTo
     {
         return $this->belongsTo(
             related: Page::class
-        );
-    }
-
-    public function user(): BelongsTo
-    {
-        return $this->belongsTo(
-            related: User::class
         );
     }
 
@@ -66,9 +58,15 @@ final class Version extends Model
             State::DRAFT => new DraftVersionState($this),
             State::PUBLISHED => new PublishVersionState($this),
             State::ARCHIVED => new ArchiveNotification($this),
-            State::REFUSED => new RefusedVersionState($this),
-            default => throw new InvalidArgumentException('Invalid state'),
+            State::REFUSED => new RefusedVersionState($this)
         };
+    }
+
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(
+            related: User::class
+        );
     }
 
     #[Override]

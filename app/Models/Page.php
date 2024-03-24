@@ -22,7 +22,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use InvalidArgumentException;
 use Override;
 
 /**
@@ -42,7 +41,6 @@ use Override;
  * @property Collection<Version> $versions
  * @property Collection<User> $likes
  * @property Collection<PageComments> $comments
- * @property Collection<PageCommentLikes> $commentLikes
  * @property Collection<User> $followers
  */
 final class Page extends Model
@@ -50,6 +48,14 @@ final class Page extends Model
     use HasFactory;
     use Sluggable;
     use SoftDeletes;
+
+    protected $casts = [
+        'tags' => 'array',
+        'state' => State::class,
+        'published_at' => 'datetime',
+        'is_public' => 'int',
+        'is_accept_version' => 'int',
+    ];
 
     protected $fillable = [
         'title',
@@ -66,37 +72,7 @@ final class Page extends Model
         'is_accept_version',
     ];
 
-    protected $casts = [
-        'tags' => 'array',
-        'state' => State::class,
-        'published_at' => 'datetime',
-        'is_public' => 'int',
-        'is_accept_version' => 'int',
-    ];
-
     protected string $sluggable = 'title';
-
-    public function user(): BelongsTo
-    {
-        return $this->belongsTo(
-            related: User::class
-        );
-    }
-
-    public function versions(): HasMany
-    {
-        return $this->hasMany(
-            related: Version::class
-        );
-    }
-
-    public function likes(): BelongsToMany
-    {
-        return $this->BelongsToMany(
-            related: User::class,
-            table: 'page_user_likes',
-        );
-    }
 
 
     public function comments(): HasMany
@@ -114,14 +90,22 @@ final class Page extends Model
         );
     }
 
-    public function likesService(): LikesService
-    {
-        return new LikesService($this);
-    }
-
     public function followersService(): FollowersService
     {
         return new FollowersService($this);
+    }
+
+    public function likes(): BelongsToMany
+    {
+        return $this->BelongsToMany(
+            related: User::class,
+            table: 'page_user_likes',
+        );
+    }
+
+    public function likesService(): LikesService
+    {
+        return new LikesService($this);
     }
 
     public function status(): PageStateContract
@@ -130,9 +114,22 @@ final class Page extends Model
             State::DRAFT => new DraftPageState($this),
             State::PUBLISHED => new PublishedPageState($this),
             State::ARCHIVED => new ArchivedPageState($this),
-            State::REFUSED => new RefusedPageState($this),
-            default => throw new InvalidArgumentException('Invalid state'),
+            State::REFUSED => new RefusedPageState($this)
         };
+    }
+
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(
+            related: User::class
+        );
+    }
+
+    public function versions(): HasMany
+    {
+        return $this->hasMany(
+            related: Version::class
+        );
     }
 
     #[Override]

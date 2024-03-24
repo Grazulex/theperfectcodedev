@@ -16,18 +16,10 @@ final class Followed extends Component
 {
     public int $followers_count;
     public bool $is_followed_by_me;
-    public int $page_id;
-    public ?User $user = null;
 
     public bool $isFollow = false;
-
-    // @codeCoverageIgnoreStart
-    public function mount(): void
-    {
-        if ($this->user instanceof User && $this->is_followed_by_me) {
-            $this->isFollow = true;
-        }
-    }
+    public int $page_id;
+    public ?User $user = null;
     // @codeCoverageIgnoreEnd
 
     public function follow(): void
@@ -38,16 +30,24 @@ final class Followed extends Component
         $this->dispatch('follow-added');
     }
 
+    // @codeCoverageIgnoreStart
+    public function mount(): void
+    {
+        if ($this->user instanceof User && $this->is_followed_by_me) {
+            $this->isFollow = true;
+        }
+    }
+    public function render(): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
+    {
+        return view('livewire.pages.followed');
+    }
+
     public function unfollow(): void
     {
         $this->followers_count--;
         $this->isFollow = false;
         $this->dispatchFollowJob();
         $this->dispatch('follow-removed');
-    }
-    public function render(): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
-    {
-        return view('livewire.pages.followed');
     }
 
     private function dispatchFollowJob(): void

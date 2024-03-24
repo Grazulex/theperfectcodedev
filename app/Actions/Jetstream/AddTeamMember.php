@@ -39,18 +39,17 @@ final class AddTeamMember implements AddsTeamMembers
     }
 
     /**
-     * Validate the add member operation.
+     * Ensure that the user is not already on the team.
      */
-    private function validate(Team $team, string $email, ?string $role): void
+    private function ensureUserIsNotAlreadyOnTeam(Team $team, string $email): Closure
     {
-        Validator::make([
-            'email' => $email,
-            'role' => $role,
-        ], $this->rules(), [
-            'email.exists' => __('We were unable to find a registered user with this email address.'),
-        ])->after(
-            $this->ensureUserIsNotAlreadyOnTeam($team, $email)
-        )->validateWithBag('addTeamMember');
+        return function ($validator) use ($team, $email): void {
+            $validator->errors()->addIf(
+                $team->hasUserWithEmail($email),
+                'email',
+                __('This user already belongs to the team.')
+            );
+        };
     }
 
     /**
@@ -69,16 +68,17 @@ final class AddTeamMember implements AddsTeamMembers
     }
 
     /**
-     * Ensure that the user is not already on the team.
+     * Validate the add member operation.
      */
-    private function ensureUserIsNotAlreadyOnTeam(Team $team, string $email): Closure
+    private function validate(Team $team, string $email, ?string $role): void
     {
-        return function ($validator) use ($team, $email): void {
-            $validator->errors()->addIf(
-                $team->hasUserWithEmail($email),
-                'email',
-                __('This user already belongs to the team.')
-            );
-        };
+        Validator::make([
+            'email' => $email,
+            'role' => $role,
+        ], $this->rules(), [
+            'email.exists' => __('We were unable to find a registered user with this email address.'),
+        ])->after(
+            $this->ensureUserIsNotAlreadyOnTeam($team, $email)
+        )->validateWithBag('addTeamMember');
     }
 }

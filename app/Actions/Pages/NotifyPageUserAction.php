@@ -15,10 +15,36 @@ use App\Notifications\Pages\RefuseNotification;
 
 final readonly class NotifyPageUserAction
 {
+    public function archive(Page $page, User $user): void
+    {
+        $user->notify(
+            new ArchiveNotification(
+                page: $page
+            )
+        );
+    }
+
+    public function delete(Page $page, User $user): void
+    {
+        $user->notify(
+            new DeleteNotification(
+                pageTitle: $page->title
+            )
+        );
+    }
     public function draft(Page $page, User $user): void
     {
         $user->notify(
             new DraftNotification(
+                page: $page
+            )
+        );
+    }
+
+    public function newVersion(Page $page, User $user): void
+    {
+        $user->notify(
+            new NewVersionNotification(
                 page: $page
             )
         );
@@ -37,33 +63,6 @@ final readonly class NotifyPageUserAction
     {
         $user->notify(
             new RefuseNotification(
-                page: $page
-            )
-        );
-    }
-
-    public function archive(Page $page, User $user): void
-    {
-        $user->notify(
-            new ArchiveNotification(
-                page: $page
-            )
-        );
-    }
-
-    public function delete(Page $page, User $user): void
-    {
-        $user->notify(
-            new DeleteNotification(
-                pageTitle: $page->title
-            )
-        );
-    }
-
-    public function newVersion(Page $page, User $user): void
-    {
-        $user->notify(
-            new NewVersionNotification(
                 page: $page
             )
         );

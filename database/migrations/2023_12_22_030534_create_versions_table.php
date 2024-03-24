@@ -8,6 +8,10 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
 return new class () extends Migration {
+    public function down(): void
+    {
+        Schema::dropIfExists('versions');
+    }
     public function up(): void
     {
         Schema::create('versions', function (Blueprint $table): void {
@@ -26,10 +30,5 @@ return new class () extends Migration {
             $table->softDeletes();
             $table->timestamps();
         });
-    }
-
-    public function down(): void
-    {
-        Schema::dropIfExists('versions');
     }
 };

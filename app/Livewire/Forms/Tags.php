@@ -11,9 +11,19 @@ use Livewire\Component;
 
 final class Tags extends Component
 {
+    public $tagInput = '';
     public $tagsSelected = [];
 
-    public $tagInput = '';
+    public function removeTag($index): void
+    {
+        unset($this->tagsSelected[$index]);
+        //$this->tagsSelected = $this->tagsSelected;
+    }
+
+    public function render(): View|Factory|Application
+    {
+        return view('livewire.forms.tags');
+    }
 
     public function updated(): void
     {
@@ -31,16 +41,5 @@ final class Tags extends Component
         //dd($this->tagsSelected);
 
         $this->tagInput = '';
-    }
-
-    public function removeTag($index): void
-    {
-        unset($this->tagsSelected[$index]);
-        //$this->tagsSelected = $this->tagsSelected;
-    }
-
-    public function render(): View|Factory|Application
-    {
-        return view('livewire.forms.tags');
     }
 }
