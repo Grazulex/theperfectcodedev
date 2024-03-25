@@ -21,7 +21,6 @@
                     @else
                         <livewire:comments.like :user="Null" :is_liked_by_me="$comment['is_liked_by_me']"  :comment_id="$comment['id']" :likes_count="$comment['likes_count']"/>
                     @endif
-                    ({{ $comment['likes_count'] }} likes)
                 </div>
 
                 <x-pages.comments :page_array="$pageArray" :versionArray="$versionArray" :comment_id="$comment['id']" />
