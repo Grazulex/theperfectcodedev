@@ -44,6 +44,7 @@
             @endif
 
             <!-- Page Content -->
+            <div id="app"></div>
             <main>
                 {{ $slot }}
             </main>

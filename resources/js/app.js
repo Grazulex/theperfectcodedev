@@ -2,6 +2,11 @@ import './bootstrap';
 import Editor from '@toast-ui/editor';
 import 'codemirror/lib/codemirror.css';
 import '@toast-ui/editor/dist/toastui-editor.css';
+import {createApp} from 'vue'
+
+import App from './App.vue'
+
+createApp(App).mount("#app")
 
 if (JSON.parse(localStorage.getItem('isDark'))) {
     document.documentElement.classList.add('dark')
