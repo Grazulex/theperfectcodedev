@@ -12,7 +12,9 @@ use Override;
 
 abstract class BasePageState implements PageStateContract
 {
-    public function __construct(public Page $page) {}
+    public function __construct(public Page $page)
+    {
+    }
 
     /**
      * @throws Exception
