@@ -1,8 +1,8 @@
 <div>
     @if (Auth::check())
-    <div class="">
-        <livewire:comments.form :user="Auth::user()" :comment_id="$commentId"  :page_id="$page_id" :version_id="$version_id" />
-    </div>
+        <div class="">
+            <livewire:comments.form :user="Auth::user()" :comment_id="$commentId"  :page_id="$page_id" :version_id="$version_id" />
+        </div>
     @endif
     @foreach ($comments as $comment)
         @if ($comment['content'] )
@@ -28,8 +28,9 @@
 
         @endif
     @endforeach
-
-    <div class="flex justify-center">
-        {{ $comments->links() }}
-    </div>
+    @if (count($comments) > 1)
+        <div class="flex justify-center">
+            {{ $comments->links() }}
+        </div>
+     @endif
 </div>
