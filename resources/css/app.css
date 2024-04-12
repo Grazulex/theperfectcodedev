@@ -33,3 +33,24 @@ body {
     --card-dark: #101624;
     --text-dark: #333333;
 }
+
+.dark .ProseMirror {
+    color: white;
+}
+
+.dark .toastui-editor-contents p {
+    color: white;
+}
+
+.dark .text-color h1,h2,h3,h4 {
+    color: white;
+}
+.dark .text-color h2,h3,h4 {
+    color: white;
+}
+.dark .text-color h3,h4 {
+    color: white;
+}
+.dark .text-color h4 {
+    color: white;
+}
