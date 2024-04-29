@@ -20,12 +20,8 @@
             <div class="flex justify-between w-full border-b border-[#3A445B]">
                 <div class="flex">
                     <button class="flex m-2 text-sm transition border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300">
-                        @if (Auth::user())
-                            <img class="object-cover w-8 h-8 rounded-full" src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" />
-                        @else
-                            <img class="object-cover w-8 h-8 rounded-full" src="{{ $pageArray['user']['profile_photo_url'] }}" alt="{{ $pageArray['user']['name'] }}" />
-                        @endif
-                        </button>
+                         <img class="object-cover w-8 h-8 rounded-full" src="{{ $pageArray['user']['profile_photo_url'] }}" alt="{{ $pageArray['user']['name'] }}" />
+                    </button>
                     <div class="self-center">
                         <x-label  class="dark:text-[white] text-[16px] text-gray-800" for="name" value="{{ $pageArray['user']['name'] }}" />
                         <livewire:pages.others :is_public="$pageArray['is_public']"/>

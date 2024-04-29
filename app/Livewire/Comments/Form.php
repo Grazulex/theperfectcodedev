@@ -33,8 +33,9 @@ final class Form extends Component
             'version_id' => $this->versionId,
         ]);
 
+
         $this->content = '';
 
-        //$this->emit('commentAdded');
+        $this->dispatch('commentAdded');
     }
 }
